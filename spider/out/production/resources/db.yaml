@@ -1,0 +1,18 @@
+test:
+  url: jdbc:mysql://172.17.50.115:3306/patent?serverTimezone=GMT&useUnicode=true&characterEncoding=UTF8&useSSL=false
+  userName: test
+  password: 123456
+  driverName: com.mysql.cj.jdbc.Driver
+  maxPoolSize: 60
+  idleTimeout:
+  connectionTimeout:
+
+test_cadenas:
+  url: jdbc:mysql://172.17.50.115:3306/cadenas?serverTimezone=GMT&useUnicode=true&characterEncoding=UTF8&useSSL=false
+  userName: test
+  password: 123456
+  driverName: com.mysql.cj.jdbc.Driver
+  maxPoolSize: 60
+  idleTimeout:
+  connectionTimeout:
+
