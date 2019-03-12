@@ -26,8 +26,8 @@ public class TxtUpdateToMySQL {
                 "customized_service,register_capital,company_register_time,register_address,company_model,incorporator," +
                 "from_where_table_id,processing_method,technics,qhse,product_quality,employees,research_staff," +
                 "company_area,sell_area,company_clients,monthly_production,company_turnover,export_fore,company_brand," +
-                "quality_control,open_bank,open_account,website,address,contact,fax,postcode,landline,phone,qq,email,business_website,website_name) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "quality_control,open_bank,open_account,website,address,contact,fax,postcode,landline,phone,qq,email,business_website) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -72,7 +72,6 @@ public class TxtUpdateToMySQL {
             ps.setString(37, ipRegionMap.get("qq"));
             ps.setString(38, ipRegionMap.get("email"));
             ps.setString(39, ipRegionMap.get("business_website"));
-            ps.setString(40, ipRegionMap.get("website_name"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
