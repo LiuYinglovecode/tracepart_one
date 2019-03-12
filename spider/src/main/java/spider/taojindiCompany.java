@@ -149,7 +149,7 @@ public class taojindiCompany {
 
     private void insert(JSONObject companyInfo) {
         Map = (java.util.Map) companyInfo;
-        if (TxtUpdateToMySQL.taojindiUpdate(Map)) {
+        if (TxtUpdateToMySQL.dataUpdate(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }
