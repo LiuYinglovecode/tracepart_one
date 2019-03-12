@@ -67,7 +67,7 @@ public class yellowurlCompany {
 
     private void info(String url) {
         JSONObject companyInfo = new JSONObject();
-        companyInfo.put("website_name", "中国黄页网");
+        //companyInfo.put("website_name", "中国黄页网");
         try {
             String s = url + "/contact/";
             String html = httpGet(s, "中国黄页网");
