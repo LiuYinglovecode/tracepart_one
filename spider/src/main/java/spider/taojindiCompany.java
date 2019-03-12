@@ -87,7 +87,7 @@ public class taojindiCompany {
      */
     private void companyInformation(String url) {
         JSONObject companyInfo = new JSONObject();
-        companyInfo.put("website_name","淘金地网站");
+        //companyInfo.put("website_name","淘金地网站");
         try {
             String html = httpGetWithProxy(url, "淘金地");
             Document parse = Jsoup.parse(html);
