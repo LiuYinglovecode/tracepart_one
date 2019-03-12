@@ -46,7 +46,6 @@ public class net114Company {
         }
     }
 
-
     private void company(String url) {
         try {
             String html = httpGet(url, "网络114");
@@ -75,7 +74,7 @@ public class net114Company {
 
     private void info(String url) {
         JSONObject companyInfo = new JSONObject();
-        companyInfo.put("website_name", "网络114网站");
+        //companyInfo.put("website_name", "网络114网站");
         try {
             String html = httpGet(url, "网络114");
             Document document = Jsoup.parse(html);
@@ -112,7 +111,8 @@ public class net114Company {
                         companyInfo.put("company_area", link.text());
                     }
                 }
-            } else {
+            }
+            else {
                 for (Element element : select) {
                     if (element.text().contains("联系人")) {
                         companyInfo.put("contact", element.text().split("：", 2)[1].trim());
@@ -126,6 +126,7 @@ public class net114Company {
                         companyInfo.put("address", element.text().split("：", 2)[1].trim());
                     }
                 }
+
                 Thread.sleep(4000);
                 Elements select2 = document.select("ul.nav_list li a");
                 for (Element e : select2) {
@@ -134,9 +135,9 @@ public class net114Company {
                         String page = httpGet(href, "企业介绍");
                         Document file = Jsoup.parse(page);
                         companyInfo.put("company_info", file.select("div.p_10.about_div p").text());
-
                     }
                 }
+
                 Thread.sleep(4000);
                 Elements s = document.select("ul.nav_list li a");
                 companyInfo.put("name", document.select("div.top_text_title").text());
@@ -160,7 +161,6 @@ public class net114Company {
             e.printStackTrace();
         }
     }
-
 
     public static void main(String[] args) {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.141:2181");
