@@ -50,7 +50,6 @@ public class net114Company {
         try {
             String html = httpGet(url, "网络114");
             Document document = Jsoup.parse(html);
-            Elements page = document.select("div.enterprise_list_text");
             Elements select = document.select("div.enterprise_list_text p a");
             for (Element link : select) {
                 String href = link.attr("href");
