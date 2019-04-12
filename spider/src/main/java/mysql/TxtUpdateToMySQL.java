@@ -559,4 +559,28 @@ public class TxtUpdateToMySQL {
         return false;
     }
 
+
+    public static boolean bzkoInsert(Map<String, String> ipRegionMap) {
+        TABLE_NAME = "bde.original_standard_bzko";
+        String sql = "insert into " + TABLE_NAME + "(name,category,industry,codeName,downloadUrl) " +
+                "values (?,?,?,?,?)";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, ipRegionMap.get("name"));
+            ps.setString(2, ipRegionMap.get("category"));
+            ps.setString(3, ipRegionMap.get("industry"));
+            ps.setString(4, ipRegionMap.get("codeName"));
+            ps.setString(5, ipRegionMap.get("downloadUrl"));
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
+
 }
