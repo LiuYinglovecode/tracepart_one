@@ -1,9 +1,8 @@
 package spider.standard;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
-import mysql.TxtUpdateToMySQL;
+import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,7 +29,7 @@ public class bzko {
     private static String tableName = "original_standard_bzko";
     private static String mainWebsite = "http://www.bzko.com";
     private static String zookeeper = "172.17.60.213:2181";
-//    private static String zookeeper = "172.20.4.213:2181";
+    //    private static String zookeeper = "172.20.4.213:2181";
     private static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36";
 
 
@@ -152,7 +151,7 @@ public class bzko {
     private void insert(JSONObject info) {
         try {
             Map = (java.util.Map) info;
-            if (TxtUpdateToMySQL.bzkoInsert(Map)) {
+            if (updateToMySQL.standardInsert(Map)) {
                 LOGGER.info("插入中 : " + Map.toString());
             }
         } catch (Exception e) {

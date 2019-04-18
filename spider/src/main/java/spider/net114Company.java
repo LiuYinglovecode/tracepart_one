@@ -2,7 +2,7 @@ package spider;
 
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
-import mysql.TxtUpdateToMySQL;
+import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -172,7 +172,7 @@ public class net114Company {
 
     private void insert(JSONObject companyInfo) {
         Map = (java.util.Map) companyInfo;
-        if (TxtUpdateToMySQL.dataUpdate(Map)) {
+        if (updateToMySQL.dataUpdate(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }

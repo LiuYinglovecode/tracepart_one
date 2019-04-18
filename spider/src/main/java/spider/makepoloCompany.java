@@ -2,7 +2,7 @@ package spider;
 
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
-import mysql.TxtUpdateToMySQL;
+import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -111,12 +111,12 @@ public class makepoloCompany {
     private void insertToMySQL(JSONObject companyInfo, String tableName, String id) {
         try {
             Map = (Map) companyInfo;
-            if (TxtUpdateToMySQL.exist(Map, tableName, id)) {
-                if (TxtUpdateToMySQL.makepoloUpdate(Map, id)) {
+            if (updateToMySQL.exist(Map, tableName, id)) {
+                if (updateToMySQL.makepoloUpdate(Map, id)) {
                     LOGGER.info("更新中 : " + Map.toString());
                     write(id, "F:\\DataCatch\\makepolo\\update.txt");
                 } else {
-                    if (TxtUpdateToMySQL.makepoloInsert(Map)) {
+                    if (updateToMySQL.makepoloInsert(Map)) {
                         LOGGER.info("插入中 : " + Map.toString());
                         write(id, "F:\\DataCatch\\makepolo\\insert.txt");
                     }

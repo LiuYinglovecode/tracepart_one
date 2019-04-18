@@ -2,7 +2,7 @@ package spider;
 
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
-import mysql.TxtUpdateToMySQL;
+import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,8 +15,6 @@ import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import static ipregion.IpRegionTaobao.getProxy;
 
 public class taojindiCompany {
     private final static Logger LOGGER = LoggerFactory.getLogger(taojindiCompany.class);
@@ -149,7 +147,7 @@ public class taojindiCompany {
 
     private void insert(JSONObject companyInfo) {
         Map = (java.util.Map) companyInfo;
-        if (TxtUpdateToMySQL.dataUpdate(Map)) {
+        if (updateToMySQL.dataUpdate(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TxtUpdateToMySQL {
-    private final static Logger LOGGER = LoggerFactory.getLogger(TxtUpdateToMySQL.class);
+public class updateToMySQL {
+    private final static Logger LOGGER = LoggerFactory.getLogger(updateToMySQL.class);
     private static final String CONF_SECTION = "bde_testdb";
     private static String TABLE_NAME = "";
 
@@ -560,8 +560,8 @@ public class TxtUpdateToMySQL {
     }
 
 
-    public static boolean bzkoInsert(Map<String, String> ipRegionMap) {
-        TABLE_NAME = "bde.original_standard_bzko";
+    public static boolean standardInsert(Map<String, String> ipRegionMap) {
+        TABLE_NAME = "bde.original_standard";
         String sql = "insert into " + TABLE_NAME + "(name,category,industry,codeName,downloadUrl) " +
                 "values (?,?,?,?,?)";
         Connection connection = getConnection();
@@ -574,6 +574,37 @@ public class TxtUpdateToMySQL {
             ps.setString(3, ipRegionMap.get("industry"));
             ps.setString(4, ipRegionMap.get("codeName"));
             ps.setString(5, ipRegionMap.get("downloadUrl"));
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
+
+    public static boolean baitengInsert(Map<String, String> ipRegionMap) {
+        TABLE_NAME = "bde.original_patent";
+        String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, ipRegionMap.get("name"));
+            ps.setString(2, ipRegionMap.get("applicationNumber"));
+            ps.setString(3, ipRegionMap.get("applicationDate"));
+            ps.setString(4, ipRegionMap.get("applicant"));
+            ps.setString(5, ipRegionMap.get("inventor"));
+            ps.setString(6, ipRegionMap.get("currentPatentee"));
+            ps.setString(7, ipRegionMap.get("publicNumber"));
+            ps.setString(8, ipRegionMap.get("publicDate"));
+            ps.setString(9, ipRegionMap.get("mainClassificationNumber"));
+            ps.setString(10, ipRegionMap.get("classificationNumber"));
+            ps.setString(11, ipRegionMap.get("nationalCode"));
+            ps.setString(12, ipRegionMap.get("address"));
+            ps.setString(13, ipRegionMap.get("abstract"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

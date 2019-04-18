@@ -2,7 +2,7 @@ package spider;
 
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
-import mysql.TxtUpdateToMySQL;
+import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,6 +30,7 @@ public class d17Company {
     private static String savePage = "";
     private static String tableName = "original_company_d17";
     private String nameMD5;
+    private static String zookeeper;
 
 
     static {
@@ -127,13 +128,13 @@ public class d17Company {
     private void insert(JSONObject companyInfo, String tableName, String MD5) {
         try {
             Map = (java.util.Map) companyInfo;
-            if (TxtUpdateToMySQL.exist(Map, tableName, MD5)) {
-                if (TxtUpdateToMySQL.d17Update(Map, MD5)) {
+            if (updateToMySQL.exist(Map, tableName, MD5)) {
+                if (updateToMySQL.d17Update(Map, MD5)) {
                     LOGGER.info("更新中 : " + Map.toString());
                     write(MD5, "F:\\DataCatch\\d17\\update.txt");
                 }
             } else {
-                if (TxtUpdateToMySQL.d17Insert(Map)) {
+                if (updateToMySQL.d17Insert(Map)) {
                     LOGGER.info("插入中 : " + Map.toString());
                     write(MD5, "F:\\DataCatch\\d17\\insert.txt");
                 }

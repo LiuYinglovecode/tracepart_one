@@ -2,7 +2,7 @@ package spider;
 
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
-import mysql.TxtUpdateToMySQL;
+import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -124,12 +124,12 @@ public class toocleCompany {
 
     private void insertToMySQL(JSONObject companyInfo, String tablename, String MD5) {
         Map = (Map) companyInfo;
-        if (TxtUpdateToMySQL.exist(Map, tablename, MD5)) {
-            if (TxtUpdateToMySQL.toocleUpdate(Map, MD5)) {
+        if (updateToMySQL.exist(Map, tablename, MD5)) {
+            if (updateToMySQL.toocleUpdate(Map, MD5)) {
                 LOGGER.info("更新中 : " + Map.toString());
             }
         } else {
-            if (TxtUpdateToMySQL.toocleInsert(Map)) {
+            if (updateToMySQL.toocleInsert(Map)) {
                 LOGGER.info("插入中 : " + Map.toString());
             }
         }
