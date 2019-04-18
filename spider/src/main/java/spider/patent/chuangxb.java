@@ -14,6 +14,8 @@ import util.IConfigManager;
 import util.IpProxyUtil;
 
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -32,6 +34,7 @@ public class chuangxb {
     private static String end = "_01.html";
     private static String zookeeper;
     private static String UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36";
+    private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     static {
         header = new HashMap();
@@ -42,10 +45,7 @@ public class chuangxb {
         zookeeper = args[0];
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, zookeeper);
         chuangxb chuangxb = new chuangxb();
-//        chuangxb.patent();
-        JSONObject object = new JSONObject();
-        object.put("name", "上传实验2");
-        chuangxb.insert(object);
+        chuangxb.patent();
         LOGGER.info("------done------");
     }
 
@@ -70,8 +70,9 @@ public class chuangxb {
 
     private void patentDetail(String url, String name) {
         try {
+
             JSONObject info = new JSONObject();
-            info.put("name", name);
+            info.put("name", "时间实验");
             String html = httpGet(url, "创新宝");
             if (null != html) {
                 Document document = Jsoup.parse(html);
@@ -111,6 +112,8 @@ public class chuangxb {
                 }
                 String zhaiyao = document.select(".abContent.abstract.contenttext").text().trim();
                 info.put("abstract", zhaiyao);
+                info.put("crawlerId", "20");
+                info.put("createTime", creatrTime.format(new Date()));
                 insert(info);
             }
         } catch (Exception e) {
