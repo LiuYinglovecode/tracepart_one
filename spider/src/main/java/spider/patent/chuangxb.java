@@ -72,7 +72,7 @@ public class chuangxb {
         try {
 
             JSONObject info = new JSONObject();
-            info.put("name", "时间实验");
+            info.put("patentName", "时间实验");
             String html = httpGet(url, "创新宝");
             if (null != html) {
                 Document document = Jsoup.parse(html);

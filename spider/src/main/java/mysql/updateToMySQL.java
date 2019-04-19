@@ -585,14 +585,14 @@ public class updateToMySQL {
 
     public static boolean baitengInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "bde.original_patent";
-        String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract,crawlerId,createTime) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, ipRegionMap.get("name"));
+            ps.setString(1, ipRegionMap.get("patentName"));
             ps.setString(2, ipRegionMap.get("applicationNumber"));
             ps.setString(3, ipRegionMap.get("applicationDate"));
             ps.setString(4, ipRegionMap.get("applicant"));
@@ -605,6 +605,8 @@ public class updateToMySQL {
             ps.setString(11, ipRegionMap.get("nationalCode"));
             ps.setString(12, ipRegionMap.get("address"));
             ps.setString(13, ipRegionMap.get("abstract"));
+            ps.setString(14, ipRegionMap.get("crawlerId"));
+            ps.setString(15, ipRegionMap.get("createTime"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
