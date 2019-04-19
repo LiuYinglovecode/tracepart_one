@@ -11,9 +11,9 @@ public class dataWriteTxt {
     public static void main(String[] args) {
 
         // 定义数据库驱动
-        String driver = "com.dataWriteTxt.cj.jdbc.Driver";
+        String driver = "com.mysql.cj.jdbc.Driver";
         // 数据库连接URL
-        String url = "jdbc:dataWriteTxt://127.0.0.1:3306/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
+        String url = "jdbc:mysql://127.0.0.1:3306/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
         Connection conn = null;
         String downloadUrl;
         try {

@@ -59,15 +59,11 @@ dependencies {
 //    compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.12', ext: 'pom'
     compile('org.apache.zookeeper:zookeeper:3.4.12') {
         exclude group: 'org.slf4j', module: 'slf4j-log4j12'
-
-
-
-
-        //        下载解压需要的jar包
-        compile group: 'com.github.junrar',name:'junrar',version:'3.0.0'
-        compile group: 'org.apache.ant',name:'ant',version:'1.9.4'
-        compile group: 'apache',name:'junrar',version:'0.7'
-        compile group: 'junit',name:'junit',version:'4.12'
-        compile group: 'org.apache.ant',name:'ant',version:'1.9.3'
     }
+
+
+    //        下载解压需要的jar包
+    compile group: 'com.github.junrar',name:'junrar',version:'3.0.0'
+    compile group: 'org.apache.ant',name:'ant',version:'1.9.3'
+    
 }
