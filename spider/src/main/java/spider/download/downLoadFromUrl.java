@@ -74,6 +74,7 @@ public class downLoadFromUrl {
                 //String res=temp.substring(index);//res表示url
                 System.out.println("line" + line + ":" + temp);
                 try {
+//                    下载后存放的地址
                     downLoadFromUrl(temp, line + ".rar", "C:\\Users\\cyan_\\Downloads\\URL");
                 } catch (Exception e) {
                     // TODO: handle exception

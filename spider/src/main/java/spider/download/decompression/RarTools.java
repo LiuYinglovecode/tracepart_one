@@ -26,7 +26,7 @@ public class RarTools {
         FileOutputStream fos = null;
         System.out.println("Starting 开始解压...");
         try {
-            archive = new Archive(new FileInputStream(sourceRar));
+            archive = new Archive(sourceRar);
             FileHeader fh = archive.nextFileHeader();
             int count = 0;
             File destFileName = null;
@@ -88,7 +88,7 @@ public class RarTools {
             while (true) {
                 //从指定位置过去rar压缩包，解压到指定位置
                 RarTools.unrar("C:\\Users\\cyan_\\Downloads\\URL\\" + line + ".rar", "C:\\Users\\cyan_\\Downloads\\URL");
-                //                Thread.sleep(3000);
+                Thread.sleep(3000);
                 line++;
             }
         } catch (Exception e) {
