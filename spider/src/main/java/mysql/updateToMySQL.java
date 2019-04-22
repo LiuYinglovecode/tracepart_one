@@ -562,8 +562,8 @@ public class updateToMySQL {
 
     public static boolean standardInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "bde.original_standard";
-        String sql = "insert into " + TABLE_NAME + "(name,category,industry,codeName,downloadUrl) " +
-                "values (?,?,?,?,?)";
+        String sql = "insert into " + TABLE_NAME + "(name,category,industry,codeName,downloadUrl,crawlerId,createTime) " +
+                "values (?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -574,6 +574,8 @@ public class updateToMySQL {
             ps.setString(3, ipRegionMap.get("industry"));
             ps.setString(4, ipRegionMap.get("codeName"));
             ps.setString(5, ipRegionMap.get("downloadUrl"));
+            ps.setString(6, ipRegionMap.get("crawlerId"));
+            ps.setString(7, ipRegionMap.get("createTime"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
