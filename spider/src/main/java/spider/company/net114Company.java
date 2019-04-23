@@ -1,4 +1,4 @@
-package spider;
+package spider.company;
 
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
