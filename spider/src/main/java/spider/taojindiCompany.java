@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import util.*;
 
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -22,6 +24,7 @@ public class taojindiCompany {
     private IpProxyUtil ipProxyList = new IpProxyUtil();
     private static Map<String, String> header = null;
     private static String savePage = "";
+    private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     static {
         header = new HashMap();
@@ -130,6 +133,8 @@ public class taojindiCompany {
                     }
                 }
             }
+            companyInfo.put("crawlerId", "11");
+            companyInfo.put("createTime", creatrTime.format(new Date()));
             insert(companyInfo);
         } catch (Exception e) {
             e.printStackTrace();

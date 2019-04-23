@@ -15,6 +15,8 @@ import util.IpProxyUtil;
 import util.MD5Util;
 
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 public class net114Company {
@@ -23,7 +25,7 @@ public class net114Company {
     private IpProxyUtil ipProxyList = new IpProxyUtil();
     private static java.util.Map<String, String> header = null;
     private static String savePage = "";
-
+    private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     void category(String url) {
         try {
@@ -155,6 +157,8 @@ public class net114Company {
                     }
                 }
             }
+            companyInfo.put("crawlerId", "9");
+            companyInfo.put("createTime", creatrTime.format(new Date()));
             insert(companyInfo);
         } catch (Exception e) {
             e.printStackTrace();

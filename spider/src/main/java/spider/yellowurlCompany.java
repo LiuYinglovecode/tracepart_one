@@ -15,6 +15,8 @@ import util.IpProxyUtil;
 import util.MD5Util;
 
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 public class yellowurlCompany {
@@ -23,10 +25,12 @@ public class yellowurlCompany {
     private IpProxyUtil ipProxyList = new IpProxyUtil();
     private static java.util.Map<String, String> header = null;
     private static String savePage = "";
+    private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private void category(String url) {
         try {
-            String html = httpGet(url, "中国黄页网");
+//            String html = httpGet(url, "中国黄页网");
+            String html = httpGetWithProxy(url, "中国黄页网");
             Document parse = Jsoup.parse(html);
             Elements select = parse.select("#category > div > ul.typical > li > a");
             for (Element e : select) {
@@ -93,6 +97,8 @@ public class yellowurlCompany {
                     }
                 }
             }
+            companyInfo.put("crawlerId", "8");
+            companyInfo.put("createTime", creatrTime.format(new Date()));
             insert(companyInfo);
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,7 +107,7 @@ public class yellowurlCompany {
 
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.141:2181");
+//        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.141:2181");
         yellowurlCompany yellowurlCompany = new yellowurlCompany();
         yellowurlCompany.category("http://company.yellowurl.cn/");
         LOGGER.info("---完成了---");
