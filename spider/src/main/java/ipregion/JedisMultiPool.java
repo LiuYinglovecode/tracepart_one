@@ -78,10 +78,14 @@ public class JedisMultiPool {
 
             /*String redisAddress = "127.0.0.1";
             String port = "27001";*/
-            String redisAddress = "127.0.0.1";
+//            String redisAddress = "127.0.0.1";
+//            String port = "6379";
+//            String timeout = "5000";
+//            String auth = null;
+            String redisAddress = "10.153.51.22";
             String port = "6379";
             String timeout = "5000";
-            String auth = null;
+            String auth = "!2bpYXjtGh";
 
             jedisPool = new redis.clients.jedis.JedisPool(config, redisAddress, Integer.parseInt(port), Integer.parseInt(timeout), auth);
         } catch (Exception e) {
