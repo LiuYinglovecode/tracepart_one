@@ -3,18 +3,17 @@ package spider.standard;
 import com.alibaba.fastjson.JSONObject;
 import ipregion.ProxyDao;
 import mysql.updateToMySQL;
-import mysql.updateToMySQL;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.plugin2.os.windows.Windows;
+
 import util.HttpUtil;
 import util.IConfigManager;
 import util.IpProxyUtil;
-
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
