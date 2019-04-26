@@ -24,13 +24,14 @@ public class updateToMySQL {
 
 
     public static boolean dataUpdate(Map<String, String> ipRegionMap) {
-        TABLE_NAME = "bde.original_company";
+        TABLE_NAME = "crawler_data.crawler_company";
         String sql = "insert into " + TABLE_NAME + "(id,name,company_info,main_product,industry,management_model," +
                 "customized_service,register_capital,company_register_time,register_address,company_model,incorporator," +
                 "from_where_table_id,processing_method,technics,qhse,product_quality,employees,research_staff," +
                 "company_area,sell_area,company_clients,monthly_production,company_turnover,export_fore,company_brand," +
-                "quality_control,open_bank,open_account,website,address,contact,fax,postcode,landline,phone,qq,email,business_website) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "quality_control,open_bank,open_account,website,address,contact,fax,postcode,landline,phone,qq,email," +
+                "business_website,crawlerId,createTime) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -75,6 +76,8 @@ public class updateToMySQL {
             ps.setString(37, ipRegionMap.get("qq"));
             ps.setString(38, ipRegionMap.get("email"));
             ps.setString(39, ipRegionMap.get("business_website"));
+            ps.setString(40, ipRegionMap.get("crawlerId"));
+            ps.setString(41, ipRegionMap.get("createTime"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -617,5 +620,26 @@ public class updateToMySQL {
         }
         return false;
     }
+    public static boolean datasourceUpdate(Map<String, String> ipRegionMap) {
+        TABLE_NAME = "crawler_data.crawler_source";
+        String sql = "insert into " + TABLE_NAME + "(id,website,url,type,createTime) " +
+                "values (?,?,?,?,?)";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
 
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, ipRegionMap.get("id"));
+            ps.setString(2, ipRegionMap.get("website"));
+            ps.setString(3, ipRegionMap.get("url"));
+            ps.setString(4, ipRegionMap.get("type"));
+            ps.setString(5, ipRegionMap.get("createTime"));
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
 }
