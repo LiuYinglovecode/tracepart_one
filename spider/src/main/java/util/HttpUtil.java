@@ -1,5 +1,6 @@
 package util;
 
+import ipregion.ProxyDao;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
@@ -37,11 +38,18 @@ public class HttpUtil {
     private static final int TIME_OUT_MILLIS = 60000;
     private static String daili = "https://www.kuaidaili.com/getproxy/?orderid=902989670537257&num=100&area=&area_ex=&port=&port_ex=&ipstart=&ipstart_ex=&carrier=0&an_ha=1&an_an=1&sp1=1&protocol=1&method=1&quality=0&sort=0&b_pcchrome=1&b_pcie=1&b_pcff=1&showtype=1";
     private static Map map;
+    private static Map<String, String> header = null;
+    private IpProxyUtil ipProxyList = new IpProxyUtil();
 
     static {
         map = new HashMap();
         map.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
         map.put("Cookie", "channelid=0; sid=1529907978275412; _ga=GA1.2.154333196.1529907741; Qs_lvt_161068=1529907740%2C1529976108; Qs_pv_161068=270419782304435520%2C3874460373527973400%2C3853836041513917000%2C2662933366421502000%2C4229558882744872400; Hm_lvt_7ed65b1cc4b810e9fd37959c9bb51b31=1529907741,1530862627,1531103585; _gid=GA1.2.1732216712.1531298846; sessionid=c4186310381b239c5b2dd53bcf0f4eda");
+    }
+
+    static {
+        header = new HashMap();
+        header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
     }
 
     /**
@@ -354,7 +362,7 @@ public class HttpUtil {
         return msg;
     }
 
-    public static String getRequest(String url,int timeOut) {
+    public static String getRequest(String url, int timeOut) {
         String result = null;
         for (int i = 0; i < 10; i++) {
             URL u = null;
@@ -374,6 +382,54 @@ public class HttpUtil {
             }
         }
         return result;
+    }
+
+    public static String httpGetwithJudgeWord(String url, String judgeWord) {
+        try {
+            String html = null;
+            for (int i = 0; i < 5; i++) {
+                if (null != url) {
+                    html = HttpUtil.httpGet(url, header);
+                }
+                if (html != null && html.contains(judgeWord)) {
+                    return html;
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    public static Set<String> getProxy() {
+        return ProxyDao.getProxyFromRedis();
+    }
+
+    public String httpGetWithProxy(String url, String judgeWord) {
+        String ipProxy = null;
+        try {
+            if (ipProxyList.isEmpty()) {
+                LOGGER.info("ipProxyList is empty");
+                Set<String> getProxy = getProxy();
+                ipProxyList.addProxyIp(getProxy);
+            }
+            ipProxy = ipProxyList.getProxyIp();
+            String html = null;
+            for (int i = 0; i < 5; i++) {
+                if (url != null && ipProxy != null) {
+                    html = HttpUtil.httpGetWithProxy(url, header, ipProxy);
+                }
+                if (html != null && html.contains(judgeWord)) {
+                    return html;
+                }
+                ipProxyList.removeProxyIpByOne(ipProxy);
+                ProxyDao.delectProxyByOne(ipProxy);
+                ipProxy = ipProxyList.getProxyIp();
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+        return null;
     }
 
     public static void main(String[] args) {

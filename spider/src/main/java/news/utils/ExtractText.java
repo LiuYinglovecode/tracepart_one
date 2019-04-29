@@ -1,6 +1,7 @@
-package news.parse;
+package news.utils;
 
 import org.apache.http.HttpException;
+import util.HttpUtil;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -22,12 +23,14 @@ public class ExtractText {
      * 每行最小长度
      */
     private static int MIN_LENGTH = 10;
+
     /**
      * 去除html标签
+     *
      * @param html 请求获得的html文本
-     *      * @return 纯文本
+     *             * @return 纯文本
      */
-    public static String deleteLabel(String html){
+    public static String deleteLabel(String html) {
         String regEx_script = "<script[^>]*?>[\\s\\S]*?<\\/script>"; // 定义script的正则表达式
         String regEx_style = "<style[^>]*?>[\\s\\S]*?<\\/style>"; // 定义style的正则表达式
         String regEx_html = "<[^>]+>"; // 定义HTML标签的正则表达式
@@ -43,24 +46,24 @@ public class ExtractText {
 
     /**
      * 将纯文本按BLOCKS分块
+     *
      * @param text 纯文本
-     * @return 分块后的map集合,键即为块号,值为块内容
+     * @return 分块后的map集合, 键即为块号, 值为块内容
      */
-    public static Map<Integer, String> splitBlock(String text){
+    public static Map<Integer, String> splitBlock(String text) {
         Map<Integer, String> groupMap = new HashMap<Integer, String>();
         ByteArrayInputStream bais = new ByteArrayInputStream(text.getBytes());
         BufferedReader br = new BufferedReader(new InputStreamReader(bais));
-        String line = null,blocksLine = "";
-        int theCount = 0,groupCount = 0,count=0;//1.记录每次添加的行数；2.记录块号；3.记录总行数
+        String line = null, blocksLine = "";
+        int theCount = 0, groupCount = 0, count = 0;//1.记录每次添加的行数；2.记录块号；3.记录总行数
         try {
-            while((line=br.readLine())!=null){
-                if (line.length()>MIN_LENGTH) {
+            while ((line = br.readLine()) != null) {
+                if (line.length() > MIN_LENGTH) {
                     System.out.println(line);
-                    if (theCount<=BLOCKS) {
-                        blocksLine +=line.trim();
+                    if (theCount <= BLOCKS) {
+                        blocksLine += line.trim();
                         theCount++;
-                    }
-                    else {
+                    } else {
                         groupMap.put(groupCount, blocksLine);
                         groupCount++;
                         blocksLine = line.trim();
@@ -69,10 +72,10 @@ public class ExtractText {
                     count++;
                 }
             }
-            if (theCount!=0) {//加上没凑齐的给给定块数的
-                groupMap.put(groupCount+1, blocksLine);
+            if (theCount != 0) {//加上没凑齐的给给定块数的
+                groupMap.put(groupCount + 1, blocksLine);
             }
-            System.out.println("一共"+groupMap.size()+"个行块，数据行数一共有"+count);
+            System.out.println("一共" + groupMap.size() + "个行块，数据行数一共有" + count);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,35 +84,36 @@ public class ExtractText {
 
     /**
      * 分析每块之间变化的情况
+     *
      * @param map 块集合
      * @return 正文
      */
-    public static String judgeBlocks(Map<Integer, String> map){
+    public static String judgeBlocks(Map<Integer, String> map) {
         Set<Map.Entry<Integer, String>> sets = map.entrySet();
         List<Integer> contentBlock = new ArrayList<Integer>();
         int currentBlock = map.get(0).length(); //当前行的长度
         int lastBlock = 0; //上一行的长度
 
-        for(Map.Entry<Integer, String> set:sets){
+        for (Map.Entry<Integer, String> set : sets) {
             lastBlock = currentBlock;
             currentBlock = set.getValue().length();
-            float between = (float)Math.abs(currentBlock - lastBlock)/Math.max(currentBlock, lastBlock);
-            if (between>=CHANGE_RATE) {
+            float between = (float) Math.abs(currentBlock - lastBlock) / Math.max(currentBlock, lastBlock);
+            if (between >= CHANGE_RATE) {
                 contentBlock.add(set.getKey());
             }
         }
         //下面是取多个峰值节点中两个节点之间内容长度最大的内容
         int matchNode = contentBlock.size();
-        System.out.println("一共有"+matchNode+"峰值点");
+        System.out.println("一共有" + matchNode + "峰值点");
         int lastContent = 0;//前一个两节点之间的内容长度
         String context = null;//结果
-        if (matchNode>2) {
-            for(int i=1;i<matchNode;i++){
+        if (matchNode > 2) {
+            for (int i = 1; i < matchNode; i++) {
                 String result = "";
-                for(int j=contentBlock.get(i-1);j<contentBlock.get(i);j++){
-                    result +=map.get(j);
+                for (int j = contentBlock.get(i - 1); j < contentBlock.get(i); j++) {
+                    result += map.get(j);
                 }
-                if (result.length()>lastContent) {
+                if (result.length() > lastContent) {
                     lastContent = result.length();
                     context = result;
                 }
@@ -118,10 +122,10 @@ public class ExtractText {
         return context;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String html = null;
         try {
-            html = HttpUtil.httpGet("http://stock.caijing.com.cn/20180617/4471723.shtml",null);
+            html = HttpUtil.httpGet("http://stock.caijing.com.cn/20180617/4471723.shtml", null);
 
         } catch (IOException e) {
             e.printStackTrace();
