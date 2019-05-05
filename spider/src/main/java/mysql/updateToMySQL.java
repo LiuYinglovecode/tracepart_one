@@ -642,4 +642,30 @@ public class updateToMySQL {
         }
         return false;
     }
+
+    public static boolean newsUpdate(Map<String, String> ipRegionMap) {
+        TABLE_NAME = "bde.original_news";
+        String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amountOfReading, source, plate, crawlerId) " +
+                "values (?,?,?,?,?,?,?,?)";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, ipRegionMap.get("title"));
+            ps.setString(2, ipRegionMap.get("time"));
+            ps.setString(3, ipRegionMap.get("author"));
+            ps.setString(4, ipRegionMap.get("text"));
+            ps.setString(5, ipRegionMap.get("amountOfReading"));
+            ps.setString(6, ipRegionMap.get("source"));
+            ps.setString(7, ipRegionMap.get("plate"));
+            ps.setString(8, ipRegionMap.get("crawlerId"));
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
 }
