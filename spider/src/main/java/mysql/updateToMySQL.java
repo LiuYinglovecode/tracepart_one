@@ -589,7 +589,7 @@ public class updateToMySQL {
     }
 
     public static boolean baitengInsert(Map<String, String> ipRegionMap) {
-        TABLE_NAME = "bde.original_patent";
+        TABLE_NAME = "crawler_data.crawler_patent";
         String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract,crawlerId,createTime) " +
                 "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();

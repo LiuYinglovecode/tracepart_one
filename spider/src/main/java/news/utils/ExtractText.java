@@ -125,7 +125,7 @@ public class ExtractText {
     public static void main(String[] args) {
         String html = null;
         try {
-            html = HttpUtil.httpGet("http://stock.caijing.com.cn/20180617/4471723.shtml", null);
+            html = HttpUtil.httpGet("http://www.cinn.cn/gongjing/201904/t20190425_211275.html", null);
 
         } catch (IOException e) {
             e.printStackTrace();
