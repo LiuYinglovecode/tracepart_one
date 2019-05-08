@@ -38,7 +38,7 @@ public class ElementExist {
     public static boolean WebElementExist(WebDriver driver, WebElement element, String parmeter1, String parmeter2) {
         if (null == element) {
             if (null == parmeter2) {
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < 3; i++) {
                     try {
                         if (null != new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(parmeter1)))) {
                             return true;
