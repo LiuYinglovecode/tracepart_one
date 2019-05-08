@@ -1,7 +1,7 @@
-package util;
+package config;
 
 
-import util.IConfig;
+import config.IConfig;
 
 import java.io.File;
 import java.io.FileInputStream;

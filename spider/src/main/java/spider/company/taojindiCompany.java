@@ -1,6 +1,7 @@
 package spider.company;
 
 import com.alibaba.fastjson.JSONObject;
+import config.IConfigManager;
 import ipregion.ProxyDao;
 import mysql.updateToMySQL;
 import org.jsoup.Jsoup;

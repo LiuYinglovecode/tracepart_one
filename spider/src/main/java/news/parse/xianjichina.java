@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
-import util.IConfigManager;
+import config.IConfigManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -108,7 +108,8 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    insert(info);
+
+//                    insert(info);
                 }
             } else {
                 LOGGER.info("detail null");

@@ -10,7 +10,6 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
-import util.IConfigManager;
 import util.IpProxyUtil;
 import util.MD5Util;
 

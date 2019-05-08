@@ -1,4 +1,4 @@
-package util;
+package config;
 
 
 public class StaticConfigMgrBinder {

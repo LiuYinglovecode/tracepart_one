@@ -1,4 +1,4 @@
-package util;
+package config;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.zookeeper.CreateMode;

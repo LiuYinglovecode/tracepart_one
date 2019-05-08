@@ -1,4 +1,4 @@
-package util;
+package config;
 
 /**
  * Listener for config changed
