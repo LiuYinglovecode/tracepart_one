@@ -3,6 +3,7 @@ package mysql;
 import com.zaxxer.hikari.HikariConfig;
 
 import com.zaxxer.hikari.HikariDataSource;
+import config.ConfigClient;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -67,24 +68,22 @@ public class DbConnectionPool {
         _poolName = poolName;
 
         //连接池配置信息
-//        String dbUrl = ConfigClient.instance().get(poolName, "url");
-//        String dbUser = ConfigClient.instance().get(poolName, "user");
-//        String dbPassword = ConfigClient.instance().get(poolName, "sec.password");
-//        String maxPoolSize = ConfigClient.instance().get(poolName, "maxpoolsize");
-//        String idleTimeout = ConfigClient.instance().get(poolName, "idletimeout");
-//        String connectionTimeout = ConfigClient.instance().get(poolName, "connectionTimeout");
-//        String driverClassName = ConfigClient.instance().get(poolName, "driverClassName");
+        String dbUrl = ConfigClient.instance().get(poolName, "url");
+        String dbUser = ConfigClient.instance().get(poolName, "user");
+        String dbPassword = ConfigClient.instance().get(poolName, "sec.password");
+        String maxPoolSize = ConfigClient.instance().get(poolName, "maxpoolsize");
+        String idleTimeout = ConfigClient.instance().get(poolName, "idletimeout");
+        String connectionTimeout = ConfigClient.instance().get(poolName, "connectionTimeout");
+        String driverClassName = ConfigClient.instance().get(poolName, "driverClassName");
 
-        String dbUrl = "jdbc:mysql://106.74.146.210:4247/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
-//        String dbUrl = "jdbc:mysql://127.0.0.1:3306/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
-        String dbUser = "crawler_rw";
-//        String dbUser = "root";
-        String dbPassword = "p8@a^@AE0IrNmONM";
-//        String dbPassword = "admin";
-        String maxPoolSize = "10";
-        String idleTimeout = "1200000";
-        String connectionTimeout = "30000";
-        String driverClassName = "com.mysql.jdbc.Driver";
+//        String dbUrl = "jdbc:mysql://106.74.146.210:4247/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
+////        String dbUrl = "jdbc:mysql://127.0.0.1:3306/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
+//        String dbUser = "crawler_rw";
+//        String dbPassword = "p8@a^@AE0IrNmONM";
+//        String maxPoolSize = "10";
+//        String idleTimeout = "1200000";
+//        String connectionTimeout = "30000";
+//        String driverClassName = "com.mysql.jdbc.Driver";
 
 
         HikariConfig config = new HikariConfig();
