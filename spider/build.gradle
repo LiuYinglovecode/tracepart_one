@@ -66,5 +66,6 @@ dependencies {
     //ES
     compile group: 'org.elasticsearch', name: 'elasticsearch', version: '5.6.9'
     compile group: 'org.elasticsearch.client', name: 'transport', version: '5.6.9'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
 
 }

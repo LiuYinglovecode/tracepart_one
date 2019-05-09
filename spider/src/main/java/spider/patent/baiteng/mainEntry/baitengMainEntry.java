@@ -40,6 +40,13 @@ public class baitengMainEntry {
                 if (!Auxiliary.setHandle(driver)) {
                     LOGGER.error("category setHandle err");
                 }
+                //登录
+                if (ElementExist.WebElementExist(driver, null, ".Js_login", null) && "登录".equals(driver.findElement(By.cssSelector(".Js_login")).getText().trim())) {
+                    driver.findElement(By.cssSelector(".Js_login")).click();
+                    driver.findElement(By.cssSelector("input[name='login_mobile']")).sendKeys("15010756102");
+                    driver.findElement(By.cssSelector("input[name='login_pwd']")).sendKeys("0313410224");
+                    driver.findElement(By.cssSelector(".JS_accountLoginBtn")).click();
+                }
                 // 专利分类列表是否加载出来
                 if (ElementExist.WebElementExist(driver, null, ".m-std-fields", null)) {
                     List<WebElement> categoryList = driver.findElements(By.cssSelector(".m-std-fields .m-std-item"));
