@@ -69,7 +69,7 @@ public class ESClient extends Configured {
     private TransportClient createClient() {
         TransportClient result = null;
         try {
-            Properties config = getConf().config("es").getAll();
+            Properties config = getConf().config("spiderES").getAll();
             //配置es
             Settings settings = Settings.builder()
                     .put("cluster.name", config.getProperty("cluster.name", "YUNLULOG1"))

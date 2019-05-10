@@ -35,7 +35,7 @@ public interface IConfigManager {
 
     /**
      * Get Iconfig for different section
-     *
+     *-
      * @param configRoot
      * @return
      */
