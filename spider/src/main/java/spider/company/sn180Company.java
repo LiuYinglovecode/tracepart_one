@@ -23,8 +23,6 @@ import java.util.Set;
   * <p>Company: 商牛网</p>
   * @author chenyan
  */
-
-
 public class sn180Company {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(trustexporterCompany.class);
@@ -48,13 +46,6 @@ public class sn180Company {
         }
     }
 
-    private void datasource(JSONObject companyInfo) {
-        Map = (java.util.Map) companyInfo;
-        if (updateToMySQL.datasourceUpdate(Map)) {
-            LOGGER.info("插入中 : " + Map.toString());
-        }
-    }
-
     public static void main(String[] args) {
 //        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.141:2181");
         sn180Company sn180Company = new sn180Company();
@@ -66,14 +57,6 @@ public class sn180Company {
 
     //分类
     private void classify(String url) {
-//            网页信息字段
-        JSONObject datasourceInfo = new JSONObject();
-        datasourceInfo.put("id","26");
-        datasourceInfo.put("website","商牛网");
-        datasourceInfo.put("url","http://www.sn180.com/");
-        datasourceInfo.put("type","company");
-        datasourceInfo.put("createTime",creatrTime.format(new Date()));
-        datasource(datasourceInfo);
         try {
             //String html = httpGetWithProxy(url, "商牛网");
             String html = httpGet(url, "商牛");
@@ -183,7 +166,7 @@ public class sn180Company {
                 }
             }
 
-            companyInfo.put("crawlerId", "26");
+            companyInfo.put("crawlerId", "31");
             companyInfo.put("createTime", creatrTime.format(new Date()));
             insertToMySQL(companyInfo);
         } catch (Exception e) {

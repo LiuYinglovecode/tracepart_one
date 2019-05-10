@@ -18,13 +18,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * <p>Company: 全天候贸易网<p>
+ * @author chenyan
+ */
 public class qth58Company {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(qth58Company.class);
     private static java.util.Map<String, String> Map = null;
     private IpProxyUtil ipProxyList = new IpProxyUtil();
     private static java.util.Map<String, String> header = null;
-//    private static String savePage = "";
     private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
@@ -36,14 +39,6 @@ public class qth58Company {
     //    按照省份分类，获取url进入省份企业列表
     private void qth58Province(String url){
 
-        //            网页信息字段
-        JSONObject datasourceInfo = new JSONObject();
-        datasourceInfo.put("id","25");
-        datasourceInfo.put("website","全天候贸易网");
-        datasourceInfo.put("url","http://shop.qth58.cn/");
-        datasourceInfo.put("type","company");
-        datasourceInfo.put("createTime",creatrTime.format(new Date()));
-        datasource(datasourceInfo);
         try {
             String html = httpGet(url, "全天候贸易网");
             Document document = Jsoup.parse(html);
@@ -57,6 +52,8 @@ public class qth58Company {
             e.printStackTrace();
         }
     }
+
+
 
 //  企业列表，获取企业url
     private void companyList(String url) {
@@ -148,7 +145,7 @@ public class qth58Company {
                     companyInfo.put("company_register_time",element.select("tr").text().trim());
                 }
             }
-            companyInfo.put("crawlerId", "25");
+            companyInfo.put("crawlerId", "30");
             companyInfo.put("createTime", creatrTime.format(new Date()));
             insert(companyInfo);
         } catch (Exception e) {

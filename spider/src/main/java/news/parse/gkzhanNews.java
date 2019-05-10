@@ -1,7 +1,7 @@
 package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
-import ipregion.ProxyDao;
+import config.IConfigManager;
 import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,23 +10,19 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
-import util.IpProxyUtil;
-
-import java.io.FileWriter;
 import java.util.HashMap;
-import java.util.Set;
+
 
 /**
  * <a>https://www.gkzhan.com/</a>
- *智能制造新闻网
- * author:chenyan
+ *<a>News：智能制造新闻网</a>
+ * @author:chenyan
  */
 public class gkzhanNews {
     private final static Logger LOGGER = LoggerFactory.getLogger(gkzhanNews.class);
     private static java.util.Map<String, String> Map = null;
-    private IpProxyUtil ipProxyList = new IpProxyUtil();
-    private static java.util.Map<String, String> header = null;
-    private static String savePage = "";
+    private static java.util.Map<String, String> header;
+
 
 
     static {
@@ -38,7 +34,7 @@ public class gkzhanNews {
     private void homePage(String url) {
 
         try {
-            String get = httpGet(url, "news");
+            String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             Document html = Jsoup.parse(get);
             Elements select = html.select("#nav > div > ul > li > a");
             for (Element element : select) {
@@ -48,7 +44,7 @@ public class gkzhanNews {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 
@@ -56,7 +52,7 @@ public class gkzhanNews {
     private void newsList(String url) {
 
         try {
-            String get = httpGet(url, "news");
+            String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             Document html = Jsoup.parse(get);
             Elements select = html.select("div.listLeft > div > h3 > a");
             for (Element element : select) {
@@ -74,7 +70,7 @@ public class gkzhanNews {
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
 
     }
@@ -83,7 +79,7 @@ public class gkzhanNews {
     private void newsinfo(String url) {
         JSONObject newsInfo = new JSONObject();
         try {
-            String get = httpGet(url, "news");
+            String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             Document parse = Jsoup.parse(get);
             newsInfo.put("plate", parse.select("div.position > p > span").text().trim());
             newsInfo.put("title", parse.select("div.leftTop.clearfix > h2").text().trim());
@@ -103,7 +99,7 @@ public class gkzhanNews {
             newsInfo.put("crawlerId", "28");
             insert(newsInfo);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 
@@ -116,73 +112,11 @@ public class gkzhanNews {
     }
 
     public static void main(String[] args) {
-//        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.136:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.136:2181");
         gkzhanNews gkzhanNews = new gkzhanNews();
         gkzhanNews.homePage("https://www.gkzhan.com/news/");
-//        gkzhanNews.newsList("https://www.gkzhan.com/news/t14/list_p100.html");
+
         LOGGER.info("------完成了------");
 
-
     }
-
-    private String httpGetWithProxy(String url, String judgeWord) {
-        String ipProxy = null;
-        try {
-            if (ipProxyList.isEmpty()) {
-                LOGGER.info("ipProxyList is empty");
-                Set<String> getProxy = getProxy();
-                ipProxyList.addProxyIp(getProxy);
-            }
-            ipProxy = ipProxyList.getProxyIp();
-            String html = null;
-            for (int i = 0; i < 5; i++) {
-                if (url != null && ipProxy != null) {
-                    html = HttpUtil.httpGetWithProxy(url, header, ipProxy);
-                }
-                if (html != null && html.contains(judgeWord)) {
-                    return html;
-                }
-                ipProxyList.removeProxyIpByOne(ipProxy);
-                ProxyDao.delectProxyByOne(ipProxy);
-                ipProxy = ipProxyList.getProxyIp();
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
-        }
-        return null;
-    }
-
-    private String httpGet(String url, String judgeWord) {
-        try {
-            String html = null;
-            for (int i = 0; i < 5; i++) {
-                if (null != url) {
-                    html = HttpUtil.httpGet(url, header);
-                }
-                if (html != null && html.contains(judgeWord)) {
-                    return html;
-                }
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
-        }
-        return null;
-    }
-
-    private static Set<String> getProxy() {
-        return ProxyDao.getProxyFromRedis();
-    }
-
-    private void write(String file) throws Exception {
-        try {
-            FileWriter out = new FileWriter(savePage, true);
-            out.write(String.valueOf(file));
-            out.write("\r\n");
-            out.flush();
-            out.close();
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
-
 }

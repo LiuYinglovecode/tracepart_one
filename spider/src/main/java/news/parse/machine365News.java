@@ -1,7 +1,6 @@
 package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
-import ipregion.ProxyDao;
 import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,23 +9,21 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
-import util.IpProxyUtil;
-
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * <a>http://news.machine365.com/</a>
+ *<a>News：垂直机械网</a>
+ * @author:chenyan
+ */
 public class machine365News {
     private final static Logger LOGGER = LoggerFactory.getLogger(machine365News.class);
     private static java.util.Map<String, String> Map = null;
-    private IpProxyUtil ipProxyList = new IpProxyUtil();
-    private static java.util.Map<String, String> header = null;
-    private static String savePage = "";
+    private static java.util.Map<String, String> header;
 
 
     static {
@@ -38,19 +35,18 @@ public class machine365News {
     private void homePage(String url) {
 
         try {
-            String get = httpGet(url, "news");
+            String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             Document gbk = Jsoup.parse(get);
             Elements select = gbk.select("div.nav ul li a");
             for (Element element : select) {
                 if (!"首页".equals(element.text()) && !"技术动态".equals(element.text()) && !"高端访谈".equals(element.text())) {
                     String href = "http://news.machine365.com" + element.attr("href");
-//                    System.out.println(href);
                     nextPage(href);
                 }
 
                 if ("技术动态".equals(element.text())) {
                     String href = "http://news.machine365.com" + element.attr("href");
-                    String html = httpGet(href, "news");
+                    String html = HttpUtil.httpGetwithJudgeWord(href, "news");
                     Document doc = Jsoup.parse(html);
                     Elements list = doc.select("div.more.tdchnique_more > a");
                     for (Element el : list) {
@@ -60,7 +56,7 @@ public class machine365News {
                 }
                 if ("高端访谈".equals(element.text())) {
                     String href = "http://news.machine365.com" + element.attr("href");
-                    String html = httpGet(href, "news");
+                    String html = HttpUtil.httpGetwithJudgeWord(href, "news");
                     Document doc = Jsoup.parse(html);
                     Elements list = doc.select("div.more.interview_M > a");
                     for (Element el : list) {
@@ -81,13 +77,11 @@ public class machine365News {
             int beginPag = 1;
             for (beginPag = 1; beginPag < 5361; beginPag++) {
                 String beginpag = replace+ "-" + beginPag+".shtml";
-                System.out.println("下一页："+beginpag);
                 newsList(beginpag);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
-
     }
 
 
@@ -95,7 +89,7 @@ public class machine365News {
     private void newsList(String url) {
 
         try {
-            String get = httpGet(url, "news");
+            String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             Document gbk = Jsoup.parse(get);
             Elements select = gbk.select("div.guonei_l div div ul li a");
             for (Element element : select) {
@@ -111,7 +105,7 @@ public class machine365News {
     private void newsinfo(String url) {
         JSONObject newsInfo = new JSONObject();
         try {
-            String get = httpGet(url, "news");
+            String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             if (get!=null) {
                 Document gbk = Jsoup.parse(new URL(url).openStream(), "GBK", get);
                 Elements plate = gbk.select("span:nth-child(3)");
@@ -145,6 +139,8 @@ public class machine365News {
                     String surce = matcher.group(0).split("：", 2)[1];
                     newsInfo.put("source", surce);
                 }
+            }else {
+                LOGGER.info("页面不存在");
             }
             newsInfo.put("crawlerId", "27");
             insert(newsInfo);
@@ -154,7 +150,6 @@ public class machine365News {
             }
         }
     }
-
 
     private void insert(JSONObject newsInfo) {
         Map = (java.util.Map) newsInfo;
@@ -167,65 +162,5 @@ public class machine365News {
         machine365News machine365 = new machine365News();
         machine365.homePage("http://news.machine365.com/");
         LOGGER.info("------完成了------");
-    }
-
-    private String httpGetWithProxy(String url, String judgeWord) {
-        String ipProxy = null;
-        try {
-            if (ipProxyList.isEmpty()) {
-                LOGGER.info("ipProxyList is empty");
-                Set<String> getProxy = getProxy();
-                ipProxyList.addProxyIp(getProxy);
-            }
-            ipProxy = ipProxyList.getProxyIp();
-            String html = null;
-            for (int i = 0; i < 5; i++) {
-                if (url != null && ipProxy != null) {
-                    html = HttpUtil.httpGetWithProxy(url, header, ipProxy);
-                }
-                if (html != null && html.contains(judgeWord)) {
-                    return html;
-                }
-                ipProxyList.removeProxyIpByOne(ipProxy);
-                ProxyDao.delectProxyByOne(ipProxy);
-                ipProxy = ipProxyList.getProxyIp();
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
-        }
-        return null;
-    }
-
-    private String httpGet(String url, String judgeWord) {
-        try {
-            String html = null;
-            for (int i = 0; i < 5; i++) {
-                if (null != url) {
-                    html = HttpUtil.httpGet(url, header);
-                }
-                if (html != null && html.contains(judgeWord)) {
-                    return html;
-                }
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
-        }
-        return null;
-    }
-
-    private static Set<String> getProxy() {
-        return ProxyDao.getProxyFromRedis();
-    }
-
-    private void write(String file) throws Exception {
-        try {
-            FileWriter out = new FileWriter(savePage, true);
-            out.write(String.valueOf(file));
-            out.write("\r\n");
-            out.flush();
-            out.close();
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
     }
 }
