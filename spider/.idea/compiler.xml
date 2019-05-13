@@ -2,6 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="com.yunlu.spider..spider.main" target="1.8" />
+      <module name="com.yunlu.spider..spider.test" target="1.8" />
+      <module name="com.yunlu.spider.company.spider.main" target="1.8" />
+      <module name="com.yunlu.spider.company.spider.test" target="1.8" />
       <module name="com.yunlu.spider.spider.main" target="1.8" />
       <module name="com.yunlu.spider.spider.test" target="1.8" />
     </bytecodeTargetLevel>
