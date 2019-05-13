@@ -34,7 +34,7 @@ public class cnlinfoProduct {
 
     private void productNavigationBar(String url) {
 
-//        ArrayList list = new ArrayList();
+//        ArrayList<String> list = new ArrayList();
 
         try {
 

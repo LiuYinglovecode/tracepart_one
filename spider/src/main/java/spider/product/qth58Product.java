@@ -19,7 +19,7 @@ import java.util.HashMap;
  * @author chenyan
  */
 public class qth58Product {
-    private final static Logger LOGGER = LoggerFactory.getLogger(machine365News.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(qth58Product.class);
     private static java.util.Map<String, String> header;
     private static java.util.Map<String, String> Map = null;
     private static String baseUrl = "http://www.qth58.cn/";

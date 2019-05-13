@@ -23,7 +23,6 @@ import java.util.Set;
  * @author chenyan
  */
 public class qth58Company {
-
     private final static Logger LOGGER = LoggerFactory.getLogger(qth58Company.class);
     private static java.util.Map<String, String> Map = null;
     private IpProxyUtil ipProxyList = new IpProxyUtil();
@@ -166,13 +165,6 @@ public class qth58Company {
         qth58Company qth58Company = new qth58Company();
         qth58Company.qth58Province("http://shop.qth58.cn/");
         LOGGER.info("------完成了------");
-    }
-
-    private void datasource(JSONObject datasourceInfo) {
-        Map = (java.util.Map) datasourceInfo;
-        if (updateToMySQL.datasourceUpdate(Map)) {
-            LOGGER.info("插入中 : " + Map.toString());
-        }
     }
 
     private String httpGetWithProxy(String url, String judgeWord) {

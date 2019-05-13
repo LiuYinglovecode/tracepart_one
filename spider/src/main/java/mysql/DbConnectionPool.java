@@ -77,9 +77,11 @@ public class DbConnectionPool {
         String driverClassName = ConfigClient.instance().get(poolName, "driverClassName");
 
 //        String dbUrl = "jdbc:mysql://106.74.146.210:4247/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
-////        String dbUrl = "jdbc:mysql://127.0.0.1:3306/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
+//        String dbUrl = "jdbc:mysql://127.0.0.1:3306/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
 //        String dbUser = "crawler_rw";
+//        String dbUser = "root";
 //        String dbPassword = "p8@a^@AE0IrNmONM";
+//        String dbPassword = "admin";
 //        String maxPoolSize = "10";
 //        String idleTimeout = "1200000";
 //        String connectionTimeout = "30000";

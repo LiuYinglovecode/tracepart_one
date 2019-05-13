@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import util.IpProxyUtil;
 import util.MD5Util;
-
 import java.io.FileWriter;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -32,14 +31,7 @@ public class chemmCompany {
     private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private void category(String url) {
-        //            网页信息字段
-        JSONObject datasourceInfo = new JSONObject();
-        datasourceInfo.put("id","29");
-        datasourceInfo.put("website","中国化工机械网");
-        datasourceInfo.put("url","http://www.chemm.cn/");
-        datasourceInfo.put("type","company");
-        datasourceInfo.put("createTime",creatrTime.format(new Date()));
-        datasource(datasourceInfo);
+
         try {
             String html = httpGet(url, "chemm");
             Document parse = Jsoup.parse(html);
@@ -162,12 +154,6 @@ public class chemmCompany {
         }
     }
 
-    private void datasource(JSONObject datasourceInfo) {
-        Map = (java.util.Map) datasourceInfo;
-        if (updateToMySQL.datasourceUpdate(Map)) {
-            LOGGER.info("插入中 : " + Map.toString());
-        }
-    }
     //代理
     private String httpGetWithProxy(String url, String judgeWord) {
         String ipProxy = null;
