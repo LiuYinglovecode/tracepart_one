@@ -2,12 +2,6 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import es.ESClient;
-import mysql.updateToMySQL;
-import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.action.search.SearchType;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.xcontent.XContentType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,8 +11,10 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import config.IConfigManager;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import static news.utils.toES.writeToES;
 
 /**
  * @author liyujie
@@ -31,7 +27,6 @@ public class xianjichina {
     private static Map<String, String> Map = null;
     private static final String homepage = "https://www.xianjichina.com/news";
     private static String baseUrl = "https://www.xianjichina.com";
-    private static String tableName = "original_news";
 
     static {
         header = new HashMap();
@@ -42,6 +37,7 @@ public class xianjichina {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
         xianjichina xianjichina = new xianjichina();
         xianjichina.homepage(homepage);
+        LOGGER.info("xianjichina DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 
     private void homepage(String url) {
@@ -113,7 +109,7 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    insert(info, tableName, title, "title");
+                    writeToES(info, "crawler-news-", "doc");
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
                     String title = document.select(".newconleft-top h1").text().trim();
@@ -134,35 +130,10 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    insert(info, tableName, title, "title");
+                    writeToES(info, "crawler-news-", "doc");
                 }
             } else {
                 LOGGER.info("detail null");
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
-
-    private void toES(JSONObject info) {
-        TransportClient transportClient = new ESClient.ESClientBuilder().createESClient().getClient();
-        transportClient.prepareIndex("1", "2")
-                .setSource(info, XContentType.JSON)
-                .execute()
-                .actionGet();
-    }
-
-    private void insert(JSONObject info, String tablename, String title, String type) {
-        try {
-            Map = (java.util.Map) info;
-            if (updateToMySQL.exist2(Map, tablename, title, "title")) {
-                if (updateToMySQL.newsUpdate(Map, title, "title")) {
-                    LOGGER.info("更新中 : " + Map.toString());
-                }
-            } else {
-                if (updateToMySQL.newsInsert(Map)) {
-                    LOGGER.info("插入中 : " + Map.toString());
-                }
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

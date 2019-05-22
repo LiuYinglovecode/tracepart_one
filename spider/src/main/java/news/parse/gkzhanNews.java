@@ -10,7 +10,11 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
+
+import java.util.Date;
 import java.util.HashMap;
+
+import static news.utils.toES.writeToES;
 
 
 /**
@@ -95,19 +99,10 @@ public class gkzhanNews {
                     newsInfo.put("amount_of_reading", element.text().trim().split("：", 2)[1]);
                 }
             }
-
             newsInfo.put("crawlerId", "28");
-            insert(newsInfo);
+            writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
-        }
-    }
-
-
-    private void insert(JSONObject newsInfo) {
-        Map = (java.util.Map) newsInfo;
-        if (updateToMySQL.newsInsert(Map)) {
-            LOGGER.info("插入中 : " + Map.toString());
         }
     }
 
@@ -115,8 +110,7 @@ public class gkzhanNews {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.136:2181");
         gkzhanNews gkzhanNews = new gkzhanNews();
         gkzhanNews.homePage("https://www.gkzhan.com/news/");
-
-        LOGGER.info("------完成了------");
+        LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
 
     }
 }

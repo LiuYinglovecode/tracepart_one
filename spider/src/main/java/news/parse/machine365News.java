@@ -12,9 +12,12 @@ import util.HttpUtil;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static news.utils.toES.writeToES;
 
 /**
  * <a>http://news.machine365.com/</a>
@@ -145,7 +148,7 @@ public class machine365News {
                 LOGGER.info("页面不存在");
             }
             newsInfo.put("crawlerId", "27");
-            insert(newsInfo);
+            writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             if (e.getClass() != FileNotFoundException.class) {
                 LOGGER.error(e.getMessage());
@@ -153,16 +156,9 @@ public class machine365News {
         }
     }
 
-    private void insert(JSONObject newsInfo) {
-        Map = (java.util.Map) newsInfo;
-        if (updateToMySQL.newsInsert(Map)) {
-            LOGGER.info("插入中 : " + Map.toString());
-        }
-    }
-
     public static void main(String[] args) {
         machine365News machine365 = new machine365News();
         machine365.homePage("http://news.machine365.com/");
-        LOGGER.info("------完成了------");
+        LOGGER.info("machine365 DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 }

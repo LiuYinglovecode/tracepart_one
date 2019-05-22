@@ -2,10 +2,6 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import es.ESClient;
-import mysql.updateToMySQL;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.xcontent.XContentType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,9 +11,11 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import config.IConfigManager;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static news.utils.toES.writeToES;
 
 /**
  * @author liyujie
@@ -25,14 +23,11 @@ import java.util.Map;
  */
 public class cinn {
     private static final Logger LOGGER = LoggerFactory.getLogger(cinn.class);
-    private static Map<String, String> header;
-    private static Map Map;
+    private static Map<String, String> header = new HashMap();
     private static final String homepage = "http://www.cinn.cn/";
     private static String baseUrl = "http://www.cinn.cn";
-    private static String tableName = "original_news";
 
     static {
-        header = new HashMap();
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
     }
 
@@ -40,6 +35,7 @@ public class cinn {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
         cinn cinn = new cinn();
         cinn.homepage(homepage);
+        LOGGER.info("cinn DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 
     private void homepage(String url) {
@@ -87,9 +83,6 @@ public class cinn {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国工业报社");
             if (null != html) {
-//                html = deleteLabel(html);
-//                Map<Integer, String> map = splitBlock(html);
-//                System.out.println(judgeBlocks(map));
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
@@ -119,12 +112,11 @@ public class cinn {
                         }
                     }
                 }
-                info.put("images",imgs.toString());
+                info.put("images", imgs.toString());
                 String text = document.select(".detail_content").text().trim();
                 info.put("text", text);
                 info.put("crawlerId", "27");
-                insert(info, tableName, title, "title");
-
+                writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");
             }
@@ -133,32 +125,5 @@ public class cinn {
         }
     }
 
-    private void toES(JSONObject info) {
-        try {
-            TransportClient transportClient = new ESClient.ESClientBuilder().createESClient().getClient();
-            transportClient.prepareIndex("1", "3")
-                    .setSource(info, XContentType.JSON)
-                    .execute()
-                    .actionGet();
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
 
-    private void insert(JSONObject info, String tablename, String title, String type) {
-        try {
-            Map = (java.util.Map) info;
-            if (updateToMySQL.exist2(Map, tablename, title, "title")) {
-                if (updateToMySQL.newsUpdate(Map, title, "title")) {
-                    LOGGER.info("更新中 : " + Map.toString());
-                }
-            } else {
-                if (updateToMySQL.newsInsert(Map)) {
-                    LOGGER.info("插入中 : " + Map.toString());
-                }
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
 }

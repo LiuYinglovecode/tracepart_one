@@ -3,7 +3,6 @@ package news.parse;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
-import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,7 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 
+import java.util.Date;
 import java.util.HashMap;
+import static news.utils.toES.writeToES;
 
 
 /**
@@ -35,6 +36,7 @@ public class membranes {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
         membranes membranes = new membranes();
         membranes.industryNews(industryListUrl);
+        LOGGER.info("membranes DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 
     private void industryNews(String url) {
@@ -82,24 +84,7 @@ public class membranes {
                 info.put("url", url);
                 info.put("images", imgs.toString());
                 info.put("crawlerId", "43");
-                insert(info, tableName, title, "title");
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
-
-    private void insert(JSONObject info, String tablename, String title, String type) {
-        try {
-            Map = (java.util.Map) info;
-            if (updateToMySQL.exist2(Map, tablename, title, "title")) {
-                if (updateToMySQL.newsUpdate(Map, title, "title")) {
-                    LOGGER.info("更新中 : " + Map.toString());
-                }
-            } else {
-                if (updateToMySQL.newsInsert(Map)) {
-                    LOGGER.info("插入中 : " + Map.toString());
-                }
+                writeToES(info, "crawler-news-", "doc");
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
