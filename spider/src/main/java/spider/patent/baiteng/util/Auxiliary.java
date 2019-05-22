@@ -1,13 +1,16 @@
 package spider.patent.baiteng.util;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+import static spider.patent.baiteng.util.ElementExist.isElementExist;
 
 /**
  * @author liyujie
@@ -15,6 +18,7 @@ import java.util.Set;
 public class Auxiliary {
     private static final Logger LOGGER = LoggerFactory.getLogger(Auxiliary.class);
     private static Map<String, String> handleMap = new HashMap();
+    private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 获取 driver
@@ -27,6 +31,8 @@ public class Auxiliary {
     public static WebDriver getDriver(String url) {
         try {
             driver = CreatChromeDriver.getChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             driver.get(url);
             waitTime();
             return driver;
@@ -99,7 +105,7 @@ public class Auxiliary {
      * @param driver
      * @return
      */
-    public static WebDriver closeWindows(WebDriver driver, String targetHandle, String nowHandle) {
+    public static void closeWindows(WebDriver driver, String targetHandle, String nowHandle) {
 
         try {
             driver.close();
@@ -108,13 +114,11 @@ public class Auxiliary {
                 driver.switchTo().window(Handle);
                 handleMap.remove(nowHandle);
                 waitTime();
-                return driver;
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             closeDriver(driver);
         }
-        return null;
     }
 
     /**
@@ -150,6 +154,33 @@ public class Auxiliary {
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), "setHandle err");
+        }
+        return false;
+    }
+
+    /**
+     * 登录
+     * ".Js_login"
+     */
+    public static boolean login(WebDriver driver, String parmeter) {
+        try {
+            if (ElementExist.isElementExist(driver, parmeter) && "登录".equals(driver.findElement(By.cssSelector(parmeter)).getText().trim())) {
+                WebElement login = driver.findElement(By.cssSelector(parmeter));
+                login.click();
+                for (int i = 0; i < 5; i++) {
+                    if (isElementExist(driver, "input[name='login_mobile") && isElementExist(driver, "input[name='login_pwd")) {
+                        waitTime();
+                        driver.findElement(By.cssSelector("input[name='login_mobile']")).sendKeys("15010756102");
+                        driver.findElement(By.cssSelector("input[name='login_pwd']")).sendKeys("0313410224");
+                        waitTime();
+                        driver.findElement(By.cssSelector(".JS_accountLoginBtn")).click();
+                        break;
+                    }
+                }
+                return true;
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
         }
         return false;
     }

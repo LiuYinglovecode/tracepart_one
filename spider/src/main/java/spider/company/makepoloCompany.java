@@ -1,8 +1,11 @@
 package spider.company;
 
 import com.alibaba.fastjson.JSONObject;
+import es.ESClient;
 import ipregion.ProxyDao;
 import mysql.updateToMySQL;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -102,7 +105,20 @@ public class makepoloCompany {
             String id = MD5Util.getMD5String(companyName);
             companyInfo.put("name", companyName);
             companyInfo.put("id", id);
-            insertToMySQL(companyInfo, tableName, id);
+//            insertToMySQL(companyInfo, tableName, id);
+            toES(companyInfo);
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    private void toES(JSONObject info) {
+        try {
+            TransportClient transportClient = new ESClient.ESClientBuilder().createESClient().getClient();
+            transportClient.prepareIndex("1", "2")
+                    .setSource(info, XContentType.JSON)
+                    .execute()
+                    .actionGet();
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

@@ -9,6 +9,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
+
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.HashMap;
@@ -17,7 +18,8 @@ import java.util.regex.Pattern;
 
 /**
  * <a>http://news.machine365.com/</a>
- *<a>News：垂直机械网</a>
+ * <a>News：垂直机械网</a>
+ *
  * @author:chenyan
  */
 public class machine365News {
@@ -70,13 +72,13 @@ public class machine365News {
         }
     }
 
-//    下一页
+    //    下一页
     private void nextPage(String href) {
         try {
             String replace = href.replace(".shtml", "");
             int beginPag = 1;
             for (beginPag = 1; beginPag < 5361; beginPag++) {
-                String beginpag = replace+ "-" + beginPag+".shtml";
+                String beginpag = replace + "-" + beginPag + ".shtml";
                 newsList(beginpag);
             }
         } catch (Exception e) {
@@ -85,7 +87,7 @@ public class machine365News {
     }
 
 
-//    新闻列表
+    //    新闻列表
     private void newsList(String url) {
 
         try {
@@ -101,12 +103,12 @@ public class machine365News {
         }
     }
 
-//    新闻信息
+    //    新闻信息
     private void newsinfo(String url) {
         JSONObject newsInfo = new JSONObject();
         try {
             String get = HttpUtil.httpGetwithJudgeWord(url, "news");
-            if (get!=null) {
+            if (get != null) {
                 Document gbk = Jsoup.parse(new URL(url).openStream(), "GBK", get);
                 Elements plate = gbk.select("span:nth-child(3)");
                 if (plate.size() == 0) {
@@ -139,7 +141,7 @@ public class machine365News {
                     String surce = matcher.group(0).split("：", 2)[1];
                     newsInfo.put("source", surce);
                 }
-            }else {
+            } else {
                 LOGGER.info("页面不存在");
             }
             newsInfo.put("crawlerId", "27");
@@ -153,7 +155,7 @@ public class machine365News {
 
     private void insert(JSONObject newsInfo) {
         Map = (java.util.Map) newsInfo;
-        if (updateToMySQL.newsUpdate(Map)) {
+        if (updateToMySQL.newsInsert(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }

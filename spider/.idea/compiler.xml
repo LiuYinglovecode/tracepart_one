@@ -8,6 +8,9 @@
       <module name="com.yunlu.spider.company.spider.test" target="1.8" />
       <module name="com.yunlu.spider.spider.main" target="1.8" />
       <module name="com.yunlu.spider.spider.test" target="1.8" />
+      <module name="com.yunlu.spider.in.main" target="1.8" />
+      <module name="com.yunlu.spider.in.test" target="1.8" />
+
     </bytecodeTargetLevel>
   </component>
 </project>

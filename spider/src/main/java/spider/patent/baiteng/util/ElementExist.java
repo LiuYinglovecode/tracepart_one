@@ -10,9 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * By haozhiqiang , 2018/8/10
- **/
+import static spider.patent.baiteng.util.Auxiliary.waitTime;
 
 /**
  * 用于判断页面元素是否存在
@@ -24,8 +22,11 @@ public class ElementExist {
     public static boolean isclick(WebDriver driver, String parmeter) {
         try {
             if (null != driver && null != parmeter) {
-                if (null != new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(parmeter)))) {
-                    return true;
+                for (int i = 0; i < 5; i++) {
+                    WebElement isclick = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(parmeter)));
+                    if (isclick.isEnabled()) {
+                        return true;
+                    }
                 }
             }
         } catch (Exception e) {
@@ -34,11 +35,29 @@ public class ElementExist {
         return false;
     }
 
+    public static boolean isElementExist(WebDriver driver, String parmeter) {
+        try {
+            if (null != driver && null != parmeter) {
+                for (int i = 0; i < 5; i++) {
+                    WebDriverWait wait = new WebDriverWait(driver, 10);
+                    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(parmeter)));
+                    if (element.isDisplayed()) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+        return false;
+    }
+
+
     // 检测 WebElement
     public static boolean WebElementExist(WebDriver driver, WebElement element, String parmeter1, String parmeter2) {
         if (null == element) {
             if (null == parmeter2) {
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 20; i++) {
                     try {
                         if (null != new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(parmeter1)))) {
                             return true;

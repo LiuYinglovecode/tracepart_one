@@ -11,8 +11,6 @@ import spider.patent.baiteng.util.Auxiliary;
 import spider.patent.baiteng.util.ElementExist;
 import config.IConfigManager;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static spider.patent.baiteng.util.Auxiliary.waitTime;
@@ -23,8 +21,8 @@ import static spider.patent.baiteng.util.Auxiliary.waitTime;
 public class baitengMainEntry {
     private static final Logger LOGGER = LoggerFactory.getLogger(baitengMainEntry.class);
     private static String categoryListUrl = "https://www.baiten.cn/stdmode/locarno.html";
-    SimpleDateFormat createTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static java.util.Map<String, String> Map;
+
 
     public static void main(String[] args) {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
@@ -41,37 +39,33 @@ public class baitengMainEntry {
                     LOGGER.error("category setHandle err");
                 }
                 //登录
-                if (ElementExist.WebElementExist(driver, null, ".Js_login", null) && "登录".equals(driver.findElement(By.cssSelector(".Js_login")).getText().trim())) {
-                    driver.findElement(By.cssSelector(".Js_login")).click();
-                    driver.findElement(By.cssSelector("input[name='login_mobile']")).sendKeys("15010756102");
-                    driver.findElement(By.cssSelector("input[name='login_pwd']")).sendKeys("0313410224");
-                    driver.findElement(By.cssSelector(".JS_accountLoginBtn")).click();
+                try {
+                    Auxiliary.login(driver, ".Js_login");
+                    waitTime();
+                } catch (Exception e) {
+                    LOGGER.error(e.getMessage());
                 }
                 // 专利分类列表是否加载出来
-                if (ElementExist.WebElementExist(driver, null, ".m-std-fields", null)) {
-                    List<WebElement> categoryList = driver.findElements(By.cssSelector(".m-std-fields .m-std-item"));
+                if (ElementExist.isElementExist(driver, ".m-std-fields .m-std-item .ui-button.ui-button-lblue.btn-loading.item-button.Js_major_search_btn")) {
+                    List<WebElement> categoryList = driver.findElements(By.cssSelector(".m-std-fields .m-std-item .ui-button.ui-button-lblue.btn-loading.item-button.Js_major_search_btn"));
                     if (null != categoryList) {
                         for (WebElement category : categoryList) {
                             try {
-                                if (ElementExist.WebElementExist(driver, null, ".ui-button.ui-button-lblue.btn-loading.item-button.Js_major_search_btn", null)) {
-                                    category.findElement(By.cssSelector(".ui-button.ui-button-lblue.btn-loading.item-button.Js_major_search_btn")).click();
-                                    waitTime();
-                                    patent(driver);
-                                } else {
-                                    LOGGER.error("categoryList click err");
-                                }
+                                category.click();
+                                waitTime();
+                                patent(driver);
                             } catch (Exception e) {
-                                LOGGER.error(e.getMessage());
+                                LOGGER.error(e.getMessage(), "category click err");
                             }
                         }
                     }
                     try {
                         Auxiliary.closeDriver(driver);
                     } catch (Exception e) {
-                        LOGGER.error(e.getMessage(), "categoryList 关闭失败");
+                        LOGGER.error(e.getMessage(), "categoryList close err");
                     }
                 } else {
-                    LOGGER.error("分类列表 null");
+                    LOGGER.error("categoryList null");
                     category();
                 }
             } else {
@@ -101,30 +95,33 @@ public class baitengMainEntry {
                 LOGGER.error(e.getMessage());
             }
             if (null != driver) {
-                if (ElementExist.WebElementExist(driver, null, ".Js_outerList .u-list-div", null)) {
-                    List<WebElement> patentList = driver.findElements(By.cssSelector(".Js_outerList .u-list-div"));
+                if (ElementExist.isElementExist(driver, ".Js_outerList .u-list-div .c-blue.nl-an")) {
+                    List<WebElement> patentList = driver.findElements(By.cssSelector(".Js_outerList .u-list-div .c-blue.nl-an"));
                     for (WebElement patent : patentList) {
                         try {
-                            if (ElementExist.WebElementExist(driver, null, ".c-blue.nl-an", null)) {
-                                patent.findElement(By.cssSelector(".c-blue.nl-an")).click();
-                                waitTime();
-                                detail(driver);
-                            }
+                            patent.click();
+                            waitTime();
+                            detail(driver);
                         } catch (Exception e) {
                             LOGGER.error(e.getMessage(), "patent click err");
                         }
                     }
                 }
-                if (ElementExist.isclick(driver, ".paging-next.icon-paging")) {
-                    driver.findElement(By.cssSelector(".paging-next.icon-paging")).click();
-                    waitTime();
-                    patent(driver);
+                try {
+                    if (ElementExist.isclick(driver, ".paging-next.icon-paging")) {
+                        WebElement nextClick = driver.findElement(By.cssSelector(".paging-next.icon-paging"));
+                        nextClick.click();
+                        waitTime();
+                        patent(driver);
+                    }
+                } catch (Exception e) {
+                    LOGGER.error(e.getMessage(), "nextClick err");
                 }
             }
             try {
                 Auxiliary.closeWindows(driver, "categoryPage", "patentPage");
             } catch (Exception e) {
-                LOGGER.error(e.getMessage(), "patentList 关闭失败");
+                LOGGER.error(e.getMessage(), "patentList close err");
             }
         } catch (Exception e1) {
             LOGGER.error(e1.getMessage());
@@ -139,11 +136,10 @@ public class baitengMainEntry {
             }
             driver = Auxiliary.getHandleDriver(driver, "detailPage");
             if (null != driver) {
-                if (ElementExist.WebElementExist(driver, null, ".g-mn1c.m-list", null)) {
+                if (ElementExist.isElementExist(driver, ".g-mn1c.m-list")) {
                     info.put("patentName", driver.findElement(By.cssSelector(".title.Js_hl")).getText().trim());
                     info.put("abstract", driver.findElement(By.cssSelector(".abstract.contenttext")).getText().trim());
                     info.put("crawlerId", "21");
-                    info.put("createTime", createTime.format(new Date()));
                     List<WebElement> detailList = driver.findElements(By.cssSelector(".abst-info.fn-clear li"));
                     if (null != detailList) {
                         for (WebElement e : detailList) {
@@ -190,6 +186,7 @@ public class baitengMainEntry {
             }
             try {
                 Auxiliary.closeWindows(driver, "patentPage", "detailPage");
+                Thread.sleep(100000);
             } catch (Exception e) {
                 LOGGER.error(e.getMessage(), "detail 关闭失败");
             }

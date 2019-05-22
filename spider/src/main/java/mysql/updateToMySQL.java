@@ -112,6 +112,31 @@ public class updateToMySQL {
         return false;
     }
 
+    public static boolean exist2(Map<String, String> ipRegionMap, String tableName, String title, String type) {
+        TABLE_NAME = tableName;
+        String sql = "select count(*) as ct from " + TABLE_NAME + " where " + type + "=?";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, title);
+            ResultSet Judge = ps.executeQuery();
+            Judge.next();
+            int ct = Judge.getInt("ct");
+            if (ct == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
+
     public static List getCompanyNameList(String tableName) {
         TABLE_NAME = tableName;
         String sql = "select name from " + TABLE_NAME;
@@ -590,8 +615,8 @@ public class updateToMySQL {
 
     public static boolean baitengInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "crawler_data.crawler_patent";
-        String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract,crawlerId,createTime) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract,crawlerId) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -611,7 +636,6 @@ public class updateToMySQL {
             ps.setString(12, ipRegionMap.get("address"));
             ps.setString(13, ipRegionMap.get("abstract"));
             ps.setString(14, ipRegionMap.get("crawlerId"));
-            ps.setString(15, ipRegionMap.get("createTime"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -620,6 +644,7 @@ public class updateToMySQL {
         }
         return false;
     }
+
     public static boolean datasourceUpdate(Map<String, String> ipRegionMap) {
         TABLE_NAME = "crawler_data.crawler_source";
         String sql = "insert into " + TABLE_NAME + "(id,website,url,type,createTime) " +
@@ -643,27 +668,26 @@ public class updateToMySQL {
         return false;
     }
 
-    //    新闻
-    public static boolean newsUpdate(Map<String, String> ipRegionMap) {
-        TABLE_NAME = "crawler_data.crawler_news";
-        String sql = "insert into " + TABLE_NAME + "(id,title,time,author,text,amount_of_reading,source,plate,crawlerId) " +
-                "values (?,?,?,?,?,?,?,?,?)";
+
+    public static boolean newsUpdate(Map<String, String> ipRegionMap, String name, String type) {
+        TABLE_NAME = "bde.original_news";
+        String sql = "UPDATE " + TABLE_NAME + " SET title=?,time=?,author=?,text=?,amountOfReading=?,source=?,plate=?,crawlerId=?,url=?,images=? WHERE " + type + "='" + name + "'";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, ipRegionMap.get("id"));
-            ps.setString(2, ipRegionMap.get("title"));
-            ps.setString(3, ipRegionMap.get("time"));
-            ps.setString(4, ipRegionMap.get("author"));
-            ps.setString(5, ipRegionMap.get("text"));
-            ps.setString(6, ipRegionMap.get("amount_of_reading"));
-            ps.setString(7, ipRegionMap.get("source"));
-            ps.setString(8, ipRegionMap.get("plate"));
-            ps.setString(9, ipRegionMap.get("crawlerId"));
-//            ps.setString(10, ipRegionMap.get("create_time"));
-
+//            ps.setString(1, ipRegionMap.get("id"));
+            ps.setString(1, ipRegionMap.get("title"));
+            ps.setString(2, ipRegionMap.get("time"));
+            ps.setString(3, ipRegionMap.get("author"));
+            ps.setString(4, ipRegionMap.get("text"));
+            ps.setString(5, ipRegionMap.get("amountOfReading"));
+            ps.setString(6, ipRegionMap.get("source"));
+            ps.setString(7, ipRegionMap.get("plate"));
+            ps.setString(8, ipRegionMap.get("crawlerId"));
+            ps.setString(9, ipRegionMap.get("url"));
+            ps.setString(10, ipRegionMap.get("images"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -673,41 +697,25 @@ public class updateToMySQL {
         return false;
     }
 
-    public static boolean productUpdate(Map<String, String> ipRegionMap) {
-        TABLE_NAME = "crawler_data.original_product";
-        String sql = "insert into " + TABLE_NAME + "(id,product_name,company_id,company_name,product_desc,prices,delivery_place,delivery_period" +
-                ",total_supply,mini_order,product_specifications,product_number,release_time,trade_category,product_introduce,detailUrl,tradeParameter" +
-                ",production_place,contactInformation,contacts,product_feature,product_applications,product_brand,crawlerId) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    public static boolean newsInsert(Map<String, String> ipRegionMap) {
+        TABLE_NAME = "bde.original_news";
+        String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amountOfReading, source, plate, crawlerId,url,images) " +
+                "values (?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, ipRegionMap.get("id"));
-            ps.setString(2, ipRegionMap.get("product_name"));
-            ps.setString(3, ipRegionMap.get("company_id"));
-            ps.setString(4, ipRegionMap.get("company_name"));
-            ps.setString(5, ipRegionMap.get("product_desc"));
-            ps.setString(6, ipRegionMap.get("prices"));
-            ps.setString(7, ipRegionMap.get("delivery_place"));
-            ps.setString(8, ipRegionMap.get("delivery_period"));
-            ps.setString(9, ipRegionMap.get("total_supply"));
-            ps.setString(10, ipRegionMap.get("mini_order"));
-            ps.setString(11, ipRegionMap.get("product_specifications"));
-            ps.setString(12, ipRegionMap.get("product_number"));
-            ps.setString(13, ipRegionMap.get("release_time"));
-            ps.setString(14, ipRegionMap.get("trade_category"));
-            ps.setString(15, ipRegionMap.get("product_introduce"));
-            ps.setString(16, ipRegionMap.get("detailUrl"));
-            ps.setString(17, ipRegionMap.get("tradeParameter"));
-            ps.setString(18, ipRegionMap.get("production_place"));
-            ps.setString(19, ipRegionMap.get("contactInformation"));
-            ps.setString(20, ipRegionMap.get("contacts"));
-            ps.setString(21, ipRegionMap.get("product_feature"));
-            ps.setString(22, ipRegionMap.get("product_applications"));
-            ps.setString(23, ipRegionMap.get("product_brand"));
-            ps.setString(24, ipRegionMap.get("crawlerId"));
+            ps.setString(1, ipRegionMap.get("title"));
+            ps.setString(2, ipRegionMap.get("time"));
+            ps.setString(3, ipRegionMap.get("author"));
+            ps.setString(4, ipRegionMap.get("text"));
+            ps.setString(5, ipRegionMap.get("amountOfReading"));
+            ps.setString(6, ipRegionMap.get("source"));
+            ps.setString(7, ipRegionMap.get("plate"));
+            ps.setString(8, ipRegionMap.get("crawlerId"));
+            ps.setString(9, ipRegionMap.get("url"));
+            ps.setString(10, ipRegionMap.get("images"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

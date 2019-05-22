@@ -1,7 +1,11 @@
 package news.parse;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import es.ESClient;
 import mysql.updateToMySQL;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -22,9 +26,10 @@ import java.util.Map;
 public class cinn {
     private static final Logger LOGGER = LoggerFactory.getLogger(cinn.class);
     private static Map<String, String> header;
-    private static Map<String, String> Map = null;
+    private static Map Map;
     private static final String homepage = "http://www.cinn.cn/";
     private static String baseUrl = "http://www.cinn.cn";
+    private static String tableName = "original_news";
 
     static {
         header = new HashMap();
@@ -86,8 +91,10 @@ public class cinn {
 //                Map<Integer, String> map = splitBlock(html);
 //                System.out.println(judgeBlocks(map));
                 JSONObject info = new JSONObject();
+                JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 String plate = document.select(".index a:last-child").text().trim();
+                info.put("url", url);
                 info.put("plate", plate);
                 String title = document.select(".detail_title").text().trim();
                 info.put("title", title);
@@ -102,10 +109,22 @@ public class cinn {
                         info.put("time", time);
                     }
                 }
+                Elements imgList = document.select(".TRS_Editor img");
+                if (!"0".equals(String.valueOf(imgList.size()))) {
+                    for (Element e : imgList) {
+                        if (e.attr("src").contains("http")) {
+                            imgs.add(e.attr("src"));
+                        } else if (e.attr("src").contains("./")) {
+                            imgs.add(url.substring(0, url.lastIndexOf("/")) + e.attr("src").split("/", 2)[1]);
+                        }
+                    }
+                }
+                info.put("images",imgs.toString());
                 String text = document.select(".detail_content").text().trim();
                 info.put("text", text);
                 info.put("crawlerId", "27");
-                insert(info);
+                insert(info, tableName, title, "title");
+
             } else {
                 LOGGER.info("detail null");
             }
@@ -114,12 +133,29 @@ public class cinn {
         }
     }
 
-    private void insert(JSONObject info) {
-
+    private void toES(JSONObject info) {
         try {
-            Map = (Map) info;
-            if (updateToMySQL.newsUpdate(Map)) {
-                LOGGER.info("插入中 : " + Map.toString());
+            TransportClient transportClient = new ESClient.ESClientBuilder().createESClient().getClient();
+            transportClient.prepareIndex("1", "3")
+                    .setSource(info, XContentType.JSON)
+                    .execute()
+                    .actionGet();
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    private void insert(JSONObject info, String tablename, String title, String type) {
+        try {
+            Map = (java.util.Map) info;
+            if (updateToMySQL.exist2(Map, tablename, title, "title")) {
+                if (updateToMySQL.newsUpdate(Map, title, "title")) {
+                    LOGGER.info("更新中 : " + Map.toString());
+                }
+            } else {
+                if (updateToMySQL.newsInsert(Map)) {
+                    LOGGER.info("插入中 : " + Map.toString());
+                }
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

@@ -106,7 +106,7 @@ public class gkzhanNews {
 
     private void insert(JSONObject newsInfo) {
         Map = (java.util.Map) newsInfo;
-        if (updateToMySQL.newsUpdate(Map)) {
+        if (updateToMySQL.newsInsert(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }

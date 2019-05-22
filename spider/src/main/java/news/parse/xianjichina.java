@@ -1,7 +1,13 @@
 package news.parse;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import es.ESClient;
 import mysql.updateToMySQL;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchType;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,6 +31,7 @@ public class xianjichina {
     private static Map<String, String> Map = null;
     private static final String homepage = "https://www.xianjichina.com/news";
     private static String baseUrl = "https://www.xianjichina.com";
+    private static String tableName = "original_news";
 
     static {
         header = new HashMap();
@@ -69,10 +76,12 @@ public class xianjichina {
                         detail(detailUrl, plate);
                     }
                 }
+                if (!"#".equals(document.select(".next_page a").attr("href"))) {
+                    category(document.select(".next_page a").attr("href"), plate);
+                }
             } else {
                 LOGGER.info("category null");
             }
-
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -83,33 +92,49 @@ public class xianjichina {
             String html = HttpUtil.httpGetwithJudgeWord(url, "贤集网");
             if (null != html) {
                 JSONObject info = new JSONObject();
+                JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 if (1 == (document.select(".newl-left").size())) {
                     String title = document.select(".list-main h1").text().trim();
                     String source = document.select(".public-time").text().trim().split("文章来源：", 2)[1].split("发布时间：", 2)[0];
                     String time = document.select(".public-time").text().trim().split("发布时间：", 2)[1];
                     String text = document.select(".main-text").text().trim();
+                    Elements imgList = document.select(".main-text img");
+                    if (!"0".equals(String.valueOf(imgList.size()))) {
+                        for (Element e : imgList) {
+                            imgs.add(baseUrl + e.attr("src"));
+                        }
+                    }
+                    info.put("images", String.valueOf(imgs));
+                    info.put("url", url);
                     info.put("text", text);
                     info.put("source", source);
                     info.put("time", time);
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    insert(info);
+                    insert(info, tableName, title, "title");
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
                     String title = document.select(".newconleft-top h1").text().trim();
                     String source = document.select(".public-time").text().trim().split("来源：", 2)[1];
                     String time = document.select(".public-time").text().trim().split("来源：", 2)[0];
                     String text = document.select(".newcon-list").text().trim();
+                    Elements imgList = document.select(".newcon-list img");
+                    if (!"0".equals(String.valueOf(imgList.size()))) {
+                        for (Element e : imgList) {
+                            imgs.add(e.attr("src"));
+                        }
+                    }
+                    info.put("images", imgs);
+                    info.put("url", url);
                     info.put("text", text);
                     info.put("source", source);
                     info.put("time", time);
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-
-//                    insert(info);
+                    insert(info, tableName, title, "title");
                 }
             } else {
                 LOGGER.info("detail null");
@@ -119,11 +144,25 @@ public class xianjichina {
         }
     }
 
-    private void insert(JSONObject info) {
+    private void toES(JSONObject info) {
+        TransportClient transportClient = new ESClient.ESClientBuilder().createESClient().getClient();
+        transportClient.prepareIndex("1", "2")
+                .setSource(info, XContentType.JSON)
+                .execute()
+                .actionGet();
+    }
+
+    private void insert(JSONObject info, String tablename, String title, String type) {
         try {
-            Map = (Map) info;
-            if (updateToMySQL.newsUpdate(Map)) {
-                LOGGER.info("插入中 : " + Map.toString());
+            Map = (java.util.Map) info;
+            if (updateToMySQL.exist2(Map, tablename, title, "title")) {
+                if (updateToMySQL.newsUpdate(Map, title, "title")) {
+                    LOGGER.info("更新中 : " + Map.toString());
+                }
+            } else {
+                if (updateToMySQL.newsInsert(Map)) {
+                    LOGGER.info("插入中 : " + Map.toString());
+                }
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
