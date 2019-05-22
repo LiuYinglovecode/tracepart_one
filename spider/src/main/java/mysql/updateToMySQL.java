@@ -724,4 +724,48 @@ public class updateToMySQL {
         }
         return false;
     }
+
+    public static boolean productUpdate(Map<String, String> ipRegionMap) {
+        TABLE_NAME = "crawler_data.crawler_product";
+        String sql = "insert into " + TABLE_NAME + "(id,product_name,company_id,company_name,product_desc,prices,delivery_place,delivery_period" +
+                ",total_supply,mini_order,product_specifications,product_number,release_time,trade_category,product_introduce,detailUrl,tradeParameter" +
+                ",production_place,contactInformation,contacts,product_feature,product_applications,product_brand,crawlerId) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, ipRegionMap.get("id"));
+            ps.setString(2, ipRegionMap.get("product_name"));
+            ps.setString(3, ipRegionMap.get("company_id"));
+            ps.setString(4, ipRegionMap.get("company_name"));
+            ps.setString(5, ipRegionMap.get("product_desc"));
+            ps.setString(6, ipRegionMap.get("prices"));
+            ps.setString(7, ipRegionMap.get("delivery_place"));
+            ps.setString(8, ipRegionMap.get("delivery_period"));
+            ps.setString(9, ipRegionMap.get("total_supply"));
+            ps.setString(10, ipRegionMap.get("mini_order"));
+            ps.setString(11, ipRegionMap.get("product_specifications"));
+            ps.setString(12, ipRegionMap.get("product_number"));
+            ps.setString(13, ipRegionMap.get("release_time"));
+            ps.setString(14, ipRegionMap.get("trade_category"));
+            ps.setString(15, ipRegionMap.get("product_introduce"));
+            ps.setString(16, ipRegionMap.get("detailUrl"));
+            ps.setString(17, ipRegionMap.get("tradeParameter"));
+            ps.setString(18, ipRegionMap.get("production_place"));
+            ps.setString(19, ipRegionMap.get("contactInformation"));
+            ps.setString(20, ipRegionMap.get("contacts"));
+            ps.setString(21, ipRegionMap.get("product_feature"));
+            ps.setString(22, ipRegionMap.get("product_applications"));
+            ps.setString(23, ipRegionMap.get("product_brand"));
+            ps.setString(24, ipRegionMap.get("crawlerId"));
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
 }
