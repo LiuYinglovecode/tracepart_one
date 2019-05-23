@@ -1,7 +1,7 @@
 package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
-import mysql.updateToMySQL;
+import config.IConfigManager;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,12 +12,13 @@ import util.HttpUtil;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static news.utils.toES.writeToES;
+import static news.utils.ESUtil.writeToES;
 
 /**
  * <a>http://news.machine365.com/</a>
@@ -29,6 +30,7 @@ public class machine365News {
     private final static Logger LOGGER = LoggerFactory.getLogger(machine365News.class);
     private static java.util.Map<String, String> Map = null;
     private static java.util.Map<String, String> header;
+    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
     static {
@@ -148,6 +150,8 @@ public class machine365News {
                 LOGGER.info("页面不存在");
             }
             newsInfo.put("crawlerId", "27");
+            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
+            newsInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
             writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             if (e.getClass() != FileNotFoundException.class) {
@@ -157,6 +161,7 @@ public class machine365News {
     }
 
     public static void main(String[] args) {
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         machine365News machine365 = new machine365News();
         machine365.homePage("http://news.machine365.com/");
         LOGGER.info("machine365 DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));

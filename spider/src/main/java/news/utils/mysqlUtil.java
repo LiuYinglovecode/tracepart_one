@@ -5,8 +5,8 @@ import mysql.updateToMySQL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class toMySQL {
-    private static final Logger LOGGER = LoggerFactory.getLogger(toMySQL.class);
+public class mysqlUtil {
+    private static final Logger LOGGER = LoggerFactory.getLogger(mysqlUtil.class);
     private static java.util.Map<String, String> Map;
 
     public static void insert(JSONObject info, String tablename, String title, String type) {

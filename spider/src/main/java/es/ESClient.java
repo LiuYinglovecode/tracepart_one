@@ -86,8 +86,8 @@ public class ESClient extends Configured {
                     .build();
             // 从属性文件中获取搜索服务器相对域地址
             String transportAddresses = config.getProperty("transport.addresses");
-            //集群
-            //transportAddresses="10.153.40.216:9300,10.153.40.217:9300,10.153.40.218:9300,";
+            //集群s
+//            String transportAddresses="10.153.40.216:9300,10.153.40.217:9300,10.153.40.218:9300,10.153.51.218:9300,10.153.51.219:9300,10.153.51.63:9300";
 
             // 集群地址配置
             List<InetSocketTransportAddress> list = new ArrayList<>();

@@ -11,11 +11,12 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import config.IConfigManager;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static news.utils.toES.writeToES;
+import static news.utils.ESUtil.writeToES;
 
 /**
  * @author liyujie
@@ -26,6 +27,7 @@ public class cinn {
     private static Map<String, String> header = new HashMap();
     private static final String homepage = "http://www.cinn.cn/";
     private static String baseUrl = "http://www.cinn.cn";
+    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     static {
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
@@ -116,6 +118,8 @@ public class cinn {
                 String text = document.select(".detail_content").text().trim();
                 info.put("text", text);
                 info.put("crawlerId", "27");
+                info.put("crawlerDate", crawlerDate.format(new Date()));
+                info.put("timestamp", String.valueOf(System.currentTimeMillis()));
                 writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");

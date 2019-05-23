@@ -11,10 +11,11 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import config.IConfigManager;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import static news.utils.toES.writeToES;
+import static news.utils.ESUtil.writeToES;
 
 /**
  * @author liyujie
@@ -27,6 +28,7 @@ public class xianjichina {
     private static Map<String, String> Map = null;
     private static final String homepage = "https://www.xianjichina.com/news";
     private static String baseUrl = "https://www.xianjichina.com";
+    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     static {
         header = new HashMap();
@@ -34,7 +36,7 @@ public class xianjichina {
     }
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         xianjichina xianjichina = new xianjichina();
         xianjichina.homepage(homepage);
         LOGGER.info("xianjichina DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
@@ -109,6 +111,8 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
+                    info.put("crawlerDate", crawlerDate.format(new Date()));
+                    info.put("timestamp", String.valueOf(System.currentTimeMillis()));
                     writeToES(info, "crawler-news-", "doc");
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
@@ -130,6 +134,8 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
+                    info.put("crawlerDate", crawlerDate.format(new Date()));
+                    info.put("timestamp", String.valueOf(System.currentTimeMillis()));
                     writeToES(info, "crawler-news-", "doc");
                 }
             } else {
