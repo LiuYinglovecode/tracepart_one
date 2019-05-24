@@ -34,7 +34,7 @@ public class cinn {
     }
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         cinn cinn = new cinn();
         cinn.homepage(homepage);
         LOGGER.info("cinn DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
@@ -117,7 +117,7 @@ public class cinn {
                 info.put("images", imgs.toString());
                 String text = document.select(".detail_content").text().trim();
                 info.put("text", text);
-                info.put("crawlerId", "27");
+                info.put("crawlerId", "28");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));

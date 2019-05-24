@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import config.IConfigManager;
 import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,6 +36,7 @@ public class steelcnNews {
     }
 
     public static void main(String[] args) {
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         steelcnNews steelcnNews = new steelcnNews();
         steelcnNews.homepage(homepage);
         LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));

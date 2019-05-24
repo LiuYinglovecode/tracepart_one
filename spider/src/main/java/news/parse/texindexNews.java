@@ -31,7 +31,7 @@ public class texindexNews {
 
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.136:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         texindexNews texindexNews = new texindexNews();
         texindexNews.homePage("http://www.texindex.com.cn/news/");
         LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
