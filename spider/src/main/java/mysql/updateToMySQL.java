@@ -615,8 +615,8 @@ public class updateToMySQL {
 
     public static boolean baitengInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "crawler_data.crawler_patent";
-        String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract,crawlerId) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into " + TABLE_NAME + "(patentName, applicationNumber, applicationDate, applicant, inventor, currentPatentee, publicNumber, publicDate, mainClassificationNumber, classificationNumber, nationalCode, address, abstract,crawlerId,state) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -636,6 +636,7 @@ public class updateToMySQL {
             ps.setString(12, ipRegionMap.get("address"));
             ps.setString(13, ipRegionMap.get("abstract"));
             ps.setString(14, ipRegionMap.get("crawlerId"));
+            ps.setString(15, ipRegionMap.get("state"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

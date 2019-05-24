@@ -39,7 +39,7 @@ public class HttpUtil {
     private static String daili = "https://www.kuaidaili.com/getproxy/?orderid=902989670537257&num=100&area=&area_ex=&port=&port_ex=&ipstart=&ipstart_ex=&carrier=0&an_ha=1&an_an=1&sp1=1&protocol=1&method=1&quality=0&sort=0&b_pcchrome=1&b_pcie=1&b_pcff=1&showtype=1";
     private static Map map;
     private static Map<String, String> header = null;
-    private IpProxyUtil ipProxyList = new IpProxyUtil();
+    private static IpProxyUtil ipProxyList = new IpProxyUtil();
 
     static {
         map = new HashMap();
@@ -83,8 +83,9 @@ public class HttpUtil {
                 LOGGER.error(e.getMessage());
                 continue;
             } finally {
-                if (null != response)
+                if (null != response) {
                     response.close();
+                }
             }
         }
         try {
@@ -151,23 +152,29 @@ public class HttpUtil {
         }
         httpGet.setConfig(requestConfig);
         String result = "";
-
-        // 执行get请求.
-        CloseableHttpResponse response = null;
-        try {
-            response = httpClient.execute(httpGet);
-            result = EntityUtils.toString(response.getEntity(), UTF8);
-        } catch (Exception e) {
-            LOGGER.error("httpGetWithProxy err : " + e.getMessage() + " ; " + e.toString());
-        } finally {
-            if (response != null)
-                response.close();
+        for (int i = 0; i < 2; i++) {
+            // 执行get请求.
+            CloseableHttpResponse response = null;
             try {
-                httpGet.releaseConnection();
-                httpGet.abort();
-                httpClient.close();
-            } catch (IOException e) {
-                LOGGER.error(e.getMessage());
+                response = httpClient.execute(httpGet);
+                if (response.getStatusLine().getStatusCode() == 200) {
+                    result = EntityUtils.toString(response.getEntity(), UTF8);
+                    break;
+                }
+            } catch (Exception e) {
+                LOGGER.error("httpGetWithProxy err : " + e.getMessage() + " ; " + e.toString());
+                continue;
+            } finally {
+                if (response != null) {
+                    response.close();
+                }
+                try {
+                    httpGet.releaseConnection();
+                    httpGet.abort();
+                    httpClient.close();
+                } catch (IOException e) {
+                    LOGGER.error(e.getMessage());
+                }
             }
         }
         return result;
@@ -198,8 +205,9 @@ public class HttpUtil {
             return result;
         } finally {
             try {
-                if (response != null)
+                if (response != null) {
                     response.close();
+                }
                 if (httpPost != null) {
                     httpPost.releaseConnection();
                     httpPost.abort();
@@ -224,8 +232,9 @@ public class HttpUtil {
                         proxys.add(s);
                     }
                 }
-                if (proxys.size() > 0)
+                if (proxys.size() > 0) {
                     break;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 continue;
@@ -250,8 +259,9 @@ public class HttpUtil {
                         proxys.add(s);
                     }
                 }
-                if (proxys.size() > 0)
+                if (proxys.size() > 0) {
                     break;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 continue;
@@ -289,8 +299,9 @@ public class HttpUtil {
                 response = httpClient.execute(httpPost);
                 if (response.getStatusLine().getStatusCode() == 200) {
                     result = EntityUtils.toString(response.getEntity(), "utf-8");
-                    if (StringUtils.isEmpty(result))
+                    if (StringUtils.isEmpty(result)) {
                         continue;
+                    }
                     break;
                 }
             } catch (Exception e) {
@@ -298,8 +309,9 @@ public class HttpUtil {
                 continue;
             } finally {
                 try {
-                    if (response != null)
+                    if (response != null) {
                         response.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -405,7 +417,7 @@ public class HttpUtil {
         return ProxyDao.getProxyFromRedis();
     }
 
-    public String httpGetWithProxy(String url, String judgeWord) {
+    public static String httpGetWithProxy(String url, String judgeWord) {
         String ipProxy = null;
         try {
             if (ipProxyList.isEmpty()) {
