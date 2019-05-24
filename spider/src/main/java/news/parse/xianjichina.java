@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import static news.utils.ESUtil.writeToES;
 
 /**
  * @author liyujie
@@ -29,6 +29,7 @@ public class xianjichina {
     private static final String homepage = "https://www.xianjichina.com/news";
     private static String baseUrl = "https://www.xianjichina.com";
     private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static ESUtil esUtil;
 
     static {
         header = new HashMap();
@@ -113,7 +114,7 @@ public class xianjichina {
                     info.put("crawlerId", "29");
                     info.put("crawlerDate", crawlerDate.format(new Date()));
                     info.put("timestamp", String.valueOf(System.currentTimeMillis()));
-                    writeToES(info, "crawler-news-", "doc");
+                    esUtil.writeToES(info, "crawler-news-", "doc");
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
                     String title = document.select(".newconleft-top h1").text().trim();
@@ -136,7 +137,7 @@ public class xianjichina {
                     info.put("crawlerId", "29");
                     info.put("crawlerDate", crawlerDate.format(new Date()));
                     info.put("timestamp", String.valueOf(System.currentTimeMillis()));
-                    writeToES(info, "crawler-news-", "doc");
+                    esUtil.writeToES(info, "crawler-news-", "doc");
                 }
             } else {
                 LOGGER.info("detail null");

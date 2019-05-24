@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,8 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
-import static news.utils.ESUtil.writeToES;
-
 
 /**
  * <a>https://www.gkzhan.com/</a>
@@ -27,6 +26,7 @@ public class gkzhanNews {
     private static java.util.Map<String, String> Map = null;
     private static java.util.Map<String, String> header;
     private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static ESUtil esUtil;
 
 
 
@@ -103,7 +103,7 @@ public class gkzhanNews {
             newsInfo.put("crawlerId", "28");
             newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
             newsInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
-            writeToES(newsInfo, "crawler-news-", "doc");
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

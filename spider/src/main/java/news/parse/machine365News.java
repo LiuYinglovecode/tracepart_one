@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,8 +19,6 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static news.utils.ESUtil.writeToES;
-
 /**
  * <a>http://news.machine365.com/</a>
  * <a>News：垂直机械网</a>
@@ -31,6 +30,7 @@ public class machine365News {
     private static java.util.Map<String, String> Map = null;
     private static java.util.Map<String, String> header;
     private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static ESUtil esUtil;
 
 
     static {
@@ -152,7 +152,7 @@ public class machine365News {
             newsInfo.put("crawlerId", "27");
             newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
             newsInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
-            writeToES(newsInfo, "crawler-news-", "doc");
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             if (e.getClass() != FileNotFoundException.class) {
                 LOGGER.error(e.getMessage());

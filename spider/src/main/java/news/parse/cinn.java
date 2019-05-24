@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,7 +17,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static news.utils.ESUtil.writeToES;
 
 /**
  * @author liyujie
@@ -28,6 +28,7 @@ public class cinn {
     private static final String homepage = "http://www.cinn.cn/";
     private static String baseUrl = "http://www.cinn.cn";
     private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static ESUtil esUtil = new ESUtil();
 
     static {
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
@@ -120,7 +121,7 @@ public class cinn {
                 info.put("crawlerId", "27");
                 info.put("crawlerDate", crawlerDate.format(new Date()));
                 info.put("timestamp", String.valueOf(System.currentTimeMillis()));
-                writeToES(info, "crawler-news-", "doc");
+                esUtil.writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");
             }
