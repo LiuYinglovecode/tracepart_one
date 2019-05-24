@@ -15,12 +15,11 @@ public class ESUtil {
 
     public void writeToES(JSONObject info, String index, String type) {
         String date = String.format("%tY", new Date()) + "." + String.format("%tm", new Date()) + "." + String.format("%td", new Date());
-        String timeStamp = String.valueOf(System.currentTimeMillis());
-        toES(info, index + date, type, timeStamp);
+        toES(info, index + date, type);
     }
 
 
-    private void toES(JSONObject info, String index, String type, String timeStamp) {
+    private void toES(JSONObject info, String index, String type) {
         try {
             TransportClient transportClient = esClient.getClient();
             transportClient
