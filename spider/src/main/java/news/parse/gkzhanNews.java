@@ -2,7 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
-import mysql.updateToMySQL;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,10 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-
-import static news.utils.toES.writeToES;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -26,6 +27,9 @@ public class gkzhanNews {
     private final static Logger LOGGER = LoggerFactory.getLogger(gkzhanNews.class);
     private static java.util.Map<String, String> Map = null;
     private static java.util.Map<String, String> header;
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
 
 
@@ -100,14 +104,18 @@ public class gkzhanNews {
                 }
             }
             newsInfo.put("crawlerId", "28");
-            writeToES(newsInfo, "crawler-news-", "doc");
+            newsInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            newsInfo.put("@timestamp", timestamp2.format(new Date()));
+            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.136:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         gkzhanNews gkzhanNews = new gkzhanNews();
         gkzhanNews.homePage("https://www.gkzhan.com/news/");
         LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));

@@ -1,7 +1,8 @@
 package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
-import mysql.updateToMySQL;
+import config.IConfigManager;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,12 +13,13 @@ import util.HttpUtil;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static news.utils.toES.writeToES;
 
 /**
  * <a>http://news.machine365.com/</a>
@@ -29,6 +31,9 @@ public class machine365News {
     private final static Logger LOGGER = LoggerFactory.getLogger(machine365News.class);
     private static java.util.Map<String, String> Map = null;
     private static java.util.Map<String, String> header;
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
 
     static {
@@ -148,7 +153,11 @@ public class machine365News {
                 LOGGER.info("页面不存在");
             }
             newsInfo.put("crawlerId", "27");
-            writeToES(newsInfo, "crawler-news-", "doc");
+            newsInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            newsInfo.put("@timestamp", timestamp2.format(new Date()));
+            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             if (e.getClass() != FileNotFoundException.class) {
                 LOGGER.error(e.getMessage());
@@ -157,6 +166,7 @@ public class machine365News {
     }
 
     public static void main(String[] args) {
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         machine365News machine365 = new machine365News();
         machine365.homePage("http://news.machine365.com/");
         LOGGER.info("machine365 DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));

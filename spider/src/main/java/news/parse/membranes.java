@@ -3,6 +3,7 @@ package news.parse;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,9 +12,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import static news.utils.toES.writeToES;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -26,6 +29,9 @@ public class membranes {
     private static java.util.Map<String, String> header;
     private static java.util.Map<String, String> Map = null;
     private static String tableName = "original_news";
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
     static {
         header = new HashMap();
@@ -33,7 +39,7 @@ public class membranes {
     }
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         membranes membranes = new membranes();
         membranes.industryNews(industryListUrl);
         LOGGER.info("membranes DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
@@ -84,7 +90,11 @@ public class membranes {
                 info.put("url", url);
                 info.put("images", imgs.toString());
                 info.put("crawlerId", "43");
-                writeToES(info, "crawler-news-", "doc");
+                info.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                info.put("@timestamp", timestamp2.format(new Date()));
+                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                esUtil.writeToES(info, "crawler-news-", "doc");
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

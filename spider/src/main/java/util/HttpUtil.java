@@ -70,7 +70,7 @@ public class HttpUtil {
         }
         httpGet.setConfig(requestConfig);
         String result = "";
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             // 执行get请求.
             CloseableHttpResponse response = null;
             try {

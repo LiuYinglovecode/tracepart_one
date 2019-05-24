@@ -9,18 +9,21 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
-public class toES {
-    private static final Logger LOGGER = LoggerFactory.getLogger(toES.class);
+public class ESUtil {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ESUtil.class);
+    private static ESClient esClient = new ESClient();
 
-    public static void writeToES(JSONObject info, String index, String type) {
+    public void writeToES(JSONObject info, String index, String type) {
         String date = String.format("%tY", new Date()) + "." + String.format("%tm", new Date()) + "." + String.format("%td", new Date());
         toES(info, index + date, type);
     }
 
-    private static void toES(JSONObject info, String index, String type) {
+
+    private void toES(JSONObject info, String index, String type) {
         try {
-            TransportClient transportClient = new ESClient.ESClientBuilder().createESClient().getClient();
-            transportClient.prepareIndex(index, type)
+            TransportClient transportClient = esClient.getClient();
+            transportClient
+                    .prepareIndex(index, type)
                     .setSource(info, XContentType.JSON)
                     .execute()
                     .actionGet();
@@ -28,4 +31,5 @@ public class toES {
             LOGGER.error(e.getMessage());
         }
     }
+
 }

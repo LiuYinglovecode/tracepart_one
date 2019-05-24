@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,10 +12,8 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import config.IConfigManager;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import static news.utils.toES.writeToES;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author liyujie
@@ -27,6 +26,9 @@ public class xianjichina {
     private static Map<String, String> Map = null;
     private static final String homepage = "https://www.xianjichina.com/news";
     private static String baseUrl = "https://www.xianjichina.com";
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
     static {
         header = new HashMap();
@@ -34,7 +36,7 @@ public class xianjichina {
     }
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.17.60.213:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         xianjichina xianjichina = new xianjichina();
         xianjichina.homepage(homepage);
         LOGGER.info("xianjichina DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
@@ -109,7 +111,11 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    writeToES(info, "crawler-news-", "doc");
+                    info.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    info.put("@timestamp", timestamp2.format(new Date()));
+                    info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    esUtil.writeToES(info, "crawler-news-", "doc");
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
                     String title = document.select(".newconleft-top h1").text().trim();
@@ -130,7 +136,11 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    writeToES(info, "crawler-news-", "doc");
+                    info.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    info.put("@timestamp", timestamp2.format(new Date()));
+                    info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    esUtil.writeToES(info, "crawler-news-", "doc");
                 }
             } else {
                 LOGGER.info("detail null");

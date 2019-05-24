@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,11 +12,9 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import config.IConfigManager;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-import static news.utils.toES.writeToES;
 
 /**
  * @author liyujie
@@ -26,6 +25,9 @@ public class cinn {
     private static Map<String, String> header = new HashMap();
     private static final String homepage = "http://www.cinn.cn/";
     private static String baseUrl = "http://www.cinn.cn";
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
     static {
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
@@ -116,7 +118,11 @@ public class cinn {
                 String text = document.select(".detail_content").text().trim();
                 info.put("text", text);
                 info.put("crawlerId", "27");
-                writeToES(info, "crawler-news-", "doc");
+                info.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                info.put("@timestamp", timestamp2.format(new Date()));
+                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                esUtil.writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");
             }
