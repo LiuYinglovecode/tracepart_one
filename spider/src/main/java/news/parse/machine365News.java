@@ -152,7 +152,7 @@ public class machine365News {
             } else {
                 LOGGER.info("页面不存在");
             }
-            newsInfo.put("crawlerId", "27");
+            newsInfo.put("crawlerId", "32");
             newsInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             newsInfo.put("@timestamp", timestamp2.format(new Date()));

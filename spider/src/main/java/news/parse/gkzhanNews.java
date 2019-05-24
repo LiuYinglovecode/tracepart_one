@@ -103,7 +103,7 @@ public class gkzhanNews {
                     newsInfo.put("amount_of_reading", element.text().trim().split("：", 2)[1]);
                 }
             }
-            newsInfo.put("crawlerId", "28");
+            newsInfo.put("crawlerId", "33");
             newsInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             newsInfo.put("@timestamp", timestamp2.format(new Date()));
