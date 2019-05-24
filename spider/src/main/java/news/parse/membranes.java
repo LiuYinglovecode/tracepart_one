@@ -15,6 +15,8 @@ import util.HttpUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -27,8 +29,9 @@ public class membranes {
     private static java.util.Map<String, String> header;
     private static java.util.Map<String, String> Map = null;
     private static String tableName = "original_news";
-    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static ESUtil esUtil;
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
     static {
         header = new HashMap();
@@ -87,8 +90,10 @@ public class membranes {
                 info.put("url", url);
                 info.put("images", imgs.toString());
                 info.put("crawlerId", "43");
-                info.put("crawlerDate", crawlerDate.format(new Date()));
-                info.put("timestamp", String.valueOf(System.currentTimeMillis()));
+                info.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                info.put("@timestamp", timestamp2.format(new Date()));
+                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 esUtil.writeToES(info, "crawler-news-", "doc");
             }
         } catch (Exception e) {

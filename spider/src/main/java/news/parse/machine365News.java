@@ -16,6 +16,8 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,8 +31,9 @@ public class machine365News {
     private final static Logger LOGGER = LoggerFactory.getLogger(machine365News.class);
     private static java.util.Map<String, String> Map = null;
     private static java.util.Map<String, String> header;
-    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static ESUtil esUtil;
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
 
     static {
@@ -150,8 +153,10 @@ public class machine365News {
                 LOGGER.info("页面不存在");
             }
             newsInfo.put("crawlerId", "27");
-            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
-            newsInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
+            newsInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            newsInfo.put("@timestamp", timestamp2.format(new Date()));
+            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             if (e.getClass() != FileNotFoundException.class) {

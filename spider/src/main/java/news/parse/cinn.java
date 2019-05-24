@@ -13,9 +13,7 @@ import util.HttpUtil;
 import config.IConfigManager;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -27,7 +25,8 @@ public class cinn {
     private static Map<String, String> header = new HashMap();
     private static final String homepage = "http://www.cinn.cn/";
     private static String baseUrl = "http://www.cinn.cn";
-    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
     static {
@@ -119,8 +118,10 @@ public class cinn {
                 String text = document.select(".detail_content").text().trim();
                 info.put("text", text);
                 info.put("crawlerId", "27");
-                info.put("crawlerDate", crawlerDate.format(new Date()));
-                info.put("timestamp", String.valueOf(System.currentTimeMillis()));
+                info.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                info.put("@timestamp", timestamp2.format(new Date()));
+                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 esUtil.writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");

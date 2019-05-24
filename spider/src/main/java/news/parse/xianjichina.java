@@ -13,9 +13,7 @@ import util.HttpUtil;
 import config.IConfigManager;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author liyujie
@@ -28,8 +26,9 @@ public class xianjichina {
     private static Map<String, String> Map = null;
     private static final String homepage = "https://www.xianjichina.com/news";
     private static String baseUrl = "https://www.xianjichina.com";
-    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static ESUtil esUtil;
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
     static {
         header = new HashMap();
@@ -112,8 +111,10 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    info.put("crawlerDate", crawlerDate.format(new Date()));
-                    info.put("timestamp", String.valueOf(System.currentTimeMillis()));
+                    info.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    info.put("@timestamp", timestamp2.format(new Date()));
+                    info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     esUtil.writeToES(info, "crawler-news-", "doc");
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
@@ -135,8 +136,10 @@ public class xianjichina {
                     info.put("plate", plate);
                     info.put("title", title);
                     info.put("crawlerId", "29");
-                    info.put("crawlerDate", crawlerDate.format(new Date()));
-                    info.put("timestamp", String.valueOf(System.currentTimeMillis()));
+                    info.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    info.put("@timestamp", timestamp2.format(new Date()));
+                    info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     esUtil.writeToES(info, "crawler-news-", "doc");
                 }
             } else {

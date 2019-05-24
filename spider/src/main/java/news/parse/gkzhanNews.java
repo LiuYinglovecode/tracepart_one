@@ -14,6 +14,8 @@ import util.HttpUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -25,8 +27,9 @@ public class gkzhanNews {
     private final static Logger LOGGER = LoggerFactory.getLogger(gkzhanNews.class);
     private static java.util.Map<String, String> Map = null;
     private static java.util.Map<String, String> header;
-    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static ESUtil esUtil;
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
 
 
@@ -101,8 +104,10 @@ public class gkzhanNews {
                 }
             }
             newsInfo.put("crawlerId", "28");
-            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
-            newsInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
+            newsInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            newsInfo.put("@timestamp", timestamp2.format(new Date()));
+            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
