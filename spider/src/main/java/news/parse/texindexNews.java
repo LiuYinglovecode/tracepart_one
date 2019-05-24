@@ -3,6 +3,7 @@ package news.parse;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,12 +13,7 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-
-import static news.utils.toES.writeToES;
+import java.util.*;
 
 /**
  * <a>http://www.texindex.com.cn/news/</a>
@@ -27,8 +23,11 @@ import static news.utils.toES.writeToES;
 public class texindexNews {
     private final static Logger LOGGER = LoggerFactory.getLogger(texindexNews.class);
     private static java.util.Map<String, String> header;
-    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss +hh:mm", Locale.US);
+//    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss +hh:mm", Locale.US);
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
 
     public static void main(String[] args) {
@@ -142,10 +141,14 @@ public class texindexNews {
             newsInfo.put("images",imgsList.toString());
             newsInfo.put("plate",plate);
             newsInfo.put("crawlerId", "49");
-            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
-//            newsInfo.put("timestamp",System.currentTimeMillis());
-            newsInfo.put("timestamp",timestamp.format(new Date()));
-            writeToES(newsInfo, "crawler-news-", "doc");
+//            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
+////            newsInfo.put("timestamp",System.currentTimeMillis());
+//            newsInfo.put("timestamp",timestamp.format(new Date()));
+            newsInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            newsInfo.put("@timestamp", timestamp2.format(new Date()));
+            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

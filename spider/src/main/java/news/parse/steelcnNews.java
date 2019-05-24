@@ -2,6 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import static news.utils.toES.writeToES;
+
 
 /**
  * <a>http://news.steelcn.cn/</a>
@@ -22,8 +23,11 @@ public class steelcnNews {
     private static final Logger LOGGER = LoggerFactory.getLogger(steelcnNews.class);
     private static java.util.Map<String, String> header;
     private static final String homepage = "http://news.steelcn.cn/";
-    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss +hh:mm", Locale.US);
+//    private static SimpleDateFormat crawlerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss +hh:mm", Locale.US);
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
     static {
         header = new HashMap();
@@ -132,10 +136,14 @@ public class steelcnNews {
             newsInfo.put("text", document.select("div.art_main").text().trim());//新闻内容
             newsInfo.put("plate",plate);//板块
             newsInfo.put("crawlerId", "48");
-            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
-//            newsInfo.put("timestamp",System.currentTimeMillis());
-            newsInfo.put("timestamp",timestamp.format(new Date()));
-            writeToES(newsInfo, "crawler-news-", "doc");
+//            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
+////            newsInfo.put("timestamp",System.currentTimeMillis());
+//            newsInfo.put("timestamp",timestamp.format(new Date()));
+            newsInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            newsInfo.put("@timestamp", timestamp2.format(new Date()));
+            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
