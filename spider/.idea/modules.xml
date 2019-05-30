@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/spider.iml" filepath="$PROJECT_DIR$/.idea/spider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.yunlu.spider.spider.iml" filepath="$PROJECT_DIR$/.idea/modules/com.yunlu.spider.spider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.yunlu.spider.spider.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.yunlu.spider.spider.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.yunlu.spider.spider.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.yunlu.spider.spider.test.iml" />
     </modules>
   </component>
 </project>

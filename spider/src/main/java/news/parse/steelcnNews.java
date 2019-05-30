@@ -139,7 +139,7 @@ public class steelcnNews {
             newsInfo.put("plate",plate);//板块
             newsInfo.put("crawlerId", "48");
 //            newsInfo.put("crawlerDate", crawlerDate.format(new Date()));
-////            newsInfo.put("timestamp",System.currentTimeMillis());
+//            newsInfo.put("timestamp",System.currentTimeMillis());
 //            newsInfo.put("timestamp",timestamp.format(new Date()));
             newsInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

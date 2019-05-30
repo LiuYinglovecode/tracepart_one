@@ -1,8 +1,10 @@
 package spider.company;
 
 import com.alibaba.fastjson.JSONObject;
+import config.IConfigManager;
 import ipregion.ProxyDao;
 import mysql.updateToMySQL;
+import news.utils.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,9 +16,7 @@ import util.IpProxyUtil;
 import util.MD5Util;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <p>Company: 全天候贸易网<p>
@@ -28,6 +28,9 @@ public class qth58Company {
     private IpProxyUtil ipProxyList = new IpProxyUtil();
     private static java.util.Map<String, String> header = null;
     private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static ESUtil esUtil = new ESUtil();
 
 
     static {
@@ -146,7 +149,12 @@ public class qth58Company {
             }
             companyInfo.put("crawlerId", "30");
             companyInfo.put("createTime", creatrTime.format(new Date()));
+            companyInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            companyInfo.put("@timestamp", timestamp2.format(new Date()));
+            companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             insert(companyInfo);
+            esUtil.writeToES(companyInfo, "crawler-company-", "doc");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -161,7 +169,7 @@ public class qth58Company {
     }
 
     public static void main(String[] args) {
-//        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.136:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         qth58Company qth58Company = new qth58Company();
         qth58Company.qth58Province("http://shop.qth58.cn/");
         LOGGER.info("------完成了------");
