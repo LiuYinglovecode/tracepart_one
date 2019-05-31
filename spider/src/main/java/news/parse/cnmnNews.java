@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
 import mysql.updateToMySQL;
 import news.utils.ESUtil;
+import news.utils.mysqlUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,6 +20,7 @@ import java.util.*;
 /**
  * <a>http://www.cnmn.com.cn</a>
  * <p>中国有色网</p>
+ *
  * @author chenyan
  */
 public class cnmnNews {
@@ -53,9 +55,9 @@ public class cnmnNews {
                 Elements categoryList = document.select("#nav > li > ul > li > a");
                 for (Element e : categoryList) {
                     if (!e.attr("href").contains("/")) {
-                        paging(homepage + "/" + e.attr("href"),e.text().trim());
+                        paging(homepage + "/" + e.attr("href"), e.text().trim());
                     } else {
-                        paging(homepage + e.attr("href"),e.text().trim());
+                        paging(homepage + e.attr("href"), e.text().trim());
                     }
                 }
 //                Elements plate = document.select("#nav > li > ul > li > a");
@@ -76,7 +78,7 @@ public class cnmnNews {
             ArrayList<String> list = new ArrayList<>();
             int number = 1;
             String html = HttpUtil.httpGetwithJudgeWord(url, "有色");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 String Total = document.select("#flickrpager > a[target=_self]").last().text();
                 int total = Integer.valueOf(Total).intValue();
@@ -99,7 +101,7 @@ public class cnmnNews {
         ArrayList<String> list = new ArrayList<>();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "有色");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 Elements newsListInfo = document.select("#tab11-1 > h4 > a");
                 for (Element e : newsListInfo) {
@@ -108,7 +110,7 @@ public class cnmnNews {
                 }
             }
             for (String link : list) {
-                newsInfo(link,plate);
+                newsInfo(link, plate);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -121,13 +123,14 @@ public class cnmnNews {
         JSONObject newsInfo = new JSONObject();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "有色");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
-                newsInfo.put("title", document.select("#content > div > h4").text().trim());//标题
+                String title = document.select("#content > div > h4").text().trim();
+                newsInfo.put("title", title);//标题
                 newsInfo.put("time", document.select("span > span.time").text().trim());//发布时间
                 newsInfo.put("amount_of_reading", document.select("span > span.view").text().trim().replace("次浏览", ""));//阅读量
                 newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1]);//来源
-                newsInfo.put("text",document.select("#txtcont").text().trim());//新闻内容
+                newsInfo.put("text", document.select("#txtcont").text().trim());//新闻内容
                 Elements split = document.select("p.info.clearfix.text-center > span:nth-child(1)");
                 if (split.text().contains("作者：")) {
                     newsInfo.put("author", split.text().split("作者：")[1]);//作者
@@ -141,18 +144,20 @@ public class cnmnNews {
                         newsInfo.put("images", imgsList.toString());//图片链接
                     }
                 }
-            }else {
+                newsInfo.put("url", url);//链接地址
+                newsInfo.put("plate", plate);//板块
+                newsInfo.put("crawlerId", "52");
+                newsInfo.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                newsInfo.put("@timestamp", timestamp2.format(new Date()));
+                newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                insert(newsInfo);
+                mysqlUtil.insertNews(newsInfo, "crawler_news", title);
+                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+            } else {
                 LOGGER.info("页面不存在");
             }
-            newsInfo.put("url",url);//链接地址
-            newsInfo.put("plate",plate);//板块
-            newsInfo.put("crawlerId", "52");
-            newsInfo.put("timestamp", timestamp.format(new Date()));
-            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-            newsInfo.put("@timestamp", timestamp2.format(new Date()));
-            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            insert(newsInfo);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

@@ -113,8 +113,8 @@ public class updateToMySQL {
     }
 
     public static boolean exist2(Map<String, String> ipRegionMap, String tableName, String title, String type) {
-        TABLE_NAME = tableName;
-        String sql = "select count(*) as ct from " + TABLE_NAME + " where " + type + "=?";
+//        TABLE_NAME = tableName;
+        String sql = "select count(*) as ct from " + tableName + " where " + type + "=?";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -671,7 +671,7 @@ public class updateToMySQL {
 
 
     public static boolean newsUpdate(Map<String, String> ipRegionMap, String name, String type) {
-        TABLE_NAME = "bde.original_news";
+        TABLE_NAME = "crawler_data.crawler_news";
         String sql = "UPDATE " + TABLE_NAME + " SET title=?,time=?,author=?,text=?,amountOfReading=?,source=?,plate=?,crawlerId=?,url=?,images=? WHERE " + type + "='" + name + "'";
         Connection connection = getConnection();
         PreparedStatement ps = null;
@@ -699,7 +699,7 @@ public class updateToMySQL {
     }
 
     public static boolean newsInsert(Map<String, String> ipRegionMap) {
-        TABLE_NAME = "bde.original_news";
+        TABLE_NAME = "crawler_data.crawler_news";
         String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amountOfReading, source, plate, crawlerId,url,images) " +
                 "values (?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();

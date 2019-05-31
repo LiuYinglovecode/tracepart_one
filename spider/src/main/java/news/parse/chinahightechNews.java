@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
 import mysql.updateToMySQL;
 import news.utils.ESUtil;
+import news.utils.mysqlUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,6 +21,7 @@ import java.util.*;
 /**
  * <a>http://www.chinahightech.com</a>
  * <p>中国高新网</p>
+ *
  * @author chenyan
  */
 public class chinahightechNews {
@@ -51,10 +53,10 @@ public class chinahightechNews {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("#nav li ul li a");
                 for (Element element : categoryList) {
-                    String href = homepage+element.attr("href");
+                    String href = homepage + element.attr("href");
                     String plate = element.text();
-                    newsList(href,plate);
-                    paging(href,plate);
+                    newsList(href, plate);
+                    paging(href, plate);
                 }
             }
         } catch (Exception e) {
@@ -68,7 +70,7 @@ public class chinahightechNews {
             ArrayList<String> list = new ArrayList<>();
             int number = 2;
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国高新网");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 String Total = document.select("#pages.text-c a.a1").last().previousElementSibling().text();
                 System.out.println(Total);
@@ -92,7 +94,7 @@ public class chinahightechNews {
         ArrayList<String> list = new ArrayList<>();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国高新网");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 Elements newsListInfo = document.select("#index-gz.list-a ul li h3 a");
                 for (Element e : newsListInfo) {
@@ -101,7 +103,7 @@ public class chinahightechNews {
                 }
             }
             for (String link : list) {
-                newsInfo(link,plate);
+                newsInfo(link, plate);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -114,9 +116,10 @@ public class chinahightechNews {
         JSONObject newsInfo = new JSONObject();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国高新网");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
-                newsInfo.put("title", document.select("div.title_nr h1").text().trim());//标题
+                String title = document.select("div.title_nr h1").text().trim();
+                newsInfo.put("title", title);//标题
                 newsInfo.put("time", document.select("div.addtime").text().trim());//发布时间
                 Elements source = document.select("div.source");
                 if (source.text().contains("作者：")) {
@@ -130,7 +133,7 @@ public class chinahightechNews {
                 } else {
                     newsInfo.put("author", document.select("div.content p").last().text().split("：")[1].replace(")", ""));//作者
                 }
-                newsInfo.put("text",document.select("div.content").text().trim());//新闻内容
+                newsInfo.put("text", document.select("div.content").text().trim());//新闻内容
                 Elements img = document.select("div.content p img");
                 if (img.size() != 0) {
                     for (Element element : img) {
@@ -138,18 +141,20 @@ public class chinahightechNews {
                         newsInfo.put("images", imgsList.toString());//图片链接
                     }
                 }
-            }else {
+                newsInfo.put("url", url);//链接地址
+                newsInfo.put("plate", plate);//板块
+                newsInfo.put("crawlerId", "54");
+                newsInfo.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                newsInfo.put("@timestamp", timestamp2.format(new Date()));
+                newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                insert(newsInfo);
+                mysqlUtil.insertNews(newsInfo, "crawler_news", title);
+                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+            } else {
                 LOGGER.info("页面不存在");
             }
-            newsInfo.put("url",url);//链接地址
-            newsInfo.put("plate",plate);//板块
-            newsInfo.put("crawlerId", "54");
-            newsInfo.put("timestamp", timestamp.format(new Date()));
-            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-            newsInfo.put("@timestamp", timestamp2.format(new Date()));
-            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            insert(newsInfo);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

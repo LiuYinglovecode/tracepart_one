@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
 import news.utils.ESUtil;
+import news.utils.mysqlUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -94,6 +95,7 @@ public class membranes {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                mysqlUtil.insertNews(info, "crawler_news", title);
                 esUtil.writeToES(info, "crawler-news-", "doc");
             }
         } catch (Exception e) {

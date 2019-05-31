@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
 import mysql.updateToMySQL;
 import news.utils.ESUtil;
+import news.utils.mysqlUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,6 +20,7 @@ import java.util.*;
 /**
  * <a>http://news.cableabc.com/</a>
  * <p>电缆网</p>
+ *
  * @author chenyan
  */
 public class cableabcNews {
@@ -63,13 +65,14 @@ public class cableabcNews {
             LOGGER.error(e.getMessage());
         }
     }
+
     //分页
     private void paging(String url, String plate) {
         try {
             ArrayList<String> list = new ArrayList<>();
             int number = 0;
             String html = HttpUtil.httpGetwithJudgeWord(url, "电缆网");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 String href = document.select("#main_cont_ContentPlaceHolder1_pager.pager a").last().attr("href");
                 String html1 = HttpUtil.httpGetwithJudgeWord(href, "电缆网");
@@ -77,14 +80,14 @@ public class cableabcNews {
                 String Total = document1.select("#main_cont_ContentPlaceHolder1_pager.pager span").text().trim();
                 int total = Integer.valueOf(Total).intValue();
                 for (number = 0; number < total; number++) {
-                    if (url.contains("0.html")){
+                    if (url.contains("0.html")) {
                         String replace = url.replace("0.html", "");
                         list.add(replace + number + ".html");
                     }
-                    if (url.contains("http://special.cableabc.com/")){
+                    if (url.contains("http://special.cableabc.com/")) {
                         list.add(url + "speciallist_" + number + ".html");
                     }
-                    if (url.contains("http://material.cableabc.com/")){
+                    if (url.contains("http://material.cableabc.com/")) {
                         list.add(url + "materIndex_" + number + ".html");
                     }
                 }
@@ -97,12 +100,13 @@ public class cableabcNews {
             LOGGER.error(e.getMessage());
         }
     }
+
     //新闻列表
     private void newsList(String url, String plate) {
         ArrayList<String> list = new ArrayList<>();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "电缆网");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 Elements newsListInfo = document.select("h2.list31_title1 a");
                 for (Element e : newsListInfo) {
@@ -111,21 +115,23 @@ public class cableabcNews {
                 }
             }
             for (String link : list) {
-                newsInfo(link,plate);
+                newsInfo(link, plate);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
+
     //新闻信息
     private void newsInfo(String url, String plate) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "电缆网");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
-                newsInfo.put("title", document.select("div.contentspage h1").text().trim());//标题
+                String title = document.select("div.contentspage h1").text().trim();
+                newsInfo.put("title", title);//标题
                 newsInfo.put("time", document.select("div.addtime").text().trim());//发布时间
                 Elements select = document.select("div.time.clearfix.mmbb span");
                 for (Element element : select) {
@@ -165,18 +171,19 @@ public class cableabcNews {
                         }
                     }
                 }
-            }else {
+                newsInfo.put("url", url);//链接地址
+                newsInfo.put("plate", plate);//板块
+                newsInfo.put("crawlerId", "53");
+                newsInfo.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                newsInfo.put("@timestamp", timestamp2.format(new Date()));
+                newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                insert(newsInfo);
+                mysqlUtil.insertNews(newsInfo, "crawler_news", title);
+                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+            } else {
                 LOGGER.info("页面不存在");
             }
-            newsInfo.put("url",url);//链接地址
-            newsInfo.put("plate",plate);//板块
-            newsInfo.put("crawlerId", "53");
-            newsInfo.put("timestamp", timestamp.format(new Date()));
-            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-            newsInfo.put("@timestamp", timestamp2.format(new Date()));
-            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            insert(newsInfo);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

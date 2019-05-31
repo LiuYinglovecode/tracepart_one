@@ -153,7 +153,7 @@ public class qth58Company {
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            insert(companyInfo);
+//            insert(companyInfo);
             esUtil.writeToES(companyInfo, "crawler-company-", "doc");
         } catch (Exception e) {
             e.printStackTrace();

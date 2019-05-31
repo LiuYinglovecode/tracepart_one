@@ -9,7 +9,7 @@ public class mysqlUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(mysqlUtil.class);
     private static java.util.Map<String, String> Map;
 
-    public static void insert(JSONObject info, String tablename, String title, String type) {
+    public static void insertNews(JSONObject info, String tablename, String title) {
         try {
             Map = (java.util.Map) info;
             if (updateToMySQL.exist2(Map, tablename, title, "title")) {
