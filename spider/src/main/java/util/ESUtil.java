@@ -1,4 +1,4 @@
-package news.utils;
+package util;
 
 import com.alibaba.fastjson.JSONObject;
 import es.ESClient;

@@ -2,8 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
-import news.utils.ESUtil;
-import news.utils.mysqlUtil;
+import util.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

@@ -1,4 +1,4 @@
-package news.utils;
+package util;
 
 import com.alibaba.fastjson.JSONObject;
 import mysql.updateToMySQL;
@@ -20,6 +20,17 @@ public class mysqlUtil {
                 if (updateToMySQL.newsInsert(Map)) {
                     LOGGER.info("插入中 : " + Map.toString());
                 }
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    public static void insertPatent(JSONObject info) {
+        try {
+            Map = (java.util.Map) info;
+            if (updateToMySQL.patentInsert(Map)) {
+                LOGGER.info("插入中 : " + Map.toString());
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

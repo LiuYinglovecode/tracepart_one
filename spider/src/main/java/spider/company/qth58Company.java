@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
 import ipregion.ProxyDao;
 import mysql.updateToMySQL;
-import news.utils.ESUtil;
+import util.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
