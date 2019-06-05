@@ -26,10 +26,10 @@ public class zhiqueipParse {
 
     public void patentList(String url) {
         try {
-            String html = HttpUtil.httpGet(url, header);
+            String html = HttpUtil.httpGetwithJudgeWord(url, "知雀");
             if (!"".equals(html)) {
                 Document document = Jsoup.parse(html);
-                Elements patentUrlList = document.select(".deal-ul.content .deal-item .deal-item-right div");
+                Elements patentUrlList = document.select(".deal-ul.content .deal-item .deal-item-right");
                 for (Element e : patentUrlList) {
                     detail(baseUrl + e.select("a").attr("href"), e.select("a").text().trim(), e.select(".deal-item-lpr").text().trim());
                 }
@@ -46,7 +46,7 @@ public class zhiqueipParse {
     private void detail(String detailUrl, String patentName, String state) {
         try {
             JSONObject info = new JSONObject();
-            String html = HttpUtil.httpGet(detailUrl, header);
+            String html = HttpUtil.httpGetwithJudgeWord(detailUrl, "知雀");
             if (!"".equals(html)) {
                 Document document = Jsoup.parse(html);
                 Elements infoList = document.select(".item-detail-a-inner-wrapper .item-main-line .item-main-key");

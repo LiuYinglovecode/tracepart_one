@@ -119,7 +119,7 @@ public class ConfigClient implements Watcher, IConfigManager {
     }
 
     /**
-     * create config client by default setting or given properties
+     * create config client by default settings or given properties
      *
      * @return Config client instance
      */
