@@ -699,8 +699,8 @@ public class updateToMySQL {
     }
 
     public static boolean newsInsert(Map<String, String> ipRegionMap) {
-        TABLE_NAME = "bde.original_news";
-        String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amountOfReading, source, plate, crawlerId,url,images) " +
+        TABLE_NAME = "crawler_data.crawler_news";
+        String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amount_of_reading, source, plate, crawlerId,url,images) " +
                 "values (?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
@@ -711,7 +711,7 @@ public class updateToMySQL {
             ps.setString(2, ipRegionMap.get("time"));
             ps.setString(3, ipRegionMap.get("author"));
             ps.setString(4, ipRegionMap.get("text"));
-            ps.setString(5, ipRegionMap.get("amountOfReading"));
+            ps.setString(5, ipRegionMap.get("amount_of_reading"));
             ps.setString(6, ipRegionMap.get("source"));
             ps.setString(7, ipRegionMap.get("plate"));
             ps.setString(8, ipRegionMap.get("crawlerId"));
