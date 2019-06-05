@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
+import util.mysqlUtil;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -130,22 +131,10 @@ public class SoopatParse {
                     }
                 }
                 info.put("crawlerId", "51");
-                insert(info);
+                mysqlUtil.insertPatent(info);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
-        }
-    }
-
-    private void insert(JSONObject info) {
-        try {
-            Map = (java.util.Map) info;
-            if (updateToMySQL.baitengInsert(Map)) {
-                LOGGER.info("插入中 : " + Map.toString());
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-
         }
     }
 }

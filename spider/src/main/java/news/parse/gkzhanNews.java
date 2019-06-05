@@ -2,7 +2,8 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
-import news.utils.ESUtil;
+import util.ESUtil;
+import util.mysqlUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,7 +21,8 @@ import java.util.TimeZone;
 
 /**
  * <a>https://www.gkzhan.com/</a>
- *<a>News：智能制造新闻网</a>
+ * <a>News：智能制造新闻网</a>
+ *
  * @author:chenyan
  */
 public class gkzhanNews {
@@ -30,7 +32,6 @@ public class gkzhanNews {
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
-
 
 
     static {
@@ -56,7 +57,7 @@ public class gkzhanNews {
         }
     }
 
-//    新闻列表及分页
+    //    新闻列表及分页
     private void newsList(String url) {
 
         try {
@@ -83,14 +84,15 @@ public class gkzhanNews {
 
     }
 
-//    新闻信息
+    //    新闻信息
     private void newsinfo(String url) {
         JSONObject newsInfo = new JSONObject();
         try {
             String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             Document parse = Jsoup.parse(get);
             newsInfo.put("plate", parse.select("div.position > p > span").text().trim());
-            newsInfo.put("title", parse.select("div.leftTop.clearfix > h2").text().trim());
+            String title = parse.select("div.leftTop.clearfix > h2").text().trim();
+            newsInfo.put("title", title);
             newsInfo.put("time", parse.select("div.leftTop.clearfix > p > span:nth-child(1)").text().trim());
             newsInfo.put("text", parse.select("#newsContent").text().trim());
             Elements list = parse.select("div.leftTop.clearfix > p > span");
@@ -108,6 +110,7 @@ public class gkzhanNews {
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             newsInfo.put("@timestamp", timestamp2.format(new Date()));
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            mysqlUtil.insertNews(newsInfo, "crawler_news", title);
             esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

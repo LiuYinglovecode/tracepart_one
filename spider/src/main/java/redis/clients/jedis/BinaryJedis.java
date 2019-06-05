@@ -1212,7 +1212,7 @@ public class BinaryJedis implements BasicCommands, BinaryJedisCommands, MultiKey
    * <p>
    * <b>Time complexity:</b>
    * <p>
-   * O(N) (with N being the length of the list), setting the first or last elements of the list is
+   * O(N) (with N being the length of the list), settings the first or last elements of the list is
    * O(1).
    * @see #lindex(byte[], long)
    * @param key

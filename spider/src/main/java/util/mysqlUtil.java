@@ -1,4 +1,4 @@
-package news.utils;
+package util;
 
 import com.alibaba.fastjson.JSONObject;
 import mysql.updateToMySQL;
@@ -9,7 +9,7 @@ public class mysqlUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(mysqlUtil.class);
     private static java.util.Map<String, String> Map;
 
-    public static void insert(JSONObject info, String tablename, String title, String type) {
+    public static void insertNews(JSONObject info, String tablename, String title) {
         try {
             Map = (java.util.Map) info;
             if (updateToMySQL.exist2(Map, tablename, title, "title")) {
@@ -20,6 +20,17 @@ public class mysqlUtil {
                 if (updateToMySQL.newsInsert(Map)) {
                     LOGGER.info("插入中 : " + Map.toString());
                 }
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    public static void insertPatent(JSONObject info) {
+        try {
+            Map = (java.util.Map) info;
+            if (updateToMySQL.patentInsert(Map)) {
+                LOGGER.info("插入中 : " + Map.toString());
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

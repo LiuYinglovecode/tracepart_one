@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
 import ipregion.ProxyDao;
 import mysql.updateToMySQL;
-import news.utils.ESUtil;
+import util.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -153,7 +153,7 @@ public class qth58Company {
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            insert(companyInfo);
+//            insert(companyInfo);
             esUtil.writeToES(companyInfo, "crawler-company-", "doc");
         } catch (Exception e) {
             e.printStackTrace();

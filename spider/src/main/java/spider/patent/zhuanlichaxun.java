@@ -103,7 +103,7 @@ public class zhuanlichaxun {
     private void insert(JSONObject info) {
         try {
             Map = (java.util.Map) info;
-            if (updateToMySQL.baitengInsert(Map)) {
+            if (updateToMySQL.patentInsert(Map)) {
                 LOGGER.info("插入中 : " + Map.toString());
             }
         } catch (Exception e) {

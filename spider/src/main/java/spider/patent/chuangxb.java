@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 import config.IConfigManager;
 import util.IpProxyUtil;
+import util.mysqlUtil;
 
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
@@ -114,18 +115,7 @@ public class chuangxb {
                 info.put("abstract", zhaiyao);
                 info.put("crawlerId", "20");
                 info.put("createTime", creatrTime.format(new Date()));
-                insert(info);
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
-
-    private void insert(JSONObject info) {
-        try {
-            Map = (java.util.Map) info;
-            if (updateToMySQL.baitengInsert(Map)) {
-                LOGGER.info("插入中 : " + Map.toString());
+                mysqlUtil.insertPatent(info);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

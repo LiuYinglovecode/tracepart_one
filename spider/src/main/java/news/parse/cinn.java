@@ -2,7 +2,8 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import news.utils.ESUtil;
+import util.ESUtil;
+import util.mysqlUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -122,6 +123,7 @@ public class cinn {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                mysqlUtil.insertNews(info, "crawler_news", title);
                 esUtil.writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");

@@ -2,7 +2,7 @@ package news.parse;
 
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
-import news.utils.ESUtil;
+import util.ESUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -128,6 +128,7 @@ public class machine365News {
 
                 Elements title = gbk.select("div.newliIn_ti");
                 if (title.size() == 0) {
+                    String title2= gbk.select("div.left > div > h1").text().trim();
                     newsInfo.put("title", gbk.select("div.left > div > h1").text().trim());
                 } else {
                     newsInfo.put("title", title.text());
@@ -149,15 +150,15 @@ public class machine365News {
                     String surce = matcher.group(0).split("：", 2)[1];
                     newsInfo.put("source", surce);
                 }
+                newsInfo.put("crawlerId", "32");
+                newsInfo.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                newsInfo.put("@timestamp", timestamp2.format(new Date()));
+                newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
             } else {
                 LOGGER.info("页面不存在");
             }
-            newsInfo.put("crawlerId", "32");
-            newsInfo.put("timestamp", timestamp.format(new Date()));
-            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-            newsInfo.put("@timestamp", timestamp2.format(new Date()));
-            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
         } catch (Exception e) {
             if (e.getClass() != FileNotFoundException.class) {
                 LOGGER.error(e.getMessage());
