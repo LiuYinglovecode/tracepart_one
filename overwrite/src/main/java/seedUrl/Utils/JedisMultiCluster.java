@@ -1,5 +1,6 @@
 package seedUrl.Utils;
 
+import config.ConfigClient;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
@@ -80,10 +81,10 @@ public class JedisMultiCluster {
             hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7004));
             hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
 
-            String passwd = "7T8wZ5X3#B6fS4vJ";
-            String connectionTimeout = "5000";
-            String soTimeout = "5000";
-            String maxAttempts = "6";
+            String connectionTimeout = ConfigClient.instance().get(poolName, "connectionTimeout", "5000");
+            String soTimeout = ConfigClient.instance().get(poolName, "soTimeout", "5000");
+            String maxAttempts = ConfigClient.instance().get(poolName, "maxAttempts", "6");
+            String passwd = ConfigClient.instance().get(poolName, "passwd", null);
 
             jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), passwd, config);
         } catch (Exception e) {

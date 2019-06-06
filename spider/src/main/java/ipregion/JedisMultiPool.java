@@ -1,5 +1,6 @@
 package ipregion;
 
+import config.ConfigClient;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -71,21 +72,11 @@ public class JedisMultiPool {
             //逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
             config.setTimeBetweenEvictionRunsMillis(-1);
 
-//            String redisAddress = ConfigClient.instance().get(poolName, "address");
-//            String port = ConfigClient.instance().get(poolName, "port", "6379");
-//            String timeout = ConfigClient.instance().get(poolName, "timeout", "5000");
-//            String auth = ConfigClient.instance().get(poolName, "auth", null);
+            String redisAddress = ConfigClient.instance().get(poolName, "address");
+            String port = ConfigClient.instance().get(poolName, "port", "6379");
+            String timeout = ConfigClient.instance().get(poolName, "timeout", "5000");
+            String auth = ConfigClient.instance().get(poolName, "auth", null);
 
-            /*String redisAddress = "127.0.0.1";
-            String port = "27001";*/
-//            String redisAddress = "127.0.0.1";
-//            String port = "6379";
-//            String timeout = "5000";
-//            String auth = null;
-            String redisAddress = "10.153.51.22";
-            String port = "6379";
-            String timeout = "5000";
-            String auth = "!2bpYXjtGh";
 
             jedisPool = new redis.clients.jedis.JedisPool(config, redisAddress, Integer.parseInt(port), Integer.parseInt(timeout), auth);
         } catch (Exception e) {
