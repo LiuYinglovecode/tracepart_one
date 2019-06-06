@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2349e-63a1-45ef-b99d-c5a68c289b3e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/seedUrl/Utils/JedisMultiCluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/seedUrl/Utils/JedisMultiCluster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/ipregion/JedisMultiPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/ipregion/JedisMultiPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spider/src/main/java/es/ESClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/es/ESClient.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/overwrite/.gradle/" />
@@ -70,20 +68,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ESUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ESClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spider/src/main/java/es/ESClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-816">
-              <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+            <state relative-caret-position="322">
+              <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -92,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/mysqlUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
-              <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+              <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -110,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-57">
-              <caret line="70" column="23" lean-forward="true" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
+              <caret line="70" column="23" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -118,8 +107,8 @@
       <file leaf-file-name="CcoalnewsParseToRedis.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/news/ccoalnews/CcoalnewsParseToRedis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
+            <state relative-caret-position="402">
+              <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/Utils/RedisUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -139,16 +128,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JedisMultiCluster.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JedisMultiCluster.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/Utils/JedisMultiCluster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
+            <state relative-caret-position="230">
+              <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2331#2344#0" expanded="true" />
                 <element signature="e#3356#3357#0" expanded="true" />
                 <element signature="e#3393#3394#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CcoalnewsMainEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/news/ccoalnews/CcoalnewsMainEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,11 +164,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JedisMultiPool.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JedisMultiPool.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spider/src/main/java/ipregion/JedisMultiPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="74" selection-start-line="74" selection-end-line="77" selection-end-column="78" />
+            <state relative-caret-position="382">
+              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
               <folding>
                 <element signature="e#365#366#0" expanded="true" />
                 <element signature="e#401#402#0" expanded="true" />
@@ -1035,6 +1036,7 @@
         <option value="$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java" />
         <option value="$PROJECT_DIR$/spider/src/main/java/ipregion/JedisMultiPool.java" />
         <option value="$PROJECT_DIR$/spider/src/main/java/config/ConfigClient.java" />
+        <option value="$PROJECT_DIR$/spider/src/main/java/es/ESClient.java" />
         <option value="$PROJECT_DIR$/overwrite/src/main/java/seedUrl/Utils/JedisMultiCluster.java" />
       </list>
     </option>
@@ -1188,7 +1190,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="jedis&#9;FILE&#9;file://E:/code/Reptile/spider/src/main/java/ipregion/JedisMultiPool.java&#10;mysql&#9;PSI&#9;JAVA://util.mysqlUtil&#10;qiling&#9;PSI&#9;JAVA://spider.company.qilingConpany&#10;main&#9;PSI&#9;JAVA://ipregion.ProxyServiceMain" />
+    <property name="SearchEverywhereHistoryKey" value="jedis&#9;FILE&#9;file://E:/code/Reptile/spider/src/main/java/ipregion/JedisMultiPool.java&#10;ES&#9;FILE&#9;file://E:/code/Reptile/spider/src/main/java/es/ESClient.java&#10;mysql&#9;PSI&#9;JAVA://util.mysqlUtil&#10;qiling&#9;PSI&#9;JAVA://spider.company.qilingConpany&#10;main&#9;PSI&#9;JAVA://ipregion.ProxyServiceMain" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../BDE" />
@@ -1351,12 +1353,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559704970688</updated>
-      <workItem from="1559704971879" duration="31058000" />
+      <workItem from="1559704971879" duration="34041000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31058000" />
+    <option name="totallyTimeSpent" value="34041000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1374,7 +1376,7 @@
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.0523446" />
+      <window_info active="true" anchor="bottom" id="Debug" order="10" visible="true" weight="0.09269357" />
       <window_info anchor="bottom" id="TODO" order="13" />
       <window_info anchor="bottom" id="Messages" order="3" weight="0.3293348" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
@@ -1383,7 +1385,7 @@
       <window_info anchor="bottom" id="Run" order="9" weight="0.07960741" />
       <window_info anchor="bottom" id="Version Control" order="4" />
       <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.21641791" />
+      <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.21641791" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.3293348" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.22707888" />
       <window_info anchor="right" id="Theme Preview" order="5" />
@@ -1428,8 +1430,14 @@
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/news/ccoalnews/CcoalnewsMainEntry.java</url>
+          <line>18</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -1681,16 +1689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/news/ccoalnews/CcoalnewsMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/steelcnNews.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -1743,17 +1741,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/es/ESClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-816">
-          <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/mysqlUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1767,39 +1758,16 @@
     <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-57">
-          <caret line="70" column="23" lean-forward="true" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/news/ccoalnews/CcoalnewsParseToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="70" column="23" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/Utils/RedisUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/ipregion/JedisMultiPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="74" selection-start-line="74" selection-end-line="77" selection-end-column="78" />
-          <folding>
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#401#402#0" expanded="true" />
-            <element signature="e#3263#3264#0" expanded="true" />
-            <element signature="e#3300#3301#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1811,15 +1779,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/news/ccoalnews/CcoalnewsMainEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/news/ccoalnews/CcoalnewsParseToRedis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/src/main/java/es/ESClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/seedUrl/Utils/JedisMultiCluster.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
+        <state relative-caret-position="230">
+          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2331#2344#0" expanded="true" />
             <element signature="e#3356#3357#0" expanded="true" />
             <element signature="e#3393#3394#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/src/main/java/ipregion/JedisMultiPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#3263#3264#0" expanded="true" />
+            <element signature="e#3300#3301#0" expanded="true" />
           </folding>
         </state>
       </provider>

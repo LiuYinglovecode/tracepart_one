@@ -74,12 +74,6 @@ public class JedisMultiCluster {
             // 添加集群的服务节点Set集合
             Set<HostAndPort> hostAndPortsSet = new HashSet<HostAndPort>();
             // 添加节点
-            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7000));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7001));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7002));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7003));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7004));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
 
             String connectionTimeout = ConfigClient.instance().get(poolName, "connectionTimeout", "5000");
             String soTimeout = ConfigClient.instance().get(poolName, "soTimeout", "5000");
