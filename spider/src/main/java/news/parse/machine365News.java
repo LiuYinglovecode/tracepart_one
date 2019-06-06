@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 
 /**
  * <a>http://news.machine365.com/</a>
- * <a>News：垂直机械网</a>
+ * <a>news：垂直机械网</a>
  *
  * @author:chenyan
  */
