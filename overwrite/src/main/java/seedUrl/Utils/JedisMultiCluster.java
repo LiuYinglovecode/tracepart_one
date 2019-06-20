@@ -1,48 +1,47 @@
-package ipregion;
+package seedUrl.Utils;
 
 import config.ConfigClient;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
-/**
- * Created by zhangjingliang on 2018/6/29 0029.
- */
-public class JedisMultiPool {
-    private static HashMap<String, JedisPool> _jedisPool = new HashMap<>();
+public class JedisMultiCluster {
+    private static HashMap<String, JedisCluster> _jedisCluster = new HashMap<>();
 
-    private static JedisPool getPool() {
-        return getPool(null);
+    private static JedisCluster getCluster() {
+        return getCluster(null);
     }
+
     /**
      * 根据连接池名称获取Redis连接池
      */
-    private static JedisPool getPool(final String poolName) {
-        JedisPool pool = null;
+    private static JedisCluster getCluster(final String poolName) {
+        JedisCluster cluster = null;
         String newPoolName = poolName;
-        if(poolName == null || poolName.length() == 0) {
+        if (poolName == null || poolName.length() == 0) {
             newPoolName = "redis";
         }
 
-        if(!_jedisPool.containsKey(newPoolName)) {
-            synchronized (_jedisPool) {
-                if(!_jedisPool.containsKey(newPoolName)) {
-                    pool = createPool(newPoolName);
-                    _jedisPool.put(newPoolName, pool);
+        if (!_jedisCluster.containsKey(newPoolName)) {
+            synchronized (_jedisCluster) {
+                if (!_jedisCluster.containsKey(newPoolName)) {
+                    cluster = createCluster(newPoolName);
+                    _jedisCluster.put(newPoolName, cluster);
                 }
             }
-        }
-        else {
-            pool = _jedisPool.get(newPoolName);
+        } else {
+            cluster = _jedisCluster.get(newPoolName);
         }
 
-        return pool;
+        return cluster;
     }
 
-    private static redis.clients.jedis.JedisPool createPool(final String poolName) {
-        redis.clients.jedis.JedisPool jedisPool = null;
+    private static JedisCluster createCluster(final String poolName) {
+        JedisCluster jedisCluster = null;
         try {
             JedisPoolConfig config = new JedisPoolConfig();
             //最大连接数, 默认8个
@@ -72,39 +71,43 @@ public class JedisMultiPool {
             //逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
             config.setTimeBetweenEvictionRunsMillis(-1);
 
-            String redisAddress = ConfigClient.instance().get(poolName, "address");
-            String port = ConfigClient.instance().get(poolName, "port", "6379");
-            String timeout = ConfigClient.instance().get(poolName, "timeout", "5000");
-            String auth = ConfigClient.instance().get(poolName, "auth", null);
+            // 添加集群的服务节点Set集合
+            Set<HostAndPort> hostAndPortsSet = new HashSet<HostAndPort>();
+            // 添加节点
 
+            String connectionTimeout = ConfigClient.instance().get(poolName, "connectionTimeout", "5000");
+            String soTimeout = ConfigClient.instance().get(poolName, "soTimeout", "5000");
+            String maxAttempts = ConfigClient.instance().get(poolName, "maxAttempts", "6");
+            String passwd = ConfigClient.instance().get(poolName, "passwd", null);
 
-            jedisPool = new redis.clients.jedis.JedisPool(config, redisAddress, Integer.parseInt(port), Integer.parseInt(timeout), auth);
+            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), passwd, config);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return jedisPool;
+        return jedisCluster;
     }
 
     /**
      * 从默认连接池获取jedis实例
+     *
      * @return
      */
-    public static Jedis getJedis() {
+    public static JedisCluster getJedis() {
         return getJedis(null);
     }
 
     /**
      * 从指定连接池名称中获取jedis实例
+     *
      * @param poolName
      * @return
      */
-    public synchronized static Jedis getJedis(final String poolName) {
+    public synchronized static JedisCluster getJedis(final String poolName) {
         try {
-            redis.clients.jedis.JedisPool pool = getPool(poolName);
-            if (pool != null) {
-                Jedis resource = pool.getResource();
-                return resource;
+            redis.clients.jedis.JedisCluster cluster = getCluster(poolName);
+            if (cluster != null) {
+                return cluster;
             } else {
                 return null;
             }

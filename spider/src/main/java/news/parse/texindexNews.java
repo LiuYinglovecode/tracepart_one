@@ -19,7 +19,7 @@ import java.util.*;
 
 /**
  * <a>http://www.texindex.com.cn/news/</a>
- * <a>News：纺织网</a>
+ * <a>news：纺织网</a>
  *
  * @author:chenyan
  */

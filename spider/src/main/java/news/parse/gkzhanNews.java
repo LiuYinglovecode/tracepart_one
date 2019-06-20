@@ -21,7 +21,7 @@ import java.util.TimeZone;
 
 /**
  * <a>https://www.gkzhan.com/</a>
- * <a>News：智能制造新闻网</a>
+ * <a>news：智能制造新闻网</a>
  *
  * @author:chenyan
  */

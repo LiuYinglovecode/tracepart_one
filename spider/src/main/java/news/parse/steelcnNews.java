@@ -19,7 +19,7 @@ import java.util.*;
 
 /**
  * <a>http://news.steelcn.cn/</a>
- * <a>News：中钢网</a>
+ * <a>news：中钢网</a>
  *
  * @author:chenyan
  */

@@ -67,7 +67,7 @@ public class DbConnectionPool {
 
         _poolName = poolName;
 
-        //连接池配置信息
+//        连接池配置信息
         String dbUrl = ConfigClient.instance().get(poolName, "url");
         String dbUser = ConfigClient.instance().get(poolName, "user");
         String dbPassword = ConfigClient.instance().get(poolName, "sec.password");
@@ -75,6 +75,7 @@ public class DbConnectionPool {
         String idleTimeout = ConfigClient.instance().get(poolName, "idletimeout");
         String connectionTimeout = ConfigClient.instance().get(poolName, "connectionTimeout");
         String driverClassName = ConfigClient.instance().get(poolName, "driverClassName");
+
 
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(dbUrl);
