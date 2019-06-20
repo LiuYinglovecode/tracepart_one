@@ -16,8 +16,6 @@ public class CcoalnewsMainEntry {
         try {
             CcoalnewsParseToRedis ccoalnewsParseToRedis = new CcoalnewsParseToRedis();
             ccoalnewsParseToRedis.getUrlStart(url);
-            CcoalnewsDownload ccoalnewsDownload = new CcoalnewsDownload();
-            ccoalnewsDownload.detailDownload();
             LOGGER.info("Ccoalnews DONE : " + time.format(new Date()));
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

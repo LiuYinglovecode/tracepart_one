@@ -1,4 +1,4 @@
-package seedUrl.Utils;
+package Utils;
 
 import config.ConfigClient;
 import redis.clients.jedis.HostAndPort;
