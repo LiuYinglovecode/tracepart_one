@@ -39,7 +39,7 @@ public class cesNews {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         cesNews cesNews = new cesNews();
         cesNews.homepage(homepage);
-        LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("cesNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
 
     }
 

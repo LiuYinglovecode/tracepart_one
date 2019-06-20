@@ -44,7 +44,8 @@ public class qilingConpany {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         qilingConpany qilingConpany = new qilingConpany();
         qilingConpany.qilingProvince("http://www.707070.cn/city/");
-        LOGGER.info("------完成了------");
+        LOGGER.info("qilingConpany DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+
     }
 
     //    按照省份分类，获取url进入省份企业列表

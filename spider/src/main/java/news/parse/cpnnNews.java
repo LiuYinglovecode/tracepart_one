@@ -40,7 +40,7 @@ public class cpnnNews {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         cpnnNews cpnnNews = new cpnnNews();
         cpnnNews.homepage(homepage);
-        LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("cpnnNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
 
     }
 

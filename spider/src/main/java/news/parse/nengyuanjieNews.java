@@ -40,7 +40,7 @@ public class nengyuanjieNews {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         nengyuanjieNews nengyuanjieNews = new nengyuanjieNews();
         nengyuanjieNews.homepage(homepage);
-        LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("nengyuanjieNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
 
     }
 
@@ -121,7 +121,7 @@ public class nengyuanjieNews {
                 String select = document.select("span.desc.mt15").text();
                 newsInfo.put("time", select.split("来源：")[0]);
                 newsInfo.put("source", select.split("来源：")[1].split("浏览：")[0]);
-                newsInfo.put("amount_of_reading", select.split("浏览：")[1]);
+                newsInfo.put("amountOfReading", select.split("浏览：")[1]);
                 Elements text = document.select("div.content");//新闻内容
                 if (text.size() != 0) {
                     newsInfo.put("text", text.text());

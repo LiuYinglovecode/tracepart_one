@@ -39,7 +39,7 @@ public class ca800News {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         ca800News ca800News = new ca800News();
         ca800News.homepage(homepage);
-        LOGGER.info("gkzhanNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("ca800News DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
 
     }
 
