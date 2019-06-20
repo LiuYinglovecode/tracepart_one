@@ -730,8 +730,8 @@ public class updateToMySQL {
         TABLE_NAME = "crawler_data.crawler_product";
         String sql = "insert into " + TABLE_NAME + "(id,product_name,company_id,company_name,product_desc,prices,delivery_place,delivery_period" +
                 ",total_supply,mini_order,product_specifications,product_number,release_time,trade_category,product_introduce,detailUrl,tradeParameter" +
-                ",production_place,contactInformation,contacts,product_feature,product_applications,product_brand,crawlerId) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                ",production_place,contactInformation,contacts,product_feature,product_applications,product_brand,crawlerId,product_images) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -761,6 +761,7 @@ public class updateToMySQL {
             ps.setString(22, ipRegionMap.get("product_applications"));
             ps.setString(23, ipRegionMap.get("product_brand"));
             ps.setString(24, ipRegionMap.get("crawlerId"));
+            ps.setString(25, ipRegionMap.get("product_images"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
