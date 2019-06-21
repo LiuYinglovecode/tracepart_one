@@ -28,7 +28,7 @@ public class SeedMainEntry {
         try {
             ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 120, TimeUnit.SECONDS,
                     new ArrayBlockingQueue<Runnable>(15), new ThreadPoolExecutor.DiscardOldestPolicy());
-            InputStream path = this.getClass().getResourceAsStream("/seedUrl.txt");
+            InputStream path = this.getClass().getResourceAsStream("/NewsSeedUrl.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(path));
             String line = "";
             while ((line = reader.readLine()) != null) {
@@ -75,6 +75,45 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.cpnn.com.cn")) {
                     CpnnToRedis cpnnToRedis = new CpnnToRedis();
                     cpnnToRedis.homepage(taskName);
+                } else if (taskName.contains("www.51dzw.com")) {
+                    DzwToRedis dzwToRedis = new DzwToRedis();
+                    dzwToRedis.homepage(taskName);
+                } else if (taskName.contains("www.gkzhan.com")) {
+                    GkzhanToRedis gkzhanToRedis = new GkzhanToRedis();
+                    gkzhanToRedis.homePage(taskName);
+                } else if (taskName.contains("www.jdzj.com")) {
+                    JdzjToRedis jdzjToRedis = new JdzjToRedis();
+                    jdzjToRedis.homepage(taskName);
+                } else if (taskName.contains("www.jiancai.com")) {
+                    JiancaiToRedis jiancaiToRedis = new JiancaiToRedis();
+                    jiancaiToRedis.homepage(taskName);
+                } else if (taskName.contains("news.lmjx.net")) {
+                    LmjxToRedis lmjxToRedis = new LmjxToRedis();
+                    lmjxToRedis.homepage(taskName);
+                } else if (taskName.contains("news.machine365.com")) {
+                    Machine365ToRedis machine365ToRedis = new Machine365ToRedis();
+                    machine365ToRedis.homePage(taskName);
+                } else if (taskName.contains("www.86mai.com")) {
+                    MaiToRedis maiToRedis = new MaiToRedis();
+                    maiToRedis.homepage(taskName);
+                } else if (taskName.contains("www.membranes.com.cn")) {
+                    MembranesToRedis membranesToRedis = new MembranesToRedis();
+                    membranesToRedis.industryNews(taskName);
+                } else if (taskName.contains("www.nengyuanjie.net")) {
+                    NengyuanjieToRedis nengyuanjieToRedis = new NengyuanjieToRedis();
+                    nengyuanjieToRedis.homepage(taskName);
+                } else if (taskName.contains("www.51pla.com")) {
+                    PlaToRedis plaToRedis = new PlaToRedis();
+                    plaToRedis.homepage(taskName);
+                } else if (taskName.contains("news.steelcn.cn")) {
+                    SteelcnToRedis steelcnToRedis = new SteelcnToRedis();
+                    steelcnToRedis.homepage(taskName);
+                } else if (taskName.contains("www.texindex.com.cn")) {
+                    TexindexToRedis texindexToRedis = new TexindexToRedis();
+                    texindexToRedis.homePage(taskName);
+                } else if (taskName.contains("www.xianjichina.com")) {
+                    XianjichinaToRedis xianjichinaToRedis = new XianjichinaToRedis();
+                    xianjichinaToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
