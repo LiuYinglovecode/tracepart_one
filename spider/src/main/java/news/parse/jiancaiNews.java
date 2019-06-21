@@ -35,10 +35,10 @@ public class jiancaiNews {
     }
 
     public static void main(String[] args) {
-//        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
+        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         jiancaiNews jiancaiNews = new jiancaiNews();
         jiancaiNews.homepage(homepage);
-//        LOGGER.info("dzwNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("jiancaiNews :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 
     private void homepage(String url) {
@@ -124,13 +124,12 @@ public class jiancaiNews {
                 }
                 info.put("plate",plate);
                 info.put("crawlerId", "69");
-//                info.put("timestamp", timestamp.format(new Date()));
-//                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-//                info.put("@timestamp", timestamp2.format(new Date()));
-//                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-//                mysqlUtil.insertNews(info, "crawler_news", title);
-//                esUtil.writeToES(info, "crawler-news-", "doc");
-                System.out.println(info);
+                info.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                info.put("@timestamp", timestamp2.format(new Date()));
+                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                mysqlUtil.insertNews(info, "crawler_news", title);
+                esUtil.writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");
             }

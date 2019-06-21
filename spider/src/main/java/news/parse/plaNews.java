@@ -38,7 +38,7 @@ public class plaNews {
         plaNews plaNews = new plaNews();
         plaNews.homepage(homepage);
 //        lmjxNews.newsList("https://news.lmjx.net/lmjx/lmjx.xhtml?p=265&p=266");
-        LOGGER.info("dzwNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("plaNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 
     /**

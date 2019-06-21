@@ -39,7 +39,7 @@ public class jdzjNews {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         jdzjNews ic98News = new jdzjNews();
         ic98News.homepage(homepage);
-        LOGGER.info("dzwNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("jdzjNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 
     private void homepage(String url) {

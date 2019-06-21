@@ -37,7 +37,7 @@ public class lmjxNews {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         lmjxNews lmjxNews = new lmjxNews();
         lmjxNews.homepage(homepage);
-        LOGGER.info("dzwNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
+        LOGGER.info("lmjxNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
     }
 
     private void homepage(String url) {
