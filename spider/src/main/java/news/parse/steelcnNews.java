@@ -125,11 +125,11 @@ public class steelcnNews {
             Document document = Jsoup.parse(html);
             String title = document.select("div#divinfo.art h1").text().trim();
             newsInfo.put("title", title);//标题
-            newsInfo.put("amount_of_reading", document.select("i#hits").text().trim());//阅读量
+            newsInfo.put("amountOfReading", document.select("i#hits").text().trim());//阅读量
             Elements doc = document.select("div.art_info");
             for (Element el : doc) {
                 el.select("span,i,em,label").remove();
-                newsInfo.put("amount_of_reading", el.text().split("来源:")[0].split(":")[1]);//阅读量
+                newsInfo.put("amountOfReading", el.text().split("来源:")[0].split(":")[1]);//阅读量
                 newsInfo.put("source", el.text().split("来源:")[1].replace(" 字体:", ""));//来源
             }
             Elements img = document.select("div.art_main div img");

@@ -128,7 +128,7 @@ public class cnmnNews {
                 String title = document.select("#content > div > h4").text().trim();
                 newsInfo.put("title", title);//标题
                 newsInfo.put("time", document.select("span > span.time").text().trim());//发布时间
-                newsInfo.put("amount_of_reading", document.select("span > span.view").text().trim().replace("次浏览", ""));//阅读量
+                newsInfo.put("amountOfReading", document.select("span > span.view").text().trim().replace("次浏览", ""));//阅读量
                 newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1]);//来源
                 newsInfo.put("text", document.select("#txtcont").text().trim());//新闻内容
                 Elements split = document.select("p.info.clearfix.text-center > span:nth-child(1)");

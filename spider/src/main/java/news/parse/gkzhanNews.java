@@ -102,7 +102,7 @@ public class gkzhanNews {
                 } else if (element.text().contains("编辑：")) {
                     newsInfo.put("author", element.text().trim().split("：", 2)[1]);
                 } else if (element.text().contains("阅读量：")) {
-                    newsInfo.put("amount_of_reading", element.text().trim().split("：", 2)[1]);
+                    newsInfo.put("amountOfReading", element.text().trim().split("：", 2)[1]);
                 }
             }
             newsInfo.put("crawlerId", "33");

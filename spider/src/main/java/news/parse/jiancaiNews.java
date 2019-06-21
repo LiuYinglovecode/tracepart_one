@@ -123,7 +123,7 @@ public class jiancaiNews {
                     info.put("images", imgs.toString());
                 }
                 info.put("plate",plate);
-                info.put("crawlerId", "66");
+                info.put("crawlerId", "69");
 //                info.put("timestamp", timestamp.format(new Date()));
 //                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
 //                info.put("@timestamp", timestamp2.format(new Date()));

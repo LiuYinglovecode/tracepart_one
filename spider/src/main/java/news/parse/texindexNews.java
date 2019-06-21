@@ -139,7 +139,7 @@ public class texindexNews {
                     newsInfo.put("author", element.text().split("辑：")[1]);
                 }
                 if (element.text().contains("点击数")) {
-                    newsInfo.put("amount_of_reading", element.text().split("点击数 ")[1].replace("( ", "").replace(" )", ""));
+                    newsInfo.put("amountOfReading", element.text().split("点击数 ")[1].replace("( ", "").replace(" )", ""));
                 }
             }
             newsInfo.put("images", imgsList.toString());
