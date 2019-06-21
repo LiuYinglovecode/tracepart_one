@@ -23,7 +23,6 @@ public class Ca800Download {
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
-    private static String newsId;
 
     /**
      * @param url 新闻内容：有些新闻有很多图片，要拿到所有的图片链接，
@@ -57,7 +56,7 @@ public class Ca800Download {
                 Elements text = document.select("div.newsdetail_con");//新闻内容
                 if (text.size() != 0) {
                     newsInfo.put("text", text.text());
-                    newsId = MD5Util.getMD5String(text.text());
+                    String newsId = MD5Util.getMD5String(text.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("div > img");
                     if (img.size() != 0) {
@@ -66,10 +65,18 @@ public class Ca800Download {
                             newsInfo.put("images", imgsList.toString());//图片
                         }
                     }
+                    newsInfo.put("crawlerId", "59");
+                    newsInfo.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    newsInfo.put("@timestamp", timestamp2.format(new Date()));
+                    newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    System.out.println(newsInfo);
+                    mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
+                    esUtil.writeToES(newsInfo, "crawler-news-", "doc");
                 } else {
                     Elements text1 = document.select("div.newsdetail.border.fl div.detail");//新闻内容
                     newsInfo.put("text", text1.text());
-                    newsId = MD5Util.getMD5String(text1.text());
+                    String newsId = MD5Util.getMD5String(text1.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text1.select("p.MsoNormal img");
                     if (img.size() != 0) {
@@ -78,15 +85,15 @@ public class Ca800Download {
                             newsInfo.put("images", imgsList.toString());//图片
                         }
                     }
+                    newsInfo.put("crawlerId", "59");
+                    newsInfo.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    newsInfo.put("@timestamp", timestamp2.format(new Date()));
+                    newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    System.out.println(newsInfo);
+                    mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
+                    esUtil.writeToES(newsInfo, "crawler-news-", "doc");
                 }
-                newsInfo.put("crawlerId", "59");
-                newsInfo.put("timestamp", timestamp.format(new Date()));
-                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-                newsInfo.put("@timestamp", timestamp2.format(new Date()));
-                newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                System.out.println(newsInfo);
-                mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
-                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
             } else {
                 LOGGER.info("页面不存在！");
             }

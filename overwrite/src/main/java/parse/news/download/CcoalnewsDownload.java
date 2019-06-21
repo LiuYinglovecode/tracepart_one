@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.MD5Util;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import Utils.RedisUtil;
 import util.ESUtil;
 import util.HttpUtil;
+import util.mysqlUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,17 +39,21 @@ public class CcoalnewsDownload {
                             info.put("title", document.select(".text-article h1").text().trim());
                             info.put("time", document.select(".date").text().trim());
                             info.put("author", document.select(".author").text().trim());
-                            info.put("text", document.select(".content").text().trim());
+                            String text = document.select(".content").text().trim()
+                            info.put("text", text);
+                            String newsId = MD5Util.getMD5String(text);
+                            info.put("newsId", newsId);
                             Elements imgList = document.select(".content img");
                             for (Element e : imgList) {
                                 img.add(e.attr("src"));
                             }
                             info.put("images", img.toString());
-                            info.put("crawlerId","61");
+                            info.put("crawlerId", "61");
                             info.put("timestamp", timestamp.format(new Date()));
                             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                             info.put("@timestamp", timestamp2.format(new Date()));
                             info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                            mysqlUtil.insertNews(info, "crawler_news", newsId);
                             esUtil.writeToES(info, "crawler-news-", "doc");
                         }
                     }

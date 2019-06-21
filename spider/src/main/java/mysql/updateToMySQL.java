@@ -112,7 +112,7 @@ public class updateToMySQL {
         return false;
     }
 
-    public static boolean exist2(Map<String, String> ipRegionMap, String tableName, String title, String type) {
+    public static boolean exist2(Map<String, String> ipRegionMap, String tableName, String newsId, String type) {
 //        TABLE_NAME = tableName;
         String sql = "select count(*) as ct from " + tableName + " where " + type + "=?";
         Connection connection = getConnection();
@@ -120,7 +120,7 @@ public class updateToMySQL {
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, title);
+            ps.setString(1, newsId);
             ResultSet Judge = ps.executeQuery();
             Judge.next();
             int ct = Judge.getInt("ct");
@@ -672,7 +672,7 @@ public class updateToMySQL {
 
     public static boolean newsUpdate(Map<String, String> ipRegionMap, String name, String type) {
         TABLE_NAME = "crawler_data.crawler_news";
-        String sql = "UPDATE " + TABLE_NAME + " SET title=?,time=?,author=?,text=?,amountOfReading=?,source=?,plate=?,crawlerId=?,url=?,images=? WHERE " + type + "='" + name + "'";
+        String sql = "UPDATE " + TABLE_NAME + " SET title=?,time=?,author=?,text=?,amountOfReading=?,source=?,plate=?,crawlerId=?,url=?,images=?,newsId=? WHERE " + type + "='" + name + "'";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -689,6 +689,7 @@ public class updateToMySQL {
             ps.setString(8, ipRegionMap.get("crawlerId"));
             ps.setString(9, ipRegionMap.get("url"));
             ps.setString(10, ipRegionMap.get("images"));
+            ps.setString(11, ipRegionMap.get("newsId"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -700,8 +701,8 @@ public class updateToMySQL {
 
     public static boolean newsInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "crawler_data.crawler_news";
-        String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amountOfReading, source, plate, crawlerId,url,images) " +
-                "values (?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amountOfReading, source, plate, crawlerId,url,images,newsId) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -717,6 +718,7 @@ public class updateToMySQL {
             ps.setString(8, ipRegionMap.get("crawlerId"));
             ps.setString(9, ipRegionMap.get("url"));
             ps.setString(10, ipRegionMap.get("images"));
+            ps.setString(11, ipRegionMap.get("newsId"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
