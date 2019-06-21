@@ -1,4 +1,4 @@
-package seedUrl.news.ccoalnews;
+package parse.news.toRedis;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,8 +12,8 @@ import util.HttpUtil;
 /**
  * @author liyujie
  */
-public class CcoalnewsParseToRedis {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CcoalnewsParseToRedis.class);
+public class CcoalnewsToRedis {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CcoalnewsToRedis.class);
 
     public void getUrlStart(String url) {
         try {

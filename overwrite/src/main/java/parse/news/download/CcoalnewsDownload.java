@@ -1,4 +1,4 @@
-package seedUrl.news.ccoalnews;
+package parse.news.download;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
