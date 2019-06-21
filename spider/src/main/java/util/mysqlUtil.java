@@ -9,11 +9,11 @@ public class mysqlUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(mysqlUtil.class);
     private static java.util.Map<String, String> Map;
 
-    public static void insertNews(JSONObject info, String tablename, String title) {
+    public static void insertNews(JSONObject info, String tablename, String newsId) {
         try {
             Map = (java.util.Map) info;
-            if (updateToMySQL.exist2(Map, tablename, title, "title")) {
-                if (updateToMySQL.newsUpdate(Map, title, "title")) {
+            if (updateToMySQL.exist2(Map, tablename, newsId, "newsId")) {
+                if (updateToMySQL.newsUpdate(Map, newsId, "newsId")) {
                     LOGGER.info("更新中 : " + Map.toString());
                 }
             } else {
