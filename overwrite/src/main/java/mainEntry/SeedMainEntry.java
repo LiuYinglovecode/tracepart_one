@@ -27,7 +27,7 @@ public class SeedMainEntry {
     private void SeedUrlList() {
         try {
             ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 120, TimeUnit.SECONDS,
-                    new ArrayBlockingQueue<Runnable>(15), new ThreadPoolExecutor.DiscardOldestPolicy());
+                    new ArrayBlockingQueue<Runnable>(15), new ThreadPoolExecutor.CallerRunsPolicy());
             InputStream path = this.getClass().getResourceAsStream("/NewsSeedUrl.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(path));
             String line = "";

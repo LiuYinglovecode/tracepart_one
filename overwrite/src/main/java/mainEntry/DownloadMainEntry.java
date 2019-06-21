@@ -1,4 +1,93 @@
 package mainEntry;
 
+import Utils.RedisUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import parse.news.download.*;
+import parse.news.toRedis.*;
+
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+
 public class DownloadMainEntry {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DownloadMainEntry.class);
+
+    public static void main(String[] args) {
+        DownloadMainEntry downloadMainEntry = new DownloadMainEntry();
+        downloadMainEntry.getFromRedis();
+    }
+
+    private void getFromRedis() {
+        try {
+            ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 120, TimeUnit.SECONDS,
+                    new ArrayBlockingQueue<Runnable>(15), new ThreadPoolExecutor.CallerRunsPolicy());
+            String url = "";
+            while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl"))) {
+                SeedTask seed = new SeedTask(url);
+                executor.execute(seed);
+            }
+            executor.shutdown();
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    private class SeedTask implements Runnable {
+        private String taskName;
+
+        private SeedTask(String name) {
+            this.taskName = name;
+        }
+
+        @Override
+        public void run() {
+            try {
+                if (taskName.contains("www.ca800.com")) {
+                    Ca800Download ca800Download = new Ca800Download();
+                    ca800Download.newsInfo(taskName);
+                } else if (taskName.contains("www.ces.cn")) {
+                    CesDownload cesDownload = new CesDownload();
+                    cesDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.chinahightech.com")) {
+                    ChinahightechDownload chinahightechDownload = new ChinahightechDownload();
+                    chinahightechDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.cinn.cn")) {
+                    CinnDownload cinnDownload = new CinnDownload();
+                    cinnDownload.detail(taskName);
+                } else if (taskName.contains("www.cnmn.com.cn")) {
+                    CnmnDownload cnmnDownload = new CnmnDownload();
+                    cnmnDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.cpnn.com.cn")) {
+                    CpnnDownload cpnnDownload = new CpnnDownload();
+                    cpnnDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.51dzw.com")) {
+                    DzwDownload dzwDownload = new DzwDownload();
+                    dzwDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.gkzhan.com")) {
+                    GkzhanDownload gkzhanDownload = new GkzhanDownload();
+                    gkzhanDownload.newsinfo(taskName);
+                } else if (taskName.contains("www.jdzj.com")) {
+                    JdzjDownload jdzjDownload = new JdzjDownload();
+                    jdzjDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.jiancai.com")) {
+                    JiancaiDownload jiancaiDownload = new JiancaiDownload();
+                    jiancaiDownload.newsInfo(taskName);
+                } else if (taskName.contains("news.lmjx.net")) {
+                    LmjxDownload lmjxDownload = new LmjxDownload();
+                    lmjxDownload.newsInfo(taskName);
+                } else if (taskName.contains("news.machine365.com")) {
+                    MachineDownload machineDownload = new MachineDownload();
+                    machineDownload.newsinfo(taskName);
+                } else if (taskName.contains("www.86mai.com")) {
+                    MaiDownload maiDownload = new MaiDownload();
+                    maiDownload.newsInfo(taskName);
+                }
+            } catch (Exception e) {
+                LOGGER.error(e.getMessage());
+            }
+            LOGGER.info(taskName + " : 执行完毕");
+        }
+    }
 }
