@@ -19,7 +19,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class MemDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(JdzjDownload.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MemDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
