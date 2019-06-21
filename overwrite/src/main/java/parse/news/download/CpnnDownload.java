@@ -28,7 +28,7 @@ public class CpnnDownload {
 新闻内容：有些新闻有很多图片，要拿到所有的图片链接，
         把链接放到集合中，在进行存储。
  */
-    private void newsInfo(String url) {
+    public void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
         newsInfo.put("url", url);

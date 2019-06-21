@@ -25,7 +25,7 @@ public class CesDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
     //新闻内容
-    private void newsInfo(String url,String plate) {
+    private void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
         newsInfo.put("url", url);

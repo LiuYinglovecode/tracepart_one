@@ -25,7 +25,7 @@ public class GkzhanDownload {
     private static ESUtil esUtil = new ESUtil();
 
     //    新闻信息
-    private void newsinfo(String url) {
+    public void newsinfo(String url) {
         JSONObject newsInfo = new JSONObject();
         try {
             String get = HttpUtil.httpGetwithJudgeWord(url, "news");

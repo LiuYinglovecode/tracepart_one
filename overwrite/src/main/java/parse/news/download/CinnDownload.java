@@ -24,7 +24,7 @@ public class CinnDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
-    private void detail(String url) {
+    public void detail(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国工业报社");
             if (null != html) {

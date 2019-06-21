@@ -25,7 +25,7 @@ public class ChinahightechDownload {
     private static ESUtil esUtil = new ESUtil();
 
     //新闻信息
-    private void newsInfo(String url, String plate) {
+    public void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
         try {
@@ -59,7 +59,6 @@ public class ChinahightechDownload {
                     }
                 }
                 newsInfo.put("url", url);//链接地址
-                newsInfo.put("plate", plate);//板块
                 newsInfo.put("crawlerId", "54");
                 newsInfo.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

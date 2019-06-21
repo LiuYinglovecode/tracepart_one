@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.MD5Util;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -10,59 +11,60 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ESUtil;
 import util.HttpUtil;
-import util.MD5Util;
 import util.mysqlUtil;
 
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class DzwDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CesDownload.class);
+public class MaiDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(JdzjDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
-
     public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "51dzw");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "86mai");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 info.put("url",url);
-                Document parse = Jsoup.parse(new URL(url).openStream(), "GBK",html);
-                String title = parse.select("#TechDetail > h1").text().trim();
+                Document parse = Jsoup.parse(html);
+                String title = parse.select("#title").text().trim();
                 info.put("title",title);
-                Elements select = parse.select("#TechDetail > p");
-                if (select.text().contains("访问次数")){
-                    info.put("time",select.text().split("访问次数")[0].replace("发布时间:",""));
-                    info.put("amountOfReading",select.text().split("访问")[1].split(":")[1]);
+                Elements select = parse.select("div.info");
+                if (select.size()!=0) {
+                    if (!select.text().contains("来源：")) {
+                        info.put("time", select.text().trim().split("浏览次数：")[0].split("：")[1]);
+                        info.put("amountOfReading", select.select("#hits").text().trim());
+                    } else {
+                        info.put("time",select.text().split("来源：")[0].split("：")[1]);
+                        info.put("source",select.text().split("来源：")[1].split("作者：")[0]);
+                        info.put("author",select.text().split("来源：")[1].split("作者：")[1].split(" 浏览次数")[0]);
+                        info.put("amountOfReading", select.select("#hits").text().trim());
+                    }
                 }
-                String text = parse.select("#NewsCont").text().trim();
+                String text = parse.select("#article").text().trim();
                 info.put("text",text);
-                String newsId = MD5Util.getMD5String(text);
-                info.put("newsId",newsId);
-                Elements images = parse.select("#NewsCont > p > img");
-                for (Element image : images) {
-                    if (!image.attr("src").contains("http://")){
-                        String src = "http://www.51dzw.com" + image.attr("src");
-                        imgs.add(src);
-                    }else {
+                String newId = MD5Util.getMD5String(text);
+                info.put("newId",newId);
+                Elements images = parse.select("#article > div > p > img");
+                if (images.size()!=0) {
+                    for (Element image : images) {
                         String src = image.attr("src");
                         imgs.add(src);
+                        info.put("images", imgs.toString());
                     }
-                    info.put("images", imgs.toString());
                 }
 
-                info.put("crawlerId", "64");
+                info.put("crawlerId", "65");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertNews(info, "crawler_news", newsId);
+                mysqlUtil.insertNews(info, "crawler_news", newId);
                 esUtil.writeToES(info, "crawler-news-", "doc");
             } else {
                 LOGGER.info("detail null");
