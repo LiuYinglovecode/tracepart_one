@@ -39,7 +39,7 @@ public class CcoalnewsDownload {
                             info.put("title", document.select(".text-article h1").text().trim());
                             info.put("time", document.select(".date").text().trim());
                             info.put("author", document.select(".author").text().trim());
-                            String text = document.select(".content").text().trim()
+                            String text = document.select(".content").text().trim();
                             info.put("text", text);
                             String newsId = MD5Util.getMD5String(text);
                             info.put("newsId", newsId);
