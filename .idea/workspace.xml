@@ -1,36 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="GROUP_BY_SEVERITY" value="true" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="14d2349e-63a1-45ef-b99d-c5a68c289b3e" name="Default" comment="">
+    <list default="true" id="cfb5309f-3eb6-4762-9dc8-1fde9f90c3d0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log.2019-06-18" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log.2019-06-18" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CesDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CesDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CnmnDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CnmnDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CpnnDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CpnnDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/DzwDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/DzwDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/GkzhanDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/GkzhanDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JdzjDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JdzjDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JiancaiDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JiancaiDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/LmjxDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/LmjxDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MachineDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MachineDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MaiDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MaiDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MemDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MemDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/NengyuanjieDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/NengyuanjieDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/PlaDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/PlaDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/SteelcnDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/SteelcnDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/TexindexDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/TexindexDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/XianjichinaDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/XianjichinaDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/build/" />
-    <ignored path="$PROJECT_DIR$/overwrite/.gradle/" />
-    <ignored path="$PROJECT_DIR$/overwrite/build/" />
-    <ignored path="$PROJECT_DIR$/overwrite/out/" />
     <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/overwrite/.gradle/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,36 +28,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/spider">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Reptile" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Reptile" type="f1a62948:ProjectNode" />
-                <item name="Reptile" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Reptile" type="f1a62948:ProjectNode" />
-                <item name="Reptile" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Reptile" type="f1a62948:ProjectNode" />
-                <item name="Reptile" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="crawler" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -85,128 +43,39 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DzwDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/DzwDownload.java">
+    <leaf>
+      <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/settings.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
+            <state relative-caret-position="69">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GkzhanDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/GkzhanDownload.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/overwrite/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+            <state relative-caret-position="368">
+              <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CpnnDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CpnnDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="71" column="55" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CnmnDownload.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CnmnDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CinnDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CinnDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChinahightechDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/ChinahightechDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CesDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CesDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CcoalnewsDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CcoalnewsDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="970">
-              <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CableabcDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CableabcDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1487">
-              <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ca800Download.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/Ca800Download.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>password</find>
-      <find>jedis</find>
-      <find>amount_of_reading</find>
-      <find>amountOfReading</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>amountOfReading</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -224,14 +93,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="Reptile" />
+              <option name="name" value="crawler" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="Reptile" />
+                <option name="name" value="crawler" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
@@ -253,7 +122,7 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'Reptile'. [incubating]" />
+                <option name="description" value="Displays the components produced by root project 'crawler'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
@@ -267,7 +136,7 @@
                 <option name="name" value="cleanEclipseClasspath" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'Reptile'." />
+                <option name="description" value="Displays the sub-projects of root project 'crawler'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
@@ -282,12 +151,12 @@
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in root project 'Reptile'. [incubating]" />
+                <option name="description" value="Displays the dependent components of components in root project 'crawler'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'Reptile'." />
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'crawler'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
@@ -326,7 +195,7 @@
                 <option name="name" value="jar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'Reptile'. [incubating]" />
+                <option name="description" value="Displays the configuration model of root project 'crawler'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
@@ -336,7 +205,7 @@
                 <option name="name" value="processResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'Reptile' (some of the displayed tasks may belong to subprojects)." />
+                <option name="description" value="Displays the tasks runnable from root project 'crawler' (some of the displayed tasks may belong to subprojects)." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -360,7 +229,7 @@
                 <option name="name" value="compileJava" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'Reptile'." />
+                <option name="description" value="Displays the insight into a specific dependency in root project 'crawler'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
@@ -390,7 +259,7 @@
                 <option name="name" value="compileTestJava" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'Reptile'." />
+                <option name="description" value="Displays all dependencies declared in root project 'crawler'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
@@ -435,7 +304,7 @@
                 <option name="name" value="eclipseProject" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'Reptile'." />
+                <option name="description" value="Displays the properties of root project 'crawler'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
@@ -812,11 +681,11 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="10912951237626" />
+        <entry key="$PROJECT_DIR$" value="10914608801188" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="1894910891" />
         <entry key="$PROJECT_DIR$/overwrite/build.gradle" value="1905844432" />
-        <entry key="$PROJECT_DIR$/settings.gradle" value="1245768603" />
+        <entry key="$PROJECT_DIR$/settings.gradle" value="881420936" />
         <entry key="$PROJECT_DIR$/spider/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/spider/build.gradle" value="2624014974" />
         <entry key="$PROJECT_DIR$/spider/settings.gradle" value="1782164381" />
@@ -852,7 +721,7 @@
                   </entry>
                 </map>
               </option>
-              <option name="name" value="Reptile" />
+              <option name="name" value="crawler" />
               <option name="projectBuildClasspath">
                 <list>
                   <option value="E:/gradle-4.8/src/announce" />
@@ -1013,65 +882,16 @@
     </option>
     <option name="projectSyncType">
       <map>
+        <entry key="$PROJECT_DIR$/../Reptile" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../Reptile/spider" value="PREVIEW" />
         <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-        <entry key="$PROJECT_DIR$/spider" value="PREVIEW" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/Ca800ToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CableabcToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CesToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/ChinahightechToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CinnToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CnmnToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CpnnToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/DzwToRedis.java" />
-        <option value="$PROJECT_DIR$/spider/src/main/java/news/parse/maiNews.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/GkzhanToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/JdzjToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/JiancaiToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/LmjxToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/Machine365ToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/MaiToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/MembranesToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/NengyuanjieToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/PlaToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/SteelcnToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/TexindexToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/XianjichinaToRedis.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/resources/seedUrl.txt" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/resources/NewsSeedUrl.txt" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/Utils/MD5Util.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/Utils/HexUtil.java" />
-        <option value="$PROJECT_DIR$/spider/src/main/java/util/mysqlUtil.java" />
-        <option value="$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/mainEntry/SeedMainEntry.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/Utils/NewsMd5.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CcoalnewsDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/ChinahightechDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CinnDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/Ca800Download.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/mainEntry/DownloadMainEntry.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CableabcDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/PlaDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/XianjichinaDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/TexindexDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/SteelcnDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/NengyuanjieDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MemDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MaiDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MachineDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/LmjxDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JiancaiDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JdzjDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/GkzhanDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/DzwDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CpnnDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CnmnDownload.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CesDownload.java" />
+        <option value="$PROJECT_DIR$/settings.gradle" />
       </list>
     </option>
   </component>
@@ -1092,144 +912,35 @@
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
-      <hideEmptyPackages ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mainEntry" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="parse" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="parse" type="462c0819:PsiDirectoryNode" />
-              <item name="news" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="parse" type="462c0819:PsiDirectoryNode" />
-              <item name="news" type="462c0819:PsiDirectoryNode" />
-              <item name="download" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reptile" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reptile" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="jedis&#9;FILE&#9;file://E:/code/Reptile/spider/src/main/java/ipregion/JedisMultiPool.java&#10;ES&#9;FILE&#9;file://E:/code/Reptile/spider/src/main/java/es/ESClient.java&#10;mysql&#9;PSI&#9;JAVA://util.mysqlUtil&#10;qiling&#9;PSI&#9;JAVA://spider.company.qilingConpany&#10;main&#9;PSI&#9;JAVA://ipregion.ProxyServiceMain" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BDE" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="E:/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Utils" />
-      <recent name="seedUrl.news.ca800" />
-      <recent name="seedUrl.Utils" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\code\Reptile\overwrite" />
-      <recent name="E:\code\Reptile\overwrite\src\main" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1243,79 +954,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.NewsMd5">
+  <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
-    <configuration name="CcoalnewsMainEntry" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="seedUrl.news.ccoalnews.CcoalnewsMainEntry" />
-      <module name="overwrite_main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="parse.news.toRedis.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="NewsMd5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Utils.NewsMd5" />
-      <module name="overwrite_main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="SeedMainEntry" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="mainEntry.SeedMainEntry" />
-      <module name="overwrite_main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="mainEntry.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="Reptile [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-    </configuration>
-    <configuration name="Reptile:spider [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/spider" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assemble" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1355,78 +999,57 @@
       <properties />
       <listeners />
     </configuration>
-    <list>
-      <item itemvalue="Application.CcoalnewsMainEntry" />
-      <item itemvalue="Gradle.Reptile:spider [assemble]" />
-      <item itemvalue="Application.SeedMainEntry" />
-      <item itemvalue="Gradle.Reptile [build]" />
-      <item itemvalue="Application.NewsMd5" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.NewsMd5" />
-        <item itemvalue="Application.CcoalnewsMainEntry" />
-        <item itemvalue="Application.SeedMainEntry" />
-        <item itemvalue="Gradle.Reptile [build]" />
-        <item itemvalue="Gradle.Reptile:spider [assemble]" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="14d2349e-63a1-45ef-b99d-c5a68c289b3e" name="Default" comment="" />
-      <created>1559704970688</created>
+      <changelist id="cfb5309f-3eb6-4762-9dc8-1fde9f90c3d0" name="Default" comment="" />
+      <created>1561364745686</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1559704970688</updated>
-      <workItem from="1559704971879" duration="34640000" />
-      <workItem from="1560734224634" duration="56822000" />
-      <workItem from="1561338448583" duration="6960000" />
+      <updated>1561364745686</updated>
+      <workItem from="1561364748463" duration="1441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98422000" />
+    <option name="totallyTimeSpent" value="1441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="6" />
-      <window_info anchor="bottom" id="TODO" order="13" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info id="Image Layers" order="1" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3293348" />
-      <window_info anchor="right" id="Maven Projects" order="0" />
-      <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="4" weight="0.0" />
-      <window_info anchor="bottom" id="Run" order="9" weight="0.11995638" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.18923241" />
-      <window_info anchor="bottom" id="Tail" order="5" />
-      <window_info anchor="right" id="Database" order="2" />
-      <window_info anchor="right" id="Gradle" order="3" weight="0.22707888" />
-      <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="10" weight="0.06324973" />
-      <window_info anchor="bottom" id="Messages" order="3" weight="0.3293348" />
-      <window_info anchor="right" id="Commander" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.6423119" />
-      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
-      <window_info anchor="bottom" id="Build" order="0" weight="0.23773174" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection Results" order="9" weight="0.10359869" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3293348" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21801706" />
+      <window_info anchor="bottom" id="Build" weight="0.21483096" />
+      <window_info anchor="bottom" id="Tail" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Gradle" weight="0.15884861" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1435,463 +1058,21 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CcoalnewsToRedis.java</url>
-          <line>19</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CcoalnewsToRedis.java</url>
-          <line>42</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/spider/src/main/java/ipregion/ProxyDao.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/spider/src/main/java/ipregion/ProxyServiceMain.java</url>
-          <line>63</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/overwrite/src/main/java/mainEntry/SeedMainEntry.java</url>
-          <line>28</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/overwrite/src/main/java/Utils/JedisMultiCluster.java</url>
-          <line>89</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/overwrite/src/main/java/Utils/NewsMd5.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/DzwDownload.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="17" />
-    </breakpoint-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>NewsMd5.newsMd5(str)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>txt.substring(txt.length() - 25, txt.length())</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>txt.substring(0, 25)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>txt.length()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>reader.readLine()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>line</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>jedis.smembers(key)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>jedis.scard(key).intValue()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>nestPage.select(&quot;a&quot;).attr(&quot;href&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/maiNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="20" column="70" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/membranes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="27" column="110" lean-forward="true" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/nengyuanjieNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="28" column="71" lean-forward="true" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/plaNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="25" column="71" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/steelcnNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="28" column="67" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/texindexNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="38" column="63" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/resources/NewsSeedUrl.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/jiancaiNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-598">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/ca800News.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="28" selection-start-line="28" selection-end-line="30" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/cinn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="125" column="57" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/Utils/HexUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="22" column="46" lean-forward="true" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="1957" column="18" selection-start-line="1957" selection-start-column="18" selection-end-line="1957" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/MD5Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="74" column="82" lean-forward="true" selection-start-line="74" selection-start-column="82" selection-end-line="74" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/overwrite/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="122" column="14" lean-forward="true" selection-start-line="122" selection-start-column="14" selection-end-line="122" selection-end-column="14" />
+        <state relative-caret-position="368">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/mysqlUtil.java">
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="698" column="21" lean-forward="true" selection-start-line="698" selection-start-column="21" selection-end-line="698" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/xianjichina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-884">
-          <caret line="27" column="76" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/Utils/RedisUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntry/SeedMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="116" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/news/parse/cableabcNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="124" selection-start-line="124" selection-end-line="189" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/Utils/MD5Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/Utils/NewsMd5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/Ca800ToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntry/DownloadMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="95" column="56" selection-start-line="95" selection-start-column="56" selection-end-line="95" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/PlaDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/XianjichinaDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/TexindexDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/SteelcnDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/NengyuanjieDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MemDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MaiDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/MachineDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/LmjxDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="87" column="50" selection-start-line="87" selection-start-column="50" selection-end-line="87" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JiancaiDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JdzjDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="44" column="46" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/GkzhanDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/DzwDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CpnnDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="71" column="55" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CinnDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/ChinahightechDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CesDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CcoalnewsDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="970">
-          <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CableabcDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1487">
-          <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/Ca800Download.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CnmnDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+        <state relative-caret-position="69">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
