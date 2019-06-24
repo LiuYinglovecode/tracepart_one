@@ -43,7 +43,7 @@ public class MemDownload {
                 for (Element e : imgList) {
                     imgs.add(baseUrl + e.attr("src"));
                 }
-                info.put("newId",newId);
+                info.put("newId", newId);
                 info.put("title", title);
                 info.put("author", author);
                 info.put("time", time);

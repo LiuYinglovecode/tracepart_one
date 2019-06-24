@@ -31,25 +31,25 @@ public class JdzjDownload {
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("div.midbox1 h1").text().trim();
-                info.put("title",title);
+                info.put("title", title);
                 Elements select = parse.select("div.midbox1 > p");
-                if (select.text().contains("来源:")){
-                    info.put("time",select.text().split("来源")[0].replace("发布日期",""));
-                    info.put("source",select.text().split("来源")[1].split(":")[1]);
+                if (select.text().contains("来源:")) {
+                    info.put("time", select.text().split("来源")[0].replace("发布日期", ""));
+                    info.put("source", select.text().split("来源")[1].split(":")[1]);
                 }
                 String text = parse.select("div.midboxcont").text().trim();
-                info.put("text",text);
+                info.put("text", text);
                 String newId = NewsMd5.newsMd5(text);
-                info.put("newId",newId);
+                info.put("newId", newId);
                 Elements images = parse.select("div.midboxcont p img");
                 for (Element image : images) {
-                    if (!image.attr("src").contains("http://")){
+                    if (!image.attr("src").contains("http://")) {
                         String src = "http:" + image.attr("src");
                         imgs.add(src);
-                    }else {
+                    } else {
                         String src = image.attr("src");
                         imgs.add(src);
                     }

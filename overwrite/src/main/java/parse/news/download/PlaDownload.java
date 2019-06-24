@@ -37,11 +37,11 @@ public class PlaDownload {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 //链接地址
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 //标题
                 String title = parse.select("div.title h2").text();
-                info.put("title",title);
+                info.put("title", title);
                 Elements time = parse.select("div.meta > span");
                 //发布时间及来源
                 for (Element element : time) {
@@ -53,7 +53,7 @@ public class PlaDownload {
                 }
                 //图片
                 Elements images = parse.select("div.content p img");
-                if (images.size()!=0) {
+                if (images.size() != 0) {
                     for (Element image : images) {
                         String src = urllink + image.attr("src");
                         imgs.add(src);
@@ -62,21 +62,18 @@ public class PlaDownload {
                 }
                 //正文
                 Elements text = parse.select("div.content");
-                if (text.size()!=0){
+                if (text.size() != 0) {
                     String trim = text.text().trim();
-                    info.put("text",trim);
+                    info.put("text", trim);
                     String newsId = NewsMd5.newsMd5(trim);
-                    info.put("newsId",newsId);
-
-
-
-                info.put("crawlerId", "68");
-                info.put("timestamp", timestamp.format(new Date()));
-                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-                info.put("@timestamp", timestamp2.format(new Date()));
-                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertNews(info, "crawler_news", newsId);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+                    info.put("newsId", newsId);
+                    info.put("crawlerId", "68");
+                    info.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    info.put("@timestamp", timestamp2.format(new Date()));
+                    info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    mysqlUtil.insertNews(info, "crawler_news", newsId);
+                    esUtil.writeToES(info, "crawler-news-", "doc");
                 }
 
             } else {

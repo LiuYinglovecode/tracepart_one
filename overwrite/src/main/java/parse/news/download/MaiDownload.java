@@ -31,28 +31,28 @@ public class MaiDownload {
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("#title").text().trim();
-                info.put("title",title);
+                info.put("title", title);
                 Elements select = parse.select("div.info");
-                if (select.size()!=0) {
+                if (select.size() != 0) {
                     if (!select.text().contains("来源：")) {
                         info.put("time", select.text().trim().split("浏览次数：")[0].split("：")[1]);
                         info.put("amountOfReading", select.select("#hits").text().trim());
                     } else {
-                        info.put("time",select.text().split("来源：")[0].split("：")[1]);
-                        info.put("source",select.text().split("来源：")[1].split("作者：")[0]);
-                        info.put("author",select.text().split("来源：")[1].split("作者：")[1].split(" 浏览次数")[0]);
+                        info.put("time", select.text().split("来源：")[0].split("：")[1]);
+                        info.put("source", select.text().split("来源：")[1].split("作者：")[0]);
+                        info.put("author", select.text().split("来源：")[1].split("作者：")[1].split(" 浏览次数")[0]);
                         info.put("amountOfReading", select.select("#hits").text().trim());
                     }
                 }
                 String text = parse.select("#article").text().trim();
-                info.put("text",text);
+                info.put("text", text);
                 String newId = NewsMd5.newsMd5(text);
-                info.put("newId",newId);
+                info.put("newId", newId);
                 Elements images = parse.select("#article > div > p > img");
-                if (images.size()!=0) {
+                if (images.size() != 0) {
                     for (Element image : images) {
                         String src = image.attr("src");
                         imgs.add(src);

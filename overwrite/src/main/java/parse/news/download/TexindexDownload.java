@@ -32,8 +32,6 @@ public class TexindexDownload {
     private static ESUtil esUtil = new ESUtil();
 
 
-
-
     //  新闻信息
     public void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
@@ -50,7 +48,7 @@ public class TexindexDownload {
             String text = document.select("div#zoom").text().trim();
             newsInfo.put("text", text);
             String newsId = NewsMd5.newsMd5(text);
-            newsInfo.put("newsId",newsId);
+            newsInfo.put("newsId", newsId);
             Elements src = document.select("div#zoom p img");
             if (src.size() != 0) {
                 for (Element element : src) {

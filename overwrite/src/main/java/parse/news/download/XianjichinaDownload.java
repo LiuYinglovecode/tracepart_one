@@ -50,7 +50,7 @@ public class XianjichinaDownload {
                     info.put("images", String.valueOf(imgs));
                     info.put("url", url);
                     info.put("text", text);
-                    info.put("newsId",newsId);
+                    info.put("newsId", newsId);
                     info.put("source", source);
                     info.put("time", time);
                     info.put("title", title);
@@ -77,7 +77,7 @@ public class XianjichinaDownload {
                     info.put("images", imgs);
                     info.put("url", url);
                     info.put("text", text);
-                    info.put("newsId",newsId);
+                    info.put("newsId", newsId);
                     info.put("source", source);
                     info.put("time", time);
                     info.put("title", title);

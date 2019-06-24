@@ -25,6 +25,7 @@ public class CpnnDownload {
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
+
     /*
 新闻内容：有些新闻有很多图片，要拿到所有的图片链接，
         把链接放到集合中，在进行存储。
@@ -36,13 +37,13 @@ public class CpnnDownload {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
             if (html != null) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 Elements href = document.select("div.cpnn-minnav a");
-                if (href.attr("href").equals("../")){
-                    newsInfo.put("plate",href.text().trim());
+                if (href.attr("href").equals("../")) {
+                    newsInfo.put("plate", href.text().trim());
                 }
-                if (href.attr("href").equals("./")){
-                    newsInfo.put("plate",href.text().trim());
+                if (href.attr("href").equals("./")) {
+                    newsInfo.put("plate", href.text().trim());
                 }
 
                 newsInfo.put("title", document.select("div.cpnn-con-title h1").text().trim());//标题
@@ -51,8 +52,8 @@ public class CpnnDownload {
                 newsInfo.put("source", select.split("日期")[0].split("：")[1]);
                 Elements font = document.select("font span font");
                 for (Element element : font) {
-                    if (element.text().contains("责任编辑：")){
-                        newsInfo.put("author",element.text().trim().split("：")[1]);
+                    if (element.text().contains("责任编辑：")) {
+                        newsInfo.put("author", element.text().trim().split("：")[1]);
                     }
                 }
                 Elements img = document.select("div.Custom_UnionStyle img");
@@ -79,12 +80,12 @@ public class CpnnDownload {
                         esUtil.writeToES(newsInfo, "crawler-news-", "doc");
                     }
                 }
-            }else {
+            } else {
                 LOGGER.info("页面不存在！");
             }
 //            newsInfo.put("plate",plate);//板块
 
-        } catch(Exception e){
+        } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }

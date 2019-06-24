@@ -31,17 +31,17 @@ public class JiancaiDownload {
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("div.newsInfo > h3").text().trim();
-                info.put("title",title);
-                info.put("source",parse.select("span.laiyuan").text().trim().replace("来源：",""));
-                info.put("time",parse.select("span.time").text().trim().replace("时间：",""));
-                info.put("amountOfReading",parse.select("span.times").text().trim().replace("访问：","").replace("次",""));
+                info.put("title", title);
+                info.put("source", parse.select("span.laiyuan").text().trim().replace("来源：", ""));
+                info.put("time", parse.select("span.time").text().trim().replace("时间：", ""));
+                info.put("amountOfReading", parse.select("span.times").text().trim().replace("访问：", "").replace("次", ""));
                 String text = parse.select("div.newsContent").text().trim();
-                info.put("text",text);
+                info.put("text", text);
                 String newsId = NewsMd5.newsMd5(text);
-                info.put("newsId",newsId);
+                info.put("newsId", newsId);
                 Elements images = parse.select("div.newsContent p img");
                 for (Element image : images) {
                     String src = image.attr("src");

@@ -46,7 +46,7 @@ public class MachineDownload {
 
                 Elements title = gbk.select("div.newliIn_ti");
                 if (title.size() == 0) {
-                    String title2= gbk.select("div.left > div > h1").text().trim();
+                    String title2 = gbk.select("div.left > div > h1").text().trim();
                     newsInfo.put("title", gbk.select("div.left > div > h1").text().trim());
                 } else {
                     newsInfo.put("title", title.text());
@@ -59,9 +59,9 @@ public class MachineDownload {
                     newsInfo.put("time", time.text().trim());
                 }
                 String trim = gbk.select("#ArticleCnt").text().trim();
-                newsInfo.put("text",trim);
+                newsInfo.put("text", trim);
                 String newId = NewsMd5.newsMd5(trim);
-                newsInfo.put("newId",newId);
+                newsInfo.put("newId", newId);
                 String text = gbk.select("#ArticleCnt").text();
                 String regEx = "来源：[\u4e00-\u9fa5]*";
                 Pattern pattern = Pattern.compile(regEx);

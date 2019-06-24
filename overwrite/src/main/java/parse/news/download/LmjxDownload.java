@@ -27,6 +27,7 @@ public class LmjxDownload {
 
     /**
      * 新闻信息：解析获取信息，存入数据库及ES
+     *
      * @param url
      */
     public void newsInfo(String url) {
@@ -35,31 +36,31 @@ public class LmjxDownload {
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("div > h1:eq(0)").text();
-                info.put("title",title);
+                info.put("title", title);
                 Elements time = parse.select("div.pinf.cl span.time");
                 if (time.size() != 0) {
                     info.put("time", time.text().trim());
                 }
                 Elements time1 = parse.select("div.details-timer.left");
-                if (time1.size()!=0) {
+                if (time1.size() != 0) {
                     info.put("time", time1.text().trim());
                 }
                 String select = parse.select("div.contentbox div.info").text().trim();
-                if (select.contains("来源：")){
-                    info.put("time",select.split("来源：")[0]);
-                    info.put("source",select.split("来源：")[1].replace("，转载请标明出处",""));
+                if (select.contains("来源：")) {
+                    info.put("time", select.split("来源：")[0]);
+                    info.put("source", select.split("来源：")[1].replace("，转载请标明出处", ""));
                 }
                 Elements images = parse.select("div.content p img");
-                if (images.size()!=0) {
+                if (images.size() != 0) {
                     for (Element image : images) {
                         String src = image.attr("src");
                         imgs.add(src);
                         info.put("images", imgs.toString());
                     }
-                }else {
+                } else {
                     Elements text1 = parse.select("div.pageleft content p img");
                     for (Element image : text1) {
                         String src = image.attr("src");
@@ -68,11 +69,11 @@ public class LmjxDownload {
                     }
                 }
                 Elements text = parse.select("div.content");
-                if (text.size()!=0){
+                if (text.size() != 0) {
                     String trim = text.text().trim();
-                    info.put("text",trim);
+                    info.put("text", trim);
                     String newId = MD5Util.getMD5String(trim);
-                    info.put("newId",newId);
+                    info.put("newId", newId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -80,12 +81,12 @@ public class LmjxDownload {
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newId);
                     esUtil.writeToES(info, "crawler-news-", "doc");
-                }else {
+                } else {
                     Elements text1 = parse.select("div.pageleft content");
                     String trim = text1.text().trim();
-                    info.put("text",trim);
+                    info.put("text", trim);
                     String newId = NewsMd5.newsMd5(trim);
-                    info.put("newId",newId);
+                    info.put("newId", newId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

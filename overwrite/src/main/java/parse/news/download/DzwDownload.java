@@ -33,25 +33,25 @@ public class DzwDownload {
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
-                Document parse = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                info.put("url", url);
+                Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 String title = parse.select("#TechDetail > h1").text().trim();
-                info.put("title",title);
+                info.put("title", title);
                 Elements select = parse.select("#TechDetail > p");
-                if (select.text().contains("访问次数")){
-                    info.put("time",select.text().split("访问次数")[0].replace("发布时间:",""));
-                    info.put("amountOfReading",select.text().split("访问")[1].split(":")[1]);
+                if (select.text().contains("访问次数")) {
+                    info.put("time", select.text().split("访问次数")[0].replace("发布时间:", ""));
+                    info.put("amountOfReading", select.text().split("访问")[1].split(":")[1]);
                 }
                 String text = parse.select("#NewsCont").text().trim();
-                info.put("text",text);
+                info.put("text", text);
                 String newsId = NewsMd5.newsMd5(text);
-                info.put("newsId",newsId);
+                info.put("newsId", newsId);
                 Elements images = parse.select("#NewsCont > p > img");
                 for (Element image : images) {
-                    if (!image.attr("src").contains("http://")){
+                    if (!image.attr("src").contains("http://")) {
                         String src = "http://www.51dzw.com" + image.attr("src");
                         imgs.add(src);
-                    }else {
+                    } else {
                         String src = image.attr("src");
                         imgs.add(src);
                     }

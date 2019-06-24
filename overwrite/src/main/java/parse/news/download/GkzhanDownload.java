@@ -38,7 +38,7 @@ public class GkzhanDownload {
             String text = parse.select("#newsContent").text().trim();
             newsInfo.put("text", text);
             String newsId = NewsMd5.newsMd5(text);
-            newsInfo.put("newsId",newsId);
+            newsInfo.put("newsId", newsId);
             Elements list = parse.select("div.leftTop.clearfix > p > span");
             for (Element element : list) {
                 if (element.text().contains("来源：")) {

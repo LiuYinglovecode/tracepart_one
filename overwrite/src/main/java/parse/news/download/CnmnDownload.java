@@ -41,7 +41,7 @@ public class CnmnDownload {
                 String text = document.select("#txtcont").text().trim();
                 newsInfo.put("text", text);//新闻内容
                 String newsId = NewsMd5.newsMd5(text);
-                newsInfo.put("newsId",newsId);
+                newsInfo.put("newsId", newsId);
                 Elements split = document.select("p.info.clearfix.text-center > span:nth-child(1)");
                 if (split.text().contains("作者：")) {
                     newsInfo.put("author", split.text().split("作者：")[1]);//作者
