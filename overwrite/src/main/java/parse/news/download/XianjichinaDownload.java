@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -39,7 +40,7 @@ public class XianjichinaDownload {
                     String source = document.select(".public-time").text().trim().split("文章来源：", 2)[1].split("发布时间：", 2)[0];
                     String time = document.select(".public-time").text().trim().split("发布时间：", 2)[1];
                     String text = document.select(".main-text").text().trim();
-                    String newsId = MD5Util.getMD5String(text);
+                    String newsId = NewsMd5.newsMd5(text);
                     Elements imgList = document.select(".main-text img");
                     if (!"0".equals(String.valueOf(imgList.size()))) {
                         for (Element e : imgList) {
@@ -66,7 +67,7 @@ public class XianjichinaDownload {
                     String source = document.select(".public-time").text().trim().split("来源：", 2)[1];
                     String time = document.select(".public-time").text().trim().split("来源：", 2)[0];
                     String text = document.select(".newcon-list").text().trim();
-                    String newsId = MD5Util.getMD5String(text);
+                    String newsId = NewsMd5.newsMd5(text);
                     Elements imgList = document.select(".newcon-list img");
                     if (!"0".equals(String.valueOf(imgList.size()))) {
                         for (Element e : imgList) {

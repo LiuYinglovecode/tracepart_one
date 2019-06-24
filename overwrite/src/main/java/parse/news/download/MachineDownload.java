@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.MD5Util;
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -59,7 +60,7 @@ public class MachineDownload {
                 }
                 String trim = gbk.select("#ArticleCnt").text().trim();
                 newsInfo.put("text",trim);
-                String newId = MD5Util.getMD5String(trim);
+                String newId = NewsMd5.newsMd5(trim);
                 newsInfo.put("newId",newId);
                 String text = gbk.select("#ArticleCnt").text();
                 String regEx = "来源：[\u4e00-\u9fa5]*";

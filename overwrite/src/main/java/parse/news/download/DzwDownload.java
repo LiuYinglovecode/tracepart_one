@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -43,7 +44,7 @@ public class DzwDownload {
                 }
                 String text = parse.select("#NewsCont").text().trim();
                 info.put("text",text);
-                String newsId = MD5Util.getMD5String(text);
+                String newsId = NewsMd5.newsMd5(text);
                 info.put("newsId",newsId);
                 Elements images = parse.select("#NewsCont > p > img");
                 for (Element image : images) {

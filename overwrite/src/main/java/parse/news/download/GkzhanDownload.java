@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.MD5Util;
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -36,7 +37,7 @@ public class GkzhanDownload {
             newsInfo.put("time", parse.select("div.leftTop.clearfix > p > span:nth-child(1)").text().trim());
             String text = parse.select("#newsContent").text().trim();
             newsInfo.put("text", text);
-            String newsId = MD5Util.getMD5String(text);
+            String newsId = NewsMd5.newsMd5(text);
             newsInfo.put("newsId",newsId);
             Elements list = parse.select("div.leftTop.clearfix > p > span");
             for (Element element : list) {

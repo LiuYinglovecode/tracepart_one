@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -60,7 +61,7 @@ public class CinnDownload {
                 info.put("images", imgs.toString());
                 String text = document.select(".detail_content").text().trim();
                 info.put("text", text);
-                String newsId = MD5Util.getMD5String(text);
+                String newsId = NewsMd5.newsMd5(text);
                 info.put("newsId", newsId);
                 info.put("crawlerId", "28");
                 info.put("timestamp", timestamp.format(new Date()));

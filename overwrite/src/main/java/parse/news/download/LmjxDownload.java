@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.MD5Util;
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -83,7 +84,7 @@ public class LmjxDownload {
                     Elements text1 = parse.select("div.pageleft content");
                     String trim = text1.text().trim();
                     info.put("text",trim);
-                    String newId = MD5Util.getMD5String(trim);
+                    String newId = NewsMd5.newsMd5(trim);
                     info.put("newId",newId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));

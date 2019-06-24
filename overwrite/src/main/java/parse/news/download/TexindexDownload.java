@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
@@ -48,7 +49,7 @@ public class TexindexDownload {
             newsInfo.put("source", select.text().split("/ ")[1].split(" ")[2]);
             String text = document.select("div#zoom").text().trim();
             newsInfo.put("text", text);
-            String newsId = MD5Util.getMD5String(text);
+            String newsId = NewsMd5.newsMd5(text);
             newsInfo.put("newsId",newsId);
             Elements src = document.select("div#zoom p img");
             if (src.size() != 0) {

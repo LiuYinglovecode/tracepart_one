@@ -9,7 +9,7 @@ public class NewsMd5 {
     public static String newsMd5(String text) {
         try {
             if (null != text) {
-                if (text.length() >= 51) {
+                if (text.length() > 50) {
                     return MD5Util.getMD5String(text.substring(0, 25) + text.substring(text.length() - 25, text.length()));
                 } else {
                     return MD5Util.getMD5String(text);

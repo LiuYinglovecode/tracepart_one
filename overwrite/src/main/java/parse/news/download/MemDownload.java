@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.MD5Util;
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -36,7 +37,7 @@ public class MemDownload {
                 String author = document.select(".time").text().trim().split("/", 2)[0];
                 String time = document.select(".time").text().trim().split("/", 2)[1].split("：", 2)[1];
                 String text = document.select(".newstext").text().trim();
-                String newId = MD5Util.getMD5String(text);
+                String newId = NewsMd5.newsMd5(text);
                 String url = detailUrl;
                 Elements imgList = document.select(".newstext img");
                 for (Element e : imgList) {

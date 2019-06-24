@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.MD5Util;
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -41,7 +42,7 @@ public class CcoalnewsDownload {
                             info.put("author", document.select(".author").text().trim());
                             String text = document.select(".content").text().trim();
                             info.put("text", text);
-                            String newsId = MD5Util.getMD5String(text);
+                            String newsId = NewsMd5.newsMd5(text);
                             info.put("newsId", newsId);
                             Elements imgList = document.select(".content img");
                             for (Element e : imgList) {

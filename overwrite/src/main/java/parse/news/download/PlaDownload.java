@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -64,7 +65,7 @@ public class PlaDownload {
                 if (text.size()!=0){
                     String trim = text.text().trim();
                     info.put("text",trim);
-                    String newsId = MD5Util.getMD5String(trim);
+                    String newsId = NewsMd5.newsMd5(trim);
                     info.put("newsId",newsId);
 
 

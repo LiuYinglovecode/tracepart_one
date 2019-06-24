@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -67,7 +68,7 @@ public class CpnnDownload {
                         text.select("div.cpnn-con-zhenwen div p b").remove();
                         String text1 = text.text().replace("附件：", "");
                         newsInfo.put("text", text1);
-                        String newsId = MD5Util.getMD5String(text1);
+                        String newsId = NewsMd5.newsMd5(text1);
                         newsInfo.put("newsId", newsId);
                         newsInfo.put("crawlerId", "58");
                         newsInfo.put("timestamp", timestamp.format(new Date()));

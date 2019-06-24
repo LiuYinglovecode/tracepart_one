@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.MD5Util;
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -48,7 +49,7 @@ public class MaiDownload {
                 }
                 String text = parse.select("#article").text().trim();
                 info.put("text",text);
-                String newId = MD5Util.getMD5String(text);
+                String newId = NewsMd5.newsMd5(text);
                 info.put("newId",newId);
                 Elements images = parse.select("#article > div > p > img");
                 if (images.size()!=0) {

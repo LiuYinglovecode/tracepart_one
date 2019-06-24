@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.MD5Util;
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -39,7 +40,7 @@ public class JiancaiDownload {
                 info.put("amountOfReading",parse.select("span.times").text().trim().replace("访问：","").replace("次",""));
                 String text = parse.select("div.newsContent").text().trim();
                 info.put("text",text);
-                String newsId = MD5Util.getMD5String(text);
+                String newsId = NewsMd5.newsMd5(text);
                 info.put("newsId",newsId);
                 Elements images = parse.select("div.newsContent p img");
                 for (Element image : images) {

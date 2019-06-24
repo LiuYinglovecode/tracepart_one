@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -56,7 +57,7 @@ public class Ca800Download {
                 Elements text = document.select("div.newsdetail_con");//新闻内容
                 if (text.size() != 0) {
                     newsInfo.put("text", text.text());
-                    String newsId = MD5Util.getMD5String(text.text());
+                    String newsId = NewsMd5.newsMd5(text.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("div > img");
                     if (img.size() != 0) {
@@ -76,7 +77,7 @@ public class Ca800Download {
                 } else {
                     Elements text1 = document.select("div.newsdetail.border.fl div.detail");//新闻内容
                     newsInfo.put("text", text1.text());
-                    String newsId = MD5Util.getMD5String(text1.text());
+                    String newsId = NewsMd5.newsMd5(text1.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text1.select("p.MsoNormal img");
                     if (img.size() != 0) {

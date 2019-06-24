@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -39,7 +40,7 @@ public class CnmnDownload {
                 newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1]);//来源
                 String text = document.select("#txtcont").text().trim();
                 newsInfo.put("text", text);//新闻内容
-                String newsId = MD5Util.getMD5String(text);
+                String newsId = NewsMd5.newsMd5(text);
                 newsInfo.put("newsId",newsId);
                 Elements split = document.select("p.info.clearfix.text-center > span:nth-child(1)");
                 if (split.text().contains("作者：")) {

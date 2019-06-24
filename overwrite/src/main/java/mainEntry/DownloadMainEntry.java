@@ -47,6 +47,9 @@ public class DownloadMainEntry {
                 if (taskName.contains("www.ca800.com")) {
                     Ca800Download ca800Download = new Ca800Download();
                     ca800Download.newsInfo(taskName);
+                } else if (taskName.contains("news.cableabc.com")) {
+                    CableabcDownload cableabcDownload = new CableabcDownload();
+                    cableabcDownload.newsInfo(taskName);
                 } else if (taskName.contains("www.ces.cn")) {
                     CesDownload cesDownload = new CesDownload();
                     cesDownload.newsInfo(taskName);
@@ -83,6 +86,24 @@ public class DownloadMainEntry {
                 } else if (taskName.contains("www.86mai.com")) {
                     MaiDownload maiDownload = new MaiDownload();
                     maiDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.membranes.com.cn")) {
+                    MemDownload memDownload = new MemDownload();
+                    memDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.nengyuanjie.net")) {
+                    NengyuanjieDownload nengyuanjieDownload = new NengyuanjieDownload();
+                    nengyuanjieDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.51pla.com")) {
+                    PlaDownload plaDownload = new PlaDownload();
+                    plaDownload.newsInfo(taskName);
+                } else if (taskName.contains("news.steelcn.cn")) {
+                    SteelcnDownload steelcnDownload = new SteelcnDownload();
+                    steelcnDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.texindex.com.cn")) {
+                    TexindexDownload texindexDownload = new TexindexDownload();
+                    texindexDownload.newsInfo(taskName);
+                } else if (taskName.contains("www.xianjichina.com")) {
+                    XianjichinaDownload xianjichinaDownload = new XianjichinaDownload();
+                    xianjichinaDownload.detail(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

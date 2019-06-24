@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -25,7 +26,7 @@ public class CesDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
     //新闻内容
-    private void newsInfo(String url) {
+    public void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
         newsInfo.put("url", url);
@@ -47,7 +48,7 @@ public class CesDownload {
                 Elements text = document.select("#article.content");//新闻内容
                 if (text.size() != 0) {
                     newsInfo.put("text", text.text());
-                    String newsId = MD5Util.getMD5String(text.text());
+                    String newsId = NewsMd5.newsMd5(text.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("div img");
                     if (img.size() != 0) {

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
@@ -62,7 +63,7 @@ public class SteelcnDownload {
 
             String text = document.select("div.art_main").text().trim();
             newsInfo.put("text", text);//新闻内容
-            String newsId = MD5Util.getMD5String(text);
+            String newsId = NewsMd5.newsMd5(text);
             newsInfo.put("newsId",newsId);
             newsInfo.put("crawlerId", "48");
             newsInfo.put("timestamp", timestamp.format(new Date()));

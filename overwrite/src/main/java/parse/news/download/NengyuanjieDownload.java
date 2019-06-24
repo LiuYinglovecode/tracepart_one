@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -53,7 +54,7 @@ public class NengyuanjieDownload {
                     if (text.size() != 0) {
                         String text1 = text.text();
                         newsInfo.put("text", text1);
-                        String newsId = MD5Util.getMD5String(text1);
+                        String newsId = NewsMd5.newsMd5(text1);
                         newsInfo.put("newsId", newsId);
 
                         newsInfo.put("crawlerId", "60");

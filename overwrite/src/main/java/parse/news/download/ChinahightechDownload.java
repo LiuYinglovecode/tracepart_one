@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -48,7 +49,7 @@ public class ChinahightechDownload {
                     newsInfo.put("author", document.select("div.content p").last().text().split("：")[1].replace(")", ""));//作者
                 }
                 String text = document.select("div.content").text().trim();
-                String newsId = MD5Util.getMD5String(text);
+                String newsId = NewsMd5.newsMd5(text);
                 newsInfo.put("text", text);//新闻内容
                 newsInfo.put("newsId", newsId);
                 Elements img = document.select("div.content p img");
