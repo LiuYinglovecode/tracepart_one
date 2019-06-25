@@ -2,6 +2,7 @@ package parse.company.download;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,13 +18,25 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 
 public class QiyiDownload {
     private static final Logger LOGGER = LoggerFactory.getLogger(QiyiDownload.class);
+    private static java.util.Map<String, String> Map = null;
+
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
+
+    private void insertToMySQL(JSONObject companyInfo) {
+        Map = (Map) companyInfo;
+        if (updateToMySQL.dataUpdate(Map)) {
+            LOGGER.info("插入中 : " + Map.toString());
+        }
+    }
+
+
 
     //企业信息
     public void companyInfo(String url) {
@@ -85,12 +98,13 @@ public class QiyiDownload {
             }
 
             companyInfo.put("url", url);//链接地址
-            companyInfo.put("crawlerId", "53");
+            companyInfo.put("crawlerId", "70");
             companyInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            esUtil.writeToES(companyInfo, "crawler-news-", "doc");
+            insertToMySQL(companyInfo);
+            esUtil.writeToES(companyInfo, "crawler-company-", "doc");
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

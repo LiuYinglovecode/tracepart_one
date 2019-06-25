@@ -23,7 +23,7 @@ import java.util.*;
  */
 public class XianjichinaDownload {
     private static final Logger LOGGER = LoggerFactory.getLogger(XianjichinaDownload.class);
-    private static String baseUrl = "https://www.XianjichinaDownload.com";
+    private static String baseUrl = "https://www.xianjichina.com";
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
