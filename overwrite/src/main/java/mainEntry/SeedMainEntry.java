@@ -2,6 +2,7 @@ package mainEntry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import parse.company.toRedis.QiyiToRedis;
 import parse.news.toRedis.*;
 
 import java.io.BufferedReader;
@@ -114,6 +115,9 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.xianjichina.com")) {
                     XianjichinaToRedis xianjichinaToRedis = new XianjichinaToRedis();
                     xianjichinaToRedis.homepage(taskName);
+                }else if (taskName.contains("supplier.71.net")) {
+                    QiyiToRedis qiyiToRedis = new QiyiToRedis();
+                    qiyiToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

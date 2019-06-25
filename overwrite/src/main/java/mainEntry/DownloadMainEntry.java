@@ -3,6 +3,7 @@ package mainEntry;
 import Utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import parse.company.toRedis.QiyiToRedis;
 import parse.news.download.*;
 import parse.news.toRedis.*;
 
@@ -104,6 +105,9 @@ public class DownloadMainEntry {
                 } else if (taskName.contains("www.xianjichina.com")) {
                     XianjichinaDownload xianjichinaDownload = new XianjichinaDownload();
                     xianjichinaDownload.detail(taskName);
+                }else if (taskName.contains("supplier.71.net")) {
+                    QiyiToRedis qiyiToRedis = new QiyiToRedis();
+                    qiyiToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
