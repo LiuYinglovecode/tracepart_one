@@ -61,7 +61,7 @@ public class JdzjDownload {
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newId);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+                esUtil.writeToES(info, "crawler-news-", "doc", newId);
             } else {
                 LOGGER.info("detail null");
             }

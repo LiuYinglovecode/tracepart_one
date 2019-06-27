@@ -13,18 +13,19 @@ public class ESUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(ESUtil.class);
     private static ESClient esClient = new ESClient();
 
-    public void writeToES(JSONObject info, String index, String type) {
+    public void writeToES(JSONObject info, String index, String type, String id) {
         String date = String.format("%tY", new Date()) + "." + String.format("%tm", new Date()) + "." + String.format("%td", new Date());
-        toES(info, index + date, type);
+        toES(info, index + date, type, id);
     }
 
 
-    private void toES(JSONObject info, String index, String type) {
+    private void toES(JSONObject info, String index, String type, String id) {
         try {
             TransportClient transportClient = esClient.getClient();
             transportClient
                     .prepareIndex(index, type)
                     .setSource(info, XContentType.JSON)
+                    .setId(id)
                     .execute()
                     .actionGet();
         } catch (Exception e) {

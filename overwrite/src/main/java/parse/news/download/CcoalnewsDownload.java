@@ -55,7 +55,7 @@ public class CcoalnewsDownload {
                             info.put("@timestamp", timestamp2.format(new Date()));
                             info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                             mysqlUtil.insertNews(info, "crawler_news", newsId);
-                            esUtil.writeToES(info, "crawler-news-", "doc");
+                            esUtil.writeToES(info, "crawler-news-", "doc", newsId);
                         }
                     }
                 } catch (Exception e) {

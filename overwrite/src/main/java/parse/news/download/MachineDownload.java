@@ -77,7 +77,7 @@ public class MachineDownload {
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
                 newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(newsInfo, "crawler_news", newId);
-                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+                esUtil.writeToES(newsInfo, "crawler-news-", "doc", newId);
             } else {
                 LOGGER.info("页面不存在");
             }

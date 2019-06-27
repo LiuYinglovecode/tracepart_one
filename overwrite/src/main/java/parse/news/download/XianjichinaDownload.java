@@ -60,7 +60,7 @@ public class XianjichinaDownload {
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newsId);
-                    esUtil.writeToES(info, "crawler-news-", "doc");
+                    esUtil.writeToES(info, "crawler-news-", "doc", newsId);
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
                     String title = document.select(".newconleft-top h1").text().trim();
@@ -87,7 +87,7 @@ public class XianjichinaDownload {
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newsId);
-                    esUtil.writeToES(info, "crawler-news-", "doc");
+                    esUtil.writeToES(info, "crawler-news-", "doc", newsId);
                 }
             } else {
                 LOGGER.info("detail null");

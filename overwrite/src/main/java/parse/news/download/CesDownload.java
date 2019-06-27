@@ -65,7 +65,7 @@ public class CesDownload {
                     newsInfo.put("@timestamp", timestamp2.format(new Date()));
                     newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
-                    esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+                    esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
                 }
             } else {
                 LOGGER.info("页面不存在！");
