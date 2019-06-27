@@ -1,5 +1,0 @@
-2019-06-06 10:53:24  [ main:0 ] - [ ERROR ]  
-2019-06-06 10:53:46  [ main:22099 ] - [ ERROR ]  httpGetWithProxy err : Connect to 200.41.94.97:41310 [/200.41.94.97] failed: Connection timed out: connect ; org.apache.http.conn.HttpHostConnectException: Connect to 200.41.94.97:41310 [/200.41.94.97] failed: Connection timed out: connect
-2019-06-06 10:53:46  [ main:22100 ] - [ ERROR ]  httpGetWithProxy err : Connection pool shut down ; java.lang.IllegalStateException: Connection pool shut down
-2019-06-06 10:54:49  [ main:85342 ] - [ ERROR ]  
-2019-06-06 10:56:37  [ main:193098 ] - [ ERROR ]  
