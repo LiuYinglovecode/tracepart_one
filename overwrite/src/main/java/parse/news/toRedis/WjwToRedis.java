@@ -29,6 +29,7 @@ public class WjwToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("news.wjw.cn  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -42,14 +43,12 @@ public class WjwToRedis {
             int number = 1;
             for (number = 1; number <= total; number++) {
                 String nextPage = replace + "-" + number + ".xhtml";
-                System.out.println("下一页：" + nextPage);
                 category(nextPage);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
-
 
 
     private void category(String url) {
@@ -60,7 +59,7 @@ public class WjwToRedis {
                 Elements detailList = document.select("div.informationListL_02 > ul > li > p > a");
                 for (Element e : detailList) {
                     String link = baseUrl + e.attr("href");
-                    RedisUtil.insertUrlToSet("toCatchUrl",link);
+                    RedisUtil.insertUrlToSet("toCatchUrl", link);
                 }
             } else {
                 LOGGER.info("category null");

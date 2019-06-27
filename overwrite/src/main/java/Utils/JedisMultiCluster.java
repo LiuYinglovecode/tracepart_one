@@ -74,15 +74,24 @@ public class JedisMultiCluster {
             // 添加集群的服务节点Set集合
             Set<HostAndPort> hostAndPortsSet = new HashSet<HostAndPort>();
             // 添加节点
-            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7000));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7001));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7002));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7003));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7004));
-            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
+//            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7000));
+//            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7001));
+//            hostAndPortsSet.add(new HostAndPort("172.20.4.157", 7002));
+//            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7003));
+//            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7004));
+//            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
+
+            // 呼市 测试
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6382));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
 
 
-            String passwd = "7T8wZ5X3#B6fS4vJ";
+//            String passwd = "7T8wZ5X3#B6fS4vJ";
+            String passwd = "onlYKdm+gH9LrzYB";  //呼市
             String connectionTimeout = "5000";
             String soTimeout = "5000";
             String maxAttempts = "6";

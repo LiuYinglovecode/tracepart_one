@@ -28,6 +28,7 @@ public class LmjxToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("news.lmjx.net  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

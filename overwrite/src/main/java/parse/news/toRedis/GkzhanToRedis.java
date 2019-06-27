@@ -25,6 +25,7 @@ public class GkzhanToRedis {
                     newsList(href);
                 }
             }
+            LOGGER.info("www.gkzhan.com DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -32,7 +33,6 @@ public class GkzhanToRedis {
 
     //    新闻列表及分页
     private void newsList(String url) {
-
         try {
             String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             Document html = Jsoup.parse(get);
@@ -45,11 +45,8 @@ public class GkzhanToRedis {
             Elements nextPage = html.select("a.lt");
             String href = nextPage.attr("href");
             if (!"#".equals(href)) {
-                System.out.println("下一页：" + "https://www.gkzhan.com" + href);
                 newsList("https://www.gkzhan.com" + href);
             }
-            return;
-
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

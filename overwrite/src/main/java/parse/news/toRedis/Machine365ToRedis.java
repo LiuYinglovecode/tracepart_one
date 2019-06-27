@@ -45,6 +45,7 @@ public class Machine365ToRedis {
                     }
                 }
             }
+            LOGGER.info("news.machine365.com  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

@@ -30,6 +30,7 @@ public class CableabcToRedis {
                     }
                 }
             }
+            LOGGER.info("news.cableabc.com  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -85,6 +86,7 @@ public class CableabcToRedis {
             for (String link : list) {
                 RedisUtil.insertUrlToSet("toCatchUrl", link);
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

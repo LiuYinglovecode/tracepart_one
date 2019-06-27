@@ -28,6 +28,7 @@ public class XianjichinaToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("www.xianjichina.com DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

@@ -20,7 +20,6 @@ public class JiancaiToRedis {
                 Elements categoryList = document.select("tbody tr td a.black");
                 for (Element e : categoryList) {
                     String href = "http://www.jiancai.com" + e.attr("href");
-//                    System.out.println(href);
                     String plate = e.text();
                     paging(href, plate);
                 }
@@ -28,6 +27,7 @@ public class JiancaiToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("www.jiancai.com DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

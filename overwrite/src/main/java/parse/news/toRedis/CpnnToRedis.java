@@ -29,7 +29,6 @@ public class CpnnToRedis {
                         String href = e.attr("href");
                         if (!href.contains("http://yq") && !href.contains("/fdpd/default.htm") && !href.contains("/2014xny/default.htm")) {
                             String link = homepage + href;
-//                            System.out.println(link);
                             paging(link);
                         } else {
                             more(href);
@@ -37,6 +36,7 @@ public class CpnnToRedis {
                     }
                 }
             }
+            LOGGER.info("www.cpnn.com.cn  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -89,7 +89,6 @@ public class CpnnToRedis {
                     list.add(nextPage);
                 }
                 for (String link : list) {
-                    System.out.println("下一页：" + link);
                     newsList(link);
                 }
             }
@@ -122,6 +121,7 @@ public class CpnnToRedis {
 
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

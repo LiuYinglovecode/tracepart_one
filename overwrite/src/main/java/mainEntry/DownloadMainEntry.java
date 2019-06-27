@@ -26,11 +26,14 @@ public class DownloadMainEntry {
             ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 120, TimeUnit.SECONDS,
                     new ArrayBlockingQueue<Runnable>(15), new ThreadPoolExecutor.CallerRunsPolicy());
             String url = "";
-            while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl"))) {
-                SeedTask seed = new SeedTask(url);
-                executor.execute(seed);
+            while (true) {
+                while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl"))) {
+                    SeedTask seed = new SeedTask(url);
+                    executor.execute(seed);
+                }
+                executor.shutdown();
+                Thread.sleep(60000);
             }
-            executor.shutdown();
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

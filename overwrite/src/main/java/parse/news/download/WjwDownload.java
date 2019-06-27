@@ -32,20 +32,19 @@ public class WjwDownload {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-//                System.out.println(html);
-                info.put("title",document.select("div.informationArticle_03 > h3").text().trim());
+                info.put("title", document.select("div.informationArticle_03 > h3").text().trim());
                 Elements select = document.select("div.informationArticle_03 > div.informationArticle_05");
-                if (select.size()!=0){
-                    info.put("time",select.select("p.informationArticle_06").text().split(" ")[1]);
-                    info.put("source",select.select("p.informationArticle_06").text().split(" ")[0].replace("来源：",""));
+                if (select.size() != 0) {
+                    info.put("time", select.select("p.informationArticle_06").text().split(" ")[1]);
+                    info.put("source", select.select("p.informationArticle_06").text().split(" ")[0].replace("来源：", ""));
                 }
                 Elements text = document.select("#informationArticle_04");
                 text.select("p > img").last().remove();
-                info.put("text",text.text().trim().replace("关注有惊喜",""));
-                String newsId = MD5Util.getMD5String(text.text().trim().replace("关注有惊喜",""));
-                info.put("newsId",newsId);
+                info.put("text", text.text().trim().replace("关注有惊喜", ""));
+                String newsId = MD5Util.getMD5String(text.text().trim().replace("关注有惊喜", ""));
+                info.put("newsId", newsId);
                 Elements imgList = document.select("#informationArticle_04 > div > img");
-                if (imgList.size()!=0) {
+                if (imgList.size() != 0) {
                     for (Element e : imgList) {
                         imgs.add(e.attr("src"));
                     }
@@ -60,9 +59,6 @@ public class WjwDownload {
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newsId);
                 esUtil.writeToES(info, "crawler-news-", "doc");
-                System.out.println(info);
-
-
             } else {
                 LOGGER.info("detail null");
             }

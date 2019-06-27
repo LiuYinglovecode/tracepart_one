@@ -29,6 +29,7 @@ public class Ca800ToRedis {
                     }
                 }
             }
+            LOGGER.info("www.ca800.com  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

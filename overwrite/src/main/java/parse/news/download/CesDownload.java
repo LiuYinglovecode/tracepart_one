@@ -64,7 +64,6 @@ public class CesDownload {
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     newsInfo.put("@timestamp", timestamp2.format(new Date()));
                     newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                    System.out.println(newsInfo);
                     mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
                     esUtil.writeToES(newsInfo, "crawler-news-", "doc");
                 }

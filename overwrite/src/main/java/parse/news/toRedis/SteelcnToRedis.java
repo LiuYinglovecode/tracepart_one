@@ -41,6 +41,7 @@ public class SteelcnToRedis {
                     }
                 }
             }
+            LOGGER.info("news.steelcn.cn DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

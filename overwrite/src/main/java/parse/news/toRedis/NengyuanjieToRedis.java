@@ -30,6 +30,7 @@ public class NengyuanjieToRedis {
                     }
                 }
             }
+            LOGGER.info("www.nengyuanjie.net  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -50,7 +51,6 @@ public class NengyuanjieToRedis {
                 list.add(nextPage);
             }
             for (String link : list) {
-                System.out.println("下一页：" + link);
                 Thread.sleep(7000);
                 newsList(link, plate);
             }

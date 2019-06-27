@@ -31,27 +31,26 @@ public class HerostartDownload {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-//                System.out.println(html);
-                info.put("title",document.select("h1#title.title").text().trim());
+                info.put("title", document.select("h1#title.title").text().trim());
                 String select = document.select("div.info").text();
-                if (select.contains("发布日期：")&&select.contains("来源：")&&select.contains("作者：")&&select.contains("浏览次数：")){
+                if (select.contains("发布日期：") && select.contains("来源：") && select.contains("作者：") && select.contains("浏览次数：")) {
 //                    发布日期：2019-06-26  来源：潍坊浩宇环保设备有限公司  作者：王世刚17861220657  浏览次数：1
-                    info.put("time",select.split("来源：")[0].replace("发布日期：",""));
-                    info.put("source",select.split("来源：")[1].split("作者：")[0]);
-                    info.put("author",select.split("作者：")[1].split("浏览次数：")[0]);
-                    info.put("amountOfReading",select.split("浏览次数：")[1]);
-                }else if (select.contains("发布日期：")&&select.contains("作者：")&&select.contains("浏览次数：")){
+                    info.put("time", select.split("来源：")[0].replace("发布日期：", ""));
+                    info.put("source", select.split("来源：")[1].split("作者：")[0]);
+                    info.put("author", select.split("作者：")[1].split("浏览次数：")[0]);
+                    info.put("amountOfReading", select.split("浏览次数：")[1]);
+                } else if (select.contains("发布日期：") && select.contains("作者：") && select.contains("浏览次数：")) {
 //                    发布日期：2008-10-04  作者：王世刚17861220657 浏览次数：22
-                    info.put("time",select.split("作者：")[0].replace("发布日期：",""));
-                    info.put("author",select.split("作者：")[1].split("浏览次数：")[0]);
-                    info.put("amountOfReading",select.split("浏览次数：")[1]);
-                }else if (select.contains("发布日期：")&&select.contains("浏览次数：")){
+                    info.put("time", select.split("作者：")[0].replace("发布日期：", ""));
+                    info.put("author", select.split("作者：")[1].split("浏览次数：")[0]);
+                    info.put("amountOfReading", select.split("浏览次数：")[1]);
+                } else if (select.contains("发布日期：") && select.contains("浏览次数：")) {
 //                    发布日期：2008-10-04  浏览次数：22
-                    info.put("author",select.split("浏览次数：")[0].replace("发布日期：",""));
-                    info.put("amountOfReading",select.split("浏览次数：")[1]);
+                    info.put("author", select.split("浏览次数：")[0].replace("发布日期：", ""));
+                    info.put("amountOfReading", select.split("浏览次数：")[1]);
                 }
                 Elements text = document.select("div#article.content");
-                if (text.size()!=0) {
+                if (text.size() != 0) {
                     info.put("text", text.text().trim());
                     String newsId = MD5Util.getMD5String(text.text().trim());
                     info.put("newsId", newsId);
@@ -61,7 +60,7 @@ public class HerostartDownload {
                             imgs.add(e.attr("src"));
                         }
                         info.put("images", imgs.toString());//图片
-                    }else {
+                    } else {
                         Elements img = text.select("div img");
                         for (Element e : img) {
                             imgs.add(e.attr("src"));
@@ -69,14 +68,13 @@ public class HerostartDownload {
                         info.put("images", imgs.toString());//图片
                     }
                     info.put("url", url);
-                    info.put("crawlerId", "74");
+                    info.put("crawlerId", "75");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newsId);
                     esUtil.writeToES(info, "crawler-news-", "doc");
-                    System.out.println(info);
                 }
             } else {
                 LOGGER.info("detail null");

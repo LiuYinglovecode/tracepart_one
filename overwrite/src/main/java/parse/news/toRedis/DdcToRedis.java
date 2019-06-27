@@ -28,6 +28,7 @@ public class DdcToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("news.ddc.net.cn DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -47,7 +48,6 @@ public class DdcToRedis {
                 int number = 1;
                 for (number = 1; number <= total; number++) {
                     String nextPage = replace + "_" + number + ".html";
-                    System.out.println("下一页：" + nextPage);
                     category(nextPage);
                 }
 
@@ -68,7 +68,7 @@ public class DdcToRedis {
                 Elements detailList = document.select("div.listdiv > ul > li > div > a");
                 for (Element e : detailList) {
                     String href = e.attr("href");
-                    RedisUtil.insertUrlToSet("toCatchUrl",href);
+                    RedisUtil.insertUrlToSet("toCatchUrl", href);
                 }
             } else {
                 LOGGER.info("category null");

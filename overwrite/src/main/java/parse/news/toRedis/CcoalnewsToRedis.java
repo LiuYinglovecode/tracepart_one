@@ -30,6 +30,7 @@ public class CcoalnewsToRedis {
                     }
                 }
             }
+            LOGGER.info("www.ccoalnews.com DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

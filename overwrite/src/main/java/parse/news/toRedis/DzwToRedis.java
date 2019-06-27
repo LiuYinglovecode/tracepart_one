@@ -30,6 +30,7 @@ public class DzwToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("www.51dzw.com DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -62,6 +63,7 @@ public class DzwToRedis {
                 String link = "http://www.51dzw.com" + e.attr("href");
                 RedisUtil.insertUrlToSet("toCatchUrl", link);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

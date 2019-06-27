@@ -29,7 +29,7 @@ public class TexindexToRedis {
                     paging(href, text);
                 }
             }
-
+            LOGGER.info("www.texindex.com.cn DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -49,7 +49,6 @@ public class TexindexToRedis {
                 list.add(nextPage);
             }
             for (String link : list) {
-                System.out.println("下一页：" + link);
                 newsList(link, plate);
             }
         } catch (Exception e) {

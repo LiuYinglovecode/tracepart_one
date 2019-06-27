@@ -25,6 +25,7 @@ public class HerostartToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("info.china.herostart.com  DOME");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -44,7 +45,6 @@ public class HerostartToRedis {
                 int number = 1;
                 for (number = 1; number <= total; number++) {
                     String nextPage = replace + "pn" + number + ".html";
-                    System.out.println("下一页：" + nextPage);
                     category(nextPage);
                 }
 
@@ -57,7 +57,6 @@ public class HerostartToRedis {
     }
 
 
-
     private void category(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "herostart");
@@ -66,7 +65,7 @@ public class HerostartToRedis {
                 Elements detailList = document.select("li.catlist_li a");
                 for (Element e : detailList) {
                     String href = e.attr("href");
-                    RedisUtil.insertUrlToSet("toCatchUrl",href);
+                    RedisUtil.insertUrlToSet("toCatchUrl", href);
                 }
             } else {
                 LOGGER.info("category null");

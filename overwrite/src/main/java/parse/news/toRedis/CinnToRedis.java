@@ -28,6 +28,7 @@ public class CinnToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("www.cinn.cn  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -50,6 +51,7 @@ public class CinnToRedis {
                     LOGGER.info("category null");
                 }
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

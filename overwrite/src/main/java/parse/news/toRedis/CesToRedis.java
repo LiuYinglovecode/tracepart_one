@@ -29,6 +29,7 @@ public class CesToRedis {
                     }
                 }
             }
+            LOGGER.info("www.ces.cn  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -49,7 +50,6 @@ public class CesToRedis {
                 list.add(nextPage);
             }
             for (String link : list) {
-                System.out.println("下一页：" + link);
                 newsList(link, plate);
 
             }
@@ -70,6 +70,7 @@ public class CesToRedis {
                 String href = e.attr("href");
                 RedisUtil.insertUrlToSet("toCatchUrl", href);
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

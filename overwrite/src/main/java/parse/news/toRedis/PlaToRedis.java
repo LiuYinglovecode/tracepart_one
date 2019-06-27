@@ -33,6 +33,7 @@ public class PlaToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("www.51pla.com DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -55,7 +56,6 @@ public class PlaToRedis {
                 int number = 1;
                 for (number = 1; number <= total; number++) {
                     String nextPage = replace + number + ".htm";
-//                    System.out.println(nextPage);
                     newsList(nextPage, plate);
                 }
             } else {

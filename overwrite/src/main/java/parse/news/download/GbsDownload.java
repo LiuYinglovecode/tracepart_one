@@ -69,8 +69,6 @@ public class GbsDownload {
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newsId);
                 esUtil.writeToES(info, "crawler-news-", "doc");
-                System.out.println(info);
-
             } else {
                 LOGGER.info("detail null");
             }

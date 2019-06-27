@@ -31,6 +31,7 @@ public class CnmnToRedis {
                     }
                 }
             }
+            LOGGER.info("www.cnmn.com.cn DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -51,7 +52,6 @@ public class CnmnToRedis {
                     list.add(nextPage);
                 }
                 for (String link : list) {
-                    System.out.println("下一页：" + link);
                     newsList(link, plate);
                 }
             }
@@ -76,6 +76,7 @@ public class CnmnToRedis {
             for (String link : list) {
                 RedisUtil.insertUrlToSet("toCatchUrl", link);
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

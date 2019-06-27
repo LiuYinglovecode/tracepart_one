@@ -14,6 +14,20 @@ allprojects {
         yunluVersion = '1.0.1.RELEASE'
     }
 
+    //打jar包需要的配置
+//    jar {
+//        manifest {
+//            attributes(
+//                    "Manifest-Version": 1.0,
+////                "Main-Class": "spider.company"   //主函数的名称
+//            )
+//        }
+//        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//        into('assets') {
+//            from 'assets'
+//        }
+//    }
+
     repositories {
         flatDir { dirs 'libs', project(':').file('libs') }
         maven { url 'https://repomaven.htres.cn/repository/maven-central/' }

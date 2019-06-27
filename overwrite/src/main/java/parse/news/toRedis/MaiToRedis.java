@@ -27,6 +27,7 @@ public class MaiToRedis {
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("www.86mai.com  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -43,7 +44,6 @@ public class MaiToRedis {
             int number = 1;
             for (number = 1; number < total; number++) {
                 String link = replace + "-" + number + ".html";//拼接链接地址
-                System.out.println("下一页：" + link);
                 newsList(link, plate);
             }
         } catch (Exception e) {

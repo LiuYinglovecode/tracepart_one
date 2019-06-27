@@ -29,6 +29,7 @@ public class ChinahightechToRedis {
                     paging(href, plate);
                 }
             }
+            LOGGER.info("www.chinahightech.com  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -43,14 +44,12 @@ public class ChinahightechToRedis {
             if (html != null) {
                 Document document = Jsoup.parse(html);
                 String Total = document.select("#pages.text-c a.a1").last().previousElementSibling().text();
-                System.out.println(Total);
                 int total = Integer.valueOf(Total).intValue();
                 for (number = 2; number < total + 1; number++) {
                     String nextPage = url + number + ".html";
                     list.add(nextPage);
                 }
                 for (String link : list) {
-                    System.out.println("下一页：" + link);
                     newsList(link, plate);
                 }
             }
@@ -75,6 +74,7 @@ public class ChinahightechToRedis {
             for (String link : list) {
                 RedisUtil.insertUrlToSet("toCatchUrl", link);
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

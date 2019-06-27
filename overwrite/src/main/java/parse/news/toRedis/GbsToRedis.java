@@ -20,12 +20,13 @@ public class GbsToRedis {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.infl_bq > div > ul > li > a");
                 for (Element e : categoryList) {
-                    String href = baseUrl+e.attr("href");
+                    String href = baseUrl + e.attr("href");
                     ping(href);
                 }
             } else {
                 LOGGER.info("homepage null");
             }
+            LOGGER.info("www.gbs.cn/info  DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -38,7 +39,6 @@ public class GbsToRedis {
             int number = 1;
             for (number = 1; number <= total; number++) {
                 String nextPage = replace + "-p" + number + ".html";
-                System.out.println("下一页：" + nextPage);
                 category(nextPage);
             }
 
@@ -54,12 +54,12 @@ public class GbsToRedis {
             if (null != html) {
                 Document document = Jsoup.parse(html);
                 Elements detailList = document.select("div.lis_txt > ul > li > a");
-                if (detailList.size()!=0) {
+                if (detailList.size() != 0) {
                     for (Element e : detailList) {
-                        RedisUtil.insertUrlToSet("toCatchUrl",baseUrl + e.attr("href"));
+                        RedisUtil.insertUrlToSet("toCatchUrl", baseUrl + e.attr("href"));
                     }
 
-                }else {
+                } else {
                     LOGGER.info("该页面为空");
                 }
             } else {

@@ -30,6 +30,7 @@ public class MembranesToRedis {
                     }
                 }
             }
+            LOGGER.info("www.membranes.com.cn DONE");
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

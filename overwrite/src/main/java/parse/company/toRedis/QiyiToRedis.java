@@ -18,7 +18,7 @@ public class QiyiToRedis {
             Document parse = Jsoup.parse(html);
             Elements page = parse.select("div.ui-page-num a");
             String replace = "http://supplier.71.net" + page.last().attr("href")
-                    .replace("2.html","");
+                    .replace("2.html", "");
             String Total = page.last().previousElementSibling().text();
             int total = Integer.valueOf(Total).intValue();
             int number = 1;
@@ -26,11 +26,11 @@ public class QiyiToRedis {
                 String link = replace + number + ".html";//拼接链接地址
                 newsList(link);
             }
+            LOGGER.info("supplier.71.net  DONE");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 
     /**
@@ -40,12 +40,12 @@ public class QiyiToRedis {
      */
     private void newsList(String link) {
         try {
-            String indexHtml = HttpUtil.httpGetwithJudgeWord(link,"71.net");
+            String indexHtml = HttpUtil.httpGetwithJudgeWord(link, "71.net");
             if (indexHtml != null) {
                 Document indexDoc = Jsoup.parse(indexHtml);
                 Elements select = indexDoc.select("div.inside_box ul li a");
                 for (Element se : select) {
-                    if (!se.text().contains("药")||!se.text().contains("烟")||se.text().contains("赌博")||!se.text().contains("水")) {
+                    if (!se.text().contains("药") || !se.text().contains("烟") || se.text().contains("赌博") || !se.text().contains("水")) {
                         RedisUtil.insertUrlToSet("toCatchUrl", se.attr("href"));
                     }
                 }
