@@ -69,7 +69,7 @@ public class HerostartDownload {
                         info.put("images", imgs.toString());//图片
                     }
                     info.put("url", url);
-                    info.put("crawlerId", "75");
+                    info.put("crawlerId", "74");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
