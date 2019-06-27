@@ -115,9 +115,21 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.xianjichina.com")) {
                     XianjichinaToRedis xianjichinaToRedis = new XianjichinaToRedis();
                     xianjichinaToRedis.homepage(taskName);
-                }else if (taskName.contains("supplier.71.net")) {
+                } else if (taskName.contains("supplier.71.net")) {
                     QiyiToRedis qiyiToRedis = new QiyiToRedis();
                     qiyiToRedis.homepage(taskName);
+                } else if (taskName.contains("news.wjw.cn")) {
+                    WjwToRedis wjwToRedis = new WjwToRedis();
+                    wjwToRedis.homepage(taskName);
+                } else if (taskName.contains("www.gbs.cn/info")) {
+                    GbsToRedis gbsToRedis = new GbsToRedis();
+                    gbsToRedis.homepage(taskName);
+                } else if (taskName.contains("news.ddc.net.cn")) {
+                    DdcToRedis ddcToRedis = new DdcToRedis();
+                    ddcToRedis.homepage(taskName);
+                } else if (taskName.contains("info.china.herostart.com")) {
+                    HerostartToRedis herostartToRedis = new HerostartToRedis();
+                    herostartToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
