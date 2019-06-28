@@ -20,6 +20,7 @@ import java.util.*;
 /**
  * <a>http://www.jdzj.com/news/</a>
  * <p>机电之家</p>
+ *
  * @author chenyan
  */
 public class jdzjNews {
@@ -50,10 +51,10 @@ public class jdzjNews {
                 Elements categoryList = document.select("div.eif-header-nav ul li");
                 for (Element e : categoryList) {
                     if (!e.text().contains("首　页")) {
-                        String href = "http://www.jdzj.com/news/zx" + e.attr("zx")+".html";
+                        String href = "http://www.jdzj.com/news/zx" + e.attr("zx") + ".html";
 //                        System.out.println(href);
-                    String plate = e.text();
-                    paging(href,plate);
+                        String plate = e.text();
+                        paging(href, plate);
                     }
                 }
             } else {
@@ -67,13 +68,13 @@ public class jdzjNews {
     //分页
     private void paging(String url, String plate) {
         try {
-            String replace = url.replace(".html", "").replace("zx","");
+            String replace = url.replace(".html", "").replace("zx", "");
             int number = 1;
             int total = 3000;
             for (number = 1; number < total; number++) {
-                String link = replace +"_0__"+ number + ".html";//拼接链接地址
-                System.out.println("下一页："+link);
-                newsList(link,plate);
+                String link = replace + "_0__" + number + ".html";//拼接链接地址
+                System.out.println("下一页：" + link);
+                newsList(link, plate);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,7 +93,7 @@ public class jdzjNews {
                         String link = "http://www.jdzj.com" + e.attr("href");
                         newsInfo(link, plate);
                     }
-                }else {
+                } else {
                     LOGGER.info("最后一页！");
                 }
             } else {
@@ -103,34 +104,34 @@ public class jdzjNews {
         }
     }
 
-    private void newsInfo(String url,String plate) {
+    private void newsInfo(String url, String plate) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "新手入门");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("div.newsInfo > h3").text().trim();
-                info.put("title",title);
-                info.put("source",parse.select("span.laiyuan").text().trim().replace("来源：",""));
-                info.put("time",parse.select("span.time").text().trim().replace("时间：",""));
-                info.put("amountOfReading",parse.select("span.times").text().trim().replace("访问：","").replace("次",""));
-                info.put("text",parse.select("div.newsContent").text().trim());
+                info.put("title", title);
+                info.put("source", parse.select("span.laiyuan").text().trim().replace("来源：", ""));
+                info.put("time", parse.select("span.time").text().trim().replace("时间：", ""));
+                info.put("amountOfReading", parse.select("span.times").text().trim().replace("访问：", "").replace("次", ""));
+                info.put("text", parse.select("div.newsContent").text().trim());
                 Elements images = parse.select("div.newsContent p img");
                 for (Element image : images) {
                     String src = image.attr("src");
                     imgs.add(src);
                     info.put("images", imgs.toString());
                 }
-                info.put("plate",plate);
+                info.put("plate", plate);
                 info.put("crawlerId", "66");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", title);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+                esUtil.writeToES(info, "crawler-news-", "doc", null);
                 System.out.println(info);
             } else {
                 LOGGER.info("detail null");

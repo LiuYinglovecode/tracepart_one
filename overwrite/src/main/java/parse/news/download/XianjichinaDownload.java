@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.NewsMd5;
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -60,7 +61,10 @@ public class XianjichinaDownload {
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newsId);
-                    esUtil.writeToES(info, "crawler-news-", "doc", newsId);
+//                    esUtil.writeToES(info, "crawler-news-", "doc", newsId);
+                    if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+                        RedisUtil.insertUrlToSet("catchedUrl", url);
+                    }
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
                     String title = document.select(".newconleft-top h1").text().trim();
@@ -87,7 +91,10 @@ public class XianjichinaDownload {
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newsId);
-                    esUtil.writeToES(info, "crawler-news-", "doc", newsId);
+//                    esUtil.writeToES(info, "crawler-news-", "doc", newsId);
+                    if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+                        RedisUtil.insertUrlToSet("catchedUrl", url);
+                    }
                 }
             } else {
                 LOGGER.info("detail null");

@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.NewsMd5;
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import config.IConfigManager;
@@ -71,7 +72,10 @@ public class SteelcnDownload {
             newsInfo.put("@timestamp", timestamp2.format(new Date()));
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
+//            esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
+            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
+                RedisUtil.insertUrlToSet("catchedUrl", url);
+            }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

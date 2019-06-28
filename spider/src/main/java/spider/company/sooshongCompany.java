@@ -10,6 +10,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.*;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -26,6 +27,7 @@ public class sooshongCompany {
         header = new HashMap();
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
     }
+
     private void insert(JSONObject companyInfo) {
         Map = (java.util.Map) companyInfo;
         if (updateToMySQL.dataUpdate(Map)) {
@@ -47,8 +49,8 @@ public class sooshongCompany {
             String html = httpGet(url, "关于我们");
             Document parse = Jsoup.parse(html);
             Elements select = parse.select("div.classbox dl dt a");
-            for (Element e : select){
-                String link = "http://www.sooshong.com"+e.attr("href");
+            for (Element e : select) {
+                String link = "http://www.sooshong.com" + e.attr("href");
                 nextPage(link);
             }
         } catch (Exception e) {
@@ -58,8 +60,8 @@ public class sooshongCompany {
 
     private void nextPage(String url) {
         int nextPage = 1;
-        for (nextPage = 1;nextPage < 10000 ;nextPage++) {
-            String link = url + "p" +nextPage;
+        for (nextPage = 1; nextPage < 10000; nextPage++) {
+            String link = url + "p" + nextPage;
             companyList(link);
         }
     }
@@ -70,7 +72,7 @@ public class sooshongCompany {
             Document parse = Jsoup.parse(html);
             Elements select = parse.select("div.lianxi a");
             for (Element e : select) {
-                String link ="http://www.sooshong.com" + e.attr("href");
+                String link = "http://www.sooshong.com" + e.attr("href");
                 companyinfo(link);
             }
         } catch (Exception e) {
@@ -82,12 +84,12 @@ public class sooshongCompany {
         JSONObject companyInfo = new JSONObject();
         try {
             String html = httpGet(url, "sooshong");
-            if (html!=null) {
+            if (html != null) {
                 Document parse = Jsoup.parse(html);
-                String href ="http://www.sooshong.com" + parse.select("li.cur a").attr("href");
-                companyInfo.put("name",parse.select("div.ctitle h1").text().trim());
-                companyInfo.put("id",MD5Util.getMD5String(parse.select("div.ctitle h1").text().trim()));
-                companyInfo.put("industry",MD5Util.getMD5String(parse.select("div.ctitle h1").text().trim()));
+                String href = "http://www.sooshong.com" + parse.select("li.cur a").attr("href");
+                companyInfo.put("name", parse.select("div.ctitle h1").text().trim());
+                companyInfo.put("id", MD5Util.getMD5String(parse.select("div.ctitle h1").text().trim()));
+                companyInfo.put("industry", MD5Util.getMD5String(parse.select("div.ctitle h1").text().trim()));
                 Elements company_info = parse.select("div.intros table tr td");
                 if (company_info.size() != 0) {
                     for (Element element : company_info) {
@@ -119,63 +121,63 @@ public class sooshongCompany {
                 String htmlTwo = httpGet(href, "sooshong");
                 Document parseTwo = Jsoup.parse(htmlTwo);
                 Elements select1 = parseTwo.select("p.MsoNormal");
-                if (select1.size()!=0){
-                    companyInfo.put("company_info",select1.text().trim());
-                }else {
-                    companyInfo.put("company_info",parseTwo.select(".intros").text().trim());
+                if (select1.size() != 0) {
+                    companyInfo.put("company_info", select1.text().trim());
+                } else {
+                    companyInfo.put("company_info", parseTwo.select(".intros").text().trim());
                 }
                 Elements select = parseTwo.select("td.S.lh20");
                 for (Element element : select) {
-                    if (element.text().contains("主营产品或服务：")){
-                        companyInfo.put("main_product",element.nextElementSibling().text());
+                    if (element.text().contains("主营产品或服务：")) {
+                        companyInfo.put("main_product", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("主营行业：")){
-                        companyInfo.put("industry",element.nextElementSibling().text());
+                    if (element.text().contains("主营行业：")) {
+                        companyInfo.put("industry", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("企业类型：")){
-                        companyInfo.put("company_model",element.nextElementSibling().text());
+                    if (element.text().contains("企业类型：")) {
+                        companyInfo.put("company_model", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("经营模式：")){
-                        companyInfo.put("management_model",element.nextElementSibling().text());
+                    if (element.text().contains("经营模式：")) {
+                        companyInfo.put("management_model", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("法人代表/负责人：")){
-                        companyInfo.put("incorporator",element.nextElementSibling().text());
+                    if (element.text().contains("法人代表/负责人：")) {
+                        companyInfo.put("incorporator", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("公司注册地址：")){
-                        companyInfo.put("register_address",element.nextElementSibling().text());
+                    if (element.text().contains("公司注册地址：")) {
+                        companyInfo.put("register_address", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("注册资金：")){
-                        companyInfo.put("register_capital",element.nextElementSibling().text());
+                    if (element.text().contains("注册资金：")) {
+                        companyInfo.put("register_capital", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("员工人数：")){
-                        companyInfo.put("employees",element.nextElementSibling().text());
+                    if (element.text().contains("员工人数：")) {
+                        companyInfo.put("employees", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("主要经营地点：")){
-                        companyInfo.put("register_address",element.nextElementSibling().text());
+                    if (element.text().contains("主要经营地点：")) {
+                        companyInfo.put("register_address", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("公司成立日期：")){
-                        companyInfo.put("company_register_time",element.nextElementSibling().text());
+                    if (element.text().contains("公司成立日期：")) {
+                        companyInfo.put("company_register_time", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("主要客户：")){
-                        companyInfo.put("company_clients",element.nextElementSibling().text());
+                    if (element.text().contains("主要客户：")) {
+                        companyInfo.put("company_clients", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("管理体系认证：")){
-                        companyInfo.put("qhse",element.nextElementSibling().text());
+                    if (element.text().contains("管理体系认证：")) {
+                        companyInfo.put("qhse", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("开户银行：")){
-                        companyInfo.put("open_bank",element.nextElementSibling().text());
+                    if (element.text().contains("开户银行：")) {
+                        companyInfo.put("open_bank", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("研发部门人数：")){
-                        companyInfo.put("research_staff",element.nextElementSibling().text());
+                    if (element.text().contains("研发部门人数：")) {
+                        companyInfo.put("research_staff", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("厂房面积：")){
-                        companyInfo.put("company_area",element.nextElementSibling().text());
+                    if (element.text().contains("厂房面积：")) {
+                        companyInfo.put("company_area", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("质量控制：")){
-                        companyInfo.put("quality_control",element.nextElementSibling().text());
+                    if (element.text().contains("质量控制：")) {
+                        companyInfo.put("quality_control", element.nextElementSibling().text());
                     }
-                    if (element.text().contains("月产量：")){
-                        companyInfo.put("monthly_production",element.nextElementSibling().text());
+                    if (element.text().contains("月产量：")) {
+                        companyInfo.put("monthly_production", element.nextElementSibling().text());
                     }
                 }
 
@@ -186,7 +188,7 @@ public class sooshongCompany {
                 companyInfo.put("@timestamp", timestamp2.format(new Date()));
                 companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 insert(companyInfo);
-                esUtil.writeToES(companyInfo, "crawler-company-", "doc");
+                esUtil.writeToES(companyInfo, "crawler-company-", "doc", null);
             } else {
                 LOGGER.info("网页异常");
             }

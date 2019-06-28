@@ -12,12 +12,14 @@ import org.slf4j.LoggerFactory;
 import util.ESUtil;
 import util.HttpUtil;
 import util.mysqlUtil;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
  * <a>https://www.51pla.com/info/</a>
  * <p>全球塑胶网</p>
+ *
  * @author chenyan
  */
 public class plaNews {
@@ -43,6 +45,7 @@ public class plaNews {
 
     /**
      * 新闻首页：解析页面，拿到新闻分类的url
+     *
      * @param url
      */
     private void homepage(String url) {
@@ -54,7 +57,7 @@ public class plaNews {
                 for (Element e : categoryList) {
                     String href = urllink + e.attr("href");
                     String plate = e.text();
-                    more(href,plate);
+                    more(href, plate);
                 }
             } else {
                 LOGGER.info("homepage null");
@@ -66,24 +69,25 @@ public class plaNews {
 
 
     /**
-     *分页：获取到总页数，对url进行拼接，得到完整的下一页新闻列表url。
+     * 分页：获取到总页数，对url进行拼接，得到完整的下一页新闻列表url。
+     *
      * @param url
      */
-    private void more(String url,String plate) {
+    private void more(String url, String plate) {
         try {
             String replace = url.replace("1.htm", "");
             String html = HttpUtil.httpGetwithJudgeWord(url, "帮助中心");
             if (html != null) {
                 Document parse = Jsoup.parse(html);
-                String Total = parse.select("li.total").text().replace("共","").replace("页","");
+                String Total = parse.select("li.total").text().replace("共", "").replace("页", "");
                 int total = Integer.valueOf(Total).intValue();
                 int number = 1;
                 for (number = 1; number <= total; number++) {
-                    String nextPage = replace+number+".htm";
+                    String nextPage = replace + number + ".htm";
 //                    System.out.println(nextPage);
-                    newsList(nextPage,plate);
+                    newsList(nextPage, plate);
                 }
-            }else {
+            } else {
                 LOGGER.info("homepage null");
             }
         } catch (Exception e) {
@@ -92,18 +96,19 @@ public class plaNews {
     }
 
     /**
-     *新闻列表 ：解析网页一次获取全部想要的新闻信息url
+     * 新闻列表 ：解析网页一次获取全部想要的新闻信息url
+     *
      * @param url
      */
-    private void newsList(String url,String plate) {
+    private void newsList(String url, String plate) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");
             if (html != null) {
                 Document parse = Jsoup.parse(html);
                 Elements title = parse.select("div.title a");
-                if (title!=null) {
+                if (title != null) {
                     for (Element element : title) {
-                        newsInfo(urllink+element.attr("href"),plate);
+                        newsInfo(urllink + element.attr("href"), plate);
                     }
                 }
             } else {
@@ -117,20 +122,21 @@ public class plaNews {
 
     /**
      * 新闻信息：解析获取信息，存入数据库及ES
+     *
      * @param url
      */
-    private void newsInfo(String url,String plate) {
+    private void newsInfo(String url, String plate) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 //链接地址
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 //标题
                 String title = parse.select("div.title h2").text();
-                info.put("title",title);
+                info.put("title", title);
                 Elements time = parse.select("div.meta > span");
                 //发布时间及来源
                 for (Element element : time) {
@@ -142,26 +148,26 @@ public class plaNews {
                 }
                 //正文
                 Elements text = parse.select("div.content");
-                if (text.size()!=0){
-                    info.put("text",text.text().trim());
+                if (text.size() != 0) {
+                    info.put("text", text.text().trim());
                 }
                 //图片
                 Elements images = parse.select("div.content p img");
-                if (images.size()!=0) {
+                if (images.size() != 0) {
                     for (Element image : images) {
                         String src = urllink + image.attr("src");
                         imgs.add(src);
                         info.put("images", imgs.toString());
                     }
                 }
-                info.put("plate",plate);
+                info.put("plate", plate);
                 info.put("crawlerId", "68");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", title);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+                esUtil.writeToES(info, "crawler-news-", "doc", null);
 
 
             } else {

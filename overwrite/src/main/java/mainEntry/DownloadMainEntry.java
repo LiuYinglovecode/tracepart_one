@@ -28,8 +28,10 @@ public class DownloadMainEntry {
             String url = "";
             while (true) {
                 while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl"))) {
-                    SeedTask seed = new SeedTask(url);
-                    executor.execute(seed);
+                    if (!RedisUtil.isExist("catchedUrl", url)) {
+                        SeedTask seed = new SeedTask(url);
+                        executor.execute(seed);
+                    }
                 }
                 executor.shutdown();
                 Thread.sleep(60000);

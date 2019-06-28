@@ -20,6 +20,7 @@ import java.util.*;
 /**
  * <a>http://www.cpnn.com.cn</a>
  * <a>News：中国电力新闻网</a>
+ *
  * @author:chenyan
  */
 public class cpnnNews {
@@ -49,17 +50,16 @@ public class cpnnNews {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
             if (null != html) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 Elements categoryList = document.select("div.more-gy a");
                 for (Element e : categoryList) {
                     if (!e.attr("href").equals("#")) {
                         String href = e.attr("href");
-                        if (!href.contains("http://yq")&&!href.contains("/fdpd/default.htm")&&!href.contains("/2014xny/default.htm")){
-                            String link =homepage + href;
+                        if (!href.contains("http://yq") && !href.contains("/fdpd/default.htm") && !href.contains("/2014xny/default.htm")) {
+                            String link = homepage + href;
 //                            System.out.println(link);
                             paging(link);
-                        }
-                        else{
+                        } else {
                             more(href);
                         }
                     }
@@ -72,33 +72,31 @@ public class cpnnNews {
 
     private void more(String url) {
         try {
-            if (!url.contains("http://")){
+            if (!url.contains("http://")) {
                 String link = "http://www.cpnn.com.cn" + url;
                 String html = HttpUtil.httpGetwithJudgeWord(link, "cpnn");
-                Document document = Jsoup.parse(new URL(link).openStream(), "GBK",html);
+                Document document = Jsoup.parse(new URL(link).openStream(), "GBK", html);
                 Elements select = document.select("div.fa_navlist ul li a");
-                if (select.size()!=0){
+                if (select.size() != 0) {
                     for (Element element : select) {
-                        if (element.attr("href").contains("#")){
+                        if (element.attr("href").contains("#")) {
                             String href = element.attr("href");
                             paging(href);
                         }
                     }
-                }
-                else {
+                } else {
                     Elements select1 = document.select("p.ner_nav span a");
                     for (Element elements : select1) {
-                        String href = "http://www.cpnn.com.cn"+elements.attr("href");
+                        String href = "http://www.cpnn.com.cn" + elements.attr("href");
                         paging(href);
                     }
                 }
-            }
-            else{
+            } else {
                 String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 Elements select = document.select("div.tit h3 a");
                 for (Element element : select) {
-                    String href ="http://yq.cpnn.com.cn" + element.attr("href");
+                    String href = "http://yq.cpnn.com.cn" + element.attr("href");
                     paging(href);
                 }
             }
@@ -120,7 +118,7 @@ public class cpnnNews {
                 }
                 for (String link : list) {
                     System.out.println("下一页：" + link);
-                newsList(link);
+                    newsList(link);
                 }
             }
         } catch (Exception e) {
@@ -142,7 +140,7 @@ public class cpnnNews {
                     newsInfo(href);
 
                 }
-            }else {
+            } else {
                 String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
                 Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 Elements select = document.select("div.cpnn-content-left-list ul li h1 a");
@@ -168,13 +166,13 @@ public class cpnnNews {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
             if (html != null) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 Elements href = document.select("div.cpnn-minnav a");
-                if (href.attr("href").equals("../")){
-                    newsInfo.put("plate",href.text().trim());
+                if (href.attr("href").equals("../")) {
+                    newsInfo.put("plate", href.text().trim());
                 }
-                if (href.attr("href").equals("./")){
-                    newsInfo.put("plate",href.text().trim());
+                if (href.attr("href").equals("./")) {
+                    newsInfo.put("plate", href.text().trim());
                 }
 
                 newsInfo.put("title", document.select("div.cpnn-con-title h1").text().trim());//标题
@@ -183,15 +181,15 @@ public class cpnnNews {
                 newsInfo.put("source", select.split("日期")[0].split("：")[1]);
                 Elements font = document.select("font span font");
                 for (Element element : font) {
-                    if (element.text().contains("责任编辑：")){
-                        newsInfo.put("author",element.text().trim().split("：")[1]);
+                    if (element.text().contains("责任编辑：")) {
+                        newsInfo.put("author", element.text().trim().split("：")[1]);
                     }
                 }
                 Elements text = document.select("div.cpnn-con-zhenwen");//新闻内容
                 if (text.size() != 0) {
-                    if (text.select("div.cpnn-con-zhenwen div p b").text().contains("【稿件声明】")){
+                    if (text.select("div.cpnn-con-zhenwen div p b").text().contains("【稿件声明】")) {
                         text.select("div.cpnn-con-zhenwen div p b").remove();
-                        newsInfo.put("text", text.text().replace("附件：",""));
+                        newsInfo.put("text", text.text().replace("附件：", ""));
                     }
                 }
                 Elements img = document.select("div.Custom_UnionStyle img");
@@ -201,22 +199,22 @@ public class cpnnNews {
                         newsInfo.put("images", imgsList.toString());//图片
                     }
                 }
-            }else {
+            } else {
                 LOGGER.info("页面不存在！");
             }
 //            newsInfo.put("plate",plate);//板块
-                newsInfo.put("crawlerId", "58");
-                newsInfo.put("timestamp", timestamp.format(new Date()));
-                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-                newsInfo.put("@timestamp", timestamp2.format(new Date()));
-                newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                System.out.println(newsInfo);
-                insert(newsInfo);
-                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
-            } catch(Exception e){
-                LOGGER.error(e.getMessage());
-            }
+            newsInfo.put("crawlerId", "58");
+            newsInfo.put("timestamp", timestamp.format(new Date()));
+            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+            newsInfo.put("@timestamp", timestamp2.format(new Date()));
+            newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            System.out.println(newsInfo);
+            insert(newsInfo);
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
         }
+    }
 
 
     private static void insert(JSONObject info) {

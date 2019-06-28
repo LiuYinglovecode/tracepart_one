@@ -2,6 +2,7 @@ package parse.news.download;
 
 import Utils.MD5Util;
 import Utils.NewsMd5;
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -56,7 +57,10 @@ public class MemDownload {
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newId);
-                esUtil.writeToES(info, "crawler-news-", "doc", newId);
+//                esUtil.writeToES(info, "crawler-news-", "doc", newId);
+                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
+                }
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

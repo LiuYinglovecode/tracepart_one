@@ -128,7 +128,7 @@ public class machine365News {
 
                 Elements title = gbk.select("div.newliIn_ti");
                 if (title.size() == 0) {
-                    String title2= gbk.select("div.left > div > h1").text().trim();
+                    String title2 = gbk.select("div.left > div > h1").text().trim();
                     newsInfo.put("title", gbk.select("div.left > div > h1").text().trim());
                 } else {
                     newsInfo.put("title", title.text());
@@ -155,7 +155,7 @@ public class machine365News {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
                 newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+                esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
             } else {
                 LOGGER.info("页面不存在");
             }

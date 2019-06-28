@@ -40,12 +40,12 @@ public class dzwNews {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "51dzw");
             if (null != html) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 Elements categoryList = document.select("div.mainLeft > div > a");
                 for (Element e : categoryList) {
-                    String href ="http://www.51dzw.com" + e.attr("href");
+                    String href = "http://www.51dzw.com" + e.attr("href");
                     String plate = e.text();
-                    paging(href,plate);
+                    paging(href, plate);
                 }
 
             } else {
@@ -60,14 +60,14 @@ public class dzwNews {
     private void paging(String url, String plate) {
         try {
             String replace = url.replace("1.html", "");
-            String html = HttpUtil.httpGetwithJudgeWord (url, "51dzw");
-            Document parse = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+            String html = HttpUtil.httpGetwithJudgeWord(url, "51dzw");
+            Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
             String pagesNumber = parse.select("#TechLists > div.page.mt8").text().split("总页数：")[1].split(" 每页记录数：")[0];//获取总结数
-            int total = Integer.valueOf(pagesNumber).intValue()+1;//类型转换
+            int total = Integer.valueOf(pagesNumber).intValue() + 1;//类型转换
             int number = 1;
             for (number = 1; number < total; number++) {
                 String link = replace + number + ".html";//拼接链接地址
-                newsList(link,plate);
+                newsList(link, plate);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,53 +76,53 @@ public class dzwNews {
 
     private void newsList(String url, String plate) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord (url, "51dzw");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "51dzw");
             Document parse = Jsoup.parse(html);
             Elements select = parse.select("#TechLists > dl > dt > a");
             for (Element e : select) {
-                String link = "http://www.51dzw.com"+e.attr("href");
-                newsInfo(link,plate);
+                String link = "http://www.51dzw.com" + e.attr("href");
+                newsInfo(link, plate);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void newsInfo(String url,String plate) {
+    private void newsInfo(String url, String plate) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "51dzw");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
-                Document parse = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                info.put("url", url);
+                Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
                 String title = parse.select("#TechDetail > h1").text().trim();
-                info.put("title",title);
+                info.put("title", title);
                 Elements select = parse.select("#TechDetail > p");
-                if (select.text().contains("访问次数")){
-                    info.put("time",select.text().split("访问次数")[0].replace("发布时间:",""));
-                    info.put("amountOfReading",select.text().split("访问")[1].split(":")[1]);
+                if (select.text().contains("访问次数")) {
+                    info.put("time", select.text().split("访问次数")[0].replace("发布时间:", ""));
+                    info.put("amountOfReading", select.text().split("访问")[1].split(":")[1]);
                 }
-                info.put("text",parse.select("#NewsCont").text().trim());
+                info.put("text", parse.select("#NewsCont").text().trim());
                 Elements images = parse.select("#NewsCont > p > img");
                 for (Element image : images) {
-                    if (!image.attr("src").contains("http://")){
+                    if (!image.attr("src").contains("http://")) {
                         String src = "http://www.51dzw.com" + image.attr("src");
                         imgs.add(src);
-                    }else {
+                    } else {
                         String src = image.attr("src");
                         imgs.add(src);
                     }
                     info.put("images", imgs.toString());
                 }
-                info.put("plate",plate);
+                info.put("plate", plate);
                 info.put("crawlerId", "64");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", title);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+                esUtil.writeToES(info, "crawler-news-", "doc", null);
             } else {
                 LOGGER.info("detail null");
             }
