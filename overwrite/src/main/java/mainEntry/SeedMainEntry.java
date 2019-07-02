@@ -130,6 +130,12 @@ public class SeedMainEntry {
                 } else if (taskName.contains("info.china.herostart.com")) {
                     HerostartToRedis herostartToRedis = new HerostartToRedis();
                     herostartToRedis.homepage(taskName);
+                } else if (taskName.contains("news.zgw.com")) {
+                    ZgwToRedis zgwToRedis = new ZgwToRedis();
+                    zgwToRedis.homepage(taskName);
+                } else if (taskName.contains("www.elecfans.com/news/hangye")) {
+                    ElecfansToRedis elecfansToRedis = new ElecfansToRedis();
+                    elecfansToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

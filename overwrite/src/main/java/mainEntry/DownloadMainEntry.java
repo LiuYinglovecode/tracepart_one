@@ -124,6 +124,12 @@ public class DownloadMainEntry {
                 } else if (taskName.contains("info.china.herostart.com")) {
                     HerostartDownload herostartDownload = new HerostartDownload();
                     herostartDownload.detail(taskName);
+                } else if (taskName.contains("news.zgw.com")) {
+                    ZgwDownload zgwDownload = new ZgwDownload();
+                    zgwDownload.detail(taskName);
+                } else if (taskName.contains("www.elecfans.com/news/hangye")) {
+                    ElecfansDownload elecfansDownload = new ElecfansDownload();
+                    elecfansDownload.detail(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
