@@ -19,6 +19,7 @@ import java.util.*;
 /**
  * <a>http://www.ces.cn/news/</a>
  * <p>News：中国节能网</p>
+ *
  * @author chenyan
  */
 public class cesNews {
@@ -54,7 +55,7 @@ public class cesNews {
                     if (!element.text().contains("新闻首页")) {
                         String href = element.attr("href");
                         String plate = element.text().trim();
-                        paging(href,plate);
+                        paging(href, plate);
                     }
                 }
             }
@@ -71,15 +72,15 @@ public class cesNews {
             int number = 1;
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国节能网");
             Document document = Jsoup.parse(html);
-            String Total = document.select("#page-nav.pagination cite").text().split("/")[1].replace("页","");
+            String Total = document.select("#page-nav.pagination cite").text().split("/")[1].replace("页", "");
             int total = Integer.valueOf(Total).intValue();
-            for (number = 1; number < total+1; number++) {
-                String nextPage = replace+"-"+number+".html";
+            for (number = 1; number < total + 1; number++) {
+                String nextPage = replace + "-" + number + ".html";
                 list.add(nextPage);
             }
             for (String link : list) {
                 System.out.println("下一页：" + link);
-                newsList(link,plate);
+                newsList(link, plate);
 
             }
 
@@ -95,9 +96,9 @@ public class cesNews {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国节能网");
             Document document = Jsoup.parse(html);
             Elements newsListInfo = document.select("div.fl.name a");
-            for (Element e : newsListInfo){
+            for (Element e : newsListInfo) {
                 String href = e.attr("href");
-                newsInfo(href,plate);
+                newsInfo(href, plate);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -107,13 +108,13 @@ public class cesNews {
 
 
     //新闻内容
-    private void newsInfo(String url,String plate) {
+    private void newsInfo(String url, String plate) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
-        newsInfo.put("url",url);
+        newsInfo.put("url", url);
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url,"中国节能网");
-            if (html!=null) {
+            String html = HttpUtil.httpGetwithJudgeWord(url, "中国节能网");
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("#title.title").text().trim());//标题
                 Elements select = document.select("div.fx_lyu span");
@@ -137,7 +138,7 @@ public class cesNews {
                         }
                     }
                 }
-            }else {
+            } else {
                 LOGGER.info("页面不存在！");
             }
             newsInfo.put("crawlerId", "57");
@@ -147,7 +148,7 @@ public class cesNews {
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             System.out.println(newsInfo);
             insert(newsInfo);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

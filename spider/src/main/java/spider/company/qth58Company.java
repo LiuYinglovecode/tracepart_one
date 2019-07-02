@@ -20,6 +20,7 @@ import java.util.*;
 
 /**
  * <p>Company: 全天候贸易网<p>
+ *
  * @author chenyan
  */
 public class qth58Company {
@@ -39,7 +40,7 @@ public class qth58Company {
     }
 
     //    按照省份分类，获取url进入省份企业列表
-    private void qth58Province(String url){
+    private void qth58Province(String url) {
 
         try {
             String html = httpGet(url, "全天候贸易网");
@@ -56,8 +57,7 @@ public class qth58Company {
     }
 
 
-
-//  企业列表，获取企业url
+    //  企业列表，获取企业url
     private void companyList(String url) {
         try {
             String html = httpGet(url, "全天候贸易网");
@@ -71,9 +71,9 @@ public class qth58Company {
 //          获取下一页企业列表
             Elements nextPage = document.select("#Pagination > div > a");
             for (Element link : nextPage) {
-                if (link.text().contains("下一页")){
+                if (link.text().contains("下一页")) {
                     String nextPageLink = link.attr("href");
-                    System.out.println("下一页："+nextPageLink);
+                    System.out.println("下一页：" + nextPageLink);
                     Thread.sleep(5000);
                     companyList(nextPageLink);
                 }
@@ -82,69 +82,70 @@ public class qth58Company {
             e.printStackTrace();
         }
     }
-//  进入公司网页获取公司联系方式及公司基本信息
+
+    //  进入公司网页获取公司联系方式及公司基本信息
     private void companyWebPage(String url) {
         JSONObject companyInfo = new JSONObject();
-        companyInfo.put("website",url);//网址
+        companyInfo.put("website", url);//网址
         try {
             String html = httpGet(url, "全天候贸易网");
             Document document = Jsoup.parse(html);
 //            联系方式
             Elements select = document.select("div.profile-main > div > ul > li");
-                for (Element contactInformation : select) {
-                if (contactInformation.select("span").text().contains("联系人：")){
+            for (Element contactInformation : select) {
+                if (contactInformation.select("span").text().contains("联系人：")) {
                     contactInformation.select("span").remove();
-                    companyInfo.put("contact",contactInformation.text().trim());
-                } else if (contactInformation.select("span").text().contains("移动电话：")){
+                    companyInfo.put("contact", contactInformation.text().trim());
+                } else if (contactInformation.select("span").text().contains("移动电话：")) {
                     contactInformation.select("span").remove();
-                    companyInfo.put("phone",contactInformation.text().trim());
-                } else if (contactInformation.select("span").text().contains("电话：")){
+                    companyInfo.put("phone", contactInformation.text().trim());
+                } else if (contactInformation.select("span").text().contains("电话：")) {
                     contactInformation.select("span").remove();
-                    companyInfo.put("landline",contactInformation.text().trim());
-                } else if (contactInformation.select("span").text().contains("邮编：")){
+                    companyInfo.put("landline", contactInformation.text().trim());
+                } else if (contactInformation.select("span").text().contains("邮编：")) {
                     contactInformation.select("span").remove();
-                    companyInfo.put("postcode",contactInformation.text().trim());
-                } else if (contactInformation.select("span").text().contains("地址：")){
+                    companyInfo.put("postcode", contactInformation.text().trim());
+                } else if (contactInformation.select("span").text().contains("地址：")) {
                     contactInformation.select("span").remove();
-                    companyInfo.put("address",contactInformation.text().trim());
+                    companyInfo.put("address", contactInformation.text().trim());
                 }
             }
 //          公司介绍
-            companyInfo.put("company_info",document.select("div.company-intro.clearfix > div > p").text().trim());
+            companyInfo.put("company_info", document.select("div.company-intro.clearfix > div > p").text().trim());
 //          公司基本信息
             Elements basicInformation = document.select("div.company-info > table > tbody > tr");
             for (Element element : basicInformation) {
-                if (element.select(".c").text().contains("公司名称")){
+                if (element.select(".c").text().contains("公司名称")) {
                     element.select(".c").remove();
-                    companyInfo.put("name",element.select("tr").text().trim());
+                    companyInfo.put("name", element.select("tr").text().trim());
                     companyInfo.put("id", MD5Util.getMD5String(element.select("tr").text().trim()));
-                } else  if (element.select(".c").text().contains("企业类型")){
+                } else if (element.select(".c").text().contains("企业类型")) {
                     element.select(".c").remove();
-                    companyInfo.put("company_model",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("经营模式")){
+                    companyInfo.put("company_model", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("经营模式")) {
                     element.select(".c").remove();
-                    companyInfo.put("management_model",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("注册资本")){
+                    companyInfo.put("management_model", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("注册资本")) {
                     element.select(".c").remove();
-                    companyInfo.put("register_capital",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("年营业额")){
+                    companyInfo.put("register_capital", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("年营业额")) {
                     element.select(".c").remove();
-                    companyInfo.put("company_turnover",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("法定代表人/负责人")){
+                    companyInfo.put("company_turnover", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("法定代表人/负责人")) {
                     element.select(".c").remove();
-                    companyInfo.put("incorporator",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("公司注册号")){
+                    companyInfo.put("incorporator", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("公司注册号")) {
                     element.select(".c").remove();
-                    companyInfo.put("from_where_table_id",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("员工人数")){
+                    companyInfo.put("from_where_table_id", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("员工人数")) {
                     element.select(".c").remove();
-                    companyInfo.put("employees",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("质量控制")){
+                    companyInfo.put("employees", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("质量控制")) {
                     element.select(".c").remove();
-                    companyInfo.put("quality_control",element.select("tr").text().trim());
-                } else  if (element.select(".c").text().contains("公司成立时间")){
+                    companyInfo.put("quality_control", element.select("tr").text().trim());
+                } else if (element.select(".c").text().contains("公司成立时间")) {
                     element.select(".c").remove();
-                    companyInfo.put("company_register_time",element.select("tr").text().trim());
+                    companyInfo.put("company_register_time", element.select("tr").text().trim());
                 }
             }
             companyInfo.put("crawlerId", "30");
@@ -154,7 +155,7 @@ public class qth58Company {
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
 //            insert(companyInfo);
-            esUtil.writeToES(companyInfo, "crawler-company-", "doc");
+            esUtil.writeToES(companyInfo, "crawler-company-", "doc", null);
         } catch (Exception e) {
             e.printStackTrace();
         }

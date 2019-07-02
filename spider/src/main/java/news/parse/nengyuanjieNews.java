@@ -20,6 +20,7 @@ import java.util.*;
 /**
  * <a>http://www.nengyuanjie.net/</a>
  * <a>News：能源界</a>
+ *
  * @author:chenyan
  */
 public class nengyuanjieNews {
@@ -52,11 +53,11 @@ public class nengyuanjieNews {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("a.sub");
                 for (Element e : categoryList) {
-                    if (!e.text().equals("大讲堂")&&!e.text().equals("访谈")&&!e.text().equals("会议之声")) {
+                    if (!e.text().equals("大讲堂") && !e.text().equals("访谈") && !e.text().equals("会议之声")) {
                         String link = e.attr("href");
                         String plate = e.text();
 //                        Thread.sleep(7000);
-                        paging(link,plate);
+                        paging(link, plate);
                     }
                 }
             }
@@ -75,30 +76,31 @@ public class nengyuanjieNews {
             Document document = Jsoup.parse(html);
             String Total = document.select("a.a1").prev().text();
             int total = Integer.valueOf(Total).intValue();
-            for (number = 1; number < total+1; number++) {
-                String nextPage = url+"?&page="+number;
+            for (number = 1; number < total + 1; number++) {
+                String nextPage = url + "?&page=" + number;
                 list.add(nextPage);
             }
             for (String link : list) {
                 System.out.println("下一页：" + link);
                 Thread.sleep(7000);
-                newsList(link,plate);
+                newsList(link, plate);
             }
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
+
     //新闻列表
     private void newsList(String url, String plate) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "能源界");
             Document document = Jsoup.parse(html);
             Elements newsListInfo = document.select("div.info h3 a");
-            for (Element e : newsListInfo){
+            for (Element e : newsListInfo) {
                 String href = e.attr("href");
                 Thread.sleep(7000);
-                newsInfo(href,plate);
+                newsInfo(href, plate);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -112,10 +114,10 @@ public class nengyuanjieNews {
     private void newsInfo(String url, String plate) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
-        newsInfo.put("url",url);
+        newsInfo.put("url", url);
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url,"能源界");
-            if (html!=null) {
+            String html = HttpUtil.httpGetwithJudgeWord(url, "能源界");
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("h1.art-title").text().trim());//标题
                 String select = document.select("span.desc.mt15").text();
@@ -133,18 +135,18 @@ public class nengyuanjieNews {
                         newsInfo.put("images", imgsList.toString());//图片
                     }
                 }
-            }else {
+            } else {
                 LOGGER.info("页面不存在！");
             }
 
-            newsInfo.put("plate",plate);//板块
+            newsInfo.put("plate", plate);//板块
             newsInfo.put("crawlerId", "60");
             newsInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             newsInfo.put("@timestamp", timestamp2.format(new Date()));
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             insert(newsInfo);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -58,7 +59,10 @@ public class WjwDownload {
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newsId);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+//                esUtil.writeToES(info, "crawler-news-", "doc", newsId);
+                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
+                }
             } else {
                 LOGGER.info("detail null");
             }

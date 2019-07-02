@@ -31,6 +31,7 @@ public class maiCompany {
         header = new HashMap();
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
     }
+
     private void insert(JSONObject companyInfo) {
         Map = (java.util.Map) companyInfo;
         if (updateToMySQL.dataUpdate(Map)) {
@@ -49,10 +50,10 @@ public class maiCompany {
 
     private void industryList(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord (url, "关于我们");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             Document parse = Jsoup.parse(html);
             Elements select = parse.select("td.catalog_tds p a.px15");
-            for (Element e : select){
+            for (Element e : select) {
                 String link = e.attr("href");
                 nextPage(link);
             }
@@ -63,21 +64,21 @@ public class maiCompany {
 
     private void nextPage(String url) {
         String replace = url.replace(".html", "");
-        String html = HttpUtil.httpGetwithJudgeWord (url, "关于我们");
+        String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
         Document parse = Jsoup.parse(html);
-        String Total = parse.select("div.pages cite").text().split("/")[1].replace("页","");
-        int total = Integer.valueOf(Total).intValue()+1;//类型转换
+        String Total = parse.select("div.pages cite").text().split("/")[1].replace("页", "");
+        int total = Integer.valueOf(Total).intValue() + 1;//类型转换
         int nextPage = 1;
         for (nextPage = 1; nextPage < total; nextPage++) {
             String link = replace + "_" + nextPage + ".html";//拼接链接地址
-            System.out.println("下一页："+link);
+            System.out.println("下一页：" + link);
             companyList(link);
         }
     }
 
     private void companyList(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord (url, "关于我们");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             Document parse = Jsoup.parse(html);
             Elements select = parse.select("div.list table tbody tr td ul li a");
             for (Element e : select) {
@@ -92,11 +93,11 @@ public class maiCompany {
     private void companyinfo(String url) {
         JSONObject companyInfo = new JSONObject();
         try {
-            String html = HttpUtil.httpGetwithJudgeWord (url, "中麦网");
-            if (html!=null) {
+            String html = HttpUtil.httpGetwithJudgeWord(url, "中麦网");
+            if (html != null) {
                 Document parse = Jsoup.parse(html);
                 Elements navigation = parse.select("div#menu.menu ul li a");//企业页面导航栏
-                if (navigation.size()!=0) {
+                if (navigation.size() != 0) {
                     for (Element element : navigation) {
                         if (element.text().contains("公司介绍")) {
                             String href1 = element.attr("href");
@@ -160,7 +161,7 @@ public class maiCompany {
                             }
                         }
                     }
-                }else {
+                } else {
                     LOGGER.info("公司主页正在等待开通");
                 }
             } else {
@@ -175,7 +176,7 @@ public class maiCompany {
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             insert(companyInfo);
-            esUtil.writeToES(companyInfo, "crawler-company-", "doc");
+            esUtil.writeToES(companyInfo, "crawler-company-", "doc", null);
         } catch (Exception e) {
             e.printStackTrace();
         }

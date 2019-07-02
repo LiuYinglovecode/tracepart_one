@@ -153,7 +153,7 @@ public class texindexNews {
             newsInfo.put("@timestamp", timestamp2.format(new Date()));
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             mysqlUtil.insertNews(newsInfo, "crawler_news", title);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

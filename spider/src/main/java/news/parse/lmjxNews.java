@@ -19,6 +19,7 @@ import java.util.*;
 /**
  * <a>https://news.lmjx.net/</a>
  * <p>中国路面机械网</p>
+ *
  * @author chenyan
  */
 public class lmjxNews {
@@ -63,7 +64,8 @@ public class lmjxNews {
 
 
     /**
-     *分页：获取到总页数，对url进行拼接，得到完整的下一页新闻列表url。
+     * 分页：获取到总页数，对url进行拼接，得到完整的下一页新闻列表url。
+     *
      * @param url
      */
     private void more(String url) {
@@ -76,10 +78,10 @@ public class lmjxNews {
                 int total = Integer.valueOf(Total).intValue();
                 int number = 1;
                 for (number = 1; number <= total; number++) {
-                    String nextPage = replace+"0_0_0_"+number+".html";
+                    String nextPage = replace + "0_0_0_" + number + ".html";
                     newsList(nextPage);
                 }
-            }else {
+            } else {
                 LOGGER.info("homepage null");
             }
         } catch (Exception e) {
@@ -88,7 +90,8 @@ public class lmjxNews {
     }
 
     /**
-     *新闻列表 ：解析网页一次获取全部想要的新闻信息url
+     * 新闻列表 ：解析网页一次获取全部想要的新闻信息url
+     *
      * @param url
      */
     private void newsList(String url) {
@@ -97,7 +100,7 @@ public class lmjxNews {
             if (html != null) {
                 Document parse = Jsoup.parse(html);
                 Elements title = parse.select("div#i_clist_1.clist div.item h1 a");
-                if (title!=null) {
+                if (title != null) {
                     for (Element element : title) {
                         newsInfo(element.attr("href"));
                     }
@@ -113,6 +116,7 @@ public class lmjxNews {
 
     /**
      * 新闻信息：解析获取信息，存入数据库及ES
+     *
      * @param url
      */
     private void newsInfo(String url) {
@@ -121,38 +125,38 @@ public class lmjxNews {
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("div > h1:eq(0)").text();
-                info.put("title",title);
+                info.put("title", title);
                 Elements time = parse.select("div.pinf.cl span.time");
                 if (time.size() != 0) {
                     info.put("time", time.text().trim());
                 }
                 Elements time1 = parse.select("div.details-timer.left");
-                if (time1.size()!=0) {
+                if (time1.size() != 0) {
                     info.put("time", time1.text().trim());
                 }
                 String select = parse.select("div.contentbox div.info").text().trim();
-                if (select.contains("来源：")){
-                    info.put("time",select.split("来源：")[0]);
-                    info.put("source",select.split("来源：")[1].replace("，转载请标明出处",""));
+                if (select.contains("来源：")) {
+                    info.put("time", select.split("来源：")[0]);
+                    info.put("source", select.split("来源：")[1].replace("，转载请标明出处", ""));
                 }
                 Elements text = parse.select("div.content");
-                if (text.size()!=0){
-                    info.put("text",text.text().trim());
-                }else {
+                if (text.size() != 0) {
+                    info.put("text", text.text().trim());
+                } else {
                     Elements text1 = parse.select("div.pageleft content");
-                    info.put("text",text1.text().trim());
+                    info.put("text", text1.text().trim());
                 }
                 Elements images = parse.select("div.content p img");
-                if (images.size()!=0) {
+                if (images.size() != 0) {
                     for (Element image : images) {
                         String src = image.attr("src");
                         imgs.add(src);
                         info.put("images", imgs.toString());
                     }
-                }else {
+                } else {
                     Elements text1 = parse.select("div.pageleft content p img");
                     for (Element image : text1) {
                         String src = image.attr("src");
@@ -168,8 +172,8 @@ public class lmjxNews {
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", title);
-                esUtil.writeToES(info, "crawler-news-", "doc");
-                    System.out.println(info);
+                esUtil.writeToES(info, "crawler-news-", "doc", null);
+                System.out.println(info);
 
             } else {
                 LOGGER.info("detail null");

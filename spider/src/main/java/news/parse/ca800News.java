@@ -19,6 +19,7 @@ import java.util.*;
 /**
  * <a>http://www.ca800.com/news/all/l_1.html</a>
  * <P>News：中国自动化网</P>
+ *
  * @author chenyan
  */
 public class ca800News {
@@ -54,9 +55,9 @@ public class ca800News {
                 String html = HttpUtil.httpGetwithJudgeWord(nextPage, "中国自动化网");
                 if (null != html) {
                     Document document = Jsoup.parse(html);
-                    Elements categoryList =document.select("div.newslist_title a");
+                    Elements categoryList = document.select("div.newslist_title a");
                     for (Element element : categoryList) {
-                        String href ="http://www.ca800.com"+element.attr("href");
+                        String href = "http://www.ca800.com" + element.attr("href");
                         newsInfo(href);
                     }
                 }
@@ -73,10 +74,10 @@ public class ca800News {
     private void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject newsInfo = new JSONObject();
-        newsInfo.put("url",url);
+        newsInfo.put("url", url);
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url,"中国自动化网");
-            if (html!=null) {
+            String html = HttpUtil.httpGetwithJudgeWord(url, "中国自动化网");
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("div.newsdetail.border.fl h1").text().trim());//标题
                 Elements select = document.select("div.title_bar.f12.h25");
@@ -114,7 +115,7 @@ public class ca800News {
                         }
                     }
                 }
-            }else {
+            } else {
                 LOGGER.info("页面不存在！");
             }
             newsInfo.put("crawlerId", "59");
@@ -124,7 +125,7 @@ public class ca800News {
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             System.out.println(newsInfo);
             insert(newsInfo);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

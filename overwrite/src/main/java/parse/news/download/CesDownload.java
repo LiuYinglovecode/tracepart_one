@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.NewsMd5;
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -65,7 +66,10 @@ public class CesDownload {
                     newsInfo.put("@timestamp", timestamp2.format(new Date()));
                     newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
-                    esUtil.writeToES(newsInfo, "crawler-news-", "doc");
+//                    esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
+                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
+                        RedisUtil.insertUrlToSet("catchedUrl", url);
+                    }
                 }
             } else {
                 LOGGER.info("页面不存在！");

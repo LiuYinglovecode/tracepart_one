@@ -20,6 +20,7 @@ import java.util.*;
 /**
  * <a>http://www.jiancai.com/info/</a>
  * <p>盛丰建材网</p>
+ *
  * @author chenyan
  */
 public class jiancaiNews {
@@ -48,10 +49,10 @@ public class jiancaiNews {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("tbody tr td a.black");
                 for (Element e : categoryList) {
-                    String href ="http://www.jiancai.com" + e.attr("href");
+                    String href = "http://www.jiancai.com" + e.attr("href");
 //                    System.out.println(href);
                     String plate = e.text();
-                    paging(href,plate);
+                    paging(href, plate);
                 }
 
             } else {
@@ -69,8 +70,8 @@ public class jiancaiNews {
             int number = 1;
             int total = 1952;
             for (number = 1; number < total; number++) {
-                String link = replace +"-p"+ number + ".html";//拼接链接地址
-                newsList(link,plate);
+                String link = replace + "-p" + number + ".html";//拼接链接地址
+                newsList(link, plate);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,15 +80,15 @@ public class jiancaiNews {
 
     private void newsList(String url, String plate) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord (url, "jiancai");
-            if (html!=null) {
+            String html = HttpUtil.httpGetwithJudgeWord(url, "jiancai");
+            if (html != null) {
                 Document parse = Jsoup.parse(html);
                 Elements select = parse.select("li.liMainList a");
                 for (Element e : select) {
                     String link = "http://www.jiancai.com" + e.attr("href");
                     newsInfo(link, plate);
                 }
-            }else {
+            } else {
                 LOGGER.info("网页不存在！");
             }
         } catch (Exception e) {
@@ -95,41 +96,41 @@ public class jiancaiNews {
         }
     }
 
-    private void newsInfo(String url,String plate) {
+    private void newsInfo(String url, String plate) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "jiancai");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                info.put("url",url);
+                info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("div.midbox1 h1").text().trim();
-                info.put("title",title);
+                info.put("title", title);
                 Elements select = parse.select("div.midbox1 > p");
-                if (select.text().contains("来源:")){
-                    info.put("time",select.text().split("来源")[0].replace("发布日期",""));
-                    info.put("source",select.text().split("来源")[1].split(":")[1]);
+                if (select.text().contains("来源:")) {
+                    info.put("time", select.text().split("来源")[0].replace("发布日期", ""));
+                    info.put("source", select.text().split("来源")[1].split(":")[1]);
                 }
-                info.put("text",parse.select("div.midboxcont").text().trim());
+                info.put("text", parse.select("div.midboxcont").text().trim());
                 Elements images = parse.select("div.midboxcont p img");
                 for (Element image : images) {
-                    if (!image.attr("src").contains("http://")){
+                    if (!image.attr("src").contains("http://")) {
                         String src = "http:" + image.attr("src");
                         imgs.add(src);
-                    }else {
+                    } else {
                         String src = image.attr("src");
                         imgs.add(src);
                     }
                     info.put("images", imgs.toString());
                 }
-                info.put("plate",plate);
+                info.put("plate", plate);
                 info.put("crawlerId", "69");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", title);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+                esUtil.writeToES(info, "crawler-news-", "doc", null);
             } else {
                 LOGGER.info("detail null");
             }

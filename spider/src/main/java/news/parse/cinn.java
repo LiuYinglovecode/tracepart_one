@@ -124,7 +124,7 @@ public class cinn {
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", title);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+                esUtil.writeToES(info, "crawler-news-", "doc", null);
             } else {
                 LOGGER.info("detail null");
             }

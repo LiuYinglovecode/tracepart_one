@@ -78,7 +78,6 @@ public class CableabcDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
                 newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                esUtil.writeToES(newsInfo, "crawler-news-", "doc");
             } else {
                 LOGGER.info("页面不存在");
             }

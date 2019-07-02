@@ -21,6 +21,7 @@ import java.util.*;
 /**
  * <a>http://www.707070.cn/city/</a>
  * <p>Compangy：企领网</p>
+ *
  * @author chenyan
  */
 public class qilingConpany {
@@ -40,6 +41,7 @@ public class qilingConpany {
         header = new HashMap();
         header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
     }
+
     public static void main(String[] args) {
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         qilingConpany qilingConpany = new qilingConpany();
@@ -49,20 +51,19 @@ public class qilingConpany {
     }
 
     //    按照省份分类，获取url进入省份企业列表
-    private void qilingProvince(String url){
+    private void qilingProvince(String url) {
         try {
             String html = httpGet(url, "企领网");
             Document document = Jsoup.parse(html);
             Elements select = document.select("dd.cities a.keys");
             for (Element link : select) {
-                String href = homepage+"/"+link.attr("href");
+                String href = homepage + "/" + link.attr("href");
                 companyList(href);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 
     //  企业列表，获取企业url
@@ -74,17 +75,16 @@ public class qilingConpany {
             for (Element link : select) {
                 String href = link.attr("href");
                 String name = link.text();
-                companyWebPage(href,name);
-
+                companyWebPage(href, name);
 
 
             }
 //          获取下一页企业列表
             Elements nextPage = document.select("div.paginator a");
             for (Element link : nextPage) {
-                if (link.text().contains("下一页")){
-                    String nextPageLink = homepage.replace("/city","")+link.attr("href");
-                    System.out.println("下一页："+nextPageLink);
+                if (link.text().contains("下一页")) {
+                    String nextPageLink = homepage.replace("/city", "") + link.attr("href");
+                    System.out.println("下一页：" + nextPageLink);
                     companyList(nextPageLink);
                 }
             }
@@ -92,62 +92,63 @@ public class qilingConpany {
             e.printStackTrace();
         }
     }
+
     //  进入公司网页获取公司联系方式及公司基本信息
     private void companyWebPage(String url, String name) {
         JSONObject companyInfo = new JSONObject();
-        companyInfo.put("website",url);//网址
+        companyInfo.put("website", url);//网址
         try {
             String html = httpGet(url, "企领网");
-            if (html!=null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
-                companyInfo.put("company_info",document.select("div.box_con.company-profile").text().trim());
+                companyInfo.put("company_info", document.select("div.box_con.company-profile").text().trim());
                 Elements info = document.select("ul.box_con-dlist.row2 li");
                 for (Element element : info) {
-                    if (element.text().contains("注册资金：")){
-                        companyInfo.put("register_capital",element.text().replace("注册资金：",""));
+                    if (element.text().contains("注册资金：")) {
+                        companyInfo.put("register_capital", element.text().replace("注册资金：", ""));
                     }
-                    if (element.text().contains("经营模式：")){
-                        companyInfo.put("management_model",element.text().replace("经营模式：",""));
+                    if (element.text().contains("经营模式：")) {
+                        companyInfo.put("management_model", element.text().replace("经营模式：", ""));
                     }
-                    if (element.text().contains("年营业额：")){
-                        companyInfo.put("company_turnover",element.text().replace("年营业额：",""));
+                    if (element.text().contains("年营业额：")) {
+                        companyInfo.put("company_turnover", element.text().replace("年营业额：", ""));
                     }
-                    if (element.text().contains("企业人员：")){
-                        companyInfo.put("employees",element.text().replace("企业人员：",""));
+                    if (element.text().contains("企业人员：")) {
+                        companyInfo.put("employees", element.text().replace("企业人员：", ""));
                     }
-                    if (element.text().contains("经营面积：")){
-                        companyInfo.put("company_area",element.text().replace("经营面积：",""));
+                    if (element.text().contains("经营面积：")) {
+                        companyInfo.put("company_area", element.text().replace("经营面积：", ""));
                     }
-                    if (element.text().contains("质量标准：")){
-                        companyInfo.put("quality_control",element.text().replace("质量标准：",""));
+                    if (element.text().contains("质量标准：")) {
+                        companyInfo.put("quality_control", element.text().replace("质量标准：", ""));
                     }
                 }
                 Elements navigation = document.select("li.contact.current a");
                 for (Element element : navigation) {
-                    if (element.text().contains("联系我们")){
+                    if (element.text().contains("联系我们")) {
                         String href = homepage + element.attr("href");
                         String page = httpGet(href, "企领网");
                         Document doc = Jsoup.parse(page);
                         Elements contactUs = doc.select("ul.box_con-dlist li");
                         for (Element us : contactUs) {
-                            if (us.text().contains("联系人：")){
-                                companyInfo.put("contact",us.text().split("：")[1]);
+                            if (us.text().contains("联系人：")) {
+                                companyInfo.put("contact", us.text().split("：")[1]);
                             }
-                            if (us.text().contains("电话：")){
-                                companyInfo.put("landline",us.text().split("：")[1]);
+                            if (us.text().contains("电话：")) {
+                                companyInfo.put("landline", us.text().split("：")[1]);
                             }
-                            if (us.text().contains("网址：")){
-                                companyInfo.put("website",us.text().split("：")[1]);
+                            if (us.text().contains("网址：")) {
+                                companyInfo.put("website", us.text().split("：")[1]);
                             }
-                            if (us.text().contains("邮编：")){
-                                companyInfo.put("postcode",us.text().split("：")[1]);
+                            if (us.text().contains("邮编：")) {
+                                companyInfo.put("postcode", us.text().split("：")[1]);
                             }
                         }
                     }
                 }
             }
-            companyInfo.put("name",name);
-            companyInfo.put("id",MD5Util.getMD5String(name));
+            companyInfo.put("name", name);
+            companyInfo.put("id", MD5Util.getMD5String(name));
             companyInfo.put("crawlerId", "56");
             companyInfo.put("createTime", creatrTime.format(new Date()));
             companyInfo.put("timestamp", timestamp.format(new Date()));
@@ -155,7 +156,7 @@ public class qilingConpany {
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             insert(companyInfo);
-            esUtil.writeToES(companyInfo, "crawler-company-", "doc");
+            esUtil.writeToES(companyInfo, "crawler-company-", "doc", null);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -32,21 +33,21 @@ public class GbsDownload {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-                info.put("title",document.select("div.det_nr_tit > h1").text().trim());
+                info.put("title", document.select("div.det_nr_tit > h1").text().trim());
                 Elements select = document.select("div.det_nr_time > p");
                 for (Element element : select) {
-                    if (element.text().contains("发布：")){
-                        info.put("time",element.text().replace("发布：",""));
-                    }else if (element.text().contains("作者：")){
-                        info.put("author",element.text().replace("作者：",""));
-                    }else if (element.text().contains("来源：")){
-                        info.put("source",element.text().replace("来源：",""));
+                    if (element.text().contains("发布：")) {
+                        info.put("time", element.text().replace("发布：", ""));
+                    } else if (element.text().contains("作者：")) {
+                        info.put("author", element.text().replace("作者：", ""));
+                    } else if (element.text().contains("来源：")) {
+                        info.put("source", element.text().replace("来源：", ""));
                     }
                 }
                 Elements text = document.select("div.det_nr_p");
-                info.put("text",text.text().trim());
+                info.put("text", text.text().trim());
                 String newsId = MD5Util.getMD5String(text.text().trim());
-                info.put("newsId",newsId);
+                info.put("newsId", newsId);
                 Elements imgList = document.select("div.det_nr_p > p > img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {
@@ -54,8 +55,8 @@ public class GbsDownload {
                             imgs.add("http:" + e.attr("src"));
                         } else if (e.attr("src").contains("http:")) {
                             imgs.add(e.attr("src"));
-                        } else if (e.attr("src").contains("/upload/news")){
-                            imgs.add(baseUrl+e.attr("src"));
+                        } else if (e.attr("src").contains("/upload/news")) {
+                            imgs.add(baseUrl + e.attr("src"));
                         }
                     }
                     info.put("images", imgs.toString());//图片链接
@@ -68,7 +69,10 @@ public class GbsDownload {
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newsId);
-                esUtil.writeToES(info, "crawler-news-", "doc");
+//                esUtil.writeToES(info, "crawler-news-", "doc", newsId);
+                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
+                }
             } else {
                 LOGGER.info("detail null");
             }
