@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -40,7 +41,7 @@ public class ElecfansDownload {
                 text.select("span.count span.art_click_count").remove();
                 info.put("text",text.text().trim());
                 String newsId = MD5Util.getMD5String(text.text().trim());
-                info.put("newsId",newsId);
+                info.put("newsId",newsId);;
                 Elements imgList = text.select("div.simditor-body.clearfix p img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {
@@ -56,8 +57,9 @@ public class ElecfansDownload {
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newsId);
-                esUtil.writeToES(info, "crawler-news-", "doc");
-                System.out.println(info);
+                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
+                }
 
             } else {
                 LOGGER.info("detail null");

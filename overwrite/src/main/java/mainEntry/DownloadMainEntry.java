@@ -4,9 +4,8 @@ import Utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parse.company.download.QiyiDownload;
-import parse.company.toRedis.QiyiToRedis;
 import parse.news.download.*;
-import parse.news.toRedis.*;
+
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -129,9 +128,18 @@ public class DownloadMainEntry {
                 } else if (taskName.contains("news.zgw.com")) {
                     ZgwDownload zgwDownload = new ZgwDownload();
                     zgwDownload.detail(taskName);
-                } else if (taskName.contains("www.elecfans.com/news/hangye")) {
+                } else if (taskName.contains("elecfans")) {
                     ElecfansDownload elecfansDownload = new ElecfansDownload();
                     elecfansDownload.detail(taskName);
+                } else if (taskName.contains("maijx")) {
+                    MaijxDownload maijxDownload = new MaijxDownload();
+                    maijxDownload.newsInfo(taskName);
+                } else if (taskName.contains("famens")) {
+                    FamensDownload famensDownload = new FamensDownload();
+                    famensDownload.newsInfo(taskName);
+                } else if (taskName.contains("spsb114")) {
+                    Spsb114Download spsb114Download = new Spsb114Download();
+                    spsb114Download.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

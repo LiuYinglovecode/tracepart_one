@@ -136,6 +136,15 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.elecfans.com/news/hangye")) {
                     ElecfansToRedis elecfansToRedis = new ElecfansToRedis();
                     elecfansToRedis.homepage(taskName);
+                } else if (taskName.contains("www.elecfans.com/news/hangye")) {
+                    MaijxToRedis maijxToRedis = new MaijxToRedis();
+                    maijxToRedis.homepage(taskName);
+                } else if (taskName.contains("www.famens.com")) {
+                    FamensToRedis famensToRedis = new FamensToRedis();
+                    famensToRedis.homepage(taskName);
+                } else if (taskName.contains("www.spsb114.com")) {
+                    Spsb114ToRedis spsb114ToRedis = new Spsb114ToRedis();
+                    spsb114ToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
