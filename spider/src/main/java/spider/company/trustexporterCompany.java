@@ -43,7 +43,7 @@ public class trustexporterCompany {
 
     private void insertToMySQL(JSONObject companyInfo) {
         Map = (Map) companyInfo;
-        if (updateToMySQL.dataUpdate(Map)) {
+        if (updateToMySQL.companyInsert(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }

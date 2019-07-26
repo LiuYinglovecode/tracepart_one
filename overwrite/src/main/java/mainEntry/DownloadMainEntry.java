@@ -3,7 +3,6 @@ package mainEntry;
 import Utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.company.download.QiyiDownload;
 import parse.news.download.*;
 
 
@@ -110,9 +109,6 @@ public class DownloadMainEntry {
                 } else if (taskName.contains("www.xianjichina.com")) {
                     XianjichinaDownload xianjichinaDownload = new XianjichinaDownload();
                     xianjichinaDownload.detail(taskName);
-                } else if (taskName.contains("supplier.71.net")) {
-                    QiyiDownload qiyiDownload = new QiyiDownload();
-                    qiyiDownload.companyInfo(taskName);
                 } else if (taskName.contains("news.wjw.cn")) {
                     WjwDownload wjwDownload = new WjwDownload();
                     wjwDownload.detail(taskName);
@@ -140,6 +136,15 @@ public class DownloadMainEntry {
                 } else if (taskName.contains("spsb114")) {
                     Spsb114Download spsb114Download = new Spsb114Download();
                     spsb114Download.newsInfo(taskName);
+                } else if (taskName.contains("chuandong")) {
+                    ChuangdongDownload chuangdongDownload = new ChuangdongDownload();
+                    chuangdongDownload.newsInfo(taskName);
+                } else if (taskName.contains("chinacrane")) {
+                    ChinacraneDownload chinacraneDownload = new ChinacraneDownload();
+                    chinacraneDownload.newsInfo(taskName);
+                } else if (taskName.contains("findzd")) {
+                    FindzdDownload findzdDownload = new FindzdDownload();
+                    findzdDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

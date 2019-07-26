@@ -23,7 +23,7 @@ public class updateToMySQL {
     }
 
 
-    public static boolean dataUpdate(Map<String, String> ipRegionMap) {
+    public static boolean companyInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "crawler_data.crawler_company";
         String sql = "insert into " + TABLE_NAME + "(id,name,company_info,main_product,industry,management_model," +
                 "customized_service,register_capital,company_register_time,register_address,company_model,incorporator," +

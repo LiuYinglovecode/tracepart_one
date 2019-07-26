@@ -36,4 +36,27 @@ public class mysqlUtil {
             LOGGER.error(e.getMessage());
         }
     }
+
+
+    public static void insertCompany(JSONObject info) {
+        try {
+            Map = (java.util.Map) info;
+            if (updateToMySQL.companyInsert(Map)) {
+                LOGGER.info("插入中 : " + Map.toString());
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    public static void insertProduct(JSONObject productInfo) {
+        try {
+            Map = (java.util.Map) productInfo;
+            if (updateToMySQL.productUpdate(Map)) {
+                LOGGER.info("插入中 : " + Map.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -41,7 +41,7 @@ public class sn180Company {
 
     private void insertToMySQL(JSONObject companyInfo) {
         Map = (java.util.Map) companyInfo;
-        if (updateToMySQL.dataUpdate(Map)) {
+        if (updateToMySQL.companyInsert(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }

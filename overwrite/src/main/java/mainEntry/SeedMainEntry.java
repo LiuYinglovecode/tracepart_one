@@ -2,7 +2,6 @@ package mainEntry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.company.toRedis.QiyiToRedis;
 import parse.news.toRedis.*;
 
 import java.io.BufferedReader;
@@ -115,9 +114,6 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.xianjichina.com")) {
                     XianjichinaToRedis xianjichinaToRedis = new XianjichinaToRedis();
                     xianjichinaToRedis.homepage(taskName);
-                } else if (taskName.contains("supplier.71.net")) {
-                    QiyiToRedis qiyiToRedis = new QiyiToRedis();
-                    qiyiToRedis.homepage(taskName);
                 } else if (taskName.contains("news.wjw.cn")) {
                     WjwToRedis wjwToRedis = new WjwToRedis();
                     wjwToRedis.homepage(taskName);
@@ -145,6 +141,15 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.spsb114.com")) {
                     Spsb114ToRedis spsb114ToRedis = new Spsb114ToRedis();
                     spsb114ToRedis.homepage(taskName);
+                } else if (taskName.contains("http://www.chuandong.com/news/")) {
+                    ChuandongToRedis chuandongToRedis = new ChuandongToRedis();
+                    chuandongToRedis.homepage(taskName);
+                } else if (taskName.contains("http://www.chinacrane.net/")) {
+                    ChinacraneToRedis chinacraneToRedis = new ChinacraneToRedis();
+                    chinacraneToRedis.homepage(taskName);
+                } else if (taskName.contains("http://www.findzd.com/industry/")) {
+                    FindzdToRedis findzdToRedis = new FindzdToRedis();
+                    findzdToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

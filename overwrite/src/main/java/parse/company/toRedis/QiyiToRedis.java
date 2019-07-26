@@ -28,7 +28,7 @@ public class QiyiToRedis {
             }
             LOGGER.info("supplier.71.net  DONE");
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 
@@ -52,7 +52,7 @@ public class QiyiToRedis {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 

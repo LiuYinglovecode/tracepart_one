@@ -32,7 +32,7 @@ public class QiyiDownload {
 
     private void insertToMySQL(JSONObject companyInfo) {
         Map = (Map) companyInfo;
-        if (updateToMySQL.dataUpdate(Map)) {
+        if (updateToMySQL.companyInsert(Map)) {
             LOGGER.info("插入中 : " + Map.toString());
         }
     }
@@ -68,10 +68,10 @@ public class QiyiDownload {
             }
 
             Elements name = aboutUsParse.select("div.con p.company");
-            if (name.size() != 0) {
-                companyInfo.put("name", name.text().trim());
-                companyInfo.put("id", MD5Util.getMD5String(name.text().trim()));
-            }
+            companyInfo.put("name", name.text().trim());
+            String companyId = MD5Util.getMD5String(name.text().trim());
+            companyInfo.put("id", MD5Util.getMD5String(name.text().trim()));
+
             Elements contact = aboutUsParse.select("div.con ul li.name");
             if (contact.size() != 0) {
                 companyInfo.put("contact", contact.text().trim());
@@ -103,7 +103,7 @@ public class QiyiDownload {
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             insertToMySQL(companyInfo);
-            if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", MD5Util.getMD5String(name.text().trim()))) {
+            if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", companyId)) {
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {
