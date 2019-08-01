@@ -3,17 +3,17 @@ package util;
 import ipregion.ProxyDao;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpException;
-import org.apache.http.HttpHost;
-import org.apache.http.NameValuePair;
+import org.apache.http.*;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
@@ -24,16 +24,20 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
+import sun.nio.cs.ext.GBK;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
+import java.nio.charset.Charset;
 import java.util.*;
 
 
 public class HttpUtil {
     private final static Logger LOGGER = LoggerFactory.getLogger(HttpUtil.class);
     private static final String UTF8 = "utf-8";
+    private static final String gb2312 = "gb2312";
 
     private static final int TIME_OUT_MILLIS = 60000;
     private static String daili = "https://www.kuaidaili.com/getproxy/?orderid=902989670537257&num=100&area=&area_ex=&port=&port_ex=&ipstart=&ipstart_ex=&carrier=0&an_ha=1&an_an=1&sp1=1&protocol=1&method=1&quality=0&sort=0&b_pcchrome=1&b_pcie=1&b_pcff=1&showtype=1";
@@ -77,6 +81,7 @@ public class HttpUtil {
                 response = httpClient.execute(httpGet);
                 if (response.getStatusLine().getStatusCode() == 200) {
                     result = EntityUtils.toString(response.getEntity(), UTF8);
+//                    result = EntityUtils.toString(response.getEntity(), gb2312);
                     break;
                 }
             } catch (IOException e) {
@@ -220,6 +225,43 @@ public class HttpUtil {
         }
         return result;
     }
+
+    public static String doPostMultipartFile(String url, MultipartFile file, String cardID, String cardType) {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        String result = "";
+        try {
+            String fileName = file.getOriginalFilename();
+            HttpPost httpPost = new HttpPost(url);
+            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            builder.setCharset(Charset.forName("UTF-8"));
+            builder.setMode(HttpMultipartMode.RFC6532);
+            builder.addBinaryBody("file", file.getInputStream(), ContentType.DEFAULT_BINARY, fileName);// 文件流
+//            builder.addTextBody("filename", fileName, ContentType.create("text/plain", Consts.UTF_8));
+            builder.addTextBody("cardID", cardID);
+            builder.addTextBody("cardType", cardType);
+            HttpEntity entity = builder.build();
+            httpPost.setEntity(entity);
+            HttpResponse response = httpClient.execute(httpPost);// 执行提交
+            HttpEntity responseEntity = response.getEntity();
+            if (responseEntity != null) {
+                // 将响应内容转换为字符串
+                result = EntityUtils.toString(responseEntity, Charset.forName("UTF-8"));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        System.err.println("result" + result);
+        return result;
+    }
+
 
     public static Set<String> getProxys() {
         Set<String> proxys = new HashSet<>();
