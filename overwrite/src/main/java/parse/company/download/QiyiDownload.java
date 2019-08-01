@@ -25,7 +25,7 @@ import java.util.TimeZone;
 public class QiyiDownload {
     private static final Logger LOGGER = LoggerFactory.getLogger(QiyiDownload.class);
     private static java.util.Map<String, String> Map = null;
-
+    private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -98,6 +98,7 @@ public class QiyiDownload {
 
             companyInfo.put("url", url);//链接地址
             companyInfo.put("crawlerId", "70");
+            companyInfo.put("createTime", creatrTime.format(new Date()));
             companyInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
