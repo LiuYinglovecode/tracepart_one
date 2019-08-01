@@ -69,10 +69,10 @@ public class ESClient extends Configured {
     private TransportClient createClient() {
         TransportClient result = null;
         try {
-            Properties config = getConf().config("spiderES").getAll();
+//            Properties config = getConf().config("spiderES").getAll();
             //配置es
             Settings settings = Settings.builder()
-                    .put("cluster.name", config.getProperty("cluster.name", "YUNLULOG1"))
+                    .put("cluster.name",  "YUNLULOG1")
 //                        .put("discovery.type", config.getProperty("discovery.type", "zen"))//发现集群方式
 //                        .put("discovery.zen.minimum_master_nodes", Integer.parseInt(config.getProperty("discovery.zen.minimum_master_nodes", "2")))//最少有2个master存在
 //                        .put("discovery.zen.ping_timeout", config.getProperty("discovery.zen.ping_timeout", "200ms"))//集群ping时间，太小可能会因为网络通信而导致不能发现集群

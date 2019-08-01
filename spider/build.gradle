@@ -68,4 +68,11 @@ dependencies {
     compile group: 'org.elasticsearch.client', name: 'transport', version: '5.6.9'
     compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
 
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.6'
+    compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.6'
+    compile group: 'org.springframework', name: 'spring-web', version: '4.3.9.RELEASE'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.2'
+
 }

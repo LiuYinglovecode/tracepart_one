@@ -10,8 +10,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.security.provider.MD5;
 import util.ESUtil;
 import util.HttpUtil;
+import util.MD5Util;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -37,6 +39,7 @@ public class cesNews {
     }
 
     public static void main(String[] args) {
+//        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "172.20.4.152:2181");
         System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         cesNews cesNews = new cesNews();
         cesNews.homepage(homepage);
@@ -147,8 +150,8 @@ public class cesNews {
             newsInfo.put("@timestamp", timestamp2.format(new Date()));
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             System.out.println(newsInfo);
-            insert(newsInfo);
-            esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
+//            insert(newsInfo);
+            esUtil.writeToES(newsInfo, "crawler-news-", "doc", MD5Util.getMD5String("text"));
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
