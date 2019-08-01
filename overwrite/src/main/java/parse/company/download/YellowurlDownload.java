@@ -34,6 +34,7 @@ public class YellowurlDownload {
             Elements name = document.select("html body div.m div.head div h1");
             companyInfo.put("name", name.text());
             String companyId = MD5Util.getMD5String(name.text());
+            companyInfo.put("id",companyId);
             Elements elements = document.select("div.px13.lh18 table tbody tr td");
             for (Element el : elements) {
                 if (el.text().contains("公司地址：")) {

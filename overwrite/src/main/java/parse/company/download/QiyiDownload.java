@@ -70,7 +70,7 @@ public class QiyiDownload {
             Elements name = aboutUsParse.select("div.con p.company");
             companyInfo.put("name", name.text().trim());
             String companyId = MD5Util.getMD5String(name.text().trim());
-            companyInfo.put("id", MD5Util.getMD5String(name.text().trim()));
+            companyInfo.put("id", companyId);
 
             Elements contact = aboutUsParse.select("div.con ul li.name");
             if (contact.size() != 0) {
