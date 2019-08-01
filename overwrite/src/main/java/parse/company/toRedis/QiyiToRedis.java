@@ -46,7 +46,7 @@ public class QiyiToRedis {
                 Elements select = indexDoc.select("div.inside_box ul li a");
                 for (Element se : select) {
                     if (!se.text().contains("药") || !se.text().contains("烟") || se.text().contains("赌博") || !se.text().contains("水")) {
-                        RedisUtil.insertUrlToSet("toCatchUrl", se.attr("href"));
+                        RedisUtil.insertUrlToSet("toCatchUrl-Company", se.attr("href"));
                     }
                 }
             }

@@ -104,7 +104,7 @@ public class QiyiDownload {
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             insertToMySQL(companyInfo);
             if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", companyId)) {
-                RedisUtil.insertUrlToSet("catchedUrl", url);
+                RedisUtil.insertUrlToSet("catchedUrl-Company", url);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
