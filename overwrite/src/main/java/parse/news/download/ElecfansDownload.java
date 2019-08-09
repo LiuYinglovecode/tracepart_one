@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -11,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ESUtil;
 import util.HttpUtil;
-import util.MD5Util;
 import util.mysqlUtil;
 
 import java.text.SimpleDateFormat;
@@ -40,7 +40,7 @@ public class ElecfansDownload {
                 Elements text = document.select("div.article-content.simditor.clearfix div.simditor-body.clearfix");
                 text.select("span.count span.art_click_count").remove();
                 info.put("text",text.text().trim());
-                String newsId = MD5Util.getMD5String(text.text().trim());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);;
                 Elements imgList = text.select("div.simditor-body.clearfix p img");
                 if (imgList.size() != 0) {

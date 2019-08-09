@@ -73,7 +73,7 @@ public class LmjxDownload {
                 if (text.size() != 0) {
                     String trim = text.text().trim();
                     info.put("text", trim);
-                    String newId = MD5Util.getMD5String(trim);
+                    String newId = NewsMd5.newsMd5(trim);
                     info.put("newId", newId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));

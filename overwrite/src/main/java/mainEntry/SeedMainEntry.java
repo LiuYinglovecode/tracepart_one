@@ -141,15 +141,27 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.spsb114.com")) {
                     Spsb114ToRedis spsb114ToRedis = new Spsb114ToRedis();
                     spsb114ToRedis.homepage(taskName);
-                } else if (taskName.contains("http://www.chuandong.com/news/")) {
+                } else if (taskName.contains("www.chuandong.com/news/")) {
                     ChuandongToRedis chuandongToRedis = new ChuandongToRedis();
                     chuandongToRedis.homepage(taskName);
-                } else if (taskName.contains("http://www.chinacrane.net/")) {
+                } else if (taskName.contains("www.chinacrane.net/")) {
                     ChinacraneToRedis chinacraneToRedis = new ChinacraneToRedis();
                     chinacraneToRedis.homepage(taskName);
-                } else if (taskName.contains("http://www.findzd.com/industry/")) {
+                } else if (taskName.contains("www.findzd.com/industry/")) {
                     FindzdToRedis findzdToRedis = new FindzdToRedis();
                     findzdToRedis.homepage(taskName);
+                }else if (taskName.contains("www.fzfzjx.com/news/")) {
+                    FzfzjxToRedis fzfzjxToRedis = new FzfzjxToRedis();
+                    fzfzjxToRedis.homepage(taskName);
+                }else if (taskName.contains("www.hometex114.com/News/")) {
+                    Hometex114ToRedis hometex114ToRedis = new Hometex114ToRedis();
+                    hometex114ToRedis.homepage(taskName);
+                }else if (taskName.contains("china.fengj.com/news/")) {
+                    FengjToRedis fengjToRedis = new FengjToRedis();
+                    fengjToRedis.homepage(taskName);
+                }else if (taskName.contains("www.pm8.cn/news/")) {
+                    Pm8ToRedis pm8ToRedis = new Pm8ToRedis();
+                    pm8ToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

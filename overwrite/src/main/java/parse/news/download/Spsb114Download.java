@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -47,7 +48,7 @@ public class Spsb114Download {
                 Elements select2 = document.select("td.f16.news_link");
                 String text = select2.text();
                 info.put("text", text);
-                String newsId = MD5Util.getMD5String(text);
+                String newsId = NewsMd5.newsMd5(text);
                 info.put("newsId",newsId);
                 Elements img = select2.select("p img");
                 if (img.size() != 0) {

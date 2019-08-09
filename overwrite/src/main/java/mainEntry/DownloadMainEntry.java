@@ -145,6 +145,18 @@ public class DownloadMainEntry {
                 } else if (taskName.contains("findzd")) {
                     FindzdDownload findzdDownload = new FindzdDownload();
                     findzdDownload.newsInfo(taskName);
+                }else if (taskName.contains("fzfzjx")) {
+                    FzfzjxDownload fzfzjxDownload = new FzfzjxDownload();
+                    fzfzjxDownload.newsInfo(taskName);
+                }else if (taskName.contains("hometex114")) {
+                    Hometex114Download hometex114Download = new Hometex114Download();
+                    hometex114Download.newsInfo(taskName);
+                }else if (taskName.contains("fengj")) {
+                    FengjDownload fengjDownload = new FengjDownload();
+                    fengjDownload.newsInfo(taskName);
+                }else if (taskName.contains("pm8")) {
+                    Pm8Download pm8Download = new Pm8Download();
+                    pm8Download.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

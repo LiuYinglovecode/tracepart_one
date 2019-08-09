@@ -20,54 +20,35 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class FamensDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FamensDownload.class);
+public class FzfzjxDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EapadDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
     public void newsInfo(String url) {
+
         JSONArray imgsList = new JSONArray();
         JSONObject info = new JSONObject();
-        info.put("url", url);
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "资讯");
+            Thread.sleep(1000);
+            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             if (html != null) {
                 Document document = Jsoup.parse(html);
-                info.put("title",document.select("div.art-con > h1").text().trim());
-                Elements select1 = document.select("div.info span");
-                for (Element element : select1) {
-                    if (element.text().contains("作者：")){
-                        info.put("author",element.text().replace("作者：",""));
-                    } else  if (element.text().contains("年")){
-                        info.put("time",element.text().trim());
-                    } else  if (element.text().contains("来源：")){
-                        info.put("source",element.text().trim().replace("来源：",""));
-                    }
+                info.put("title",document.select("div.caption p").text().trim());
+                Elements element = document.select("div.newstime > dl > dt");
+                if (element.text().contains("纺织服装机械网")){
+                    info.put("time", element.text().split("纺织服装机械网")[0]);
+                    info.put("amountOfReading", element.text().split("纺织服装机械网")[1].replace("点击",""));
                 }
-
-
-                Elements select2 = document.select("div#FrameContent");
-                String text = select2.text();
+                Elements textInfo = document.select(".newshow_fontshow");
+                String text = textInfo.text();
                 info.put("text", text);
                 String newsId = NewsMd5.newsMd5(text);
                 info.put("newsId",newsId);
-                Elements img = select2.select("div#FrameContent p font img");
-                if (img.size() != 0) {
-                    for (Element element : img) {
-                        imgsList.add(element.attr("src"));
-                        info.put("images", imgsList.toString());//图片
-                    }
-
-                }else {
-                    Elements img1 = select2.select("div#FrameContent p img");
-                    for (Element element : img1) {
-                        imgsList.add(element.attr("src"));
-                        info.put("images", imgsList.toString());//图片
-                    }
-                }
+                info.put("source",textInfo.select("p.ly").text().replace("来源：","").replace("(","").replace(")",""));
                 info.put("url", url);
-                info.put("crawlerId", "85");
+                info.put("crawlerId", "90");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));

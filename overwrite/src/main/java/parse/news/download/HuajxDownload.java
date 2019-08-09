@@ -20,50 +20,54 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class WjwDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(WjwDownload.class);
+public class HuajxDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HuajxDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
-
-    public void detail(String url) {
+    public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "wjw");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-                info.put("title", document.select("div.informationArticle_03 > h3").text().trim());
-                Elements select = document.select("div.informationArticle_03 > div.informationArticle_05");
-                if (select.size() != 0) {
-                    info.put("time", select.select("p.informationArticle_06").text().split(" ")[1]);
-                    info.put("source", select.select("p.informationArticle_06").text().split(" ")[0].replace("来源：", ""));
+                info.put("title",document.select("div.leftTop h2").text().trim());
+                Elements select = document.select("div.leftTop p span");
+                info.put("time",select.eq(0).text().trim());
+                for (Element element : select) {
+                    if (element.text().contains("来源：")) {
+                        info.put("source", element.text().replace("来源：",""));
+                    }else if (element.text().contains("阅读量：")){
+                        info.put("amountOfReading", element.text().replace("阅读量：",""));
+                    }
                 }
-                Elements text = document.select("#informationArticle_04");
-                text.select("p > img").last().remove();
-                info.put("text", text.text().trim().replace("关注有惊喜", ""));
-                String newsId = NewsMd5.newsMd5(text.text().trim().replace("关注有惊喜", ""));
-                info.put("newsId", newsId);
-                Elements imgList = document.select("#informationArticle_04 > div > img");
+
+                Elements text = document.select("div#newsContent.newsContent");
+                info.put("text",text.text().trim());
+                String newsId = NewsMd5.newsMd5(text.text());
+                info.put("newsId",newsId);;
+                Elements imgList = document.select("div > img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {
                         imgs.add(e.attr("src"));
                     }
-                    info.put("images", imgs.toString());//图片
+                    info.put("images", imgs.toString());//图片链接
                 }
 
                 info.put("url", url);
-                info.put("crawlerId", "72");
+                info.put("crawlerId", "79");
+                System.out.println(info);
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertNews(info, "crawler_news", newsId);
-//                esUtil.writeToES(info, "crawler-news-", "doc", newsId);
                 if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
+
             } else {
                 LOGGER.info("detail null");
             }

@@ -4,6 +4,8 @@ import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import config.IConfigManager;
+import news.parse.jiancaiNews;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,8 +22,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class FindzdDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FindzdDownload.class);
+public class Ic37Download {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Ic37Download.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -30,31 +32,41 @@ public class FindzdDownload {
         JSONArray imgsList = new JSONArray();
         JSONObject info = new JSONObject();
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");
+            Thread.sleep(1000);
+            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             if (html != null) {
                 Document document = Jsoup.parse(html);
-                info.put("title",document.select("h1.detail_title").text().trim());
-                String timeSource = document.select("span.gray_Low").text();
-                if (timeSource.contains(" ")){
-                    info.put("time",timeSource.split(" ")[0]);
-                    info.put("source",timeSource.split(" ")[1]);
+                info.put("title",document.select(".newstitle > h1").text().trim());
+                Elements element = document.select(".newstitle > span");
+                if (element.text().contains("资讯类别")) {
+                    //时间：2019-8-2， 来源：互联网， 资讯类别：行业统计
+                    info.put("plate", element.text().split("资讯类别：")[1]);
+                    info.put("source", element.text().split("资讯类别：")[0].split("来源：")[1].replace("，",""));
+                    info.put("time", element.text().split("来源：")[0].replace("时间：","").replace("，",""));
+                }else if (element.text().contains("文章类别：")) {
+                    //时间：2008-12-11， 来源：互联网， 文章类别：单片机/DSP
+                    info.put("plate", element.text().split("文章类别：")[1]);
+                    info.put("source", element.text().split("文章类别：")[0].split("来源：")[1].replace("，",""));
+                    info.put("time", element.text().split("来源：")[0].replace("时间：","").replace("，",""));
                 }
-                info.put("author",document.select("div#editor").text().replace("责任编辑:",""));
-
-                Elements textInfo = document.select("div#htmlcontent.htmlcontent");
+                Elements textInfo = document.select(".contentlist2,.contentlist");
                 String text = textInfo.text();
                 info.put("text", text);
                 String newsId = NewsMd5.newsMd5(text);
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
                 if (imgs.size() != 0) {
-                    for (Element element : imgs) {
-                        imgsList.add(element.attr("src"));
+                    for (Element el : imgs) {
+                        if (el.attr("src").contains("http")&&el.attr("src").contains("https")) {
+                            imgsList.add(el.attr("src"));
+                        }else {
+                            imgsList.add("https://www.ic37.com"+el.attr("src"));
+                        }
                     }
                     info.put("images", imgsList.toString());//图片
                 }
                 info.put("url", url);
-                info.put("crawlerId", "81");
+                info.put("crawlerId", "86");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
@@ -71,4 +83,12 @@ public class FindzdDownload {
             LOGGER.error(e.getMessage());
         }
     }
+
+
+//    public static void main(String[] args) {
+//
+//        Ic37Download Ic37Download = new Ic37Download();
+//        Ic37Download.homepage("https://www.ic37.com/htm_news/2019-5/284819_930888.htm");
+//
+//    }
 }
