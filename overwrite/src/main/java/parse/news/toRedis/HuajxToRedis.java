@@ -70,7 +70,6 @@ public class HuajxToRedis {
                 }
             }
             for (String link : list) {
-//                System.out.println(link);
                 RedisUtil.insertUrlToSet("toCatchUrl", link);
             }
 

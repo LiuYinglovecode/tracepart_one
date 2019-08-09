@@ -36,9 +36,14 @@ public class ZgwDownload {
                 info.put("title",document.select("div.fenxiang h3").text().trim());
                 Elements select = document.select("div.fenxiang p");
                 if (select.size() != 0) {
-                    info.put("time",select.select("sapn").text().trim());
-                    select.select("span").remove();
-                    info.put("source",select.text().replace("来源：",""));
+                    for (Element element : select) {
+                        if (element.select("span").text().contains("-")){
+                            info.put("time",select.select("span").text().trim().replace("关注",""));
+                        }else {
+                            select.select("span").remove();
+                            info.put("source",select.text().replace("来源：",""));
+                        }
+                    }
                 }
                 info.put("author",document.select("div.neirong span.edit").text()
                         .replace("（责任编辑：","").replace("）",""));

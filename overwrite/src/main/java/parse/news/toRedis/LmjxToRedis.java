@@ -84,6 +84,4 @@ public class LmjxToRedis {
             e.printStackTrace();
         }
     }
-
-
 }

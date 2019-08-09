@@ -157,6 +157,9 @@ public class DownloadMainEntry {
                 }else if (taskName.contains("pm8")) {
                     Pm8Download pm8Download = new Pm8Download();
                     pm8Download.newsInfo(taskName);
+                }else if (taskName.contains("huajx")) {
+                    HuajxDownload huajxDownload = new HuajxDownload();
+                    huajxDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

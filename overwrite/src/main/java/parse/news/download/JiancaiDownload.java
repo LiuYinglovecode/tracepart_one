@@ -1,6 +1,5 @@
 package parse.news.download;
 
-import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -28,7 +27,7 @@ public class JiancaiDownload {
 
     public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "新手入门");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();

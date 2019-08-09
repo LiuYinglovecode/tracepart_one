@@ -132,7 +132,7 @@ public class SeedMainEntry {
                 } else if (taskName.contains("www.elecfans.com/news/hangye")) {
                     ElecfansToRedis elecfansToRedis = new ElecfansToRedis();
                     elecfansToRedis.homepage(taskName);
-                } else if (taskName.contains("www.elecfans.com/news/hangye")) {
+                } else if (taskName.contains("www.maijx.com/information")) {
                     MaijxToRedis maijxToRedis = new MaijxToRedis();
                     maijxToRedis.homepage(taskName);
                 } else if (taskName.contains("www.famens.com")) {
@@ -162,6 +162,9 @@ public class SeedMainEntry {
                 }else if (taskName.contains("www.pm8.cn/news/")) {
                     Pm8ToRedis pm8ToRedis = new Pm8ToRedis();
                     pm8ToRedis.homepage(taskName);
+                }else if (taskName.contains("www.huajx.com/news/")) {
+                    HuajxToRedis huajxToRedis = new HuajxToRedis();
+                    huajxToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

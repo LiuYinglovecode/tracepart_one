@@ -39,8 +39,11 @@ public class LmjxDownload {
                 JSONArray imgs = new JSONArray();
                 info.put("url", url);
                 Document parse = Jsoup.parse(html);
-                String title = parse.select("div > h1:eq(0)").text();
-                info.put("title", title);
+                Elements title = parse.select("div.container.cl > h1,div.contentbox > h1,div.article-box > h1,div.theTitle > h1");
+                if (title.size()!=0){
+                    info.put("title", title.text());
+                }
+
                 Elements time = parse.select("div.pinf.cl span.time");
                 if (time.size() != 0) {
                     info.put("time", time.text().trim());
@@ -65,39 +68,43 @@ public class LmjxDownload {
                     Elements text1 = parse.select("div.pageleft content p img");
                     for (Element image : text1) {
                         String src = image.attr("src");
-                        imgs.add(src);
+                        if (src!="") {
+                            imgs.add(src);
+                        }else {
+                            String src1 = image.attr("data-original");
+                            imgs.add(src1);
+                        }
                         info.put("images", imgs.toString());
                     }
                 }
-                Elements text = parse.select("div.content");
+                Elements text = parse.select("#i_art_main,div.pageleft content,.content");
                 if (text.size() != 0) {
                     String trim = text.text().trim();
                     info.put("text", trim);
-                    String newId = NewsMd5.newsMd5(trim);
-                    info.put("newId", newId);
+                    String newId = MD5Util.getMD5String(trim);
+                    info.put("newsId", newId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newId);
-//                    esUtil.writeToES(info, "crawler-news-", "doc", newId);
                     if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 } else {
-                    Elements text1 = parse.select("div.pageleft content");
+                    Elements text1 = parse.select("#endText");
+                    text1.select("div.from").remove();
                     String trim = text1.text().trim();
                     info.put("text", trim);
                     String newId = NewsMd5.newsMd5(trim);
-                    info.put("newId", newId);
+                    info.put("newsId", newId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                     mysqlUtil.insertNews(info, "crawler_news", newId);
-//                    esUtil.writeToES(info, "crawler-news-", "doc", newId);
                     if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }

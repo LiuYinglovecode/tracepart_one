@@ -11,7 +11,7 @@ import util.HttpUtil;
 
 public class ElecfansToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElecfansToRedis.class);
-    private static String baseUrl = "http://news.zgw.com";
+    private static String baseUrl = "http://www.elecfans.com/news/hangye";
 
     public void homepage(String url) {
 
@@ -24,7 +24,6 @@ public class ElecfansToRedis {
                 int number = 1;
                 for (number = 1; number <= total; number++) {
                     String nextPage = baseUrl+"/Article_090_" + number + ".html";
-                    System.out.println("下一页：" + nextPage);
                     category(nextPage);
                 }
 
