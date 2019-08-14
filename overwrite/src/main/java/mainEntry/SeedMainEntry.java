@@ -165,6 +165,18 @@ public class SeedMainEntry {
                 }else if (taskName.contains("www.huajx.com/news/")) {
                     HuajxToRedis huajxToRedis = new HuajxToRedis();
                     huajxToRedis.homepage(taskName);
+                }else if (taskName.contains("www.hooshong.com/news/")) {
+                    HooshongToRedis hooshongToRedis = new HooshongToRedis();
+                    hooshongToRedis.homepage(taskName);
+                }else if (taskName.contains("www.cndianji.cn/article")) {
+                    CndianjiToRedis CndianjiToRedis = new CndianjiToRedis();
+                    CndianjiToRedis.homepage(taskName);
+                } else if (taskName.contains("www.eapad.cn/")) {
+                    EapadToRedis EapadToRedis = new EapadToRedis();
+                    EapadToRedis.homepage(taskName);
+                } else if (taskName.contains("www.ic37.com")) {
+                    Ic37ToRedis Ic37ToRedis = new Ic37ToRedis();
+                    Ic37ToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -1,5 +1,6 @@
 package parse.product.download;
 
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -9,19 +10,29 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import util.ESUtil;
 import util.HttpUtil;
 import util.MD5Util;
 import util.mysqlUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 
 public class Net114ProductDownload {
     private final static Logger LOGGER = LoggerFactory.getLogger(Net114ProductDownload.class);
-
+    private static ESUtil esUtil = new ESUtil();
+    private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
+    private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
 
     //产品信息
     public void productInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject productInfo = new JSONObject();
+        ArrayList<String> md5Id = new ArrayList<>();
         try {
             productInfo.put("detailUrl", url);
             String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");
@@ -74,41 +85,72 @@ public class Net114ProductDownload {
                     Document parse1 = Jsoup.parse(html1);
                     Elements name = parse1.select("#footer_default");
                     if (name.size() != 0) {
-                        productInfo.put("company_name", name.text().split("地址")[0].replace("；", ""));
-                        productInfo.put("company_id", MD5Util.getMD5String(name.text().split("地址")[0].replace("；", "")));
+                        String companyName = name.text().split("地址")[0].replace("；", "");
+                        productInfo.put("company_name",companyName );
+                        md5Id.add(MD5Util.getMD5String(companyName));
+                        for (String s : md5Id) {
+                            productInfo.put("company_id",s);
+                        }
                     }
                     Elements name1 = parse1.select("#footer_diy_content_view");
                     if (name1.size() != 0) {
                         if (name1.text().contains("地址")) {
-                            productInfo.put("company_name", name1.text().split("地址")[0].replace("；", ""));
-                            productInfo.put("company_id", MD5Util.getMD5String(name1.text().split("地址")[0].replace("；", "")));
+                            String companyName = name1.text().split("地址")[0].replace("；", "");
+                            productInfo.put("company_name",companyName);
+                            md5Id.add(MD5Util.getMD5String(companyName));
+                            for (String s : md5Id) {
+                                productInfo.put("company_id",s);
+                            }
                         } else {
-                            productInfo.put("company_name", name1.text().split("主营")[0].replace("；", ""));
-                            productInfo.put("company_id", MD5Util.getMD5String(name1.text().split("主营")[0].replace("；", "")));
+                            String companyName = name1.text().split("主营")[0].replace("；", "");
+                            productInfo.put("company_name",companyName);
+                            md5Id.add(MD5Util.getMD5String(companyName));
+                            for (String s : md5Id) {
+                                productInfo.put("company_id",s);
+                            }
                         }
                     }
                     Elements name2 = parse1.select("#self_in_footer_diy_content p");
                     if (name2.size() != 0) {
-                        productInfo.put("company_name", name2.text().replace("；", ""));
-                        productInfo.put("company_id", MD5Util.getMD5String(name2.text().replace("；", "")));
+                        String companyName = name2.text().replace("；", "");
+                        productInfo.put("company_name",companyName);
+                        md5Id.add(MD5Util.getMD5String(companyName));
+                        for (String s : md5Id) {
+                            productInfo.put("company_id",s);
+                        }
                     }
                     Elements name3 = parse1.select("div.top_text_title");
                     if (name3.size() != 0) {
                         productInfo.put("company_name", name3.text());
-                        productInfo.put("company_id", MD5Util.getMD5String(name3.text()));
+                        md5Id.add(MD5Util.getMD5String(name3.text()));
+                        for (String s : md5Id) {
+                            productInfo.put("company_id",s);
+                        }
                     }
                     Elements name4 = parse1.select("div.footerInfo.w > p");
                     if (name4.size() != 0) {
-                        productInfo.put("company_name", name4.text().split("地址")[0].replace("；", ""));
-                        productInfo.put("company_id", MD5Util.getMD5String(name4.text().split("地址")[0].replace("；", "")));
+                        String companyName = name4.text().split("地址")[0].replace("；", "");
+                        productInfo.put("company_name",companyName);
+                        md5Id.add(MD5Util.getMD5String(companyName));
+                        for (String s : md5Id) {
+                            productInfo.put("company_id",s);
+                        }
                     }
 
                 } else {
                     LOGGER.info("页面无法解析！" + href);
                 }
-
                 productInfo.put("crawlerId", "18");
+                productInfo.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                productInfo.put("@timestamp", timestamp2.format(new Date()));
+                productInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertProduct(productInfo);
+                for (String s : md5Id) {
+                    if (esUtil.writeToES(productInfo, "crawler-product-", "doc", s)) {
+                        RedisUtil.insertUrlToSet("catchedUrl", url);
+                    }
+                }
 
             } else {
                 LOGGER.info("页面为空！");

@@ -51,11 +51,11 @@ public class EapadToRedis {
                 for (number = 1; number <= total; number++) {
                     if (url.contains("Interact")) {
                         String link = "http://www.eapad.cn" + url + "=" + number;//拼接链接地址
-                        System.out.println("下一页：" + link);
+//                        System.out.println("下一页：" + link);
                         newsList(link);
                     } else {
                         String link = beasUrl + url + "=" + number;//拼接链接地址
-                        System.out.println("下一页：" + link);
+//                        System.out.println("下一页：" + link);
                         newsList(link);
                     }
                 }

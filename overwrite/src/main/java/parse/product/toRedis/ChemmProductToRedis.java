@@ -11,8 +11,8 @@ import util.HttpUtil;
 
 import java.net.URL;
 
-public class ChemmToRedis {
-    private final static Logger LOGGER = LoggerFactory.getLogger(ChemmToRedis.class);
+public class ChemmProductToRedis {
+    private final static Logger LOGGER = LoggerFactory.getLogger(ChemmProductToRedis.class);
     private static String baseUrl = "http://www.chemm.cn";
 
     //首页
@@ -23,34 +23,32 @@ public class ChemmToRedis {
             Elements select = parse.select("a.dLinkFont");
             for (Element e : select) {
                 String href = baseUrl + e.attr("href");
-                String trade_category = e.text().trim();
-                productList(href, trade_category);
+                productList(href);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 
     //产品列表及分页
-    private void productList(String url, String trade_category) {
+    private void productList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "chemm");
             Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
             Elements select = parse.select("li.ProListMainTitle span a.bBoldLinkFont");
             for (Element e : select) {
                 String href = baseUrl + e.attr("href");
-                RedisUtil.insertUrlToSet("toCatchUrl", href);
+                RedisUtil.insertUrlToSet("toCatchUrl-Product", href);
             }
             Elements nextPage = parse.select(" a.pagelink");
             for (Element element : nextPage) {
                 if (element.text().contains("下一页")) {
                     String href = baseUrl + element.attr("href");
-                    System.out.println("下一页：" + href);
-                    productList(href, trade_category);
+                    productList(href);
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 }

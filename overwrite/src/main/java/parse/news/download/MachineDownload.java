@@ -3,11 +3,9 @@ package parse.news.download;
 import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +45,6 @@ public class MachineDownload {
 
                 Elements title = gbk.select("div.newliIn_ti");
                 if (title.size() == 0) {
-                    String title2 = gbk.select("div.left > div > h1").text().trim();
                     newsInfo.put("title", gbk.select("div.left > div > h1").text().trim());
                 } else {
                     newsInfo.put("title", title.text());
@@ -61,8 +58,8 @@ public class MachineDownload {
                 }
                 String trim = gbk.select("#ArticleCnt").text().trim();
                 newsInfo.put("text", trim);
-                String newId = NewsMd5.newsMd5(trim);
-                newsInfo.put("newId", newId);
+                String newsId = NewsMd5.newsMd5(trim);
+                newsInfo.put("newsId", newsId);
                 String text = gbk.select("#ArticleCnt").text();
                 String regEx = "来源：[\u4e00-\u9fa5]*";
                 Pattern pattern = Pattern.compile(regEx);
@@ -77,9 +74,9 @@ public class MachineDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
                 newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertNews(newsInfo, "crawler_news", newId);
+                mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
 //                esUtil.writeToES(newsInfo, "crawler-news-", "doc", newId);
-                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newId)){
+                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

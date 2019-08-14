@@ -46,7 +46,7 @@ public class Ic37ToRedis {
                 int total = Integer.valueOf(Total.text()).intValue();//类型转换
                 for (number = 1; number <= total; number++) {
                     String link = url + number + ".htm";//拼接链接地址
-                    System.out.println("下一页：" + link);
+//                    System.out.println("下一页：" + link);
                     newsList(link);
                 }
             } else {

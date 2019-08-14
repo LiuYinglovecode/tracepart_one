@@ -10,7 +10,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.news.toRedis.MaiToRedis;
 import util.ESUtil;
 import util.HttpUtil;
 import util.mysqlUtil;

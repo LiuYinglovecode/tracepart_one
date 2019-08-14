@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import util.ESUtil;
 import util.HttpUtil;
 import util.MD5Util;
+import util.mysqlUtil;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -19,8 +20,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class ChemmDownload {
-    private final static Logger LOGGER = LoggerFactory.getLogger(ChemmDownload.class);
+public class ChemmProductDownload {
+    private final static Logger LOGGER = LoggerFactory.getLogger(ChemmProductDownload.class);
     private static ESUtil esUtil = new ESUtil();
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
@@ -32,7 +33,7 @@ public class ChemmDownload {
             String html = HttpUtil.httpGetwithJudgeWord(url, "chemm");
             Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
             String product_desc = parse.select("#MaininfoContent").text().trim();
-            productInfo.put("product_desc", product_desc);
+            productInfo.put("product_desc", parse.select("#MaininfoContent").text().trim());
             productInfo.put("productId", NewsMd5.newsMd5(product_desc));
             Elements select = parse.select("#ProductInfoList ul li");
             for (Element info : select) {
@@ -96,11 +97,12 @@ public class ChemmDownload {
                     }
                 }
             }
-            productInfo.put("crawlerId", "47");
+            productInfo.put("crawlerId", "46");
             productInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             productInfo.put("@timestamp", timestamp2.format(new Date()));
             productInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            mysqlUtil.insertProduct(productInfo);
             if (esUtil.writeToES(productInfo, "crawler-product-", "doc", NewsMd5.newsMd5(product_desc))) {
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }

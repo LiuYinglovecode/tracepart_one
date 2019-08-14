@@ -83,12 +83,4 @@ public class Ic37Download {
             LOGGER.error(e.getMessage());
         }
     }
-
-
-//    public static void main(String[] args) {
-//
-//        Ic37Download Ic37Download = new Ic37Download();
-//        Ic37Download.homepage("https://www.ic37.com/htm_news/2019-5/284819_930888.htm");
-//
-//    }
 }

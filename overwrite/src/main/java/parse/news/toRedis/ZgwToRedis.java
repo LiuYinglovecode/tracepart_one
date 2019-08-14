@@ -42,7 +42,7 @@ public class ZgwToRedis {
             int number = 1;
             for (number = 1; number <= total; number++) {
                 String nextPage = url + "page_" + number + ".html";
-                System.out.println("下一页：" + nextPage);
+//                System.out.println("下一页：" + nextPage);
                 category(nextPage);
             }
 

@@ -50,7 +50,7 @@ public class ZgwDownload {
                 Elements text = document.select("div.left_content div.neirong");
                 info.put("text",text.text().trim());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
-                info.put("newsId",newsId);;
+                info.put("newsId",newsId);
                 Elements imgList = document.select("div.neirong p span img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {

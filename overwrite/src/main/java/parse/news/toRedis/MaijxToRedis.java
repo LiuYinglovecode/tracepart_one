@@ -26,7 +26,6 @@ public class MaijxToRedis {
                 for (Element e : categoryList) {
                     if (!e.text().contains("平台事记")) {
                         String link = baseUrl + e.attr("href");
-//                        System.out.println(link);
                         paging(link);
                     }
                 }
@@ -49,8 +48,6 @@ public class MaijxToRedis {
                 list.add(nextPage);
             }
             for (String link : list) {
-                System.out.println("下一页：" + link);
-//                Thread.sleep(7000);
                 newsList(link);
             }
 

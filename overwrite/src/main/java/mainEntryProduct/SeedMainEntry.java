@@ -2,7 +2,9 @@ package mainEntryProduct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import parse.product.toRedis.ChemmProductToRedis;
 import parse.product.toRedis.Net114ProductToRedis;
+import parse.product.toRedis.YellowurlToRedis;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -56,6 +58,12 @@ public class SeedMainEntry {
                 if (taskName.contains("http://www.net114.com/")) {
                     Net114ProductToRedis net114ProductToRedis = new Net114ProductToRedis();
                     net114ProductToRedis.productPage(taskName);
+                }else if (taskName.contains("http://product.yellowurl.cn/")) {
+                    YellowurlToRedis yellowurlToRedis = new YellowurlToRedis();
+                    yellowurlToRedis.productPage(taskName);
+                }else if (taskName.contains("www.chemm.cn/Sample/")) {
+                    ChemmProductToRedis chemmProductToRedis = new ChemmProductToRedis();
+                    chemmProductToRedis.productPage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

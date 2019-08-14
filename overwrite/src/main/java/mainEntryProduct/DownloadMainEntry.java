@@ -7,7 +7,9 @@ import parse.company.download.Net114Download;
 import parse.company.download.QiyiDownload;
 import parse.company.download.YellowurlDownload;
 import parse.company.toRedis.Net114ToRedis;
+import parse.product.download.ChemmProductDownload;
 import parse.product.download.Net114ProductDownload;
+import parse.product.download.YellowurlProductDownload;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -29,7 +31,7 @@ public class DownloadMainEntry {
             String url = "";
             while (true) {
                 while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl-Product"))) {
-                    if (!RedisUtil.isExist("catchedUrl-Product", url)) {
+                    if (!RedisUtil.isExist("catchedUrl", url)) {
                         SeedTask seed = new SeedTask(url);
                         executor.execute(seed);
                     }
@@ -55,6 +57,12 @@ public class DownloadMainEntry {
                 if (taskName.contains("net114")) {
                     Net114ProductDownload net114ProductToRedis = new Net114ProductDownload();
                     net114ProductToRedis.productInfo(taskName);
+                }else if (taskName.contains("product.yellowurl")) {
+                    YellowurlProductDownload yellowurlProductToRedis = new YellowurlProductDownload();
+                    yellowurlProductToRedis.productInfo(taskName);
+                }else if (taskName.contains("chemm")) {
+                    ChemmProductDownload chemmProductDownload = new ChemmProductDownload();
+                    chemmProductDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

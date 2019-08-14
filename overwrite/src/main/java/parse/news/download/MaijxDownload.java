@@ -43,7 +43,7 @@ public class MaijxDownload {
                 Elements select2 = document.select("div#hyzx-p-right div.main");
                 String text = select2.text();
                 info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                String newsId = MD5Util.getMD5String(text);
                 info.put("newsId",newsId);
                 String regEx = "责任编辑：[\u4e00-\u9fa5]*";
                 Pattern pattern = Pattern.compile(regEx);

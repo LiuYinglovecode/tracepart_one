@@ -160,6 +160,18 @@ public class DownloadMainEntry {
                 }else if (taskName.contains("huajx")) {
                     HuajxDownload huajxDownload = new HuajxDownload();
                     huajxDownload.newsInfo(taskName);
+                }else if (taskName.contains("hooshong")) {
+                    HooshongDownload hooshongDownload = new HooshongDownload();
+                    hooshongDownload.newsInfo(taskName);
+                } else if (taskName.contains("ic37")) {
+                    Ic37Download ic37Download = new Ic37Download();
+                    ic37Download.newsInfo(taskName);
+                }else if (taskName.contains("cndianji.cn")) {
+                    CndianjiDownload CndianjiDownload = new CndianjiDownload();
+                    CndianjiDownload.newsInfo(taskName);
+                }else if (taskName.contains("eapad")) {
+                    EapadDownload eapadDownload = new EapadDownload();
+                    eapadDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
