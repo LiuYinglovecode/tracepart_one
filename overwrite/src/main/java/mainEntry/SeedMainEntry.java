@@ -171,12 +171,21 @@ public class SeedMainEntry {
                 }else if (taskName.contains("www.cndianji.cn/article")) {
                     CndianjiToRedis CndianjiToRedis = new CndianjiToRedis();
                     CndianjiToRedis.homepage(taskName);
-                } else if (taskName.contains("www.eapad.cn/")) {
+                }else if (taskName.contains("www.eapad.cn/")) {
                     EapadToRedis EapadToRedis = new EapadToRedis();
                     EapadToRedis.homepage(taskName);
-                } else if (taskName.contains("www.ic37.com")) {
+                }else if (taskName.contains("www.ic37.com")) {
                     Ic37ToRedis Ic37ToRedis = new Ic37ToRedis();
                     Ic37ToRedis.homepage(taskName);
+                }else if (taskName.contains("www.cnpv.com/News")) {
+                    CnpvToRedis cnpvToRedis = new CnpvToRedis();
+                    cnpvToRedis.homepage(taskName);
+                }else if (taskName.contains("www.leiphone.com/category/iot")) {
+                    LeiphoneToRedis leiphoneToRedis = new LeiphoneToRedis();
+                    leiphoneToRedis.homepage(taskName);
+                }else if (taskName.contains("www.cntma.com/news/")) {
+                    CntmaToRedis CntmaToRedis = new CntmaToRedis();
+                    CntmaToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

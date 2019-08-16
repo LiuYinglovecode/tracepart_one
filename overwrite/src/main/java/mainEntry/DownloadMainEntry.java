@@ -163,7 +163,7 @@ public class DownloadMainEntry {
                 }else if (taskName.contains("hooshong")) {
                     HooshongDownload hooshongDownload = new HooshongDownload();
                     hooshongDownload.newsInfo(taskName);
-                } else if (taskName.contains("ic37")) {
+                }else if (taskName.contains("ic37")) {
                     Ic37Download ic37Download = new Ic37Download();
                     ic37Download.newsInfo(taskName);
                 }else if (taskName.contains("cndianji.cn")) {
@@ -172,6 +172,15 @@ public class DownloadMainEntry {
                 }else if (taskName.contains("eapad")) {
                     EapadDownload eapadDownload = new EapadDownload();
                     eapadDownload.newsInfo(taskName);
+                }else if (taskName.contains("cnpv")) {
+                    CnpvDownload cnpvDownload = new CnpvDownload();
+                    cnpvDownload.detail(taskName);
+                }else if (taskName.contains("leiphone")) {
+                    LeiphoneDownload leiphoneDownload = new LeiphoneDownload();
+                    leiphoneDownload.detail(taskName);
+                }else if (taskName.contains("cntma")) {
+                    CntmaDownload cntmaDownload = new CntmaDownload();
+                    cntmaDownload.detail(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
