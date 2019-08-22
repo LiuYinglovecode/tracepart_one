@@ -11,7 +11,7 @@ allprojects {
         springVersion = '4.3.4.RELEASE'
         springSecurityVersion = '4.2.0.RELEASE'
         springBootVersion = '1.4.2.RELEASE'
-        yunluVersion = '1.0.1.RELEASE'
+        yunluVersion = '1.0.7.RELEASE'
     }
 
     //打jar包需要的配置

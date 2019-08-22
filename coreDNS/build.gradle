@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+//        maven { url 'http://172.17.60.107:8081/repository/maven-central/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+bootRepackage.enabled = false
+
+configurations {
+    all {
+        exclude group: "org.slf4j", module: "slf4j-log4j12"
+//        exclude group: "tomcat", module: "jasper-compiler"
+        resolutionStrategy {
+            force 'commons-cli:commons-cli:1.4'
+        }
+    }
+}
+
+dependencies {
+//    compile project(":overwrite")
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.8'
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '1.4.2.RELEASE'
+
+
+    compile group: "com.yunlu", name: "yunlu-core", version: "${yunluVersion}", changing: true
+    compile group: "com.yunlu", name: "yunlu-web", version: "${yunluVersion}", changing: true
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE'
+}

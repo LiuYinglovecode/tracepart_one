@@ -1,0 +1,37 @@
+#!/bin/bash
+unset PROJECT_NAME
+#### very important to add PROJECT_NAME
+PROJECT_NAME=crawler-coredns
+import util/log
+namespace $PROJECT_NAME
+Log::AddOutput $PROJECT_NAME BUILDLOG
+Log generated build version is ${BUILD_VERSION}
+Log project name is ${PROJECT_NAME}
+Log project dir is ${PROJECT_DIR}
+
+# generate Build.java
+mkdir -p src/main/java/com/yunlu
+cat << EOF > src/main/java/com/yunlu/Build.java
+package com.yunlu;
+
+public class Build {
+    public static final int Major = 1;
+	public static final int Minor = 0;
+	public static final int Revision = 1;
+	public static final String BUILD_NUM="${BUILD_VERSION}";
+	public static String VERSION = Major + "." + Minor + "." + Revision + ".build-" + BUILD_NUM;
+}
+EOF
+
+gradle clean
+if [[ -n "${BUILD_WITH_TEST}" ]]; then
+    gradle test
+fi
+gradle assemble
+
+# build image
+declare -g img_id
+build_image . $BUILD_VERSION img_id $PROJECT_NAME
+
+# copy_all $PROJECT_NAME . $BUILD_VERSION $PUBLISH_DIR
+# copy_latest $BUILD_VERSION $PUBLISH_DIR $PUBLISH_LATEST
