@@ -1,7 +1,7 @@
 #!/bin/bash
 unset PROJECT_NAME
 #### very important to add PROJECT_NAME
-PROJECT_NAME=coreDNS
+PROJECT_NAME=coredns
 import util/log
 namespace $PROJECT_NAME
 Log::AddOutput $PROJECT_NAME BUILDLOG
