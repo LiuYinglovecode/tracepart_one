@@ -33,5 +33,5 @@ gradle assemble
 declare -g img_id
 build_image . $BUILD_VERSION img_id $PROJECT_NAME
 
-# copy_all $PROJECT_NAME . $BUILD_VERSION $PUBLISH_DIR
-# copy_latest $BUILD_VERSION $PUBLISH_DIR $PUBLISH_LATEST
+copy_all $PROJECT_NAME . $BUILD_VERSION $PUBLISH_DIR
+copy_latest $BUILD_VERSION $PUBLISH_DIR $PUBLISH_LATEST
