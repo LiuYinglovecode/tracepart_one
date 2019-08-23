@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * General reflection utils
+ * General reflection com.yunlu.utils
  */
 public class ReflectionUtils {
 	private static final Class<?>[] EMPTY_ARRAY = new Class[]{};

@@ -32,7 +32,7 @@ public class DownloadMainEntry {
                         executor.execute(seed);
                     }
                 }
-                executor.shutdown();
+//                executor.shutdown();
                 Thread.sleep(60000);
             }
         } catch (Exception e) {

@@ -15,8 +15,8 @@ public class ESUtil {
 
     public boolean writeToES(JSONObject info, String index, String type, String id) {
         try {
-            String date = String.format("%tY", new Date()) + "." + String.format("%tm", new Date()) + "." + String.format("%td", new Date());
-            return toES(info, index + date, type, id);
+//            String date = String.format("%tY", new Date()) + "." + String.format("%tm", new Date()) + "." + String.format("%td", new Date());
+            return toES(info, index, type, id);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

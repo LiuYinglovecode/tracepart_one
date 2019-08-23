@@ -1,5 +1,6 @@
 package mysql;
 
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -159,6 +160,7 @@ public class updateToMySQL {
         }
         return null;
     }
+
 
     public static boolean chinaCnProductsUpdate(Map<String, String> ipRegionMap) {
         TABLE_NAME = "bde.original_products_chinacn";

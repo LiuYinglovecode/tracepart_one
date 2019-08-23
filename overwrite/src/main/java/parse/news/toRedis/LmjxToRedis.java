@@ -41,7 +41,7 @@ public class LmjxToRedis {
      * @param url
      */
     private void more(String url) {
-        try {
+         try {
             String replace = url.replace("industry.html", "");
             String html = HttpUtil.httpGetwithJudgeWord(url, "lmjx");
             if (html != null) {

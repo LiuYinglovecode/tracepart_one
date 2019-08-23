@@ -36,11 +36,17 @@ public class CoreDNSController {
     public Map<String, Object> coreDNSTomysql(@RequestBody String coreDNS) {
         boolean isOK = false;
         int code = 0;
-        if (null != coreDNS) {
-            isOK = coreDNSService.coreDNS(coreDNS, filePath, corednsBody);
-            if (!isOK) {
-                code = 1;
+        try {
+            isOK = false;
+            code = 0;
+            if (null != coreDNS) {
+                isOK = coreDNSService.coreDNS(coreDNS, filePath, corednsBody);
+                if (!isOK) {
+                    code = 1;
+                }
             }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
         }
         return buildResult(code, isOK);
     }

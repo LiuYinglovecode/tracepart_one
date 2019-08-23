@@ -1,7 +1,7 @@
 package com.yunlu.sercice.impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.yunlu.core.config.ConfigClient;
 import com.yunlu.dao.CoreDNSDAO;
 import com.yunlu.utils.mysql.ToMySQL;
 import com.yunlu.utils.writeUtil;
@@ -10,39 +10,55 @@ import org.slf4j.LoggerFactory;
 import com.yunlu.sercice.CoreDNSService;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.*;
 
 
 @Component
 public class CoreDNSServiceImpl implements CoreDNSService {
     private static Logger LOGGER = LoggerFactory.getLogger(CoreDNSServiceImpl.class);
-//    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public boolean coreDNS(String coreDNS, String filePath, String corednsbody) {
         try {
             JSONObject coreInfo = new JSONObject();
-//            String timestamp = sdf.format(new Date(Long.parseLong(String.valueOf(System.currentTimeMillis()))));
-            if (null != coreDNS && null != filePath && null != corednsbody) {
+            if (null != coreDNS && null != filePath) {
                 String[] dnslist = coreDNS.split("\\s+");
+                if (dnslist[0].contains(corednsbody)) {
+                    coreInfo.put("address", dnslist[0]);
+                } else {
+                    coreInfo.put("address", dnslist[0] + corednsbody);
+                }
                 coreInfo.put("address", dnslist[0]);
                 coreInfo.put("dnsin", dnslist[1]);
                 coreInfo.put("dnstype", dnslist[2]);
                 coreInfo.put("ip", dnslist[3]);
-//                coreInfo.put("time", sdf.format(new Date(Long.parseLong(String.valueOf(System.currentTimeMillis())))));
                 CoreDNSDAO.toMysql(coreInfo);
                 ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
                 singleThreadExecutor.execute(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            List list = ToMySQL.getAllList();
                             writeUtil.cleanFile(filePath);
+                            JSONArray list = ToMySQL.getAllList();
                             for (Object l : list) {
-                                writeUtil.write(String.valueOf(l), filePath);
+                                JSONObject object = JSONObject.parseObject(String.valueOf(l));
+                                if (!corednsbody.equals(object.get("address"))) {
+                                    writeUtil.write(String.valueOf(object.get("address")) + "\t"
+                                            + String.valueOf(object.get("dnsin") + "\t")
+                                            + String.valueOf(object.get("dnstype")) + "\t"
+                                            + String.valueOf(object.get("ip")), filePath);
+                                } else {
+                                    writeUtil.write(String.valueOf(object.get("address")) + "\t"
+                                            + String.valueOf(object.get("dnsin")) + "\t"
+                                            + String.valueOf(object.get("dnstype")) + "\t"
+                                            + String.valueOf(object.get("dns")) + "\t"
+                                            + String.valueOf(object.get("robbmanes")) + "\t"
+                                            + String.valueOf(object.get("time")) + "\t"
+                                            + String.valueOf(object.get("dns7200")) + "\t"
+                                            + String.valueOf(object.get("dns3600")) + "\t"
+                                            + String.valueOf(object.get("dns1209600")) + "\t"
+                                            + String.valueOf(object.get("dns36002")), filePath);
+                                }
                             }
                             Thread.sleep(1000 * 2);
                         } catch (InterruptedException e) {

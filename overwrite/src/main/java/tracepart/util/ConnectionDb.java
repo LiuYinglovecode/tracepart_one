@@ -1,4 +1,4 @@
-package com.yunlu.bde.spider.dao;
+package tracepart.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
