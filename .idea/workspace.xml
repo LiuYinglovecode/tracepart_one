@@ -2,68 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb426d35-2f81-4cee-a68d-8027985e4b09" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileContent/annotation-processors.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/build/classes/java/main/Utils/JedisMultiCluster.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/build/classes/java/main/Utils/JedisMultiCluster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/build/classes/java/main/Utils/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/build/classes/java/main/Utils/RedisUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/JedisMultiCluster.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/JedisMultiCluster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/NewsMd5.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/NewsMd5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/RedisUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/mainEntry/DownloadMainEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/mainEntry/DownloadMainEntry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/mainEntry/SeedMainEntry$SeedTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/mainEntry/SeedMainEntry$SeedTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/mainEntry/SeedMainEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/mainEntry/SeedMainEntry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/Ca800Download.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/Ca800Download.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/CcoalnewsDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/CcoalnewsDownload.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Ca800ToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Ca800ToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CableabcToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CableabcToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CcoalnewsToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CcoalnewsToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CesToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CesToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/ChinahightechToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/ChinahightechToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CinnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CinnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CnmnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CnmnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CpnnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CpnnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/DzwToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/DzwToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/GkzhanToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/GkzhanToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JdzjToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JdzjToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JiancaiToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JiancaiToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/LmjxToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/LmjxToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Machine365ToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Machine365ToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MaiToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MaiToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MembranesToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MembranesToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/NengyuanjieToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/NengyuanjieToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/PlaToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/PlaToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/SteelcnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/SteelcnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/TexindexToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/TexindexToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/XianjichinaToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/XianjichinaToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/Utils/JedisMultiCluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/Utils/JedisMultiCluster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/Utils/RandomNum.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/Utils/RandomNum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/Utils/csvTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/Utils/csvTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/mainEntryCompany/DownloadMainEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/mainEntryCompany/DownloadMainEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/LmjxToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/LmjxToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/util/ConnectionDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/util/ConnectionDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/resources/TracePartsFiles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/resources/TracePartsFiles.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/test/java/RedisUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/test/java/RedisUtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/test/java/postDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/test/java/postDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/es/utils/ReflectionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/es/utils/ReflectionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coreDNS/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/coreDNS/Dockerfile" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -151,7 +93,7 @@
       <file leaf-file-name="CoreDNSServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
+            <state relative-caret-position="261">
               <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -163,7 +105,7 @@
       <file leaf-file-name="writeUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
+            <state relative-caret-position="172">
               <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -172,7 +114,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.properties" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="46">
@@ -181,23 +123,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ToMySQL.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java">
+      <file leaf-file-name="build_crawler.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build_crawler.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="727">
+              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/BuildResult.java">
+      <file leaf-file-name="build.oo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/build.oo">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="-163">
+              <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/coreDNS/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ESUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToMySQL.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,7 +174,7 @@
       <file leaf-file-name="CoreDNSServerApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
+            <state relative-caret-position="195">
               <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -217,41 +183,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoreDNSService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/CoreDNSService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CoreDNSController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
+            <state relative-caret-position="-23">
               <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbConnectionPool.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/DbConnectionPool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-644">
-              <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JDBCUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/JDBCUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1012">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -1849,7 +1788,6 @@
         <option value="$PROJECT_DIR$/coreDNS/publish.oo" />
         <option value="$PROJECT_DIR$/build_crawler.sh" />
         <option value="$PROJECT_DIR$/coreDNS/build.gradle" />
-        <option value="$PROJECT_DIR$/coreDNS/Dockerfile" />
         <option value="$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java" />
@@ -1859,6 +1797,7 @@
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties" />
+        <option value="$PROJECT_DIR$/coreDNS/Dockerfile" />
       </list>
     </option>
   </component>
@@ -2131,7 +2070,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
-    <property name="SearchEverywhereHistoryKey" value="up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;write&#9;PSI&#9;JAVA://util.writeUtil&#10;mysql&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;Wri&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;redis&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;Write&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;mysq&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;redisU&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;http&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/util/HttpUtil.java&#10;newsM&#9;PSI&#9;JAVA://Utils.NewsMd5&#10;FileItem&#9;PSI&#9;JAVA://org.springframework.web.multipart.commons.CommonsMultipartFile#fileItem&#10;news&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/NewsMd5.java&#10;configu&#9;PSI&#9;JAVA://config.Configured&#10;Up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java" />
+    <property name="SearchEverywhereHistoryKey" value="ESUti&#9;PSI&#9;JAVA://util.ESUtil&#10;up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;write&#9;PSI&#9;JAVA://util.writeUtil&#10;mysql&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;Wri&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;redis&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;Write&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;mysq&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;redisU&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;http&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/util/HttpUtil.java&#10;newsM&#9;PSI&#9;JAVA://Utils.NewsMd5&#10;FileItem&#9;PSI&#9;JAVA://org.springframework.web.multipart.commons.CommonsMultipartFile#fileItem&#10;news&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/NewsMd5.java&#10;configu&#9;PSI&#9;JAVA://config.Configured&#10;Up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../bdev3" />
@@ -2319,12 +2258,12 @@
       <workItem from="1565573102360" duration="3685000" />
       <workItem from="1565659544616" duration="1896000" />
       <workItem from="1565743797720" duration="71923000" />
-      <workItem from="1566445352789" duration="21408000" />
+      <workItem from="1566445352789" duration="22784000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="398348000" />
+    <option name="totallyTimeSpent" value="399724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2342,7 +2281,7 @@
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="11" weight="0.25" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Debug" order="12" sideWeight="0.49946696" visible="true" weight="0.07742639" />
+      <window_info anchor="bottom" id="Debug" order="12" sideWeight="0.49946696" visible="true" weight="0.17121047" />
       <window_info anchor="bottom" id="TODO" order="15" />
       <window_info anchor="bottom" id="Messages" order="5" weight="0.24100327" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
@@ -2743,13 +2682,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/test/java/split.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CableabcDownload.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-318">
@@ -2933,31 +2865,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/build.oo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
-          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build_crawler.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yunlu/yunlu-web/1.0.7.RELEASE/11c48aaf4e8004626452912e1b258e343d51222c/yunlu-web-1.0.7.RELEASE-sources.jar!/com/yunlu/web/api/BaseApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -3069,9 +2980,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
+        <state relative-caret-position="195">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3081,7 +2999,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
+        <state relative-caret-position="-23">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3091,7 +3009,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
+        <state relative-caret-position="172">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3101,7 +3019,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
+        <state relative-caret-position="261">
           <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3111,8 +3029,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+        <state relative-caret-position="188">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -3123,6 +3041,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build_crawler.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/build.oo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-163">
+          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
         </state>
       </provider>
     </entry>

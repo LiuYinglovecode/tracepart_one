@@ -13,4 +13,6 @@ WORKDIR ${RUN_PREFIX}/${APP_NAME}
 
 ADD build/distributions/${APP_NAME}.tar /opt/
 
-CMD ["sh", "-c", "./bin/coreDNS-0.0.1-SNAPSHOT"]
+ENV PROFILE_CONF dev
+
+CMD ["sh", "-c", "./bin/coreDNS-0.0.1-SNAPSHOT -d ${PROFILE_CONF}"]
