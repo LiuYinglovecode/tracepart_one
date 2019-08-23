@@ -81,7 +81,7 @@ public class JedisMultiCluster {
 //            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7004));
 //            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
 
-            // 呼市 测试
+//            // 呼市 测试
             hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
             hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
             hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));

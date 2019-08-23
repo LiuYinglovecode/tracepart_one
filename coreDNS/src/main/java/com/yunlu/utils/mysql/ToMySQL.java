@@ -1,5 +1,6 @@
 package com.yunlu.utils.mysql;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class ToMySQL {
@@ -49,7 +48,7 @@ public class ToMySQL {
     public static boolean bodyToMysql(String dnsBody) {
         TABLE_NAME = "crawler_data.coredns";
         String sql = "insert into " + TABLE_NAME + "(address,dnsin,dnstype,dns,robbmanes,dns7200,dns3600,dns1209600,dns36002)" +
-                "values ()";
+                "values (?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -73,7 +72,7 @@ public class ToMySQL {
         return false;
     }
 
-    public static List getAllList() {
+    public static JSONArray getAllList() {
         String sql = "select * from crawler_data.coredns";
         Connection connection = getConnection();
         PreparedStatement ps = null;
@@ -81,9 +80,21 @@ public class ToMySQL {
         try {
             ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            List list = new ArrayList();
+            JSONArray list = new JSONArray();
             while (rs.next()) {
-                list.add(rs.getString("address"));
+                JSONObject object = new JSONObject();
+                object.put("address", rs.getString("address"));
+                object.put("dnsin", rs.getString("dnsin"));
+                object.put("dnstype", rs.getString("dnstype"));
+                object.put("ip", rs.getString("ip"));
+                object.put("time", rs.getString("time"));
+                object.put("dns", rs.getString("dns"));
+                object.put("robbmanes", rs.getString("robbmanes"));
+                object.put("dns7200", rs.getString("dns7200"));
+                object.put("dns3600", rs.getString("dns3600"));
+                object.put("dns1209600", rs.getString("dns1209600"));
+                object.put("dns36002", rs.getString("dns36002"));
+                list.add(object);
             }
             return list;
         } catch (SQLException e) {

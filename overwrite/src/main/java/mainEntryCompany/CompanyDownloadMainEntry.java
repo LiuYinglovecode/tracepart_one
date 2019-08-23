@@ -33,7 +33,7 @@ public class CompanyDownloadMainEntry {
                         executor.execute(seed);
                     }
                 }
-                executor.shutdown();
+//                executor.shutdown();
                 Thread.sleep(60000);
             }
         } catch (Exception e) {

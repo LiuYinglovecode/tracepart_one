@@ -1,4 +1,4 @@
-package com.yunlu.bde.common.tools;
+package Utils;
 
 import java.util.Random;
 
