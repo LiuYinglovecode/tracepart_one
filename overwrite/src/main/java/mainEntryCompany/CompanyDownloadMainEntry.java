@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parse.company.download.Net114Download;
 import parse.company.download.QiyiDownload;
+import parse.company.download.ShopCompanyDownload;
 import parse.company.download.YellowurlDownload;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -12,11 +13,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 
-public class DownloadMainEntry {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DownloadMainEntry.class);
+public class CompanyDownloadMainEntry {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CompanyDownloadMainEntry.class);
 
     public static void main(String[] args) {
-        DownloadMainEntry downloadMainEntry = new DownloadMainEntry();
+        CompanyDownloadMainEntry downloadMainEntry = new CompanyDownloadMainEntry();
         downloadMainEntry.getFromRedis();
     }
 
@@ -59,6 +60,9 @@ public class DownloadMainEntry {
                 }else if (taskName.contains("yellowurl")) {
                     YellowurlDownload yellowurlDownload = new YellowurlDownload();
                     yellowurlDownload.info(taskName);
+                }else if (taskName.contains("99114")) {
+                    ShopCompanyDownload shopCompanyDownload = new ShopCompanyDownload();
+                    shopCompanyDownload.info(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

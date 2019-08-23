@@ -3,12 +3,9 @@ package mainEntryProduct;
 import Utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.company.download.Net114Download;
-import parse.company.download.QiyiDownload;
-import parse.company.download.YellowurlDownload;
-import parse.company.toRedis.Net114ToRedis;
 import parse.product.download.ChemmProductDownload;
 import parse.product.download.Net114ProductDownload;
+import parse.product.download.WuageProductDownload;
 import parse.product.download.YellowurlProductDownload;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -16,11 +13,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 
-public class DownloadMainEntry {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DownloadMainEntry.class);
+public class ProductDownloadMainEntry {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductDownloadMainEntry.class);
 
     public static void main(String[] args) {
-        DownloadMainEntry downloadMainEntry = new DownloadMainEntry();
+        ProductDownloadMainEntry downloadMainEntry = new ProductDownloadMainEntry();
         downloadMainEntry.getFromRedis();
     }
 
@@ -63,6 +60,9 @@ public class DownloadMainEntry {
                 }else if (taskName.contains("chemm")) {
                     ChemmProductDownload chemmProductDownload = new ChemmProductDownload();
                     chemmProductDownload.productInfo(taskName);
+                }else if (taskName.contains("wuage")) {
+                    WuageProductDownload WuageProductDownload = new WuageProductDownload();
+                    WuageProductDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

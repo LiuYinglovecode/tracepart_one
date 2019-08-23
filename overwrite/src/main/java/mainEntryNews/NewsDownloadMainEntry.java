@@ -1,4 +1,4 @@
-package mainEntry;
+package mainEntryNews;
 
 import Utils.RedisUtil;
 import org.slf4j.Logger;
@@ -11,11 +11,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 
-public class DownloadMainEntry {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DownloadMainEntry.class);
+public class NewsDownloadMainEntry {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewsDownloadMainEntry.class);
 
     public static void main(String[] args) {
-        DownloadMainEntry downloadMainEntry = new DownloadMainEntry();
+        NewsDownloadMainEntry downloadMainEntry = new NewsDownloadMainEntry();
         downloadMainEntry.getFromRedis();
     }
 
@@ -181,6 +181,15 @@ public class DownloadMainEntry {
                 }else if (taskName.contains("cntma")) {
                     CntmaDownload cntmaDownload = new CntmaDownload();
                     cntmaDownload.detail(taskName);
+                }else  if (taskName.contains("gongkong")) {
+                    GongkongDownload gongkongDownload = new GongkongDownload();
+                    gongkongDownload.detail(taskName);
+                }else if (taskName.contains("techweb")) {
+                    TechwebDownload techwebDownload = new TechwebDownload();
+                    techwebDownload.detail(taskName);
+                }else if (taskName.contains("199it.com")) {
+                    ItDownload itDownload = new ItDownload();
+                    itDownload.detail(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -1,4 +1,4 @@
-package mainEntry;
+package mainEntryNews;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,12 +12,12 @@ import java.util.concurrent.*;
 /**
  * @author lyj
  */
-public class SeedMainEntry {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SeedMainEntry.class);
+public class NewsSeedMainEntry {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewsSeedMainEntry.class);
 
     public static void main(String[] args) {
         try {
-            SeedMainEntry mainEntry = new SeedMainEntry();
+            NewsSeedMainEntry mainEntry = new NewsSeedMainEntry();
             mainEntry.SeedUrlList();
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -186,6 +186,15 @@ public class SeedMainEntry {
                 }else if (taskName.contains("www.cntma.com/news/")) {
                     CntmaToRedis CntmaToRedis = new CntmaToRedis();
                     CntmaToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.gongkong.com/news/")) {
+                    GongkongToRedis GongkongToRedis = new GongkongToRedis();
+                    GongkongToRedis.homepage(taskName);
+                }else if (taskName.contains("www.techweb.com.cn/")) {
+                    TechwebToRedis techwebToRedis = new TechwebToRedis();
+                    techwebToRedis.homepage(taskName);
+                }else if (taskName.contains("www.199it.com/")) {
+                    ItToRedis itToRedis = new ItToRedis();
+                    itToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -43,3 +43,6 @@ http://www.pm8.cn/news/
 https://www.leiphone.com/category/iot
 http://www.cntma.com/news/
 http://www.cnpv.com/News
+http://www.gongkong.com/news/
+http://www.techweb.com.cn/
+http://www.199it.com/
