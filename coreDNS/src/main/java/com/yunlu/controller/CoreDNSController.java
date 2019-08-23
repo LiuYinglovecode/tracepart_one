@@ -1,5 +1,7 @@
 package com.yunlu.controller;
 
+import com.yunlu.core.config.ConfigClient;
+import com.yunlu.dao.CoreDNSDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,21 +15,29 @@ import static com.yunlu.utils.BuildResult.buildResult;
 
 
 @RestController
-@RequestMapping("/core_dns")
+@RequestMapping("/coredns")
 @ComponentScan(basePackages = {"com.yunlu.sercice.impl"})
 public class CoreDNSController {
     private static Logger LOGGER = LoggerFactory.getLogger(CoreDNSController.class);
 
+    private final String filePath;
+    private final String corednsBody;
+    private final CoreDNSService coreDNSService;
 
     @Autowired
-    CoreDNSService coreDNSService;
+    public CoreDNSController(CoreDNSService coreDNSService, ConfigClient configClient) {
+        this.coreDNSService = coreDNSService;
+        filePath = configClient.get("app", "filepath");
+        corednsBody = configClient.get("app", "corednsbody");
+        CoreDNSDAO.dnsBody(corednsBody);
+    }
 
-    @RequestMapping(value = "/tomysql", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/tomysql_writefile", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public Map<String, Object> coreDNSTomysql(@RequestBody String coreDNS) {
         boolean isOK = false;
         int code = 0;
         if (null != coreDNS) {
-            isOK = coreDNSService.coreDNS(coreDNS);
+            isOK = coreDNSService.coreDNS(coreDNS, filePath, corednsBody);
             if (!isOK) {
                 code = 1;
             }

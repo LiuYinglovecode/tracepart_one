@@ -2,5 +2,4 @@ rootProject.name = 'crawler'
 include 'spider'
 include 'overwrite'
 include 'coreDNS'
-include ':coreDNS:resful'
-include ':coreDNS:service'
+

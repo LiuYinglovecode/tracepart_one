@@ -1,6 +1,7 @@
 package com.yunlu.sercice.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yunlu.core.config.ConfigClient;
 import com.yunlu.dao.CoreDNSDAO;
 import com.yunlu.utils.mysql.ToMySQL;
 import com.yunlu.utils.writeUtil;
@@ -14,24 +15,24 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.*;
 
-import static com.sun.deploy.perf.DeployPerfUtil.write;
 
 @Component
 public class CoreDNSServiceImpl implements CoreDNSService {
     private static Logger LOGGER = LoggerFactory.getLogger(CoreDNSServiceImpl.class);
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
-    public boolean coreDNS(String coreDNS) {
+    public boolean coreDNS(String coreDNS, String filePath, String corednsbody) {
         try {
             JSONObject coreInfo = new JSONObject();
-            if (null != coreDNS) {
+//            String timestamp = sdf.format(new Date(Long.parseLong(String.valueOf(System.currentTimeMillis()))));
+            if (null != coreDNS && null != filePath && null != corednsbody) {
                 String[] dnslist = coreDNS.split("\\s+");
                 coreInfo.put("address", dnslist[0]);
                 coreInfo.put("dnsin", dnslist[1]);
                 coreInfo.put("dnstype", dnslist[2]);
                 coreInfo.put("ip", dnslist[3]);
-                coreInfo.put("time", sdf.format(new Date(Long.parseLong(String.valueOf(System.currentTimeMillis())))));
+//                coreInfo.put("time", sdf.format(new Date(Long.parseLong(String.valueOf(System.currentTimeMillis())))));
                 CoreDNSDAO.toMysql(coreInfo);
                 ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
                 singleThreadExecutor.execute(new Runnable() {
@@ -39,8 +40,9 @@ public class CoreDNSServiceImpl implements CoreDNSService {
                     public void run() {
                         try {
                             List list = ToMySQL.getAllList();
+                            writeUtil.cleanFile(filePath);
                             for (Object l : list) {
-                                writeUtil.write(String.valueOf(l),"/home/coredns.txt");
+                                writeUtil.write(String.valueOf(l), filePath);
                             }
                             Thread.sleep(1000 * 2);
                         } catch (InterruptedException e) {
@@ -48,7 +50,7 @@ public class CoreDNSServiceImpl implements CoreDNSService {
                         }
                     }
                 });
-                singleThreadExecutor.shutdown();// 任务执行完毕，关闭线程池
+                singleThreadExecutor.shutdown();
                 return true;
             }
         } catch (Exception e) {

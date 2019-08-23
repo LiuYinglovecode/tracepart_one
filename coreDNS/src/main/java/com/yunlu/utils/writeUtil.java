@@ -3,6 +3,7 @@ package com.yunlu.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.FileWriter;
 
 public class writeUtil {
@@ -17,6 +18,21 @@ public class writeUtil {
             out.close();
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
+        }
+    }
+
+    public static synchronized void cleanFile(String fileName) {
+        File file = new File(fileName);
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write("");
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

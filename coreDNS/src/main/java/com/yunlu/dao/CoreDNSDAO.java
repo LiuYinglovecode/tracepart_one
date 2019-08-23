@@ -20,4 +20,13 @@ public class CoreDNSDAO {
         return false;
     }
 
+    public static void dnsBody(String dnsBody) {
+        try {
+            if (!ToMySQL.exist(dnsBody)) {
+                ToMySQL.bodyToMysql(dnsBody);
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
 }
