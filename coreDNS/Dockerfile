@@ -5,14 +5,13 @@ ENV RUN_PREFIX  /opt
 ENV APP_NAME coreDNS-0.0.1-SNAPSHOT
 
 RUN mkdir -p ${RUN_PREFIX}
+ADD build/distributions/${APP_NAME}.tar /opt/
 
 EXPOSE 7021
 
 WORKDIR ${RUN_PREFIX}/${APP_NAME}
 
 
-ADD build/distributions/${APP_NAME}.tar /opt/
+ENV PROFILE_CONF test
 
-ENV PROFILE_CONF dev
-
-CMD ["sh", "-c", "./bin/coreDNS-0.0.1-SNAPSHOT -d ${PROFILE_CONF}"]
+CMD ["sh", "-c", "./bin/coreDNS -d ${PROFILE_CONF}"]
