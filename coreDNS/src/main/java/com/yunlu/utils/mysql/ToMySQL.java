@@ -57,8 +57,8 @@ public class ToMySQL {
             ps.setString(1, dnsBody);
             ps.setString(2, "IN");
             ps.setString(3, "SOA");
-            ps.setString(4, "dns.dnstest.htres.cn.");
-            ps.setString(5, "robbmanes.dnstest.htres.cn.");
+            ps.setString(4, "dns.dnstest.moliplayer.com.");
+            ps.setString(5, "robbmanes.dnstest.moliplayer.com.");
             ps.setString(6, "7200");
             ps.setString(7, "3600");
             ps.setString(8, "1209600");
