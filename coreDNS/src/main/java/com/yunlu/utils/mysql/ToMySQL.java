@@ -2,6 +2,7 @@ package com.yunlu.utils.mysql;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.yunlu.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,8 +25,8 @@ public class ToMySQL {
 
     public static boolean coreDNSToMysql(Map<String, String> dnsMap) {
         TABLE_NAME = "crawler_data.coredns";
-        String sql = "insert into " + TABLE_NAME + "(address,dnsin,dnstype,ip)" +
-                "values (?,?,?,?)";
+        String sql = "insert into " + TABLE_NAME + "(address,dnsin,dnstype,ip,time)" +
+                "values (?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -35,7 +36,7 @@ public class ToMySQL {
             ps.setString(2, dnsMap.get("dnsin"));
             ps.setString(3, dnsMap.get("dnstype"));
             ps.setString(4, dnsMap.get("ip"));
-//            ps.setString(5, dnsMap.get("time"));
+            ps.setString(5, TimeUtil.getTime());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -47,8 +48,8 @@ public class ToMySQL {
 
     public static boolean bodyToMysql(String dnsBody) {
         TABLE_NAME = "crawler_data.coredns";
-        String sql = "insert into " + TABLE_NAME + "(address,dnsin,dnstype,dns,robbmanes,dns7200,dns3600,dns1209600,dns36002)" +
-                "values (?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into " + TABLE_NAME + "(address,dnsin,dnstype,dns,robbmanes,dns7200,dns3600,dns1209600,dns36002,time)" +
+                "values (?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -63,6 +64,7 @@ public class ToMySQL {
             ps.setString(7, "3600");
             ps.setString(8, "1209600");
             ps.setString(9, "3600");
+            ps.setString(10, TimeUtil.getTime());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
