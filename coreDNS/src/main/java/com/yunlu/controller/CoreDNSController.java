@@ -32,7 +32,7 @@ public class CoreDNSController {
         CoreDNSDAO.dnsBody(corednsBody);
     }
 
-    @RequestMapping(value = "/tomysql_writefile", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/addcoredns", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public Map<String, Object> coreDNSTomysql(@RequestBody String coreDNS) {
         boolean isOK = false;
         int code = 0;
