@@ -16,6 +16,7 @@ import util.mysqlUtil;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -29,12 +30,13 @@ public class ChemmProductDownload {
     //产品信息
     public void productInfo(String url) {
         JSONObject productInfo = new JSONObject();
+        ArrayList<String> list = new ArrayList<>();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "chemm");
             Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
             String product_desc = parse.select("#MaininfoContent").text().trim();
             productInfo.put("product_desc", parse.select("#MaininfoContent").text().trim());
-            productInfo.put("productId", NewsMd5.newsMd5(product_desc));
+//            productInfo.put("productId", NewsMd5.newsMd5(product_desc));
             Elements select = parse.select("#ProductInfoList ul li");
             for (Element info : select) {
                 switch (info.text().split("：")[0]) {
@@ -61,8 +63,11 @@ public class ChemmProductDownload {
                 for (Element info : contact) {
                     switch (info.select(".contactusRightTitle").text().trim()) {
                         case "公司名称：":
-                            productInfo.put("company_name", info.select("span.contactusRightInfo a.bLinkFont").text().trim());
-                            productInfo.put("company_id", MD5Util.getMD5String(info.select("span.contactusRightInfo a.bLinkFont").text().trim()));
+                            String name = info.select("span.contactusRightInfo a.bLinkFont").text().trim();
+                            productInfo.put("company_name",name);
+                            String md5String = MD5Util.getMD5String(name);
+                            list.add(md5String);
+                            productInfo.put("company_id",md5String );
                             break;
                         case "联 系 人：":
                             productInfo.put("contacts", info.select("span.contactusRightInfo").text().trim());
@@ -81,8 +86,11 @@ public class ChemmProductDownload {
                 for (Element info1 : contact1) {
                     switch (info1.select(".contactusRightTitle").text().trim()) {
                         case "公司名称：":
-                            productInfo.put("company_name", info1.select("span.contactusRightInfo a.bLinkFont").text().trim());
-                            productInfo.put("company_id", MD5Util.getMD5String(info1.select("span.contactusRightInfo a.bLinkFont").text().trim()));
+                            String name = info1.select("span.contactusRightInfo a.bLinkFont").text().trim();
+                            productInfo.put("company_name",name);
+                            String md5String = MD5Util.getMD5String(name);
+                            list.add(md5String);
+                            productInfo.put("company_id", md5String);
                             break;
                         case "联 系 人：":
                             productInfo.put("contacts", info1.select("span.contactusRightInfo").text().trim());
@@ -103,9 +111,12 @@ public class ChemmProductDownload {
             productInfo.put("@timestamp", timestamp2.format(new Date()));
             productInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             mysqlUtil.insertProduct(productInfo);
-            if (esUtil.writeToES(productInfo, "crawler-product-", "doc", NewsMd5.newsMd5(product_desc))) {
-                RedisUtil.insertUrlToSet("catchedUrl-Product", url);
+            for (String s : list) {
+                if (esUtil.writeToES(productInfo, "crawler-product-", "doc", s)) {
+                    RedisUtil.insertUrlToSet("catchedUrl-Product", url);
+                }
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
