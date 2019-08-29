@@ -2,10 +2,7 @@ package mainEntryProduct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.product.toRedis.ChemmProductToRedis;
-import parse.product.toRedis.Net114ProductToRedis;
-import parse.product.toRedis.WuageProductToRedis;
-import parse.product.toRedis.YellowurlToRedis;
+import parse.product.toRedis.*;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -68,6 +65,9 @@ public class ProductSeedMainEntry {
                 }else if (taskName.contains("www.wuage.com/")) {
                     WuageProductToRedis wuageProductToRedis = new WuageProductToRedis();
                     wuageProductToRedis.productPage(taskName);
+                }else  if (taskName.contains("ebdoor")) {
+                    EbdoorProductToRedis ebdoorProductToRedis = new EbdoorProductToRedis();
+                    ebdoorProductToRedis.productPage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

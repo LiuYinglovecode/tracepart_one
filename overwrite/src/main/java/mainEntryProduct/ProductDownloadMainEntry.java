@@ -3,10 +3,7 @@ package mainEntryProduct;
 import Utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.product.download.ChemmProductDownload;
-import parse.product.download.Net114ProductDownload;
-import parse.product.download.WuageProductDownload;
-import parse.product.download.YellowurlProductDownload;
+import parse.product.download.*;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -63,6 +60,9 @@ public class ProductDownloadMainEntry {
                 }else if (taskName.contains("wuage")) {
                     WuageProductDownload WuageProductDownload = new WuageProductDownload();
                     WuageProductDownload.productInfo(taskName);
+                }else if (taskName.contains("ebdoor")) {
+                    EbdoorProductDownload ebdoorProductDownload = new EbdoorProductDownload();
+                    ebdoorProductDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

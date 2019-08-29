@@ -104,7 +104,7 @@ public class ChemmProductDownload {
             productInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             mysqlUtil.insertProduct(productInfo);
             if (esUtil.writeToES(productInfo, "crawler-product-", "doc", NewsMd5.newsMd5(product_desc))) {
-                RedisUtil.insertUrlToSet("catchedUrl", url);
+                RedisUtil.insertUrlToSet("catchedUrl-Product", url);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

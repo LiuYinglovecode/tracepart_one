@@ -190,6 +190,12 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("199it.com")) {
                     ItDownload itDownload = new ItDownload();
                     itDownload.detail(taskName);
+                }else if (taskName.contains("tech.163")) {
+                    Tech163Download tech163Download = new Tech163Download();
+                    tech163Download.newsInfo(taskName);
+                }else if (taskName.contains("pedaily")) {
+                    PedailyDownload pedailyDownload = new PedailyDownload();
+                    pedailyDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

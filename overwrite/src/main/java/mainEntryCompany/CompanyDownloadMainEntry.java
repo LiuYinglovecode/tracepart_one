@@ -3,10 +3,7 @@ package mainEntryCompany;
 import Utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.company.download.Net114Download;
-import parse.company.download.QiyiDownload;
-import parse.company.download.ShopCompanyDownload;
-import parse.company.download.YellowurlDownload;
+import parse.company.download.*;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -63,6 +60,12 @@ public class CompanyDownloadMainEntry {
                 }else if (taskName.contains("99114")) {
                     ShopCompanyDownload shopCompanyDownload = new ShopCompanyDownload();
                     shopCompanyDownload.info(taskName);
+                }else if (taskName.contains("51sole")) {
+                    SoleDownload soleDownload = new SoleDownload();
+                    soleDownload.info(taskName);
+                }else if (taskName.contains("qiyeku")) {
+                    QiYeKuDownload qiYeKuDownload = new QiYeKuDownload();
+                    qiYeKuDownload.companyInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -2,10 +2,7 @@ package mainEntryCompany;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.company.toRedis.Net114ToRedis;
-import parse.company.toRedis.QiyiToRedis;
-import parse.company.toRedis.ShopCompanyToRedis;
-import parse.company.toRedis.YellowurlToRedis;
+import parse.company.toRedis.*;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -68,6 +65,12 @@ public class CompanySeedMainEntry {
                 }else if (taskName.contains("shop.99114.com/")) {
                     ShopCompanyToRedis shopCompanyToRedis = new ShopCompanyToRedis();
                     shopCompanyToRedis.category(taskName);
+                }else if (taskName.contains("51sole")) {
+                    SoleToRedis soleToRedis = new SoleToRedis();
+                    soleToRedis.category(taskName);
+                }else if (taskName.contains("www.qiyeku.com/huangye/")) {
+                    QiYeKuToRedis qiYeKuToRedis = new QiYeKuToRedis();
+                    qiYeKuToRedis.category(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

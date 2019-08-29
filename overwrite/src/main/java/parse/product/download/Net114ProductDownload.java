@@ -148,7 +148,7 @@ public class Net114ProductDownload {
                 mysqlUtil.insertProduct(productInfo);
                 for (String s : md5Id) {
                     if (esUtil.writeToES(productInfo, "crawler-product-", "doc", s)) {
-                        RedisUtil.insertUrlToSet("catchedUrl", url);
+                        RedisUtil.insertUrlToSet("catchedUrl-Product", url);
                     }
                 }
 

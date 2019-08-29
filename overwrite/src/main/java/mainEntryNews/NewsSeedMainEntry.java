@@ -195,6 +195,12 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("www.199it.com/")) {
                     ItToRedis itToRedis = new ItToRedis();
                     itToRedis.homepage(taskName);
+                }else if (taskName.contains("tech.163.com/telecom/")) {
+                    Tech163ToRedis tech163ToRedis = new Tech163ToRedis();
+                    tech163ToRedis.homePage(taskName);
+                }else if (taskName.contains("www.pedaily.cn/all")) {
+                    PedailyToRedis pedailyToRedis = new PedailyToRedis();
+                    pedailyToRedis.homePage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

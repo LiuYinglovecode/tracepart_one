@@ -46,3 +46,5 @@ http://www.cnpv.com/News
 http://www.gongkong.com/news/
 http://www.techweb.com.cn/
 http://www.199it.com/
+http://tech.163.com/telecom/
+https://www.pedaily.cn/all

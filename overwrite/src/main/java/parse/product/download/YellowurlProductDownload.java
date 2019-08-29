@@ -82,7 +82,7 @@ public class YellowurlProductDownload {
                 productInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 mysqlUtil.insertProduct(productInfo);
                 if (esUtil.writeToES(productInfo, "crawler-product-", "doc", md5String)) {
-                    RedisUtil.insertUrlToSet("catchedUrl", url);
+                    RedisUtil.insertUrlToSet("catchedUrl-Product", url);
                 }
             } else {
                 LOGGER.info("页面为空！");
