@@ -30,11 +30,11 @@ allprojects {
 
     repositories {
         flatDir { dirs 'libs', project(':').file('libs') }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'https://repomaven.htres.cn/repository/maven-central/' }
         maven { url 'https://repomaven.htres.cn/repository/maven-snapshots/' }
         maven { url 'https://repomaven.htres.cn/repository/maven-releases/' }
         maven { url 'http://mirrors.163.com/maven/repository/maven-public/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
     }
 
