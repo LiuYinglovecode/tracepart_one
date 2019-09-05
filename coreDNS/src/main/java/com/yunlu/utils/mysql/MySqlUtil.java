@@ -12,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class ToMySQL {
-    private final static Logger LOGGER = LoggerFactory.getLogger(ToMySQL.class);
+public class MySqlUtil {
+    private final static Logger LOGGER = LoggerFactory.getLogger(MySqlUtil.class);
     private static final String CONF_SECTION = "bde_testdb";
     private static String TABLE_NAME = "";
 
@@ -130,4 +130,69 @@ public class ToMySQL {
         }
         return false;
     }
+
+    public static boolean deleteDNS(String address) {
+        TABLE_NAME = "crawler_data.coredns";
+        String sql = "delete from " + TABLE_NAME + " where address=?";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, address);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
+
+    public static boolean updateDNS(Map<String, String> dnsMap, String address) {
+        TABLE_NAME = "crawler_data.coredns";
+        String sql = "UPDATE " + TABLE_NAME + " SET address=?,dnsin=?,dnstype=?,ip=?,time=? WHERE address='" + address + "'";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, dnsMap.get("address"));
+            ps.setString(2, dnsMap.get("dnsin"));
+            ps.setString(3, dnsMap.get("dnstype"));
+            ps.setString(4, dnsMap.get("ip"));
+            ps.setString(5, TimeUtil.getTime());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return false;
+    }
+
+    public static JSONObject getdns(String address) {
+        String sql = "select * from crawler_data.coredns where address='" + address + "'";
+        Connection connection = getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            JSONObject object = new JSONObject();
+            while (rs.next()) {
+                object.put("address", rs.getString("address"));
+                object.put("dnsin", rs.getString("dnsin"));
+                object.put("dnstype", rs.getString("dnstype"));
+                object.put("ip", rs.getString("ip"));
+            }
+            return object;
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        } finally {
+            JDBCUtils.close(ps, null, connection);
+        }
+        return null;
+    }
+
 }
