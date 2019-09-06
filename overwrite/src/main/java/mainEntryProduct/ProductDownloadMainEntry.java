@@ -25,7 +25,7 @@ public class ProductDownloadMainEntry {
             String url = "";
             while (true) {
                 while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl-Product"))) {
-                    if (!RedisUtil.isExist("catchedUrl", url)) {
+                    if (!RedisUtil.isExist("catchedUrl-Product", url)) {
                         SeedTask seed = new SeedTask(url);
                         executor.execute(seed);
                     }
@@ -63,6 +63,15 @@ public class ProductDownloadMainEntry {
                 }else if (taskName.contains("ebdoor")) {
                     EbdoorProductDownload ebdoorProductDownload = new EbdoorProductDownload();
                     ebdoorProductDownload.productInfo(taskName);
+                }else if (taskName.contains("pe168")) {
+                    Pe168ProductDownload pe168ProductDownload = new Pe168ProductDownload();
+                    pe168ProductDownload.productInfo(taskName);
+                }else if (taskName.contains("www.ehsy.com")) {
+                    EhsyProductDownload ehsyProductDownload = new EhsyProductDownload();
+                    ehsyProductDownload.productInfo(taskName);
+                }else if (taskName.contains("www.grainger.cn")) {
+                    GraingerProductDownload graingerProductDownload = new GraingerProductDownload();
+                    graingerProductDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -32,24 +32,24 @@ public class YellowurlToRedis {
         }
     }
 
-    private void classify(String href) {
-        try {
-            String html = HttpUtil.httpGetwithJudgeWord(href, "黄页网");
-            Document document = Jsoup.parse(html);
-            Elements select = document.select("ul#classifyList.classifyList li a");
-            for (Element e : select) {
-                String attr = e.attr("href");
-                double random = Math.random() * 10000;
-                if (5000<=random) {
-                    Thread.sleep((int) (random));
-                    paging(attr);
-                }
-
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
+//    private void classify(String href) {
+//        try {
+//            String html = HttpUtil.httpGetwithJudgeWord(href, "黄页网");
+//            Document document = Jsoup.parse(html);
+//            Elements select = document.select("ul#classifyList.classifyList li a");
+//            for (Element e : select) {
+//                String attr = e.attr("href");
+//                double random = Math.random() * 10000;
+//                if (5000<=random) {
+//                    Thread.sleep((int) (random));
+//                    paging(attr);
+//                }
+//
+//            }
+//        } catch (Exception e) {
+//            LOGGER.error(e.getMessage());
+//        }
+//    }
 
     //分页。获取到总页数，拼接出下一页的链接地址。
     private void paging(String attr) {
@@ -84,8 +84,6 @@ public class YellowurlToRedis {
                     String href = element.attr("href");
                     RedisUtil.insertUrlToSet("toCatchUrl-Product", href);
                 }
-            }else {
-                LOGGER.info("page null");
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

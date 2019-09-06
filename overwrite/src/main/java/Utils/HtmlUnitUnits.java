@@ -1,12 +1,18 @@
 package Utils;
 
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
+
+/**
+ * @author chenyan
+ */
 public class HtmlUnitUnits {
     /**
      * 请求超时时间,默认20000ms
@@ -19,8 +25,8 @@ public class HtmlUnitUnits {
 
     private static HtmlUnitUnits HtmlUnitUnits;
 
-    private HtmlUnitUnits() {
-    }
+//    private HtmlUnitUnits() {
+//    }
 
     /**
      * 获取实例
@@ -66,7 +72,7 @@ public class HtmlUnitUnits {
      * @return
      * @throws Exception
      */
-    public static Document parseHtmlToDoc(String html) throws Exception {
+    public static Document parseHtmlToDoc(String html) {
         return removeHtmlSpace(html);
     }
 
@@ -123,16 +129,4 @@ public class HtmlUnitUnits {
     public Document getHtmlPageResponseAsDocument(String url) throws Exception {
         return parseHtmlToDoc(getHtmlPageResponse(url));
     }
-
-
-    public static void main(String[] args) {
-        try {
-            Document htmlPageResponseAsDocument = getInstance().getHtmlPageResponseAsDocument("https://www.baidu.com/s?wd=htmlunit%E5%B7%A5%E5%85%B7%E7%B1%BB&pn=10&oq=htmlunit%E5%B7%A5%E5%85%B7%E7%B1%BB&ie=utf-8&rsv_pq=caaf559a00058d9b&rsv_t=fe9by2HonzwCd7G%2BxmPOdAwg8Jxj4nr19YqFBy0oMkyaGMD8RZSRqQQx6Jk&rsv_page=1");
-            System.out.println(htmlPageResponseAsDocument);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }

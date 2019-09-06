@@ -196,6 +196,15 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("pedaily")) {
                     PedailyDownload pedailyDownload = new PedailyDownload();
                     pedailyDownload.newsInfo(taskName);
+                }else if (taskName.contains("chinaz")) {
+                    ChinazDownload chinazDownload = new ChinazDownload();
+                    chinazDownload.newsInfo(taskName);
+                }else if (taskName.contains("newseed")) {
+                    NewSeedDownload newSeedDownload = new NewSeedDownload();
+                    newSeedDownload.newsInfo(taskName);
+                }else if (taskName.contains("technode")) {
+                    TechnodeDownload technodeDownload = new TechnodeDownload();
+                    technodeDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

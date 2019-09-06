@@ -40,7 +40,7 @@ public class YellowurlProductDownload {
                 if (elements.size() != 0) {
                     for (Element element : elements) {
                         if (element.text().contains("价格：")) {
-                            productInfo.put("prices", element.text().replace("元/", ""));//价格
+                            productInfo.put("prices", element.text().replace("价格：", ""));//价格
                         } else if (element.text().contains("起订量：")) {
                             productInfo.put("mini_order", element.text().replace("起订量：", ""));
                         } else if (element.text().contains("可售数量：")) {

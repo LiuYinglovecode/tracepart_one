@@ -1,5 +1,7 @@
 package mainEntryProduct;
 
+import Utils.HtmlUnitUnits;
+import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parse.product.toRedis.*;
@@ -68,6 +70,15 @@ public class ProductSeedMainEntry {
                 }else  if (taskName.contains("ebdoor")) {
                     EbdoorProductToRedis ebdoorProductToRedis = new EbdoorProductToRedis();
                     ebdoorProductToRedis.productPage(taskName);
+                }else  if (taskName.contains("www.pe168.com/sell/")) {
+                    Pe168ProductToRedis pe168ProductToRedis = new Pe168ProductToRedis();
+                    pe168ProductToRedis.homePage(taskName);
+                }else  if (taskName.contains("www.ehsy.com")) {
+                    EhsyProductToRedis ehsyProductToRedis = new EhsyProductToRedis();
+                    ehsyProductToRedis.productPage(taskName);
+                }else if (taskName.contains("www.grainger.cn")) {
+                    GraingerProductToRedis graingerProductToRedis = new GraingerProductToRedis();
+                    graingerProductToRedis.productPage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

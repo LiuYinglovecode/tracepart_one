@@ -48,3 +48,6 @@ http://www.techweb.com.cn/
 http://www.199it.com/
 http://tech.163.com/telecom/
 https://www.pedaily.cn/all
+http://www.chinaz.com/news/
+https://news.newseed.cn/
+https://cn.technode.com/

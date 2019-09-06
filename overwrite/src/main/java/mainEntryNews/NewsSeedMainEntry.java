@@ -201,6 +201,15 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("www.pedaily.cn/all")) {
                     PedailyToRedis pedailyToRedis = new PedailyToRedis();
                     pedailyToRedis.homePage(taskName);
+                }else if (taskName.contains("www.chinaz.com/news/")) {
+                    ChinazToRedis chinazToRedis = new ChinazToRedis();
+                    chinazToRedis.paging(taskName);
+                }else if (taskName.contains("news.newseed.cn/")) {
+                    NewSeedToRedis newSeedToRedis = new NewSeedToRedis();
+                    newSeedToRedis.homepage(taskName);
+                }else if (taskName.contains("cn.technode.com/")) {
+                    TechnodeToRedis technodeToRedis = new TechnodeToRedis();
+                    technodeToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
