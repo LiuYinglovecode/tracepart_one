@@ -24,7 +24,7 @@ configurations {
 
 dependencies {
 //    compile project(":overwrite")
-    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.8'
+//    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.8'
     compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '1.4.2.RELEASE'
 
 
