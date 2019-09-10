@@ -33,4 +33,6 @@ dependencies {
     compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE') {
         exclude group: 'ch.qos.logback', module: 'logback-classic'
     }
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.5.2'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.5.2'
 }
