@@ -30,5 +30,7 @@ dependencies {
 
     compile group: "com.yunlu", name: "yunlu-core", version: "${yunluVersion}", changing: true
     compile group: "com.yunlu", name: "yunlu-web", version: "${yunluVersion}", changing: true
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE'
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE') {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
 }
