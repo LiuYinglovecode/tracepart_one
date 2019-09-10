@@ -12,6 +12,6 @@ EXPOSE 7021
 WORKDIR ${RUN_PREFIX}/${APP_NAME}
 
 
-ENV PROFILE_CONF test
+ENV PROFILE_CONF release
 
 CMD ["sh", "-c", "./bin/coreDNS -d ${PROFILE_CONF}"]
