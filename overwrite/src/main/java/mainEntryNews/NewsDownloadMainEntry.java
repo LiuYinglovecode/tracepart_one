@@ -205,6 +205,15 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("technode")) {
                     TechnodeDownload technodeDownload = new TechnodeDownload();
                     technodeDownload.newsInfo(taskName);
+                }else  if (taskName.contains("news.mydrivers.com")) {
+                    MydriversDownload mydriversDownload = new MydriversDownload();
+                    mydriversDownload.newsInfo(taskName);
+                }else if (taskName.contains("cnmo")) {
+                    CnmoDownload cnmoDownload = new CnmoDownload();
+                    cnmoDownload.newsInfo(taskName);
+                }else if (taskName.contains("ccidnet")) {
+                    CcidnetDownload ccidnetDownload = new CcidnetDownload();
+                    ccidnetDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

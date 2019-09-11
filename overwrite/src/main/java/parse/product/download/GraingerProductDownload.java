@@ -73,7 +73,7 @@ public class GraingerProductDownload {
                 productInfo.put("product_images",imgs.toString());
             }
             productInfo.put("detailUrl", url);
-            productInfo.put("crawlerId", "107");
+            productInfo.put("crawlerId", "26");
             productInfo.put("createTime", creatrTime.format(new Date()));
             productInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

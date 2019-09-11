@@ -72,6 +72,9 @@ public class ProductDownloadMainEntry {
                 }else if (taskName.contains("www.grainger.cn")) {
                     GraingerProductDownload graingerProductDownload = new GraingerProductDownload();
                     graingerProductDownload.productInfo(taskName);
+                }else if (taskName.contains("www.wmb2b.com")) {
+                    Wmb2bDownload wmb2bDownload = new Wmb2bDownload();
+                    wmb2bDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

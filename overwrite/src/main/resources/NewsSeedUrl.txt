@@ -51,3 +51,6 @@ https://www.pedaily.cn/all
 http://www.chinaz.com/news/
 https://news.newseed.cn/
 https://cn.technode.com/
+http://news.mydrivers.com/
+http://www.cnmo.com/news/
+http://www.ccidnet.com/

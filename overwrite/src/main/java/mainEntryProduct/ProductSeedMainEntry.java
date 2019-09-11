@@ -79,6 +79,9 @@ public class ProductSeedMainEntry {
                 }else if (taskName.contains("www.grainger.cn")) {
                     GraingerProductToRedis graingerProductToRedis = new GraingerProductToRedis();
                     graingerProductToRedis.productPage(taskName);
+                }else if (taskName.contains("www.wmb2b.com/info/")) {
+                    Wmb2bToRedis wmb2bToRedis = new Wmb2bToRedis();
+                    wmb2bToRedis.productPage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

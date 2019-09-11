@@ -210,6 +210,15 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("cn.technode.com/")) {
                     TechnodeToRedis technodeToRedis = new TechnodeToRedis();
                     technodeToRedis.homepage(taskName);
+                }else if (taskName.contains("news.mydrivers.com/")) {
+                    MydriversToRedis mydriversToRedis = new MydriversToRedis();
+                    mydriversToRedis.homepage(taskName);
+                }else if (taskName.contains("www.cnmo.com/news/")) {
+                    CnmoToRedis cnmoToRedis = new CnmoToRedis();
+                    cnmoToRedis.homepage(taskName);
+                }else if (taskName.contains("www.ccidnet.com")) {
+                    CcidnetToRedis ccidnetToRedis = new CcidnetToRedis();
+                    ccidnetToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -66,6 +66,9 @@ public class CompanyDownloadMainEntry {
                 }else if (taskName.contains("qiyeku")) {
                     QiYeKuDownload qiYeKuDownload = new QiYeKuDownload();
                     qiYeKuDownload.companyInfo(taskName);
+                }else if (taskName.contains("www.herostart.com/")) {
+                    HerostartDownload herostartDownload = new HerostartDownload();
+                    herostartDownload.info(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

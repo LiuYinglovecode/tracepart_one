@@ -50,7 +50,7 @@ public class FamensToRedis {
                 list.add(nextPage);
             }
             for (String link : list) {
-                System.out.println("下一页：" + link);
+//                System.out.println("下一页：" + link);
                 Thread.sleep(7000);
                 newsList(link);
             }
