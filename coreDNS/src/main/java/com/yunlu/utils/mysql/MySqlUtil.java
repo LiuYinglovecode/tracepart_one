@@ -2,6 +2,7 @@ package com.yunlu.utils.mysql;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.yunlu.core.config.ConfigClient;
 import com.yunlu.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +24,8 @@ public class MySqlUtil {
         return conn;
     }
 
-    public static boolean coreDNSToMysql(Map<String, String> dnsMap) {
-        TABLE_NAME = "crawler_data.coredns";
-        String sql = "insert into " + TABLE_NAME + "(address,dnsin,dnstype,ip,time)" +
+    public static boolean addDns(Map<String, String> dnsMap, String tableName) {
+        String sql = "insert into " + tableName + "(address,dnsin,dnstype,ip,time)" +
                 "values (?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
@@ -46,16 +46,15 @@ public class MySqlUtil {
         return false;
     }
 
-    public static boolean bodyToMysql(String dnsBody) {
-        TABLE_NAME = "crawler_data.coredns";
-        String sql = "insert into " + TABLE_NAME + "(address,dnsin,dnstype,dns,robbmanes,dns7200,dns3600,dns1209600,dns36002,time)" +
+    public static boolean addBaseDns(String baseDns, String tableName) {
+        String sql = "insert into " + tableName + "(address,dnsin,dnstype,dns,robbmanes,dns7200,dns3600,dns1209600,dns36002,time)" +
                 "values (?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, dnsBody);
+            ps.setString(1, baseDns);
             ps.setString(2, "IN");
             ps.setString(3, "SOA");
             ps.setString(4, "dns.dnstest.htres.cn.");
@@ -74,8 +73,8 @@ public class MySqlUtil {
         return false;
     }
 
-    public static JSONArray getAllList() {
-        String sql = "select * from crawler_data.coredns";
+    public static JSONArray getAllList(String tableName) {
+        String sql = "select * from " + tableName;
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -107,14 +106,14 @@ public class MySqlUtil {
         return null;
     }
 
-    public static boolean exist(String dnsBody) {
-        String sql = "select count(*) as ct from crawler_data.coredns where address=?";
+    public static boolean exist(String baseDns, String tableName) {
+        String sql = "select count(*) as ct from " + tableName + " where address=?";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, dnsBody);
+            ps.setString(1, baseDns);
             ResultSet Judge = ps.executeQuery();
             Judge.next();
             int ct = Judge.getInt("ct");
@@ -131,9 +130,8 @@ public class MySqlUtil {
         return false;
     }
 
-    public static boolean deleteDNS(String address) {
-        TABLE_NAME = "crawler_data.coredns";
-        String sql = "delete from " + TABLE_NAME + " where address=?";
+    public static boolean deleteDns(String address, String tableName) {
+        String sql = "delete from " + tableName + " where address=?";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -149,9 +147,8 @@ public class MySqlUtil {
         return false;
     }
 
-    public static boolean updateDNS(Map<String, String> dnsMap, String address) {
-        TABLE_NAME = "crawler_data.coredns";
-        String sql = "UPDATE " + TABLE_NAME + " SET address=?,dnsin=?,dnstype=?,ip=?,time=? WHERE address='" + address + "'";
+    public static boolean updateDns(Map<String, String> dnsMap, String address, String tableName) {
+        String sql = "UPDATE " + tableName + " SET address=?,dnsin=?,dnstype=?,ip=?,time=? WHERE address='" + address + "'";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -171,8 +168,8 @@ public class MySqlUtil {
         return false;
     }
 
-    public static JSONObject getdns(String address) {
-        String sql = "select * from crawler_data.coredns where address='" + address + "'";
+    public static JSONObject getDns(String address, String tableName) {
+        String sql = "select * from " + tableName + " where address='" + address + "'";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 

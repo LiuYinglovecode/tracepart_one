@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb426d35-2f81-4cee-a68d-8027985e4b09" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileContent/annotation-processors.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coreDNS/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/coreDNS/Dockerfile" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -53,6 +59,9 @@
         <task path="$PROJECT_DIR$/coreDNS">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -63,18 +72,18 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="crawler" type="f1a62948:ProjectNode" />
-                <item name=":coreDNS" type="2d1252cf:ModuleNode" />
+                <item name=":overwrite" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="crawler" type="f1a62948:ProjectNode" />
-                <item name=":coreDNS" type="2d1252cf:ModuleNode" />
+                <item name=":overwrite" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="crawler" type="f1a62948:ProjectNode" />
-                <item name=":coreDNS" type="2d1252cf:ModuleNode" />
+                <item name=":overwrite" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
@@ -90,11 +99,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CoreDNSServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java">
+      <file leaf-file-name="CoreDnsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="206">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,10 +111,60 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="writeUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="197">
+              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/overwrite/build.gradle">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="InvocableHandlerMethod.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.4.RELEASE/ad08cd52a54c665d820e58f75a7147af13c407f/spring-web-4.3.4.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="219" selection-start-line="219" selection-end-line="219" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/test/app.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/coreDNS/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="publish.oo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/publish.oo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoreDNSServerApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
               <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -117,80 +176,17 @@
       <file leaf-file-name="app.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+            <state relative-caret-position="230">
+              <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_crawler.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build_crawler.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="727">
-              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.oo" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/build.oo">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-163">
-              <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/coreDNS/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ESUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java">
+      <file leaf-file-name="app.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/release/app.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
-              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToMySQL.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoreDNSServerApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoreDNSController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-23">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -220,7 +216,14 @@
       <find>bdebuild</find>
       <find>bde</find>
       <find>coredns</find>
+      <find>PROFILE_CONF</find>
+      <find>$PUBLISH_DIR</find>
+      <find>BUILD_VERSION</find>
       <find>PROJECT_NAME</find>
+      <find>RUN_PREFIX</find>
+      <find>APP_NAME</find>
+      <find>f1d1ae72</find>
+      <find>LocationAwareLogger</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -743,372 +746,6 @@
             </list>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/coreDNS/resful">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':coreDNS:resful'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="cleanEclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':coreDNS:resful'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Cleans all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="cleanEclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in project ':coreDNS:resful'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':coreDNS:resful'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="cleanEclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Verifies code coverage metrics based on specified rules for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="jacocoTestCoverageVerification" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse classpath file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="eclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':coreDNS:resful'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':coreDNS:resful'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="cleanEclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':coreDNS:resful'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates code coverage report for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="jacocoTestReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':coreDNS:resful'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="eclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse JDT settings file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="eclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the 'archives' artifacts into the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="install" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse project file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="eclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':coreDNS:resful'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/resful" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/coreDNS/service">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':coreDNS:service'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="cleanEclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':coreDNS:service'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Cleans all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="cleanEclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in project ':coreDNS:service'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':coreDNS:service'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="cleanEclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Verifies code coverage metrics based on specified rules for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="jacocoTestCoverageVerification" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse classpath file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="eclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':coreDNS:service'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':coreDNS:service'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="cleanEclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':coreDNS:service'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates code coverage report for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="jacocoTestReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':coreDNS:service'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="eclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse JDT settings file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="eclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the 'archives' artifacts into the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="install" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse project file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="eclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':coreDNS:service'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS/service" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/overwrite">
           <value>
             <list>
@@ -1479,16 +1116,16 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="12502437077143" />
+        <entry key="$PROJECT_DIR$" value="12511793189941" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="2525968300" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="1189516398" />
         <entry key="$PROJECT_DIR$/coreDNS/build.gradle" value="3023301777" />
         <entry key="$PROJECT_DIR$/coreDNS/resful/build.gradle" value="3919623551" />
         <entry key="$PROJECT_DIR$/coreDNS/service/build.gradle" value="3919623551" />
-        <entry key="$PROJECT_DIR$/overwrite/build.gradle" value="1455009007" />
+        <entry key="$PROJECT_DIR$/overwrite/build.gradle" value="1832542949" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="3237325159" />
         <entry key="$PROJECT_DIR$/spider/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/spider/build.gradle" value="3958109746" />
+        <entry key="$PROJECT_DIR$/spider/build.gradle" value="299065262" />
         <entry key="$PROJECT_DIR$/spider/settings.gradle" value="1782164381" />
       </map>
     </option>
@@ -1747,16 +1384,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/Utils/CSVUtils.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/Utils/csvTest.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/tracepart/util/Writer.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/maima/MaimaExist.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/maima/Maima.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/test/java/mysqlTest.java" />
-        <option value="$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java" />
-        <option value="$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/mainEntryCompany/DownloadMainEntry.java" />
-        <option value="$PROJECT_DIR$/overwrite/src/main/java/mainEntryProduct/DownloadMainEntry.java" />
         <option value="$PROJECT_DIR$/overwrite/src/main/java/Utils/JedisMultiCluster.java" />
         <option value="$PROJECT_DIR$/overwrite/src/main/java/mainEntry/DownloadMainEntry.java" />
         <option value="$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/LmjxToRedis.java" />
@@ -1784,20 +1411,30 @@
         <option value="$PROJECT_DIR$/spider/src/test/java/test.java" />
         <option value="$PROJECT_DIR$/spider/src/test/java/mysqlReadTest.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/coreDNS/build.oo" />
-        <option value="$PROJECT_DIR$/coreDNS/publish.oo" />
-        <option value="$PROJECT_DIR$/build_crawler.sh" />
         <option value="$PROJECT_DIR$/coreDNS/build.gradle" />
         <option value="$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java" />
+        <option value="$PROJECT_DIR$/coreDNS/publish.oo" />
+        <option value="$PROJECT_DIR$/coreDNS/build.oo" />
+        <option value="$PROJECT_DIR$/spider/Dockerfile" />
+        <option value="$PROJECT_DIR$/build_crawler.sh" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/TimeUtil.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/CoreDNSService.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/dao/CoreDNSDAO.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/CoreDnsService.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/dao/CoreDnsDAO.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/WriteUtil.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDnsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/MySqlUtil.java" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java" />
         <option value="$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/resources/test/app.properties" />
         <option value="$PROJECT_DIR$/coreDNS/Dockerfile" />
+        <option value="$PROJECT_DIR$/coreDNS/src/main/resources/release/app.properties" />
       </list>
     </option>
   </component>
@@ -1821,9 +1458,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1841,6 +1475,13 @@
               <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="coreDNS" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="coreDNS" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="distributions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
@@ -1972,15 +1613,18 @@
               <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="coreDNS" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="release" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="coreDNS" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
@@ -2015,51 +1659,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mainEntry" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="overwrite" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mainEntryProduct" type="462c0819:PsiDirectoryNode" />
+              <item name="mainEntryCompany" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="spider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2070,7 +1683,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
-    <property name="SearchEverywhereHistoryKey" value="ESUti&#9;PSI&#9;JAVA://util.ESUtil&#10;up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;write&#9;PSI&#9;JAVA://util.writeUtil&#10;mysql&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;Wri&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;redis&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;Write&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;mysq&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;redisU&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;http&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/util/HttpUtil.java&#10;newsM&#9;PSI&#9;JAVA://Utils.NewsMd5&#10;FileItem&#9;PSI&#9;JAVA://org.springframework.web.multipart.commons.CommonsMultipartFile#fileItem&#10;news&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/NewsMd5.java&#10;configu&#9;PSI&#9;JAVA://config.Configured&#10;Up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java" />
+    <property name="SearchEverywhereHistoryKey" value="mysql&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;ESUti&#9;PSI&#9;JAVA://util.ESUtil&#10;up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;write&#9;PSI&#9;JAVA://util.writeUtil&#10;Wri&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;redis&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;Write&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;mysq&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;redisU&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;http&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/util/HttpUtil.java&#10;newsM&#9;PSI&#9;JAVA://Utils.NewsMd5&#10;FileItem&#9;PSI&#9;JAVA://org.springframework.web.multipart.commons.CommonsMultipartFile#fileItem&#10;news&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/NewsMd5.java&#10;configu&#9;PSI&#9;JAVA://config.Configured&#10;Up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../bdev3" />
@@ -2086,11 +1699,11 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\crawler\coreDNS\src\main\resources\test" />
+      <recent name="E:\code\crawler\coreDNS\src\main\resources\release" />
+      <recent name="E:\code\crawler" />
       <recent name="E:\code\crawler\coreDNS\src\main\resources" />
       <recent name="E:\code\crawler\coreDNS" />
-      <recent name="E:\code\crawler" />
-      <recent name="E:\code\crawler\coreDNS\src\main\java\com\yunlu\utils" />
-      <recent name="E:\code\crawler\coreDNS\service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.yunlu.utils" />
@@ -2115,9 +1728,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.coreDNSServerApplication">
+  <component name="RunManager" selected="Application.coreDns">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
+    <configuration name="TimeUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.yunlu.utils.TimeUtil" />
+      <module name="coreDNS_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yunlu.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -2125,19 +1749,32 @@
     <configuration name="cleanFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cleanFile" />
       <module name="coreDNS_test" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
-    <configuration name="mysqlReadTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="mysqlReadTest" />
-      <module name="spider_test" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration name="coreDns" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.yunlu.CoreDNSServerApplication" />
+      <module name="coreDNS_main" />
+      <option name="PROGRAM_PARAMETERS" value="-d dev -port 7021" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test" />
-      <module name="spider_test" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration name="crawler [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
     </configuration>
-    <configuration name="crawler:coreDNS [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="crawler:coreDNS [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/coreDNS" />
@@ -2148,7 +1785,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="assemble" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -2226,20 +1863,21 @@
       <listeners />
     </configuration>
     <list>
+      <item itemvalue="Application.coreDns" />
       <item itemvalue="Spring Boot.coreDNSServerApplication" />
-      <item itemvalue="Application.mysqlReadTest" />
-      <item itemvalue="Application.test" />
       <item itemvalue="Application.cleanFile" />
+      <item itemvalue="Application.TimeUtil" />
+      <item itemvalue="Gradle.crawler:coreDNS [build]" />
+      <item itemvalue="Gradle.crawler [build]" />
       <item itemvalue="Gradle.crawler:overwrite [assemble]" />
-      <item itemvalue="Gradle.crawler:coreDNS [assemble]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.cleanFile" />
-        <item itemvalue="Gradle.crawler:coreDNS [assemble]" />
         <item itemvalue="Gradle.crawler:overwrite [assemble]" />
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.mysqlReadTest" />
+        <item itemvalue="Application.TimeUtil" />
+        <item itemvalue="Gradle.crawler [build]" />
+        <item itemvalue="Gradle.crawler:coreDNS [build]" />
+        <item itemvalue="Application.cleanFile" />
       </list>
     </recent_temporary>
   </component>
@@ -2258,44 +1896,48 @@
       <workItem from="1565573102360" duration="3685000" />
       <workItem from="1565659544616" duration="1896000" />
       <workItem from="1565743797720" duration="71923000" />
-      <workItem from="1566445352789" duration="22784000" />
+      <workItem from="1566445352789" duration="36334000" />
+      <workItem from="1566781335365" duration="32952000" />
+      <workItem from="1567387477180" duration="60583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="399724000" />
+    <option name="totallyTimeSpent" value="506809000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.105779715" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" weight="0.15376227" />
       <window_info anchor="right" id="Maven Projects" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="1" />
-      <window_info anchor="bottom" id="Build" order="1" sideWeight="0.49946696" weight="0.05561614" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" order="1" sideWeight="0.49946696" weight="0.16248637" />
       <window_info anchor="bottom" id="Tail" order="7" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="11" weight="0.25" />
       <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Debug" order="12" sideWeight="0.49946696" visible="true" weight="0.17121047" />
+      <window_info anchor="bottom" id="Debug" order="12" sideWeight="0.4989339" visible="true" weight="0.20174482" />
       <window_info anchor="bottom" id="TODO" order="15" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.24100327" />
+      <window_info anchor="bottom" id="Messages" order="5" weight="0.10796074" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="0" weight="0.3293348" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="6" weight="0.15485278" />
-      <window_info anchor="bottom" id="Run" order="10" weight="0.129771" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.23773174" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.5910578" />
       <window_info anchor="bottom" id="Spring" order="2" weight="0.18647765" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.3293348" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.49772727" visible="true" weight="0.1924307" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.49772727" visible="true" weight="0.1673774" />
       <window_info anchor="right" id="Bean Validation" order="0" />
       <window_info id="Web" order="0" side_tool="true" />
-      <window_info anchor="right" id="Gradle" order="4" sideWeight="0.49875313" weight="0.15031983" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.35332605" />
+      <window_info anchor="right" id="Gradle" order="4" sideWeight="0.49875313" visible="true" weight="0.1433902" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="5" sideWeight="0.5022727" side_tool="true" weight="0.1641791" />
       <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50124687" side_tool="true" weight="0.10714286" />
@@ -2303,7 +1945,6 @@
       <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.35332605" />
       <window_info anchor="right" id="Commander" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="8" />
     </layout>
@@ -2550,34 +2191,10 @@
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java</url>
-          <line>19</line>
-          <properties />
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/test/java/mysqlReadTest.java</url>
           <line>7</line>
           <properties />
           <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java</url>
-          <line>41</line>
-          <properties />
-          <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/test/java/test.java</url>
@@ -2598,34 +2215,76 @@
           <option name="timeStamp" value="115" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java</url>
-          <line>29</line>
-          <properties />
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java</url>
-          <line>98</line>
-          <properties />
-          <option name="timeStamp" value="119" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java</url>
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java</url>
           <line>24</line>
           <properties />
-          <option name="timeStamp" value="122" />
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/WriteUtil.java</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDnsServiceImpl.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/WriteUtil.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
+          <line>116</line>
+          <properties />
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
+          <line>140</line>
+          <properties />
+          <option name="timeStamp" value="141" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
         <breakpoint suspend="THREAD" type="java-line" />
       </breakpoints-defaults>
-      <option name="time" value="123" />
+      <option name="time" value="142" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2635,240 +2294,282 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>dnslist[0].contains(corednsbody)</expression-string>
+        <expression-string>&quot;select * from &quot; + tableName + &quot;where address='&quot; + address + &quot;'&quot;</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dnslist[0]</expression-string>
+        <expression-string>dnsInfo</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>String.valueOf(l)</expression-string>
+        <expression-string>tableName</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>l</expression-string>
+        <expression-string>filePath</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>list</expression-string>
+        <expression-string>baseDns1</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>result</expression-string>
+        <expression-string>&quot;select count(*) as ct from&quot; + tableName + &quot; where address=?&quot;</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rs</expression-string>
+        <expression-string>baseDns</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>sql</expression-string>
+        <expression-string>tableName2</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>updateToMySQL.getAllList(&quot;crawler_data.coredns&quot;)</expression-string>
+        <expression-string>tableName1</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/CableabcDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-318">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yunlu/yunlu-core/1.0.7.RELEASE/311ce254c5ce262db8d314d518f0d91264419b1c/yunlu-core-1.0.7.RELEASE-sources.jar!/com/yunlu/core/data/sql/DbConnectionPool.java">
+    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <caret line="28" column="63" lean-forward="true" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/spider/company/qilingConpany.java">
+    <entry file="file://$PROJECT_DIR$/spider/src/main/java/es/ESClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="167" column="31" selection-start-line="167" selection-start-column="12" selection-end-line="167" selection-end-column="44" />
+        <state relative-caret-position="-402">
+          <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/JDBCUtils.java">
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryProduct/ProductSeedMainEntry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java">
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryNews/NewsDownloadMainEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="78" selection-start-line="78" selection-end-line="84" selection-end-column="57" />
+        <state relative-caret-position="115">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryCompany/CompanyDownloadMainEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryProduct/ProductDownloadMainEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryNews/NewsSeedMainEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/build.oo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build_dir.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build_crawler.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/Executor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="139" column="9" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/TimeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
           <folding>
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.4.2.RELEASE/907b28ab64bb4cf39510249cb532bfa739bc4a0c/spring-boot-1.4.2.RELEASE-sources.jar!/org/springframework/boot/SpringApplication.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.4.RELEASE/4ed48ee8ab4a97ae76c33e95da351a47f5958bad/spring-context-4.3.4.RELEASE-sources.jar!/org/springframework/stereotype/Component.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1625">
-          <caret line="314" selection-start-line="314" selection-end-line="314" />
-          <folding>
-            <element signature="e#7909#7917#0" expanded="true" />
-            <element signature="e#8743#8751#0" expanded="true" />
-            <element signature="e#9207#9208#0" expanded="true" />
-            <element signature="e#9233#9234#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="435">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/ArrayBlockingQueue.java">
+    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryCompany/CompanySeedMainEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="237" column="11" selection-start-line="237" selection-start-column="11" selection-end-line="237" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/TimeUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="118" column="7" selection-start-line="118" selection-start-column="7" selection-end-line="118" selection-end-column="7" />
+        <state relative-caret-position="437">
+          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="99" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/Executors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
+        <state relative-caret-position="280">
           <caret line="169" column="34" selection-start-line="169" selection-start-column="34" selection-end-line="169" selection-end-column="34" />
+          <folding>
+            <element signature="e#29802#29803#0" expanded="true" />
+            <element signature="e#29841#29842#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/Ca800Download.java">
+    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="93" column="36" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
+        <state relative-caret-position="414">
+          <caret line="271" column="8" selection-start-line="271" selection-start-column="8" selection-end-line="271" selection-end-column="104" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/mysqlUtil.java">
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/BuildResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/writeUtil.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.2.43/1d05cc70d6fa23684c084b5e1992e8d1d5c6b014/fastjson-1.2.43-sources.jar!/com/alibaba/fastjson/JSONObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="184">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/jre/lib/deploy.jar!/com/sun/deploy/perf/DeployPerfUtil.class">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yunlu/yunlu-core/1.0.7.RELEASE/311ce254c5ce262db8d314d518f0d91264419b1c/yunlu-core-1.0.7.RELEASE-sources.jar!/com/yunlu/core/api/ApiResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.4.RELEASE/ad08cd52a54c665d820e58f75a7147af13c407f/spring-web-4.3.4.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="138" selection-start-line="138" selection-end-line="138" />
+        <state relative-caret-position="188">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.4.RELEASE/f817c5a05ef052584a707442f956645fd7c1af77/spring-webmvc-4.3.4.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
+        <state relative-caret-position="271">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/debug.log.2019-07-10" />
-    <entry file="file://$PROJECT_DIR$/error.log.2019-07-03" />
-    <entry file="file://$PROJECT_DIR$/spider/src/test/java/mysqlReadTest.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.4.RELEASE/f817c5a05ef052584a707442f956645fd7c1af77/spring-webmvc-4.3.4.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state relative-caret-position="524">
+          <caret line="749" selection-start-line="749" selection-end-line="749" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.4.RELEASE/f817c5a05ef052584a707442f956645fd7c1af77/spring-webmvc-4.3.4.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.4.RELEASE/f817c5a05ef052584a707442f956645fd7c1af77/spring-webmvc-4.3.4.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="906" selection-start-line="906" selection-end-line="906" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.4.RELEASE/f817c5a05ef052584a707442f956645fd7c1af77/spring-webmvc-4.3.4.RELEASE-sources.jar!/org/springframework/web/servlet/FrameworkServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="847" selection-start-line="847" selection-end-line="847" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.5.6/bc5ba33a18c04074dd1988edd1f9cfce9ce0ed6a/tomcat-embed-websocket-8.5.6-sources.jar!/org/apache/tomcat/websocket/server/WsFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yunlu/yunlu-web/1.0.7.RELEASE/11c48aaf4e8004626452912e1b258e343d51222c/yunlu-web-1.0.7.RELEASE-sources.jar!/com/yunlu/web/api/filter/SwaggerFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.6/758721dd7e0d44edbc1048c47a8b7c56e6ba1c9d/tomcat-embed-core-8.5.6-sources.jar!/org/apache/catalina/core/ApplicationFilterChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yunlu/yunlu-web/1.0.7.RELEASE/11c48aaf4e8004626452912e1b258e343d51222c/yunlu-web-1.0.7.RELEASE-sources.jar!/com/yunlu/web/filter/HttpServletRequestReplacedFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#136#137#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/test/java/test.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/HttpUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
-          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntry/DownloadMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-          <folding>
-            <element signature="e#1453#1454#0" expanded="true" />
-            <element signature="e#1497#1498#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryProduct/DownloadMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/publish.oo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="12" selection-start-line="2" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yunlu/yunlu-web/1.0.7.RELEASE/11c48aaf4e8004626452912e1b258e343d51222c/yunlu-web-1.0.7.RELEASE-sources.jar!/com/yunlu/web/api/BaseApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+        <state relative-caret-position="288">
+          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -2879,137 +2580,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java">
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/DbConnectionPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        <state relative-caret-position="-322">
+          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/CoreDnsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#102#103#0" expanded="true" />
-            <element signature="e#120#121#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="90" selection-start-line="90" selection-end-line="113" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" selection-start-line="5" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.4.RELEASE/61dc1018540942e92815db7c781f980943d186c8/spring-beans-4.3.4.RELEASE-sources.jar!/org/springframework/beans/factory/support/SimpleInstantiationStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.4.RELEASE/61dc1018540942e92815db7c781f980943d186c8/spring-beans-4.3.4.RELEASE-sources.jar!/org/springframework/beans/factory/support/ConstructorResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="275" selection-start-line="275" selection-end-line="275" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.4.RELEASE/61dc1018540942e92815db7c781f980943d186c8/spring-beans-4.3.4.RELEASE-sources.jar!/org/springframework/beans/BeanUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
+        <state relative-caret-position="200">
           <caret line="141" selection-start-line="141" selection-end-line="141" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/dao/CoreDNSDAO.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.4.RELEASE/61dc1018540942e92815db7c781f980943d186c8/spring-beans-4.3.4.RELEASE-sources.jar!/org/springframework/beans/factory/support/SimpleInstantiationStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        <state relative-caret-position="200">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/WriteUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/CoreDNSService.java">
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/MySqlUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/DbConnectionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-644">
-          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/JDBCUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1012">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/BuildResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="575">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java">
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/dao/CoreDnsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDnsServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.4.RELEASE/ad08cd52a54c665d820e58f75a7147af13c407f/spring-web-4.3.4.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="219" selection-start-line="219" selection-end-line="219" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="255">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3017,51 +2675,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="206">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java">
+    <entry file="file://$PROJECT_DIR$/overwrite/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/publish.oo">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="322">
+          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/test/app.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        <state relative-caret-position="230">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build_crawler.sh">
+    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/release/app.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+        <state relative-caret-position="253">
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/build.oo">
+    <entry file="file://$PROJECT_DIR$/coreDNS/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-163">
-          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+        <state relative-caret-position="197">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/coreDNS/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+        <state relative-caret-position="322">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="24" />
         </state>
       </provider>
     </entry>

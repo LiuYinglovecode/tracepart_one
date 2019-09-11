@@ -12,17 +12,17 @@ import java.util.concurrent.*;
 public class WriteUtil {
     private final static Logger LOGGER = LoggerFactory.getLogger(WriteUtil.class);
 
-    public static void writeDB(String filePath, String corednsbody) {
+    public static void writeDB(String filePath, String baseDns, String tableName) {
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
         singleThreadExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 try {
                     WriteUtil.cleanFile(filePath);
-                    JSONArray list = MySqlUtil.getAllList();
+                    JSONArray list = MySqlUtil.getAllList(tableName);
                     for (Object l : list) {
                         JSONObject object = JSONObject.parseObject(String.valueOf(l));
-                        if (!corednsbody.equals(object.get("address"))) {
+                        if (!baseDns.equals(object.get("address"))) {
                             WriteUtil.write(String.valueOf(object.get("address")) + "\t"
                                     + String.valueOf(object.get("dnsin") + "\t")
                                     + String.valueOf(object.get("dnstype")) + "\t"

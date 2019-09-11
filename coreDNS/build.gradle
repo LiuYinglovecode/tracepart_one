@@ -24,11 +24,15 @@ configurations {
 
 dependencies {
 //    compile project(":overwrite")
-    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.8'
+//    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.8'
     compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '1.4.2.RELEASE'
 
 
     compile group: "com.yunlu", name: "yunlu-core", version: "${yunluVersion}", changing: true
     compile group: "com.yunlu", name: "yunlu-web", version: "${yunluVersion}", changing: true
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE'
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.2.RELEASE') {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.5.2'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.5.2'
 }
