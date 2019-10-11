@@ -31,29 +31,29 @@ public class TechwebDownload {
             String html = HttpUtil.httpGetwithJudgeWord(url, "联系合作");
             if (null != html) {
                 Thread.sleep(4000);
-                ArrayList<String> obj = new ArrayList<>();
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-                info.put("title",document.select("div.main_c > h1").text().trim());
-                info.put("source",document.select("div.infos > span.from").text().trim().replace("来源: ",""));
-                info.put("time",document.select("div.infos > span.time").text());
-                info.put("author ",document.select("div.infos > span.author").text().trim().replace("作者:",""));
+                info.put("title", document.select("div.main_c > h1").text().trim());
+                info.put("source", document.select("div.infos > span.from").text().trim().replace("来源: ", ""));
+                info.put("time", document.select("div.infos > span.time").text());
+                info.put("author ", document.select("div.infos > span.author").text().trim().replace("作者:", ""));
 
                 /**
                  * 新闻内容：
                  * 判断新闻内容中是否包含不需要的信息，
                  * 如果包含就去掉。
                  */
+                String newsId = null;
                 Elements text = document.select("#content");
-                if (text.text().contains("免责声明：")){
-                    info.put("text",text.text().split("免责声明：")[0]);
-                    String newsId = NewsMd5.newsMd5(text.text().split("免责声明：")[0]);
-                    obj.add(newsId);
-                }else {
-                    info.put("text",text.text());
-                    String newsId = NewsMd5.newsMd5(text.text());
-                    obj.add(newsId);
+                if (text.text().contains("免责声明：")) {
+                    info.put("text", text.text().split("免责声明：")[0]);
+                    newsId = NewsMd5.newsMd5(text.text().split("免责声明：")[0]);
+
+                } else {
+                    info.put("text", text.text());
+                    newsId = NewsMd5.newsMd5(text.text());
+
                 }
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {
@@ -69,13 +69,15 @@ public class TechwebDownload {
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 info.put("url", url);
                 info.put("crawlerId", "97");
-                for (String s : obj) {
-                    info.put("newsId",s);
-                    mysqlUtil.insertNews(info, "crawler_news", s);
-                    if (esUtil.writeToES(info, "crawler-news-", "doc", s)){
-                        RedisUtil.insertUrlToSet("catchedUrl", url);
-                    }
+                info.put("newsId", newsId);
+//                mysqlUtil.insertNews(info, "crawler_news", newsId);
+//                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
+
 
             }
         } catch (Exception e) {

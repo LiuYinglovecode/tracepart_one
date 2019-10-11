@@ -9,6 +9,7 @@ import parse.news.download.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class NewsDownloadMainEntry {
@@ -214,6 +215,33 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("ccidnet")) {
                     CcidnetDownload ccidnetDownload = new CcidnetDownload();
                     ccidnetDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.tybaba.com")) {
+                    TybabaDownload tybabaDownload = new TybabaDownload();
+                    tybabaDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.ledinside.cn/news")) {
+                    LedinsideDownload LedinsideDownload = new LedinsideDownload();
+                    LedinsideDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.pipew")) {
+                    PipewDownload pipewDownload = new PipewDownload();
+                    pipewDownload.newsInfo(taskName);
+                }else if (taskName.contains("ofweek.com")) {
+                    OfWeekDownload ofWeekDownload = new OfWeekDownload();
+                    ofWeekDownload.newsInfo(taskName);
+                }else if (taskName.contains("product.dzsc.com/news")) {
+                    DzscDownload dzscDownload = new DzscDownload();
+                    dzscDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.cscsf.com")) {
+                    CscsfDownload cscsfDownload = new CscsfDownload();
+                    cscsfDownload.newsInfo(taskName);
+                }else if (taskName.contains("cinic.org.cn")) {
+                    CinicDownload cinicDownload = new CinicDownload();
+                    cinicDownload.newsInfo(taskName);
+                }else if (taskName.contains("news.chemnet.com")) {
+                    ChemNetDownload chemNetDownload = new ChemNetDownload();
+                    chemNetDownload.newsInfo(taskName);
+                }else if (taskName.contains("news.jc001.cn")) {
+                    Jc001Download jc001Download = new Jc001Download();
+                    jc001Download.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -97,15 +97,18 @@ public class LmjxDownload {
                     text1.select("div.from").remove();
                     String trim = text1.text().trim();
                     info.put("text", trim);
-                    String newId = NewsMd5.newsMd5(trim);
-                    info.put("newsId", newId);
+                    String newsId = NewsMd5.newsMd5(trim);
+                    info.put("newsId", newsId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                    mysqlUtil.insertNews(info, "crawler_news", newId);
-                    if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
+//                    mysqlUtil.insertNews(info, "crawler_news", newId);
+//                    if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
+//                        RedisUtil.insertUrlToSet("catchedUrl", url);
+//                    }
+                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

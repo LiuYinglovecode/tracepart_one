@@ -30,7 +30,7 @@ public class CompanyDownloadMainEntry {
                         executor.execute(seed);
                     }
                 }
-//                executor.shutdown();
+                executor.shutdown();
                 Thread.sleep(60000);
             }
         } catch (Exception e) {
@@ -69,6 +69,9 @@ public class CompanyDownloadMainEntry {
                 }else if (taskName.contains("www.herostart.com/")) {
                     HerostartDownload herostartDownload = new HerostartDownload();
                     herostartDownload.info(taskName);
+                }else if (taskName.contains("qincai.net")) {
+                    QinCaiDownload qinCaiDownload = new QinCaiDownload();
+                    qinCaiDownload.companyInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

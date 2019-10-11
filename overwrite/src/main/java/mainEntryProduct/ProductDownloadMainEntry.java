@@ -8,6 +8,7 @@ import parse.product.download.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class ProductDownloadMainEntry {
@@ -75,6 +76,9 @@ public class ProductDownloadMainEntry {
                 }else if (taskName.contains("www.wmb2b.com")) {
                     Wmb2bDownload wmb2bDownload = new Wmb2bDownload();
                     wmb2bDownload.productInfo(taskName);
+                }else if (taskName.contains("https://chanpin.gongchang.com")) {
+                    GongChangDownload GongChangDownload = new GongChangDownload();
+                    GongChangDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

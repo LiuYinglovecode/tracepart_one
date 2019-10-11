@@ -56,8 +56,11 @@ public class ElecfansDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertNews(info, "crawler_news", newsId);
-                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+//                mysqlUtil.insertNews(info, "crawler_news", newsId);
+//                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

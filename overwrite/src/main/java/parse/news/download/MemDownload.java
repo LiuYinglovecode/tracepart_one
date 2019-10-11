@@ -38,13 +38,13 @@ public class MemDownload {
                 String author = document.select(".time").text().trim().split("/", 2)[0];
                 String time = document.select(".time").text().trim().split("/", 2)[1].split("：", 2)[1];
                 String text = document.select(".newstext").text().trim();
-                String newId = NewsMd5.newsMd5(text);
+                String newsId = NewsMd5.newsMd5(text);
                 String url = detailUrl;
                 Elements imgList = document.select(".newstext img");
                 for (Element e : imgList) {
                     imgs.add(baseUrl + e.attr("src"));
                 }
-                info.put("newId", newId);
+                info.put("newId", newsId);
                 info.put("title", title);
                 info.put("author", author);
                 info.put("time", time);
@@ -56,9 +56,12 @@ public class MemDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertNews(info, "crawler_news", newId);
-//                esUtil.writeToES(info, "crawler-news-", "doc", newId);
-                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
+//                mysqlUtil.insertNews(info, "crawler_news", newId);
+////                esUtil.writeToES(info, "crawler-news-", "doc", newId);
+//                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             }

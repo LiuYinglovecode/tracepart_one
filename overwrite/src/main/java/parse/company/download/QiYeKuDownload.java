@@ -91,11 +91,14 @@ public class QiYeKuDownload {
                 companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
             }
 //            System.out.println(companyInfo);
-            mysqlUtil.insertCompany(companyInfo);
-            for (String s : list) {
-                if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", s)) {
-                    RedisUtil.insertUrlToSet("catchedUrl-Company", url);
-                }
+//            mysqlUtil.insertCompany(companyInfo);
+//            for (String s : list) {
+//                if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", s)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl-Company", url);
+//                }
+//            }
+            if (mysqlUtil.insertCompany(companyInfo)){
+                RedisUtil.insertUrlToSet("catchedUrl-Company", url);
             }
 
         } catch (Exception e) {

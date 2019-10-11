@@ -71,7 +71,10 @@ public class ChuangdongDownload {
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
                 newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
 
-                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)) {
+//                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

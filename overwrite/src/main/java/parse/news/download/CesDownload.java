@@ -65,9 +65,12 @@ public class CesDownload {
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     newsInfo.put("@timestamp", timestamp2.format(new Date()));
                     newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                    mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
-//                    esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
-                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
+//                    mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
+////                    esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
+//                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
+//                        RedisUtil.insertUrlToSet("catchedUrl", url);
+//                    }
+                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

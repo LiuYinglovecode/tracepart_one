@@ -1,7 +1,5 @@
 package mainEntryProduct;
 
-import Utils.HtmlUnitUnits;
-import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parse.product.toRedis.*;
@@ -82,6 +80,9 @@ public class ProductSeedMainEntry {
                 }else if (taskName.contains("www.wmb2b.com/info/")) {
                     Wmb2bToRedis wmb2bToRedis = new Wmb2bToRedis();
                     wmb2bToRedis.productPage(taskName);
+                }else if (taskName.contains("chanpin.gongchang.com")) {
+                    GongChangToRedis gongChangToRedis = new GongChangToRedis();
+                    gongChangToRedis.productPage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -50,8 +50,8 @@ public class MaiDownload {
                 }
                 String text = parse.select("#article").text().trim();
                 info.put("text", text);
-                String newId = NewsMd5.newsMd5(text);
-                info.put("newId", newId);
+                String newsId = NewsMd5.newsMd5(text);
+                info.put("newId", newsId);
                 Elements images = parse.select("#article > div > p > img");
                 if (images.size() != 0) {
                     for (Element image : images) {
@@ -66,9 +66,12 @@ public class MaiDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertNews(info, "crawler_news", newId);
-//                esUtil.writeToES(info, "crawler-news-", "doc", newId);
-                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
+//                mysqlUtil.insertNews(info, "crawler_news", newId);
+////                esUtil.writeToES(info, "crawler-news-", "doc", newId);
+//                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

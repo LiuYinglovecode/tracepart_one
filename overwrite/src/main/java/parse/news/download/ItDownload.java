@@ -61,8 +61,11 @@ public class ItDownload {
                 info.put("url", url);
                 info.put("crawlerId", "98");
                 info.put("newsId", newsId);
-                mysqlUtil.insertNews(info, "crawler_news", newsId);
-                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
+//                mysqlUtil.insertNews(info, "crawler_news", newsId);
+//                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

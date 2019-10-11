@@ -14,6 +14,7 @@ import parse.news.download.CableabcDownload;
 import util.ESUtil;
 import util.HttpUtil;
 import util.MD5Util;
+import util.mysqlUtil;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -30,12 +31,6 @@ public class QiyiDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
-    private void insertToMySQL(JSONObject companyInfo) {
-        Map = (Map) companyInfo;
-        if (updateToMySQL.companyInsert(Map)) {
-            LOGGER.info("插入中 : " + Map.toString());
-        }
-    }
 
 
     //企业信息
@@ -103,8 +98,11 @@ public class QiyiDownload {
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             companyInfo.put("@timestamp", timestamp2.format(new Date()));
             companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            insertToMySQL(companyInfo);
-            if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", companyId)) {
+
+//            if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", companyId)) {
+//                RedisUtil.insertUrlToSet("catchedUrl-Company", url);
+//            }
+            if (mysqlUtil.insertCompany(companyInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl-Company", url);
             }
         } catch (Exception e) {

@@ -47,8 +47,8 @@ public class MydriversDownload {
 
             Elements text = document.select("div.news_info > p");
             newsInfo.put("text", text.text());
-            String md5String = MD5Util.getMD5String(text.text());
-            newsInfo.put("newsId", md5String);
+            String newsId = MD5Util.getMD5String(text.text());
+            newsInfo.put("newsId", newsId);
             Elements src = text.select("img");
             if (src.size() != 0) {
                 for (Element element : src) {
@@ -62,8 +62,11 @@ public class MydriversDownload {
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             newsInfo.put("@timestamp", timestamp2.format(new Date()));
             newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            mysqlUtil.insertNews(newsInfo, "crawler_news", md5String);
-            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", md5String)) {
+//            mysqlUtil.insertNews(newsInfo, "crawler_news", md5String);
+//            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", md5String)) {
+//                RedisUtil.insertUrlToSet("catchedUrl", url);
+//            }
+            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

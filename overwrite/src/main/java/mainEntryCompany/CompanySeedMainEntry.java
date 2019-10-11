@@ -74,6 +74,9 @@ public class CompanySeedMainEntry {
                 }else if (taskName.contains("www.herostart.com")) {
                     HerostartToRedis HerostartToRedis = new HerostartToRedis();
                     HerostartToRedis.category(taskName);
+                }else if (taskName.contains("www.qincai.net")) {
+                    QinCaiToRedis qinCaiToRedis = new QinCaiToRedis();
+                    qinCaiToRedis.category(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

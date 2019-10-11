@@ -80,9 +80,12 @@ public class YellowurlProductDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 productInfo.put("@timestamp", timestamp2.format(new Date()));
                 productInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertProduct(productInfo);
-                if (esUtil.writeToES(productInfo, "crawler-product-", "doc", md5String)) {
-                    RedisUtil.insertUrlToSet("catchedUrl-Product", url);
+//                mysqlUtil.insertProduct(productInfo);
+//                if (esUtil.writeToES(productInfo, "crawler-product-", "doc", md5String)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl-Product", url);
+//                }
+                if (mysqlUtil.insertProduct(productInfo)){
+                    RedisUtil.insertUrlToSet("catchedUrl-Product",url);
                 }
             } else {
                 LOGGER.info("页面为空！");

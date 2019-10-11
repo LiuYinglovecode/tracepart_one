@@ -31,16 +31,15 @@ public class GongkongDownload {
             String html = HttpUtil.httpGetwithJudgeWord(url, "本站介绍");
             if (null != html) {
                 Thread.sleep(4000);
-                ArrayList<String> obj = new ArrayList<>();
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-                info.put("title",document.select("#Rtitle_D").text().trim());
-                info.put("source",document.select("#grey6 > span").eq(0).text().trim().replace("供稿：",""));
-                info.put("time",document.select("#grey6 > span").eq(2).text());
+                info.put("title", document.select("#Rtitle_D").text().trim());
+                info.put("source", document.select("#grey6 > span").eq(0).text().trim().replace("供稿：", ""));
+                info.put("time", document.select("#grey6 > span").eq(2).text());
                 Elements amountOfReading = document.select("#spanhit");
-                if (!amountOfReading.text().contains("--")){
-                    info.put("amountOfReading",amountOfReading.text().replace("人气：",""));
+                if (!amountOfReading.text().contains("--")) {
+                    info.put("amountOfReading", amountOfReading.text().replace("人气：", ""));
                 }
 
 
@@ -49,17 +48,18 @@ public class GongkongDownload {
                  * 判断新闻内容中是否包含不需要的信息，
                  * 如果包含就去掉。
                  */
+                String newsId = null;
                 Elements text = document.select(".content");
-                if (text.text().contains("上一篇：")){
+                if (text.text().contains("上一篇：")) {
                     String s = text.text().split("上一篇：")[0];
-                    info.put("text",s);
-                    String newsId = NewsMd5.newsMd5(s);
-                    obj.add(newsId);
+                    info.put("text", s);
+                    newsId = NewsMd5.newsMd5(s);
 
-                }else {
+
+                } else {
                     info.put("text", text.text().trim());
-                    String newsId = NewsMd5.newsMd5(text.text().trim());
-                    obj.add(newsId);
+                    newsId = NewsMd5.newsMd5(text.text().trim());
+
                 }
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {
@@ -80,12 +80,13 @@ public class GongkongDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                for (String s : obj) {
-                    info.put("newsId",s);
-                    mysqlUtil.insertNews(info, "crawler_news", s);
-                    if (esUtil.writeToES(info, "crawler-news-", "doc", s)){
-                        RedisUtil.insertUrlToSet("catchedUrl", url);
-                    }
+                info.put("newsId", newsId);
+//                mysqlUtil.insertNews(info, "crawler_news", newsId);
+//                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 
             }

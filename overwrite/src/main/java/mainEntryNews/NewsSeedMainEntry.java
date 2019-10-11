@@ -219,6 +219,33 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("www.ccidnet.com")) {
                     CcidnetToRedis ccidnetToRedis = new CcidnetToRedis();
                     ccidnetToRedis.homepage(taskName);
+                }else if (taskName.contains("www.tybaba.com/news/")) {
+                    TybabaToRedis tybabaToRedis = new TybabaToRedis();
+                    tybabaToRedis.homepage(taskName);
+                }else if (taskName.contains("www.ledinside.cn/news.html")) {
+                    LedinsideToRedis ledinsideToRedis = new LedinsideToRedis();
+                    ledinsideToRedis.homepage(taskName);
+                }else if (taskName.contains("www.pipew.com/news/index.asp")) {
+                    PipewToRedis pipewToRedis = new PipewToRedis();
+                    pipewToRedis.homepage(taskName);
+                }else if (taskName.contains("www.ofweek.com")) {
+                    OfWeekToRedis ofWeekToRedis = new OfWeekToRedis();
+                    ofWeekToRedis.homepage(taskName);
+                }else if (taskName.contains("product.dzsc.com/news")) {
+                    DzscToRedis dzscToRedis = new DzscToRedis();
+                    dzscToRedis.homepage(taskName);
+                }else if (taskName.contains("www.cscsf.com/")) {
+                    CscsfToRedis cscsfToRedis = new CscsfToRedis();
+                    cscsfToRedis.homepage(taskName);
+                }else if (taskName.contains("cinic.org.cn")) {
+                    CinicToRedis cinicToRedis = new CinicToRedis();
+                    cinicToRedis.homepage(taskName);
+                }else if (taskName.contains("news.chemnet.com")) {
+                    ChemNetToRedis chemNetToRedis = new ChemNetToRedis();
+                    chemNetToRedis.homepage(taskName);
+                }else if (taskName.contains("news.jc001.cn")) {
+                    Jc001ToRedis jc001ToRedis = new Jc001ToRedis();
+                    jc001ToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

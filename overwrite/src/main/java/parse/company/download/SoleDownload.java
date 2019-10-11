@@ -147,16 +147,19 @@ public class SoleDownload {
                             }
                         }
                     }
-                    for (String id : list) {
-                        mysqlUtil.insertCompany(companyInfo);
-                        if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", id)) {
-                            RedisUtil.insertUrlToSet("catchedUrl-Company", attr);
-                        }
+//                    for (String id : list) {
+//                        mysqlUtil.insertCompany(companyInfo);
+//                        if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", id)) {
+//                            RedisUtil.insertUrlToSet("catchedUrl-Company", attr);
+//                        }
+//                    }
+                    if (mysqlUtil.insertCompany(companyInfo)){
+                        RedisUtil.insertUrlToSet("catchedUrl-Company", attr);
                     }
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 }

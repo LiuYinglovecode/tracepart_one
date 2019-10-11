@@ -96,8 +96,11 @@ public class HerostartDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 companyInfo.put("@timestamp", timestamp2.format(new Date()));
                 companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertCompany(companyInfo);
-                if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", companyId)) {
+//                mysqlUtil.insertCompany(companyInfo);
+//                if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", companyId)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl-Company", url);
+//                }
+                if (mysqlUtil.insertCompany(companyInfo)){
                     RedisUtil.insertUrlToSet("catchedUrl-Company", url);
                 }
             }

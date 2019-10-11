@@ -76,15 +76,18 @@ public class EbdoorProductDownload {
                 }
             }
             productInfo.put("detailUrl", url);
-            productInfo.put("crawlerId", "46");
+            productInfo.put("crawlerId", "47");
             productInfo.put("createTime", creatrTime.format(new Date()));
             productInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
             productInfo.put("@timestamp", timestamp2.format(new Date()));
             productInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-            mysqlUtil.insertProduct(productInfo);
-            if (esUtil.writeToES(productInfo, "crawler-product-", "doc", md5String)) {
-                RedisUtil.insertUrlToSet("catchedUrl-Product", url);
+//            mysqlUtil.insertProduct(productInfo);
+//            if (esUtil.writeToES(productInfo, "crawler-product-", "doc", md5String)) {
+//                RedisUtil.insertUrlToSet("catchedUrl-Product", url);
+//            }
+            if (mysqlUtil.insertProduct(productInfo)){
+                RedisUtil.insertUrlToSet("catchedUrl-Product",url);
             }
 
         } catch (Exception e) {

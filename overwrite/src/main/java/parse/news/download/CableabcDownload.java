@@ -1,5 +1,7 @@
 package parse.news.download;
 
+import Utils.NewsMd5;
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -42,23 +44,28 @@ public class CableabcDownload {
                         newsInfo.put("source", element.text().trim().split("：")[1]);
                     }
                 }
+                String newsId = null;
                 Elements text = document.select("#divcontent");
                 if (text.size() != 0) {
                     Elements select1 = text.select("#main_ContentPlaceHolder1_pnlContent.info_ltext.lhh.lll_content");
                     if (select1.size() != 0) {
                         if (select1.select("p").last().previousElementSibling().text().contains("转载请注明出处")) {
                             select1.select("p").last().previousElementSibling().remove();
-                            newsInfo.put("text", select1.text());
+                            newsInfo.put("text", select1.text().trim());
+                            newsId = NewsMd5.newsMd5(select1.text().trim());
                         } else {
                             select1.select("p").last().remove();
                             newsInfo.put("text", select1.text());
+                            newsId = NewsMd5.newsMd5(select1.text().trim());
                         }
                     }
                     if (text.select("p").last().text().contains("转载请注明出处")) {
                         text.select("p").last().remove();
-                        newsInfo.put("text", text.text());
+                        newsInfo.put("text", text.text().trim());
+                        newsId = NewsMd5.newsMd5(text.text().trim());
                     } else {
-                        newsInfo.put("text", text.text());
+                        newsInfo.put("text", text.text().trim());
+                        newsId = NewsMd5.newsMd5(text.text().trim());
                     }
                     Elements img = text.select("#main_ContentPlaceHolder1_pnlContent.info_ltext.lhh.lll_content p img");
                     if (img.size() != 0) {
@@ -72,12 +79,16 @@ public class CableabcDownload {
                         }
                     }
                 }
+                newsInfo.put("newsId",newsId);
                 newsInfo.put("url", url);//链接地址
                 newsInfo.put("crawlerId", "53");
                 newsInfo.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
                 newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
+                }
             } else {
                 LOGGER.info("页面不存在");
             }

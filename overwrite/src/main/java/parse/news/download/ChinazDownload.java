@@ -46,9 +46,6 @@ public class ChinazDownload {
                 if (select.select("p").last().previousElementSibling().text().contains("免责声明")) {
                     select.select("p").last().previousElementSibling().remove();
                 }
-//                String text = select.text()
-//                        .replace("图片版权所属：站长之家 站长之家(ChinaZ.com) ", "")
-//                        .replace("本文由站长之家用户投稿，未经站长之家同意，严禁转载。如广大用户朋友，发现稿件存在不实报道，欢迎读者反馈、纠正、举报问题（反馈入口）。 免责声明：本文为用户投稿的文章，站长之家发布此文仅为传递信息，不代表站长之家赞同其观点，不对对内容真实性负责，仅供用户参考之用，不构成任何投资、使用建议。请读者自行核实真实性，以及可能存在的风险，任何后果均由读者自行承担。", "");
                 info.put("text",select.text().trim());
                 Elements imgList = select.select("p img,p a img");
                 if (0!=imgList.size()) {
@@ -66,8 +63,11 @@ public class ChinazDownload {
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));
                 info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                mysqlUtil.insertNews(info, "crawler_news", newsId);
-                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+//                mysqlUtil.insertNews(info, "crawler_news", newsId);
+//                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {
