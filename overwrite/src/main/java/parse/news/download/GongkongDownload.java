@@ -49,18 +49,10 @@ public class GongkongDownload {
                  * 如果包含就去掉。
                  */
                 String newsId = null;
-                Elements text = document.select(".content");
-                if (text.text().contains("上一篇：")) {
-                    String s = text.text().split("上一篇：")[0];
-                    info.put("text", s);
-                    newsId = NewsMd5.newsMd5(s);
+                Elements text = document.select("#article");
+                info.put("text", text.html());
+                newsId = NewsMd5.newsMd5(text.text().trim());
 
-
-                } else {
-                    info.put("text", text.text().trim());
-                    newsId = NewsMd5.newsMd5(text.text().trim());
-
-                }
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {

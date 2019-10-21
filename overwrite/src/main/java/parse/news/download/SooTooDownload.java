@@ -20,40 +20,34 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class Jc001Download {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Jc001Download.class);
+public class SooTooDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SooTooDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
 
     public void newsInfo(String url) {
+        JSONObject info = new JSONObject();
+        JSONArray imgs = new JSONArray();
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "九正");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "sootoo");
             Thread.sleep(SleepUtils.sleepMin());
             if (!html.isEmpty()) {
                 String newsId = null;
-                JSONObject info = new JSONObject();
-                JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-                info.put("title", document.select("div.newsDetail-top > h1").text().trim());
-                Elements select = document.select("div.newsDetail-top > div > span");
-                if (!select.isEmpty()) {
-                    for (Element element : select) {
-                        if (element.text().contains("来源：")){
-                            info.put("source", element.text().replace("来源：", "").trim());
-                        }else if (element.text().contains("发布日期：")){
-                            info.put("time", element.text().replace("发布日期：","").trim());
-                        }
-                    }
+                info.put("title", document.select("#post-705312 > div > div.entry-head > h1").text().trim());
+                Elements plate = document.select("#post-705312 > div > div.entry-head > div > span");
+                if (!html.isEmpty()){
+                    info.put("time",plate.eq(1).text().trim());
+                    info.put("source",plate.eq(3).text().trim());
                 }
-
 
 
                 /**
                  * 文本信息
                  */
-                Elements text = document.select("#mainCnt");
+                Elements text = document.select("div.entry-content.clearfix");
                 if (!text.isEmpty()) {
                     info.put("text", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
@@ -62,25 +56,23 @@ public class Jc001Download {
                     /**
                      * 图片
                      */
-                    Elements imgList = text.select("p > img");
+                    Elements imgList = text.select("div > figure > img");
                     if (!imgList.isEmpty()) {
                         for (Element e : imgList) {
-                            if (!e.attr("src").contains("https")) {
-                                imgs.add(e.attr("src"));
-                            }else {
-                                imgs.add(e.attr("src"));
-                            }
+                            imgs.add(e.attr("src"));
+
                         }
                         info.put("images", imgs.toString());//图片
                     }
 
 
                     info.put("url", url);
-                    info.put("crawlerId", "125");
+                    info.put("crawlerId", "129");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    System.out.println(info);
 //                mysqlUtil.insertNews(info, "crawler_news", newsId);
 ////                esUtil.writeToES(info, "crawler-news-", "doc", newsId);
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){

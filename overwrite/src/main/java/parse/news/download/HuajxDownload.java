@@ -45,8 +45,8 @@ public class HuajxDownload {
                 }
 
                 Elements text = document.select("div#newsContent.newsContent");
-                info.put("text",text.text().trim());
-                String newsId = NewsMd5.newsMd5(text.text());
+                info.put("text",text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);;
                 Elements imgList = document.select("div > img");
                 if (imgList.size() != 0) {

@@ -51,16 +51,17 @@ public class CinicDownload {
 
                 String newsId = null;
                 Elements text = parse.select(".dc-ccm1");
+                text.select("div").remove();
                 if (!text.isEmpty()) {
-                    String trim = text.text().trim();
+                    String trim = text.html();
                     if (trim.contains("转自：")){
                         String t = trim.split("转自：")[0].replace("转自：", "");
-                        info.put("text",t.trim());
-                        newsId = NewsMd5.newsMd5(t.trim());
+                        info.put("text",t);
+                        newsId = NewsMd5.newsMd5(text.text().trim());
                     }else {
                         String t = trim.split("版权及免责声明：")[0].replace("版权及免责声明：", "");
-                        info.put("text",t.trim());
-                        newsId = NewsMd5.newsMd5(t.trim());
+                        info.put("text",t);
+                        newsId = NewsMd5.newsMd5(text.text().trim());
                     }
 
                     Elements images = text.select("p > img,div > img");

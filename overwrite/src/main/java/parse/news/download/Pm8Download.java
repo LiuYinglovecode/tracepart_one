@@ -40,10 +40,9 @@ public class Pm8Download {
                     info.put("source", select.text().split("更新时间：")[0].replace("来源：",""));
                 }
 
-                Elements select1 = parse.select("td.f16.news_link");
-                String text = select1.text();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Element select1 = parse.select("td.post > table > tbody > tr > td > span").first();
+                info.put("text", select1.html());
+                String newsId = NewsMd5.newsMd5(select1.text().trim());
                 info.put("newsId",newsId);
                 Elements images = parse.select("p > img");
                 for (Element image : images) {

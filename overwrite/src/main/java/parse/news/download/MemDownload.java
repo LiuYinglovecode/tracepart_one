@@ -1,6 +1,5 @@
 package parse.news.download;
 
-import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -37,8 +36,8 @@ public class MemDownload {
                 String title = document.select(".title").text().trim();
                 String author = document.select(".time").text().trim().split("/", 2)[0];
                 String time = document.select(".time").text().trim().split("/", 2)[1].split("：", 2)[1];
-                String text = document.select(".newstext").text().trim();
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = document.select(".newstext");
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 String url = detailUrl;
                 Elements imgList = document.select(".newstext img");
                 for (Element e : imgList) {
@@ -48,7 +47,7 @@ public class MemDownload {
                 info.put("title", title);
                 info.put("author", author);
                 info.put("time", time);
-                info.put("text", text);
+                info.put("text", text.html());
                 info.put("url", url);
                 info.put("images", imgs.toString());
                 info.put("crawlerId", "50");

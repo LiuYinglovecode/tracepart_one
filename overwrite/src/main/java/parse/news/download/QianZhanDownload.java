@@ -15,45 +15,51 @@ import util.ESUtil;
 import util.HttpUtil;
 import util.mysqlUtil;
 
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class Jc001Download {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Jc001Download.class);
+public class QianZhanDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(QianZhanDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
 
     public void newsInfo(String url) {
+        JSONObject info = new JSONObject();
+        JSONArray imgs = new JSONArray();
+        String newsId = null;
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "九正");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "qianzhan");
             Thread.sleep(SleepUtils.sleepMin());
             if (!html.isEmpty()) {
-                String newsId = null;
-                JSONObject info = new JSONObject();
-                JSONArray imgs = new JSONArray();
-                Document document = Jsoup.parse(html);
-                info.put("title", document.select("div.newsDetail-top > h1").text().trim());
-                Elements select = document.select("div.newsDetail-top > div > span");
-                if (!select.isEmpty()) {
-                    for (Element element : select) {
-                        if (element.text().contains("来源：")){
-                            info.put("source", element.text().replace("来源：", "").trim());
-                        }else if (element.text().contains("发布日期：")){
-                            info.put("time", element.text().replace("发布日期：","").trim());
-                        }
-                    }
-                }
 
+                Document document = Jsoup.parse(html);
+                info.put("title", document.select("#h_title").text().trim());
+                String time = document.select("#pubtime_baidu").text();
+                if (!time.isEmpty()) {
+                    info.put("time", time.trim());
+
+                }
+                String source = document.select("#editor_baidu").text();
+                if (!source.isEmpty()) {
+                    info.put("author", source.replace("责任编辑：","").trim());
+                }
+                String author = document.select("#source_baidu").text();
+                if (!source.isEmpty()) {
+                    info.put("source", author.replace("来源：","").trim());
+                }
 
 
                 /**
                  * 文本信息
                  */
-                Elements text = document.select("#mainCnt");
+                Elements text = document.select("#div_content");
                 if (!text.isEmpty()) {
                     info.put("text", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
@@ -62,25 +68,21 @@ public class Jc001Download {
                     /**
                      * 图片
                      */
-                    Elements imgList = text.select("p > img");
+                    Elements imgList = text.select("p img");
                     if (!imgList.isEmpty()) {
                         for (Element e : imgList) {
-                            if (!e.attr("src").contains("https")) {
-                                imgs.add(e.attr("src"));
-                            }else {
-                                imgs.add(e.attr("src"));
-                            }
+                            imgs.add(e.attr("src"));
                         }
                         info.put("images", imgs.toString());//图片
                     }
 
-
                     info.put("url", url);
-                    info.put("crawlerId", "125");
+                    info.put("crawlerId", "131");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    System.out.println(info);
 //                mysqlUtil.insertNews(info, "crawler_news", newsId);
 ////                esUtil.writeToES(info, "crawler-news-", "doc", newsId);
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){

@@ -79,9 +79,8 @@ public class LmjxDownload {
                 }
                 Elements text = parse.select("#i_art_main,div.pageleft content,.content");
                 if (text.size() != 0) {
-                    String trim = text.text().trim();
-                    info.put("text", trim);
-                    String newId = MD5Util.getMD5String(trim);
+                    info.put("text",text.html());
+                    String newId = MD5Util.getMD5String(text.text().trim());
                     info.put("newsId", newId);
                     info.put("crawlerId", "67");
                     info.put("timestamp", timestamp.format(new Date()));

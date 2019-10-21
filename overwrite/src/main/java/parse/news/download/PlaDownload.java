@@ -64,9 +64,9 @@ public class PlaDownload {
                 //正文
                 Elements text = parse.select("div.content");
                 if (text.size() != 0) {
-                    String trim = text.text().trim();
+                    String trim = text.html();
                     info.put("text", trim);
-                    String newsId = NewsMd5.newsMd5(trim);
+                    String newsId = NewsMd5.newsMd5(text.text().trim());
                     info.put("newsId", newsId);
                     info.put("crawlerId", "68");
                     info.put("timestamp", timestamp.format(new Date()));

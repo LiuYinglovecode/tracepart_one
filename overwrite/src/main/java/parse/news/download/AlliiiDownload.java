@@ -20,8 +20,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class Jc001Download {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Jc001Download.class);
+public class AlliiiDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AlliiiDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -29,32 +29,23 @@ public class Jc001Download {
 
     public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "九正");
-            Thread.sleep(SleepUtils.sleepMin());
+            String html = HttpUtil.httpGetwithJudgeWord(url, "新闻");
+            Thread.sleep(SleepUtils.sleepMax());
             if (!html.isEmpty()) {
                 String newsId = null;
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-                info.put("title", document.select("div.newsDetail-top > h1").text().trim());
-                Elements select = document.select("div.newsDetail-top > div > span");
-                if (!select.isEmpty()) {
-                    for (Element element : select) {
-                        if (element.text().contains("来源：")){
-                            info.put("source", element.text().replace("来源：", "").trim());
-                        }else if (element.text().contains("发布日期：")){
-                            info.put("time", element.text().replace("发布日期：","").trim());
-                        }
-                    }
-                }
-
+                info.put("title", document.select("#Rtitle_D").text().trim());
+                info.put("time",document.select("span.timeP").text().trim());
 
 
                 /**
                  * 文本信息
                  */
-                Elements text = document.select("#mainCnt");
+                Elements text = document.select(".detailCon");
                 if (!text.isEmpty()) {
+                    text.select("div").remove();
                     info.put("text", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
                     info.put("newsId", newsId);
@@ -76,7 +67,7 @@ public class Jc001Download {
 
 
                     info.put("url", url);
-                    info.put("crawlerId", "125");
+                    info.put("crawlerId", "126");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
@@ -89,6 +80,8 @@ public class Jc001Download {
                     if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
+
+
                 } else {
                     LOGGER.info("detail null");
                 }

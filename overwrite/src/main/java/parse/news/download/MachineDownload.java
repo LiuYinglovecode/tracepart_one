@@ -1,6 +1,5 @@
 package parse.news.download;
 
-import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONObject;
@@ -56,9 +55,10 @@ public class MachineDownload {
                 } else {
                     newsInfo.put("time", time.text().trim());
                 }
-                String trim = gbk.select("#ArticleCnt").text().trim();
-                newsInfo.put("text", trim);
-                String newsId = NewsMd5.newsMd5(trim);
+                Elements trim = gbk.select("#ArticleCnt");
+                trim.select("img").remove();
+                newsInfo.put("text", trim.html());
+                String newsId = NewsMd5.newsMd5(trim.text().trim());
                 newsInfo.put("newsId", newsId);
                 String text = gbk.select("#ArticleCnt").text();
                 String regEx = "来源：[\u4e00-\u9fa5]*";

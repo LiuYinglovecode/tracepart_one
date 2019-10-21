@@ -42,8 +42,10 @@ public class WjwDownload {
                 }
                 Elements text = document.select("#informationArticle_04");
                 text.select("p > img").last().remove();
-                info.put("text", text.text().trim().replace("关注有惊喜", ""));
-                String newsId = NewsMd5.newsMd5(text.text().replace("关注有惊喜", "").trim());
+                text.select("p > img").remove();
+                text.select("p.prvPage").remove();
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select("#informationArticle_04 > div > img");
                 if (imgList.size() != 0) {

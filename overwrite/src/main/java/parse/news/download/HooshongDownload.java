@@ -43,7 +43,7 @@ public class HooshongDownload {
                 }
                 Elements text = document.select("#article");
                 if (text.size() != 0) {
-                    info.put("text", text.text().trim());
+                    info.put("text", text.html());
                     String newsId = NewsMd5.newsMd5(text.text().trim());
                     info.put("newsId", newsId);
                     Elements imgList = text.select("p > img");

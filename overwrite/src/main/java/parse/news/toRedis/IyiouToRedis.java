@@ -10,28 +10,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.HttpUtil;
 
-
-
-public class Jc001ToRedis {
+public class IyiouToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(Jc001ToRedis.class);
-    private static String baseUrl = "https://www.ledinside.cn";
+    private static String baseUrl = "http://www.iyiou.com";
 
     //首页
     public void homepage(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "九正");
-            Thread.sleep(SleepUtils.sleepMin());
+            String html = HttpUtil.httpGetwithJudgeWord(url, "iyiou");
+//            Thread.sleep(SleepUtils.sleepMin());
             if (!html.isEmpty()) {
                 Document document = Jsoup.parse(html);
-                Elements categoryList = document.select("div.subMenuCon > ul > li > a");
+                Elements categoryList = document.select("#nav-industry > li > a,#nav-top > li:nth-child(8) > a");
                 if (!categoryList.isEmpty()) {
                     for (Element e : categoryList) {
-                        if (e.text().contains("行业新闻") || e.text().contains("行业知识")) {
-                            String href = new String(e.attr("href"));
-                            for (int i = 1; i <=625 ; i++) {
-                                newsList(href.concat("?p=").concat(String.valueOf(i)));
-                            }
-                        }
+                        String href = e.attr("href");
+                        paing(href);
                     }
                 }
             }else {
@@ -42,14 +36,32 @@ public class Jc001ToRedis {
         }
     }
 
+    private void paing(String href) {
+        try {
+            String html = HttpUtil.httpGetwithJudgeWord(href, "iyiou");
+            Document document = Jsoup.parse(html);
+            Element element = document.select("#page-nav > li > a").last();
+            String pageCount = element.text();
+            String tailpage = element.attr("href");
+            int i;
+            for (i = 1; i <=Integer.parseInt(pageCount); i++) {
+                String links = tailpage.replace(pageCount, String.valueOf(i));
+//                System.out.println(links);
+                newsList(links);
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
     //新闻列表
     private void newsList(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "九正");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "iyiou");
             Thread.sleep(SleepUtils.sleepMin());
             if (!html.isEmpty()) {
                 Document document = Jsoup.parse(html);
-                Elements newsListInfo = document.select("div.box > ul > li > a");
+                Elements newsListInfo = document.select("div.text.fl > a");
                 if (!newsListInfo.isEmpty()) {
                     for (Element e : newsListInfo) {
                         RedisUtil.insertUrlToSet("toCatchUrl", e.attr("href"));

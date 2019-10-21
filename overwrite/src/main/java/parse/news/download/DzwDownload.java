@@ -43,9 +43,9 @@ public class DzwDownload {
                     info.put("time", select.text().split("访问次数")[0].replace("发布时间:", ""));
                     info.put("amountOfReading", select.text().split("访问")[1].split(":")[1]);
                 }
-                String text = parse.select("#NewsCont").text().trim();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = parse.select("#NewsCont");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = parse.select("#NewsCont > p > img");
                 for (Element image : images) {

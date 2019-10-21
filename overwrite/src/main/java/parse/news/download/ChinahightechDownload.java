@@ -49,9 +49,9 @@ public class ChinahightechDownload {
                 } else {
                     newsInfo.put("author", document.select("div.content p").last().text().split("：")[1].replace(")", ""));//作者
                 }
-                String text = document.select("div.content").text().trim();
-                String newsId = NewsMd5.newsMd5(text);
-                newsInfo.put("text", text);//新闻内容
+                Elements text = document.select("div.content");
+                String newsId = NewsMd5.newsMd5(text.text().trim());
+                newsInfo.put("text", text.html());//新闻内容
                 newsInfo.put("newsId", newsId);
                 Elements img = document.select("div.content p img");
                 if (img.size() != 0) {

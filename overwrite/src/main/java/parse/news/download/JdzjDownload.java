@@ -1,6 +1,5 @@
 package parse.news.download;
 
-import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -41,9 +40,9 @@ public class JdzjDownload {
                     info.put("time", select.text().split("来源")[0].replace("发布日期", ""));
                     info.put("source", select.text().split("来源")[1].split(":")[1]);
                 }
-                String text = parse.select("div.midboxcont").text().trim();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = parse.select("div.midboxcont");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text());
                 info.put("newId", newsId);
                 Elements images = parse.select("div.midboxcont p img");
                 for (Element image : images) {

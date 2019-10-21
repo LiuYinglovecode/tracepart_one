@@ -20,7 +20,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class CnmoDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MydriversDownload.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CnmoDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -49,10 +49,10 @@ public class CnmoDownload {
             if (text!=null) {
                 text.select("p.copyright").remove();
                 if (text.text().contains("】")){
-                    newsInfo.put("text", text.text().split("】")[1].trim());
+                    newsInfo.put("text", text.html());
                     newsId = MD5Util.getMD5String(text.text().trim());
                 }else {
-                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("text", text.html());
                     newsId = MD5Util.getMD5String(text.text().trim());
                 }
                 newsInfo.put("newsId", newsId);

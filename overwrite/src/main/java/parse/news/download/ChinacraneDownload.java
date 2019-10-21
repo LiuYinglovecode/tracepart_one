@@ -20,7 +20,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class ChinacraneDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Ca800Download.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChinacraneDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -46,9 +46,9 @@ public class ChinacraneDownload {
                 }
                 Elements textInfo = document.select("#article");
                 if (textInfo.size() != 0) {
-                    String text = textInfo.text();
+                    String text = textInfo.html();
                     newsInfo.put("text", text);
-                    String newsId = NewsMd5.newsMd5(text);
+                    String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                     newsInfo.put("newsId",newsId);
                     Elements img = textInfo.select("p > img");
                     if (img.size()!=0){

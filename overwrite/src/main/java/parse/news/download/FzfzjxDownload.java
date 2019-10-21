@@ -42,9 +42,8 @@ public class FzfzjxDownload {
                     info.put("amountOfReading", element.text().split("纺织服装机械网")[1].replace("点击",""));
                 }
                 Elements textInfo = document.select(".newshow_fontshow");
-                String text = textInfo.text();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                info.put("text", textInfo.html());
+                String newsId = NewsMd5.newsMd5(textInfo.text());
                 info.put("newsId",newsId);
                 info.put("source",textInfo.select("p.ly").text().replace("来源：","").replace("(","").replace(")",""));
                 info.put("url", url);

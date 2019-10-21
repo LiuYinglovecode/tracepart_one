@@ -60,9 +60,9 @@ public class CinnDownload {
                     }
                 }
                 info.put("images", imgs.toString());
-                String text = document.select(".detail_content").text().trim();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = document.select(".detail_content");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 info.put("crawlerId", "28");
                 info.put("timestamp", timestamp.format(new Date()));

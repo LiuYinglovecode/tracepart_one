@@ -46,15 +46,10 @@ public class TechwebDownload {
                  */
                 String newsId = null;
                 Elements text = document.select("#content");
-                if (text.text().contains("免责声明：")) {
-                    info.put("text", text.text().split("免责声明：")[0]);
-                    newsId = NewsMd5.newsMd5(text.text().split("免责声明：")[0]);
+                text.select("div").remove();
+                info.put("text", text.html());
+                newsId = NewsMd5.newsMd5(text.text().trim());
 
-                } else {
-                    info.put("text", text.text());
-                    newsId = NewsMd5.newsMd5(text.text());
-
-                }
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {

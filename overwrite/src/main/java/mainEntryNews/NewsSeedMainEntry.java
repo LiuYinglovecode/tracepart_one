@@ -51,7 +51,7 @@ public class NewsSeedMainEntry {
         @Override
         public void run() {
             try {
-                if (taskName.contains("www.ccoalnews.com")) {
+               if (taskName.contains("www.ccoalnews.com")) {
                     CcoalnewsToRedis ccoalnewsParseToRedis = new CcoalnewsToRedis();
                     ccoalnewsParseToRedis.getUrlStart(taskName);
                 } else if (taskName.contains("www.ca800.com")) {
@@ -246,6 +246,30 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("news.jc001.cn")) {
                     Jc001ToRedis jc001ToRedis = new Jc001ToRedis();
                     jc001ToRedis.homepage(taskName);
+                }else if (taskName.contains("www.alliii.com/news/")) {
+                    AlliiiToRedis alliiiToRedis = new AlliiiToRedis();
+                    alliiiToRedis.homepage(taskName);
+                }else if (taskName.contains("www.iyiou.com")) {
+                    IyiouToRedis iyiouToRedis = new IyiouToRedis();
+                    iyiouToRedis.homepage(taskName);
+                }else if (taskName.contains("www.thepaper.cn")) {
+                    ThepaperToRedis thepaperToRedis = new ThepaperToRedis();
+                    thepaperToRedis.homepage(taskName);
+                }/*else if (taskName.contains("36kr.com/")) {
+                    KrToRedis krToRedis = new KrToRedis();
+                    krToRedis.homepage(taskName);
+                }*/else if (taskName.contains("www.sootoo.com/")) {
+                    SooTooToRedis SooTooToRedis = new SooTooToRedis();
+                    SooTooToRedis.homepage(taskName);
+                }else if (taskName.contains("www.southmoney.com/")) {
+                    SouthMoneyToRedis southMoneyToRedis = new SouthMoneyToRedis();
+                    southMoneyToRedis.homepage(taskName);
+                }else if (taskName.contains("www.qianzhan.com/indynews/")) {
+                    QianZhanToRedis qianZhanToRedis = new QianZhanToRedis();
+                    qianZhanToRedis.homepage(taskName);
+                }else if (taskName.contains("xuexi.huize.com/study/")) {
+                    HuiZeToRedis huiZeToRedis = new HuiZeToRedis();
+                    huiZeToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

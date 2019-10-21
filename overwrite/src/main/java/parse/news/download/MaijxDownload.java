@@ -1,7 +1,7 @@
 package parse.news.download;
 
-import Utils.NewsMd5;
 import Utils.RedisUtil;
+import Utils.SleepUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -34,6 +34,7 @@ public class MaijxDownload {
         info.put("url", url);
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "机械网");
+            Thread.sleep(SleepUtils.sleepMax());
             Document document = Jsoup.parse(html);
             if (html != null) {
                 info.put("time",document.select("p.time").text().trim());
@@ -41,13 +42,12 @@ public class MaijxDownload {
                 select.select("p").remove();
                 info.put("title",select.text().trim());
                 Elements select2 = document.select("div#hyzx-p-right div.main");
-                String text = select2.text();
-                info.put("text", text);
-                String newsId = MD5Util.getMD5String(text);
+                info.put("text", select2.html());
+                String newsId = MD5Util.getMD5String(select2.text());
                 info.put("newsId",newsId);
                 String regEx = "责任编辑：[\u4e00-\u9fa5]*";
                 Pattern pattern = Pattern.compile(regEx);
-                Matcher matcher = pattern.matcher(text);
+                Matcher matcher = pattern.matcher(select2.text());
                 boolean rs = matcher.find();
                 if (rs == true) {
                     String surce = matcher.group(0).split("：", 2)[1].replace("推荐","");

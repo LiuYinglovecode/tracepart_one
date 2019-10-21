@@ -46,7 +46,7 @@ public class DdcDownload {
 
                 Elements text = document.select("div.news_content_view");
                 text.select("div.news_content_view > div.zhaiyao").last().remove();
-                info.put("text", text.text().trim());
+                info.put("text", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select("div.news_content_view > p > span > img");

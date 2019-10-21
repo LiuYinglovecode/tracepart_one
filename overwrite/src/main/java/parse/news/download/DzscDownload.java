@@ -40,9 +40,9 @@ public class DzscDownload {
                     info.put("amountOfReading", select.split("\\|")[1].replace("次阅读","").trim());
                     info.put("plate",select.split("类别：")[1].split("发布于：")[0].trim());
                 }
-                String text = parse.select("div.info-details-content").text().trim();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = parse.select("div.info-details-content");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = parse.select("#NewsCont > p > img");
                 if (!images.isEmpty()) {

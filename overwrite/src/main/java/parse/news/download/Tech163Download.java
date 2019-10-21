@@ -41,9 +41,8 @@ public class Tech163Download {
             }
             Elements text = document.select("#endText");
             text.select("div.gg200x300").remove();
-            newsInfo.put("text", text.text());
-
-            String newsId = MD5Util.getMD5String(text.text());
+            newsInfo.put("text", text.html());
+            String newsId = MD5Util.getMD5String(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = text.select("p img");
             if (src.size() != 0) {

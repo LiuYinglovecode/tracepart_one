@@ -71,7 +71,7 @@ public class ChemNetDownload {
                 }
 
                 Elements text = parse.select("div.detail-text.line25.font14px > div");
-                info.put("text", text.text().trim());
+                info.put("text", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = text.select("img,p > img");

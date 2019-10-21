@@ -46,7 +46,7 @@ public class GbsDownload {
                     }
                 }
                 Elements text = document.select("div.det_nr_p");
-                info.put("text", text.text().trim());
+                info.put("text", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select("div.det_nr_p > p > img");

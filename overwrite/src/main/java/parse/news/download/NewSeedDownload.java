@@ -21,7 +21,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class NewSeedDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ChinazDownload.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewSeedDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -61,7 +61,7 @@ public class NewSeedDownload {
 
                 Elements text = document.select("#news-content");
                 if (0!=text.size()){
-                    info.put("text",text.text().trim());
+                    info.put("text",text.html());
                      newsId = NewsMd5.newsMd5(text.text().trim());
                 }
                 info.put("newsId",newsId);

@@ -46,9 +46,9 @@ public class EapadDownload {
 
                 }
                 Elements textInfo = document.select("#div1");
-                String text = textInfo.text();
+                String text = textInfo.html();
                 info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
                 if (imgs.size() != 0) {

@@ -40,8 +40,8 @@ public class XianjichinaDownload {
                     String title = document.select(".list-main h1").text().trim();
                     String source = document.select(".public-time").text().trim().split("文章来源：", 2)[1].split("发布时间：", 2)[0];
                     String time = document.select(".public-time").text().trim().split("发布时间：", 2)[1];
-                    String text = document.select(".main-text").text().trim();
-                    String newsId = NewsMd5.newsMd5(text);
+                    Elements text = document.select(".main-text");
+                    String newsId = NewsMd5.newsMd5(text.text().trim());
                     Elements imgList = document.select(".main-text img");
                     if (!"0".equals(String.valueOf(imgList.size()))) {
                         for (Element e : imgList) {
@@ -50,7 +50,7 @@ public class XianjichinaDownload {
                     }
                     info.put("images", String.valueOf(imgs));
                     info.put("url", url);
-                    info.put("text", text);
+                    info.put("text", text.html());
                     info.put("newsId", newsId);
                     info.put("source", source);
                     info.put("time", time);

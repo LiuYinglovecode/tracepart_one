@@ -49,6 +49,7 @@ public class Ca800Download {
                     }
                 } else {
                     Elements select1 = document.select("div.title_bar");
+//                    发布时间：2019-08-20 来源：中国证券网 类型：行业新闻 2625人浏览
                     if (select1.text().contains("来源：")) {
                         newsInfo.put("time", select1.text().split("来源：")[0].split("：")[1]);
                         newsInfo.put("plate", document.select("div.title_bar a").text().trim());
@@ -57,7 +58,7 @@ public class Ca800Download {
 
                 Elements text = document.select("div.newsdetail_con");//新闻内容
                 if (text.size() != 0) {
-                    newsInfo.put("text", text.text());
+                    newsInfo.put("text", text.html());
                     String newsId = NewsMd5.newsMd5(text.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("div > img");

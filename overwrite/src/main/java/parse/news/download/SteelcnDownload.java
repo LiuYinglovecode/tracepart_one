@@ -62,9 +62,9 @@ public class SteelcnDownload {
                 }
             }
 
-            String text = document.select("div.art_main").text().trim();
-            newsInfo.put("text", text);//新闻内容
-            String newsId = NewsMd5.newsMd5(text);
+            Elements text = document.select("div.art_main");
+            newsInfo.put("text", text.html());//新闻内容
+            String newsId = NewsMd5.newsMd5(text.text().trim());
             newsInfo.put("newsId", newsId);
             newsInfo.put("crawlerId", "48");
             newsInfo.put("timestamp", timestamp.format(new Date()));

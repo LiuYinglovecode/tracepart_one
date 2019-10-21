@@ -51,20 +51,20 @@ public class CableabcDownload {
                     if (select1.size() != 0) {
                         if (select1.select("p").last().previousElementSibling().text().contains("转载请注明出处")) {
                             select1.select("p").last().previousElementSibling().remove();
-                            newsInfo.put("text", select1.text().trim());
+                            newsInfo.put("text", select1.html());
                             newsId = NewsMd5.newsMd5(select1.text().trim());
                         } else {
                             select1.select("p").last().remove();
-                            newsInfo.put("text", select1.text());
+                            newsInfo.put("text", select1.html());
                             newsId = NewsMd5.newsMd5(select1.text().trim());
                         }
                     }
                     if (text.select("p").last().text().contains("转载请注明出处")) {
                         text.select("p").last().remove();
-                        newsInfo.put("text", text.text().trim());
+                        newsInfo.put("text", text.html());
                         newsId = NewsMd5.newsMd5(text.text().trim());
                     } else {
-                        newsInfo.put("text", text.text().trim());
+                        newsInfo.put("text", text.html());
                         newsId = NewsMd5.newsMd5(text.text().trim());
                     }
                     Elements img = text.select("#main_ContentPlaceHolder1_pnlContent.info_ltext.lhh.lll_content p img");

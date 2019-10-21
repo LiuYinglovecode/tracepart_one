@@ -46,8 +46,8 @@ public class CntmaDownload {
                 }
 
                 Element text = document.select("#zoom").first();
-                info.put("text",text.text());
-                String newsId = NewsMd5.newsMd5(text.text());
+                info.put("text",text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {

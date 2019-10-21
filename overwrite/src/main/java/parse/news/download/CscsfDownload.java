@@ -40,9 +40,9 @@ public class CscsfDownload {
                 info.put("author",parse.select("span.auth").text().split("编辑：")[1].trim());
 
 
-                String text = parse.select("#Cnt-Main-Article").text().trim();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = parse.select("#Cnt-Main-Article");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = parse.select("p > img");
                 if (!images.isEmpty()) {

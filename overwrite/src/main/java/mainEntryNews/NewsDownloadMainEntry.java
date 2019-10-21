@@ -62,6 +62,9 @@ public class NewsDownloadMainEntry {
                 } else if (taskName.contains("www.chinahightech.com")) {
                     ChinahightechDownload chinahightechDownload = new ChinahightechDownload();
                     chinahightechDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.ccoalnews.com")) {
+                    CcoalnewsDownload CcoalnewsDownload = new CcoalnewsDownload();
+                    CcoalnewsDownload.detailDownload(taskName);
                 } else if (taskName.contains("www.cinn.cn")) {
                     CinnDownload cinnDownload = new CinnDownload();
                     cinnDownload.detail(taskName);
@@ -242,6 +245,30 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("news.jc001.cn")) {
                     Jc001Download jc001Download = new Jc001Download();
                     jc001Download.newsInfo(taskName);
+                }else if (taskName.contains("www.alliii.com/news/")) {
+                    AlliiiDownload alliiiDownload = new AlliiiDownload();
+                    alliiiDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.iyiou.com")) {
+                    IyiouDownload IyiouDownload = new IyiouDownload();
+                    IyiouDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.thepaper.cn")) {
+                    ThepaperDownload thepaperDownload = new ThepaperDownload();
+                    thepaperDownload.newsInfo(taskName);
+                }else if (taskName.contains("36kr.com")) {
+                    KrDownload krDownload = new KrDownload();
+                    krDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.sootoo.com")) {
+                    SooTooDownload sooTooDownload = new SooTooDownload();
+                    sooTooDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.southmoney.com/")) {
+                    SouthMoneyDownload southMoneyDownload = new SouthMoneyDownload();
+                    southMoneyDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.qianzhan.com")) {
+                    QianZhanDownload qianZhanDownload = new QianZhanDownload();
+                    qianZhanDownload.newsInfo(taskName);
+                }else if (taskName.contains("xuexi.huize.com")) {
+                    HuiZeDownload huiZeDownload = new HuiZeDownload();
+                    huiZeDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

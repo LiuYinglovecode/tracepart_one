@@ -40,13 +40,14 @@ public class ChinazDownload {
                 info.put("source", document.select("div.meta > span.source").text().replace("稿源：","").trim());
                 Elements select = document.select("#ctrlfscont");
                 select.select("blockquote").remove();
+                select.select("#container").remove();
                 if (select.select("p").last().text().contains("本文由站长之家用户投稿")) {
                     select.select("p").last().remove();
                 }
                 if (select.select("p").last().previousElementSibling().text().contains("免责声明")) {
                     select.select("p").last().previousElementSibling().remove();
                 }
-                info.put("text",select.text().trim());
+                info.put("text",select.html());
                 Elements imgList = select.select("p img,p a img");
                 if (0!=imgList.size()) {
                     for (Element img : imgList) {

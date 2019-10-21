@@ -54,7 +54,7 @@ public class PipewDownload {
 
 
             Elements text = document.select("#zoom");
-            info.put("text", text.text().replace(" ", "").trim());
+            info.put("text", text.html());
             String newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
             info.put("newsId", newsId);
             Elements imgList = document.select("p > img");

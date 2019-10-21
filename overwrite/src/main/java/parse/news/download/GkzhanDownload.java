@@ -35,9 +35,9 @@ public class GkzhanDownload {
             String title = parse.select("div.leftTop.clearfix > h2").text().trim();
             newsInfo.put("title", title);
             newsInfo.put("time", parse.select("div.leftTop.clearfix > p > span:nth-child(1)").text().trim());
-            String text = parse.select("#newsContent").text().trim();
-            newsInfo.put("text", text);
-            String newsId = NewsMd5.newsMd5(text);
+            Elements text = parse.select("#newsContent");
+            newsInfo.put("text", text.html());
+            String newsId = NewsMd5.newsMd5(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements list = parse.select("div.leftTop.clearfix > p > span");
             for (Element element : list) {

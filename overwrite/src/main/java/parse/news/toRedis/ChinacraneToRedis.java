@@ -12,7 +12,7 @@ import util.HttpUtil;
 import java.util.ArrayList;
 
 public class ChinacraneToRedis {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Ca800ToRedis.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChinacraneToRedis.class);
 
     //主页
     public void homepage(String url) {

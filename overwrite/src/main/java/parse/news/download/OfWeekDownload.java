@@ -1,6 +1,5 @@
 package parse.news.download;
 
-import Utils.HtmlUnitUnits;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -50,7 +49,10 @@ public class OfWeekDownload {
             String newsId = null;
             Elements text = document.select("#articleC");
             if (!text.isEmpty()) {
-                info.put("text", text.text().trim());
+                if (text.text().contains("＞＞＞点击投票＜＜＜")){
+                    text.select("p").last().remove();
+                }
+                info.put("text", text.html());
                 newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 String regEx = "来源：[\u4e00-\u9fa5]*";

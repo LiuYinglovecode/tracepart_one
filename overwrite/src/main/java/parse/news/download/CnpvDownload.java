@@ -45,7 +45,7 @@ public class CnpvDownload {
                     }
                 }
                 Elements text = document.select("div.mt-5.editor-content");
-                info.put("text",text.text().trim());
+                info.put("text",text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements imgList = document.select("p img");

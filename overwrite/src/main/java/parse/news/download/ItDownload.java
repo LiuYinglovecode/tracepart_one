@@ -45,8 +45,10 @@ public class ItDownload {
                  */
                 Elements text = document.select("div.entry-content.articlebody");
                 text.select("div#wp_rp_first").remove();
-                info.put("text", text.text());
-                String newsId = NewsMd5.newsMd5(text.text());
+                text.select("script").remove();
+                text.select("p script").remove();
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {

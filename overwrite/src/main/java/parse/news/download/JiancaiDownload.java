@@ -35,12 +35,18 @@ public class JiancaiDownload {
                 Document parse = Jsoup.parse(html);
                 String title = parse.select("div.newsInfo > h3").text().trim();
                 info.put("title", title);
-                info.put("source", parse.select("span.laiyuan").text().trim().replace("来源：", ""));
-                info.put("time", parse.select("span.time").text().trim().replace("时间：", ""));
-                info.put("amountOfReading", parse.select("span.times").text().trim().replace("访问：", "").replace("次", ""));
-                String text = parse.select("div.newsContent").text().trim();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+//                info.put("source", parse.select("span.laiyuan").text().trim().replace("来源：", ""));
+//                info.put("time", parse.select("span.time").text().trim().replace("时间：", ""));
+//                info.put("amountOfReading", parse.select("span.times").text().trim().replace("访问：", "").replace("次", ""));
+
+                Elements select = parse.select(".ArtFrom,div.midbox1 > p");
+                if (!select.isEmpty()){
+                    info.put("time", select.text().replace("时间：", "").split("来源：")[0]);
+                    info.put("source", select.text().split("来源：")[1]);
+                }
+                Elements text = parse.select("div.midboxcont");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = parse.select("div.newsContent p img");
                 for (Element image : images) {

@@ -21,7 +21,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class Hometex114Download {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CndianjiDownload.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Hometex114Download.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -47,9 +47,8 @@ public class Hometex114Download {
                 }
 
                 Elements textInfo = document.select(".Content");
-                String text = textInfo.text();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                info.put("text", textInfo.html());
+                String newsId = NewsMd5.newsMd5(textInfo.text());
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
                 if (imgs.size() != 0) {

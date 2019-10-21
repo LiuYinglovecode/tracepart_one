@@ -50,9 +50,8 @@ public class Ic37Download {
                     info.put("time", element.text().split("来源：")[0].replace("时间：","").replace("，",""));
                 }
                 Elements textInfo = document.select(".contentlist2,.contentlist");
-                String text = textInfo.text();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                info.put("text", textInfo.html());
+                String newsId = NewsMd5.newsMd5(textInfo.text());
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
                 if (imgs.size() != 0) {

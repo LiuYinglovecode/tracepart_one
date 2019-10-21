@@ -48,8 +48,8 @@ public class PedailyDownload {
                 newsInfo.put("source", source.text());
             }
             Elements text = document.select("#news-content");
-            newsInfo.put("text", text.text());
-            String newsId = MD5Util.getMD5String(text.text());
+            newsInfo.put("text", text.html());
+            String newsId = MD5Util.getMD5String(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = text.select("p img");
             if (src.size() != 0) {

@@ -1,6 +1,5 @@
 package parse.news.download;
 
-import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -48,9 +47,9 @@ public class MaiDownload {
                         info.put("amountOfReading", select.select("#hits").text().trim());
                     }
                 }
-                String text = parse.select("#article").text().trim();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = parse.select("#article");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newId", newsId);
                 Elements images = parse.select("#article > div > p > img");
                 if (images.size() != 0) {

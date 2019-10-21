@@ -45,9 +45,11 @@ public class MydriversDownload {
                 newsInfo.put("amountOfReading",amountOfReading.text());
             }
 
-            Elements text = document.select("div.news_info > p");
-            newsInfo.put("text", text.text());
-            String newsId = MD5Util.getMD5String(text.text());
+            Elements text = document.select("div.news_info");
+            text.select("div").remove();
+            text.select("script").remove();
+            newsInfo.put("text", text.html());
+            String newsId = MD5Util.getMD5String(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = text.select("img");
             if (src.size() != 0) {

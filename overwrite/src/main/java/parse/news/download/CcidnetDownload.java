@@ -20,7 +20,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class CcidnetDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MydriversDownload.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CcidnetDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
@@ -46,7 +46,7 @@ public class CcidnetDownload {
 
             Elements text = document.select("div.main_content");
             if (text != null) {
-                newsInfo.put("text", text.text().trim());
+                newsInfo.put("text", text.html());
                 newsId = MD5Util.getMD5String(text.text().trim());
             }
 

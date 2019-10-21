@@ -39,9 +39,9 @@ public class CnmnDownload {
                 newsInfo.put("time", document.select("span > span.time").text().trim());//发布时间
                 newsInfo.put("amountOfReading", document.select("span > span.view").text().trim().replace("次浏览", ""));//阅读量
                 newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1]);//来源
-                String text = document.select("#txtcont").text().trim();
-                newsInfo.put("text", text);//新闻内容
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = document.select("#txtcont");
+                newsInfo.put("text", text.html());//新闻内容
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 newsInfo.put("newsId", newsId);
                 Elements split = document.select("p.info.clearfix.text-center > span:nth-child(1)");
                 if (split.text().contains("作者：")) {

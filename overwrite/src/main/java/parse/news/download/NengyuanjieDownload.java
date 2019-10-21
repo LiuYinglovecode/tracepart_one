@@ -53,9 +53,8 @@ public class NengyuanjieDownload {
                 }
                 Elements text = document.select("div.content");//新闻内容
                 if (text.size() != 0) {
-                    String text1 = text.text();
-                    newsInfo.put("text", text1);
-                    String newsId = NewsMd5.newsMd5(text1);
+                    newsInfo.put("text", text.html());
+                    String newsId = NewsMd5.newsMd5(text.text().trim());
                     newsInfo.put("newsId", newsId);
 
                     newsInfo.put("crawlerId", "60");

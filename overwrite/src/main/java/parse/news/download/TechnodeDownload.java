@@ -40,8 +40,8 @@ public class TechnodeDownload {
             Elements text = document.select("div.post-content.style-light.double-bottom-padding");
             if (0 != text.size()) {
                 text.select("div.widget-container.post-tag-container.uncont.text-left").remove();
-                newsInfo.put("text", text.text().trim());
-                newsId = MD5Util.getMD5String(text.text());
+                newsInfo.put("text", text.html());
+                newsId = MD5Util.getMD5String(text.text().trim());
                 Elements img = text.select("p img");
                 if (img.size()!=0){
                     for (Element element : img) {

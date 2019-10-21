@@ -42,9 +42,8 @@ public class FindzdDownload {
                 info.put("author",document.select("div#editor").text().replace("责任编辑:",""));
 
                 Elements textInfo = document.select("div#htmlcontent.htmlcontent");
-                String text = textInfo.text();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                info.put("text", textInfo.html());
+                String newsId = NewsMd5.newsMd5(textInfo.text());
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
                 if (imgs.size() != 0) {

@@ -25,46 +25,38 @@ public class CcoalnewsDownload {
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
 
-    public void detailDownload() {
+    public void detailDownload(String url) {
         try {
-            while (RedisUtil.getCountFromKey("toCatchUrl") > 0) {
-                try {
-                    String url = RedisUtil.getUrlFromeSet("toCatchUrl");
-                    if (null != url) {
-                        JSONObject info = new JSONObject();
-                        JSONArray img = new JSONArray();
-                        String html = HttpUtil.httpGetwithJudgeWord(url, "中国煤炭网");
-                        if (null != html) {
-                            Document document = Jsoup.parse(html);
-                            info.put("title", document.select(".text-article h1").text().trim());
-                            info.put("time", document.select(".date").text().trim());
-                            info.put("author", document.select(".author").text().trim());
-                            String text = document.select(".content").text().trim();
-                            info.put("text", text);
-                            String newsId = NewsMd5.newsMd5(text);
-                            info.put("newsId", newsId);
-                            Elements imgList = document.select(".content img");
-                            for (Element e : imgList) {
-                                img.add(e.attr("src"));
-                            }
-                            info.put("images", img.toString());
-                            info.put("crawlerId", "61");
-                            info.put("timestamp", timestamp.format(new Date()));
-                            timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-                            info.put("@timestamp", timestamp2.format(new Date()));
-                            info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+            JSONObject info = new JSONObject();
+            JSONArray img = new JSONArray();
+            String html = HttpUtil.httpGetwithJudgeWord(url, "中国煤炭网");
+            if (null != html) {
+                Document document = Jsoup.parse(html);
+                info.put("title", document.select(".text-article h1").text().trim());
+                info.put("time", document.select(".date").text().trim());
+                info.put("author", document.select(".author").text().trim());
+                Elements text = document.select(".content");
+                text.select("div").remove();
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
+                info.put("newsId", newsId);
+                Elements imgList = document.select(".content img");
+                for (Element e : imgList) {
+                    img.add(e.attr("src"));
+                }
+                info.put("images", img.toString());
+                info.put("crawlerId", "61");
+                info.put("timestamp", timestamp.format(new Date()));
+                timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                info.put("@timestamp", timestamp2.format(new Date()));
+                info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
 //                            mysqlUtil.insertNews(info, "crawler_news", newsId);
 ////                            esUtil.writeToES(info, "crawler-news-", "doc", newsId);
 //                            if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                                RedisUtil.insertUrlToSet("catchedUrl", url);
 //                            }
-                            if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
-                                RedisUtil.insertUrlToSet("catchedUrl", url);
-                            }
-                        }
-                    }
-                } catch (Exception e) {
-                    LOGGER.error(e.getMessage());
+                if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+                    RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             }
         } catch (Exception e) {

@@ -1,6 +1,5 @@
 package parse.news.download;
 
-import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -48,7 +47,7 @@ public class ZgwDownload {
                 info.put("author",document.select("div.neirong span.edit").text()
                         .replace("（责任编辑：","").replace("）",""));
                 Elements text = document.select("div.left_content div.neirong");
-                info.put("text",text.text().trim());
+                info.put("text",text.html());
 //                String newsId = NewsMd5.newsMd5(text.text().trim());
                 String newsId = MD5Util.getMD5String(text.text().trim());
                 info.put("newsId",newsId);

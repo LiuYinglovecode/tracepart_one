@@ -47,20 +47,18 @@ public class FamensDownload {
                 }
 
 
-                Elements select2 = document.select("div#FrameContent");
-                String text = select2.text();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements text = document.select("div#FrameContent");
+                info.put("text", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
-                Elements img = select2.select("div#FrameContent p font img");
+                Elements img = text.select("div#FrameContent p font img");
                 if (img.size() != 0) {
                     for (Element element : img) {
                         imgsList.add(element.attr("src"));
                         info.put("images", imgsList.toString());//图片
                     }
-
                 }else {
-                    Elements img1 = select2.select("div#FrameContent p img");
+                    Elements img1 = text.select("div#FrameContent p img");
                     for (Element element : img1) {
                         imgsList.add(element.attr("src"));
                         info.put("images", imgsList.toString());//图片

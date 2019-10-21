@@ -46,9 +46,9 @@ public class TexindexDownload {
             Elements select = document.select("td.RightItemBody div.000000A");
             newsInfo.put("time", select.text().split("/ ")[1].split(" ")[0]);
             newsInfo.put("source", select.text().split("/ ")[1].split(" ")[2]);
-            String text = document.select("div#zoom").text().trim();
-            newsInfo.put("text", text);
-            String newsId = NewsMd5.newsMd5(text);
+            Elements text = document.select("div#zoom");
+            newsInfo.put("text", text.html());
+            String newsId = NewsMd5.newsMd5(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = document.select("div#zoom p img");
             if (src.size() != 0) {

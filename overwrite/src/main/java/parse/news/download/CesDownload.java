@@ -49,7 +49,7 @@ public class CesDownload {
 
                 Elements text = document.select("#article.content");//新闻内容
                 if (text.size() != 0) {
-                    newsInfo.put("text", text.text());
+                    newsInfo.put("text", text.html());
                     String newsId = NewsMd5.newsMd5(text.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("div img");

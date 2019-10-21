@@ -45,10 +45,9 @@ public class Spsb114Download {
                     info.put("time",select.replace("更新时间：",""));
                 }
 
-                Elements select2 = document.select("td.f16.news_link");
-                String text = select2.text();
-                info.put("text", text);
-                String newsId = NewsMd5.newsMd5(text);
+                Elements select2 = document.select("td.f14.news_link");
+                info.put("text", select2.html());
+                String newsId = NewsMd5.newsMd5(select2.text().trim());
                 info.put("newsId",newsId);
                 Elements img = select2.select("p img");
                 if (img.size() != 0) {

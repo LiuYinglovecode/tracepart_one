@@ -42,15 +42,14 @@ public class LeiphoneDownload {
                 info.put("time",document.select("td.time").first().text());
 
                 Element text = document.select(".lph-article-comView").first();
-                text.select("p.sourceMsg").remove();
-                String p = text.select("p").last().text();
-                if (p.contains("雷锋网原创文章，未经授权禁止转载。详情见转载须知。")){
-                    text.select("p").last().remove();
-                }
-                String replace = text.text().replace("雷锋网消息，", "").
-                        replace("雷锋网(公众号：雷锋网)消息，", "").replace("(公众号：雷锋网)", "");
-                info.put("text",replace);
-                String newsId = NewsMd5.newsMd5(replace);
+                text.select("a").remove();
+                String s = text.html().replace("雷锋网特约稿件，未经授权禁止转载。详情见", "")
+                        .replace("转载须知", "")
+                        .replace("雷锋网", "")
+                        .replace("(公众号：雷锋网)", "")
+                        .replace("编辑", "");
+                info.put("text",s);
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {

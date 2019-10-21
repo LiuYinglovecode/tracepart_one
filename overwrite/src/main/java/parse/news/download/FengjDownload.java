@@ -46,7 +46,8 @@ public class FengjDownload {
 
 
                 Elements text = document.select(".content");
-                info.put("text",text.text().trim());
+                text.select("div").remove();
+                info.put("text",text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements imgList = document.select("p img");

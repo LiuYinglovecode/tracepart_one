@@ -51,9 +51,9 @@ public class HerostartDownload {
                     info.put("author", select.split("浏览次数：")[0].replace("发布日期：", ""));
                     info.put("amountOfReading", select.split("浏览次数：")[1]);
                 }
-                Elements text = document.select("div#article.content");
+                Elements text = document.select("#article");
                 if (text.size() != 0) {
-                    info.put("text", text.text().trim());
+                    info.put("text", text.html());
                     String newsId = NewsMd5.newsMd5(text.text().trim());
                     info.put("newsId", newsId);
                     Elements imgList = text.select("p > img");

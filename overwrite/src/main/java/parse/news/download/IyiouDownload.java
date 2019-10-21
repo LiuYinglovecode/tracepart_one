@@ -20,40 +20,45 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class Jc001Download {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Jc001Download.class);
+public class IyiouDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(IyiouDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
 
     public void newsInfo(String url) {
+        JSONObject info = new JSONObject();
+        JSONArray imgs = new JSONArray();
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "九正");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "iyiou");
             Thread.sleep(SleepUtils.sleepMin());
             if (!html.isEmpty()) {
                 String newsId = null;
-                JSONObject info = new JSONObject();
-                JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
-                info.put("title", document.select("div.newsDetail-top > h1").text().trim());
-                Elements select = document.select("div.newsDetail-top > div > span");
-                if (!select.isEmpty()) {
-                    for (Element element : select) {
-                        if (element.text().contains("来源：")){
-                            info.put("source", element.text().replace("来源：", "").trim());
-                        }else if (element.text().contains("发布日期：")){
-                            info.put("time", element.text().replace("发布日期：","").trim());
-                        }
-                    }
+                info.put("title", document.select("#post_title").text().trim());
+                Elements plate = document.select("#post_industry");
+                if (!html.isEmpty()){
+                    info.put("plate",plate.text().trim());
                 }
-
+                Elements source = document.select("#post_source");
+                if (!html.isEmpty()){
+                    info.put("source",source.text().trim());
+                }
+                Elements author = document.select("#post_author");
+                if (!html.isEmpty()){
+                    info.put("author",author.text().trim());
+                }
+                Elements time = document.select("#post_date");
+                if (!html.isEmpty()){
+                    info.put("time",time.text().trim());
+                }
 
 
                 /**
                  * 文本信息
                  */
-                Elements text = document.select("#mainCnt");
+                Elements text = document.select("#post_brief,#post_thumbnail,#post_description");
                 if (!text.isEmpty()) {
                     info.put("text", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
@@ -62,12 +67,10 @@ public class Jc001Download {
                     /**
                      * 图片
                      */
-                    Elements imgList = text.select("p > img");
+                    Elements imgList = document.select("#post_description > p > img,#post_thumbnail > img");
                     if (!imgList.isEmpty()) {
                         for (Element e : imgList) {
-                            if (!e.attr("src").contains("https")) {
-                                imgs.add(e.attr("src"));
-                            }else {
+                            if (!e.attr("src").contains("https://imgcache.iyiou.com/Picture/2019-08-03/5d455d21a2df4.png")) {
                                 imgs.add(e.attr("src"));
                             }
                         }
@@ -76,11 +79,12 @@ public class Jc001Download {
 
 
                     info.put("url", url);
-                    info.put("crawlerId", "125");
+                    info.put("crawlerId", "128");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    System.out.println(info);
 //                mysqlUtil.insertNews(info, "crawler_news", newsId);
 ////                esUtil.writeToES(info, "crawler-news-", "doc", newsId);
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){

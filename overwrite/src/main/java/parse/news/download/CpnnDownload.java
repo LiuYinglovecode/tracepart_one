@@ -66,27 +66,25 @@ public class CpnnDownload {
                 }
                 Elements text = document.select("div.cpnn-con-zhenwen");//新闻内容
                 if (text.size() != 0) {
-                    if (text.select("div.cpnn-con-zhenwen div p b").text().contains("【稿件声明】")) {
-                        text.select("div.cpnn-con-zhenwen div p b").remove();
-                        String text1 = text.text().replace("附件：", "");
-                        newsInfo.put("text", text1);
-                        String newsId = NewsMd5.newsMd5(text1);
-                        newsInfo.put("newsId", newsId);
-                        newsInfo.put("crawlerId", "58");
-                        newsInfo.put("timestamp", timestamp.format(new Date()));
-                        timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
-                        newsInfo.put("@timestamp", timestamp2.format(new Date()));
-                        newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
+                    text.select("div").remove();
+                    newsInfo.put("text", text.html());
+                    String newsId = NewsMd5.newsMd5(text.text().trim());
+                    newsInfo.put("newsId", newsId);
+                    newsInfo.put("crawlerId", "58");
+                    newsInfo.put("timestamp", timestamp.format(new Date()));
+                    timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    newsInfo.put("@timestamp", timestamp2.format(new Date()));
+                    newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
 //                        mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
 ////                        esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
 //                        if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                            RedisUtil.insertUrlToSet("catchedUrl", url);
 //                        }
-                        if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
-                            RedisUtil.insertUrlToSet("catchedUrl", url);
-                        }
+                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)) {
+                        RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }
+
             } else {
                 LOGGER.info("页面不存在！");
             }

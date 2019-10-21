@@ -39,9 +39,8 @@ public class ChuangdongDownload {
                 Elements textInfo = document.select("div.ns-con-texts.mt30");
 //                if (textInfo.select("p").text().contains("声明：本文为转载类文章")){
 //                    textInfo.select("p").remove();
-                String text = textInfo.text();
-                newsInfo.put("text", text);//新闻内容
-                String newsId = NewsMd5.newsMd5(text);
+                newsInfo.put("text", textInfo.html());//新闻内容
+                String newsId = NewsMd5.newsMd5(textInfo.text());
                 newsInfo.put("newsId", newsId);
                 Elements img = textInfo.select("center p img");
                 if (img.size() != 0) {
