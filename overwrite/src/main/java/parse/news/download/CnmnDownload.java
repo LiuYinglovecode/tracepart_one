@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class CnmnDownload {
                 Document document = Jsoup.parse(html);
                 String title = document.select("#content > div > h4").text().trim();
                 newsInfo.put("title", title);//标题
-                newsInfo.put("time", document.select("span > span.time").text().trim());//发布时间
+                newsInfo.put("time", ForMat.getDatetimeFormat(document.select("span > span.time").text().trim()));//发布时间
                 newsInfo.put("amountOfReading", document.select("span > span.view").text().trim().replace("次浏览", ""));//阅读量
                 newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1]);//来源
                 Elements text = document.select("#txtcont");

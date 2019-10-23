@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -44,7 +45,7 @@ public class TexindexDownload {
             String title = document.select("td.RightItemBody div h1").text().trim();
             newsInfo.put("title", title);
             Elements select = document.select("td.RightItemBody div.000000A");
-            newsInfo.put("time", select.text().split("/ ")[1].split(" ")[0]);
+            newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("/ ")[1].split(" ")[0]));
             newsInfo.put("source", select.text().split("/ ")[1].split(" ")[2]);
             Elements text = document.select("div#zoom");
             newsInfo.put("text", text.html());

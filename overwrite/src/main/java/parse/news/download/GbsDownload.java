@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -38,7 +39,7 @@ public class GbsDownload {
                 Elements select = document.select("div.det_nr_time > p");
                 for (Element element : select) {
                     if (element.text().contains("发布：")) {
-                        info.put("time", element.text().replace("发布：", ""));
+                        info.put("time", ForMat.getDatetimeFormat(element.text().replace("发布：", "")));
                     } else if (element.text().contains("作者：")) {
                         info.put("author", element.text().replace("作者：", ""));
                     } else if (element.text().contains("来源：")) {

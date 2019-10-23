@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -33,7 +34,7 @@ public class CcoalnewsDownload {
             if (null != html) {
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select(".text-article h1").text().trim());
-                info.put("time", document.select(".date").text().trim());
+                info.put("time", ForMat.getDatetimeFormat(document.select(".date").text().trim()));
                 info.put("author", document.select(".author").text().trim());
                 Elements text = document.select(".content");
                 text.select("div").remove();

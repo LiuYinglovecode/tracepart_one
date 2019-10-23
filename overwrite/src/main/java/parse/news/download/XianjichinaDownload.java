@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -40,9 +41,9 @@ public class XianjichinaDownload {
                     String title = document.select(".list-main h1").text().trim();
                     String source = document.select(".public-time").text().trim().split("文章来源：", 2)[1].split("发布时间：", 2)[0];
                     String time = document.select(".public-time").text().trim().split("发布时间：", 2)[1];
-                    Elements text = document.select(".main-text");
+                    Elements text = document.select(".main-text,div.zheng-text");
                     String newsId = NewsMd5.newsMd5(text.text().trim());
-                    Elements imgList = document.select(".main-text img");
+                    Elements imgList = document.select(".main-text img,p img");
                     if (!"0".equals(String.valueOf(imgList.size()))) {
                         for (Element e : imgList) {
                             imgs.add(baseUrl + e.attr("src"));
@@ -53,7 +54,7 @@ public class XianjichinaDownload {
                     info.put("text", text.html());
                     info.put("newsId", newsId);
                     info.put("source", source);
-                    info.put("time", time);
+                    info.put("time", ForMat.getDatetimeFormat(time));
                     info.put("title", title);
                     info.put("crawlerId", "29");
                     info.put("timestamp", timestamp.format(new Date()));

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -47,7 +48,7 @@ public class PlaDownload {
                 //发布时间及来源
                 for (Element element : time) {
                     if (element.text().contains("发布时间：")) {
-                        info.put("time", element.select("i").text().trim());
+                        info.put("time", ForMat.getDatetimeFormat(element.select("i").text().trim()));
                     } else if (element.text().contains("来源：")) {
                         info.put("source", element.select("i").text().trim());
                     }

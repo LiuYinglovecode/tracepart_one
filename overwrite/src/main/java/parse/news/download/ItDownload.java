@@ -1,5 +1,6 @@
 package parse.news.download;
 
+        import Utils.ForMat;
         import Utils.NewsMd5;
         import Utils.RedisUtil;
         import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class ItDownload {
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select("header.entry-header > h1").text().trim());
-                info.put("time", document.select("li.post-time > time").text());
+                info.put("time", ForMat.getDatetimeFormat(document.select("li.post-time > time").text()));
 
                 /**
                  * 新闻内容：

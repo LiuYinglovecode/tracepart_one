@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class TechwebDownload {
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select("div.main_c > h1").text().trim());
                 info.put("source", document.select("div.infos > span.from").text().trim().replace("来源: ", ""));
-                info.put("time", document.select("div.infos > span.time").text());
+                info.put("time", ForMat.getDatetimeFormat(document.select("div.infos > span.time").text()));
                 info.put("author ", document.select("div.infos > span.author").text().trim().replace("作者:", ""));
 
                 /**

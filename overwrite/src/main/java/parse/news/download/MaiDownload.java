@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -38,10 +39,10 @@ public class MaiDownload {
                 Elements select = parse.select("div.info");
                 if (select.size() != 0) {
                     if (!select.text().contains("来源：")) {
-                        info.put("time", select.text().trim().split("浏览次数：")[0].split("：")[1]);
+                        info.put("time", ForMat.getDatetimeFormat(select.text().trim().split("浏览次数：")[0].split("：")[1]));
                         info.put("amountOfReading", select.select("#hits").text().trim());
                     } else {
-                        info.put("time", select.text().split("来源：")[0].split("：")[1]);
+                        info.put("time", ForMat.getDatetimeFormat(select.text().split("来源：")[0].split("：")[1]));
                         info.put("source", select.text().split("来源：")[1].split("作者：")[0]);
                         info.put("author", select.text().split("来源：")[1].split("作者：")[1].split(" 浏览次数")[0]);
                         info.put("amountOfReading", select.select("#hits").text().trim());

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -40,9 +41,9 @@ public class EapadDownload {
                 if (element.text().contains("来源：")) {
                     info.put("author", element.text().split("作者：")[1].replace("分享到：", "").replace("明星编辑：",""));
                     info.put("source", element.text().split("作者：")[0].split("来源：")[1]);
-                    info.put("time", element.text().split("来源：")[0]);
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0]));
                 }else {
-                    info.put("time", element.text().replace("分享到：", ""));
+                    info.put("time", ForMat.getDatetimeFormat(element.text().replace("分享到：", "")));
 
                 }
                 Elements textInfo = document.select("#div1");

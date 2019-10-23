@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -37,7 +38,7 @@ public class WjwDownload {
                 info.put("title", document.select("div.informationArticle_03 > h3").text().trim());
                 Elements select = document.select("div.informationArticle_03 > div.informationArticle_05");
                 if (select.size() != 0) {
-                    info.put("time", select.select("p.informationArticle_06").text().split(" ")[1]);
+                    info.put("time", ForMat.getDatetimeFormat(select.select("p.informationArticle_06").text().split(" ")[1]));
                     info.put("source", select.select("p.informationArticle_06").text().split(" ")[0].replace("来源：", ""));
                 }
                 Elements text = document.select("#informationArticle_04");

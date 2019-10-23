@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -39,7 +40,7 @@ public class LedinsideDownload {
                 info.put("title", document.select("#squeeze > div > h2").text().trim());
                 Elements select = document.select("#squeeze > div > div.submitted");
                 if (!select.isEmpty() && select.text().contains("[编辑：")) {
-                    info.put("time", select.text().split("\\[编辑：")[0].trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("\\[编辑：")[0].trim()));
                     info.put("author", select.text().split("\\[编辑：")[1].replace("]", "").trim());
                     info.put("source", "LEDinside");
                 }

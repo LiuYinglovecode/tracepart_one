@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -24,12 +25,14 @@ public class IyiouDownload {
     private static final Logger LOGGER = LoggerFactory.getLogger(IyiouDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static ESUtil esUtil = new ESUtil();
 
 
     public void newsInfo(String url) {
         JSONObject info = new JSONObject();
         JSONArray imgs = new JSONArray();
+        Date date = new Date();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "iyiou");
             Thread.sleep(SleepUtils.sleepMin());
@@ -50,10 +53,15 @@ public class IyiouDownload {
                     info.put("author",author.text().trim());
                 }
                 Elements time = document.select("#post_date");
-                if (!html.isEmpty()){
-                    info.put("time",time.text().trim());
+                if (!html.isEmpty()) {
+                    String trim = time.text().trim();
+                    if (trim.contains(" · ")) {
+                        String replace = trim.replace(" · ", "");
+                        info.put("time", ForMat.getDatetimeFormat(replace));
+                    } else if (trim.contains("分钟前") && trim.contains("小时前")) {
+                        info.put("time", ForMat.getDatetimeFormat(format.format(date)));
+                    }
                 }
-
 
                 /**
                  * 文本信息

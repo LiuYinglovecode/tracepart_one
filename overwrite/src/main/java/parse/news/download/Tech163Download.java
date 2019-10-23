@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -36,7 +37,7 @@ public class Tech163Download {
             newsInfo.put("title", title);
             Elements select = document.select("#epContentLeft > div.post_time_source");
             if (select.text().contains("来源:")) {
-                newsInfo.put("time", select.text().split("来源:")[0]);
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源:")[0]));
                 newsInfo.put("source", select.text().split("来源:")[1]);
             }
             Elements text = document.select("#endText");

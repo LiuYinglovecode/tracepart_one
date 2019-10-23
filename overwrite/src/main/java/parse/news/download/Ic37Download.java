@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -42,12 +43,12 @@ public class Ic37Download {
                     //时间：2019-8-2， 来源：互联网， 资讯类别：行业统计
                     info.put("plate", element.text().split("资讯类别：")[1]);
                     info.put("source", element.text().split("资讯类别：")[0].split("来源：")[1].replace("，",""));
-                    info.put("time", element.text().split("来源：")[0].replace("时间：","").replace("，",""));
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0].replace("时间：","").replace("，","")));
                 }else if (element.text().contains("文章类别：")) {
                     //时间：2008-12-11， 来源：互联网， 文章类别：单片机/DSP
                     info.put("plate", element.text().split("文章类别：")[1]);
                     info.put("source", element.text().split("文章类别：")[0].split("来源：")[1].replace("，",""));
-                    info.put("time", element.text().split("来源：")[0].replace("时间：","").replace("，",""));
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0].replace("时间：","").replace("，","")));
                 }
                 Elements textInfo = document.select(".contentlist2,.contentlist");
                 info.put("text", textInfo.html());

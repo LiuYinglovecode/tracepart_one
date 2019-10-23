@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -34,7 +35,7 @@ public class TechnodeDownload {
             String html = HttpUtil.httpGetwithJudgeWord(url, "相关站点");
             Document document = Jsoup.parse(html);
             newsInfo.put("title", document.select("h1.header-title.fontsize-155944.font-weight-700 > span").text().trim());
-            newsInfo.put("time", document.select("div.date-info").text().trim());
+            newsInfo.put("time", ForMat.getDatetimeFormat(document.select("div.date-info").text().trim()));
             newsInfo.put("author", document.select("div.author-info > a").text().trim());
 
             Elements text = document.select("div.post-content.style-light.double-bottom-padding");

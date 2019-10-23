@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -46,7 +47,7 @@ public class SouthMoneyDownload {
                     Pattern compile = Pattern.compile(regEx);
                     Matcher matcher = compile.matcher(plate);
                     String time = matcher.replaceAll("").trim();
-                    info.put("time",time.trim());
+                    info.put("time", ForMat.getDatetimeFormat(time.trim()));
                     info.put("source",plate.replace(time,""));
                 }
 

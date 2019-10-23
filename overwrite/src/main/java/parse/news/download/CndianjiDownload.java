@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -42,7 +43,7 @@ public class CndianjiDownload {
                 Elements timeSource = document.select(".n_source");
                 info.put("amountOfReading",timeSource.select("#click").text().replace("浏览次数：",""));
                 timeSource.select("#click").remove();
-                info.put("time",timeSource.text().replace("文章来源：",""));
+                info.put("time", ForMat.getDatetimeFormat(timeSource.text().replace("文章来源：","")));
                 info.put("source",timeSource.text().replace("上传时间：",""));
 
                 Elements textInfo = document.select("div.news_info02");

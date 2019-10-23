@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -37,7 +38,7 @@ public class HooshongDownload {
                 info.put("title", document.select("h1.title").text().trim());
                 String select = document.select("div.info").text();
                 if (select.contains("发布日期：") && select.contains("浏览次数：") && select.contains("来源：")) {
-                    info.put("time", select.split("浏览次数：")[0].replace("发布日期：", ""));
+                    info.put("time", ForMat.getDatetimeFormat(select.split("浏览次数：")[0].replace("发布日期：", "")));
                     info.put("source", select.split("来源：")[1]);
                     info.put("amountOfReading", select.split("浏览次数：")[1].split("来源：")[0]);
                 }

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -38,7 +39,7 @@ public class FzfzjxDownload {
                 info.put("title",document.select("div.caption p").text().trim());
                 Elements element = document.select("div.newstime > dl > dt");
                 if (element.text().contains("纺织服装机械网")){
-                    info.put("time", element.text().split("纺织服装机械网")[0]);
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("纺织服装机械网")[0]));
                     info.put("amountOfReading", element.text().split("纺织服装机械网")[1].replace("点击",""));
                 }
                 Elements textInfo = document.select(".newshow_fontshow");

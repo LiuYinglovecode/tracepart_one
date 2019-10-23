@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -40,7 +41,7 @@ public class OfWeekDownload {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             Document document = Jsoup.parse(html);
             info.put("title", document.select("div.artical > p").text().trim());
-            info.put("time", document.select("div.artical-relative.clearfix > div").text().trim());
+            info.put("time", ForMat.getDatetimeFormat(document.select("div.artical-relative.clearfix > div").text().trim()));
             String trim = document.select("a.ofweek_artical_tag_source").text().trim();
             if (trim.contains("来源：")) {
                 info.put("source", trim.replace("来源：", "").trim());

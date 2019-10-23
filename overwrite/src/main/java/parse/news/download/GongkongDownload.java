@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class GongkongDownload {
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select("#Rtitle_D").text().trim());
                 info.put("source", document.select("#grey6 > span").eq(0).text().trim().replace("供稿：", ""));
-                info.put("time", document.select("#grey6 > span").eq(2).text());
+                info.put("time", ForMat.getDatetimeFormat(document.select("#grey6 > span").eq(2).text()));
                 Elements amountOfReading = document.select("#spanhit");
                 if (!amountOfReading.text().contains("--")) {
                     info.put("amountOfReading", amountOfReading.text().replace("人气：", ""));

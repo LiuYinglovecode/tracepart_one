@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
@@ -26,6 +27,11 @@ public class LmjxDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+
+    public static void main(String[] args) {
+        LmjxDownload lmjxDownload = new LmjxDownload();
+        lmjxDownload.newsInfo("https://news.lmjx.net/2013/201304/2013042614464045.shtml");
+    }
     /**
      * 新闻信息：解析获取信息，存入数据库及ES
      *
@@ -46,16 +52,17 @@ public class LmjxDownload {
 
                 Elements time = parse.select("div.pinf.cl span.time");
                 if (time.size() != 0) {
-                    info.put("time", time.text().trim());
+                    info.put("time", ForMat.getDatetimeFormat(time.text().trim()));
                 }
                 Elements time1 = parse.select("div.details-timer.left");
                 if (time1.size() != 0) {
-                    info.put("time", time1.text().trim());
+                    info.put("time", ForMat.getDatetimeFormat(time1.text().trim()));
                 }
-                String select = parse.select("div.contentbox div.info").text().trim();
-                if (select.contains("来源：")) {
-                    info.put("time", select.split("来源：")[0]);
-                    info.put("source", select.split("来源：")[1].replace("，转载请标明出处", ""));
+                String select = parse.select("div.contentbox div.info").text();
+                System.out.println(select);
+                if (select.contains("来源:")) {
+                    info.put("time", ForMat.getDatetimeFormat(select.split("来源:")[0].trim()));
+                    info.put("source", select.split("来源: ")[1].replace("，转载请标明出处", "").trim());
                 }
                 Elements images = parse.select("div.content p img");
                 if (images.size() != 0) {

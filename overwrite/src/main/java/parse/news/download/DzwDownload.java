@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -40,7 +41,7 @@ public class DzwDownload {
                 info.put("title", title);
                 Elements select = parse.select("#TechDetail > p");
                 if (select.text().contains("访问次数")) {
-                    info.put("time", select.text().split("访问次数")[0].replace("发布时间:", ""));
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("访问次数")[0].replace("发布时间:", "")));
                     info.put("amountOfReading", select.text().split("访问")[1].split(":")[1]);
                 }
                 Elements text = parse.select("#NewsCont");

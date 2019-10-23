@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -14,14 +15,10 @@ import org.slf4j.LoggerFactory;
 import util.ESUtil;
 import util.HttpUtil;
 import util.mysqlUtil;
-
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class QianZhanDownload {
     private static final Logger LOGGER = LoggerFactory.getLogger(QianZhanDownload.class);
@@ -43,7 +40,7 @@ public class QianZhanDownload {
                 info.put("title", document.select("#h_title").text().trim());
                 String time = document.select("#pubtime_baidu").text();
                 if (!time.isEmpty()) {
-                    info.put("time", time.trim());
+                    info.put("time", ForMat.getDatetimeFormat(time.trim()));
 
                 }
                 String source = document.select("#editor_baidu").text();

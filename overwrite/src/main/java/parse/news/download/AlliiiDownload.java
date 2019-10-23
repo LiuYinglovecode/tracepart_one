@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -37,7 +38,8 @@ public class AlliiiDownload {
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select("#Rtitle_D").text().trim());
-                info.put("time",document.select("span.timeP").text().trim());
+                String datetimeFormat = ForMat.getDatetimeFormat(document.select("span.timeP").text().trim());
+                info.put("time",datetimeFormat);
 
 
                 /**

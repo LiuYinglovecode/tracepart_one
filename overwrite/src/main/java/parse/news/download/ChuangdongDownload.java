@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -34,7 +35,7 @@ public class ChuangdongDownload {
             if (html != null) {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("h1.ns-tit").text().trim());//标题
-                newsInfo.put("time", document.select("span.time.mr30").text().trim());//发布时间
+                newsInfo.put("time", ForMat.getDatetimeFormat(document.select("span.time.mr30").text().trim()));//发布时间
                 newsInfo.put("source", document.select("span.label.mr30").text().trim().replace("来源：", ""));//发布时间
                 Elements textInfo = document.select("div.ns-con-texts.mt30");
 //                if (textInfo.select("p").text().contains("声明：本文为转载类文章")){

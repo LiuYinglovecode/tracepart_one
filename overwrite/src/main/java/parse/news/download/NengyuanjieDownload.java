@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -40,7 +41,7 @@ public class NengyuanjieDownload {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("h1.art-title").text().trim());//标题
                 String select = document.select("span.desc.mt15").text();
-                newsInfo.put("time", select.split("来源：")[0]);
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.split("来源：")[0]));
                 newsInfo.put("source", select.split("来源：")[1].split("浏览：")[0]);
                 newsInfo.put("amountOfReading", select.split("浏览：")[1]);
 

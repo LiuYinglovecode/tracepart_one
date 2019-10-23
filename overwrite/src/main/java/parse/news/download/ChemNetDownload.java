@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -67,7 +68,7 @@ public class ChemNetDownload {
                     Matcher matcher = compile.matcher(s);
                     String source = matcher.replaceAll("").trim();
                     info.put("source",source);
-                    info.put("time",s.replace(source,"").trim());
+                    info.put("time", ForMat.getDatetimeFormat(s.replace(source,"").trim()));
                 }
 
                 Elements text = parse.select("div.detail-text.line25.font14px > div");

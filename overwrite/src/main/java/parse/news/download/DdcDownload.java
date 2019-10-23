@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -35,7 +36,7 @@ public class DdcDownload {
                 info.put("title", document.select("#newsview_title > h1").text().trim());
                 Elements select = document.select("div.liulang.fl");
                 if (select.size() != 0) {
-                    info.put("time", select.select("span").text());
+                    info.put("time", ForMat.getDatetimeFormat(select.select("span").text()));
                     select.select("span").remove();
                     if (select.text().contains("浏览")) {
                         info.put("source", select.text().split("浏览")[0].replace("来源:", ""));

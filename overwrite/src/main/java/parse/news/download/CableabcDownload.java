@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -35,11 +36,11 @@ public class CableabcDownload {
                 Document document = Jsoup.parse(html);
                 String title = document.select("div.contentspage h1").text().trim();
                 newsInfo.put("title", title);//标题
-                newsInfo.put("time", document.select("div.addtime").text().trim());//发布时间
+                newsInfo.put("time", ForMat.getDatetimeFormat(document.select("div.addtime").text().trim()));//发布时间
                 Elements select = document.select("div.time.clearfix.mmbb span");
                 for (Element element : select) {
                     if (element.text().contains("/")) {
-                        newsInfo.put("time", element.text().trim());
+                        newsInfo.put("time", ForMat.getDatetimeFormat(element.text().trim()));
                     } else if (element.text().contains("来源：")) {
                         newsInfo.put("source", element.text().trim().split("：")[1]);
                     }

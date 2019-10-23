@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -36,7 +37,7 @@ public class ChinazDownload {
                 Document document = Jsoup.parse(html);
                 info.put("url", url);
                 info.put("title", document.select("div.article-detail-hd > h2").text().trim());
-                info.put("time", document.select("div.meta > span").eq(0).text().trim());
+                info.put("time", ForMat.getDatetimeFormat(document.select("div.meta > span").eq(0).text().trim()));
                 info.put("source", document.select("div.meta > span.source").text().replace("稿源：","").trim());
                 Elements select = document.select("#ctrlfscont");
                 select.select("blockquote").remove();

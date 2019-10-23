@@ -1,9 +1,6 @@
 package parse.news.download;
 
-import Utils.HtmlUnitUnits;
-import Utils.NewsMd5;
-import Utils.RedisUtil;
-import Utils.SleepUtils;
+import Utils.*;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jsoup.Jsoup;
@@ -43,12 +40,12 @@ public class PipewDownload {
             Elements select = document.select("#timefont");
             if (!select.isEmpty()) {
                 if (select.text().contains("来源:")) {
-                    info.put("time", select.text().split("来源:")[0].replace("时间:", "").split("【字号：")[0].trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("来源:")[0].replace("时间:", "").split("【字号：")[0].trim()));
                     info.put("source", select.text().split("来源:")[1].split("【字号：")[0].trim());
                 }else {
                     info.put("source", select.select("a[target=_blank]").text().trim());
                     select.select("a").remove();
-                    info.put("time", select.text().replace("时间:", "").split("【字号：")[0].trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.text().replace("时间:", "").split("【字号：")[0].trim()));
                 }
             }
 

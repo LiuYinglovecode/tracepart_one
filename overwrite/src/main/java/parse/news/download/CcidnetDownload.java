@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -39,7 +40,7 @@ public class CcidnetDownload {
 
             Elements select = document.select("div.tittle_j");
             if (0 != select.size() && select.text().contains("发布时间：") && select.text().contains("来源：") && select.text().contains("作者：")) {
-                newsInfo.put("time", select.text().split("来源：")[0].replace("发布时间：", "").trim());
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源：")[0].replace("发布时间：", "").trim()));
                 newsInfo.put("source", select.text().split("来源：")[1].split("作者：")[0].trim());
                 newsInfo.put("author", select.text().split("作者：")[1].trim());
             }

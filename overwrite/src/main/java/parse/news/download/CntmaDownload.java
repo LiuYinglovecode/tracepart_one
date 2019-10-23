@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class CntmaDownload {
                 Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
                 info.put("title",document.select("tr:nth-child(1) > td > h1").first().text().trim());
 //                info.put("author",document.select("td.aut").first().text().replace("本文作者：",""));
-                info.put("time",document.select("tr:nth-child(2) > td").text().split(" ")[0]);
+                info.put("time", ForMat.getDatetimeFormat(document.select("tr:nth-child(2) > td").text().split(" ")[0]));
                 Elements select = document.select("td:nth-child(1) > table > tbody > tr:nth-child(4) > td");
                 if (select.text().contains("编辑：")){
                     info.put("author",select.text().split("编辑：")[1]);

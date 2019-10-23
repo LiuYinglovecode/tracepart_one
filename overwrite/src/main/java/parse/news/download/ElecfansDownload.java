@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -35,7 +36,7 @@ public class ElecfansDownload {
                 Document document = Jsoup.parse(html);
 //                System.out.println(document);
                 info.put("title",document.select("h1.article-title").text().trim());
-                info.put("time",document.select("div.article-info.art-share-layout.m-share-layout.clearfix span.time").text().trim());
+                info.put("time", ForMat.getDatetimeFormat(document.select("div.article-info.art-share-layout.m-share-layout.clearfix span.time").text().trim()));
                 info.put("amountOfReading",document.select("div.article-info.art-share-layout.m-share-layout.clearfix span.count span.art_click_count").text().trim());
                 Elements text = document.select("div.article-content.simditor.clearfix div.simditor-body.clearfix");
                 text.select("span.count span.art_click_count").remove();

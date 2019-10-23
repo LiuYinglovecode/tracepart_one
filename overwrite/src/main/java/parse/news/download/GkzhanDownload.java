@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.MD5Util;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
@@ -34,7 +35,7 @@ public class GkzhanDownload {
             newsInfo.put("plate", parse.select("div.position > p > span").text().trim());
             String title = parse.select("div.leftTop.clearfix > h2").text().trim();
             newsInfo.put("title", title);
-            newsInfo.put("time", parse.select("div.leftTop.clearfix > p > span:nth-child(1)").text().trim());
+            newsInfo.put("time", ForMat.getDatetimeFormat(parse.select("div.leftTop.clearfix > p > span:nth-child(1)").text().trim()));
             Elements text = parse.select("#newsContent");
             newsInfo.put("text", text.html());
             String newsId = NewsMd5.newsMd5(text.text().trim());

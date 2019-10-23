@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -36,7 +37,7 @@ public class MydriversDownload {
             Elements select = document.select("div.news_bt1_left");
             if (select.text().contains("出处：") && select.text().contains("作者：")
                     && select.text().contains("编辑：") && select.text().contains("人气：")) {
-                newsInfo.put("time", select.text().split("出处：")[0].trim());
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("出处：")[0].trim()));
                 newsInfo.put("source", select.text().split("出处：")[1].split("作者：")[0]);
                 newsInfo.put("author", select.text().split("作者：")[1].split("编辑：")[0]);
             }

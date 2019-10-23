@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -42,7 +43,7 @@ public class CnmoDownload {
                     newsInfo.put("source", select.select("span.c333").text().replace("【", "").replace("】", "").trim());
                 }
                 newsInfo.put("author",select.select("span.text_auther").text().replace("作者：","").trim());
-                newsInfo.put("time",select.select("span").eq(2).text().trim());
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.select("span").eq(2).text().trim()));
             }
 
             Elements text = document.select(".ctext");

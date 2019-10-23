@@ -254,9 +254,6 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("www.thepaper.cn")) {
                     ThepaperDownload thepaperDownload = new ThepaperDownload();
                     thepaperDownload.newsInfo(taskName);
-                }else if (taskName.contains("36kr.com")) {
-                    KrDownload krDownload = new KrDownload();
-                    krDownload.newsInfo(taskName);
                 }else if (taskName.contains("www.sootoo.com")) {
                     SooTooDownload sooTooDownload = new SooTooDownload();
                     sooTooDownload.newsInfo(taskName);
@@ -266,9 +263,15 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("www.qianzhan.com")) {
                     QianZhanDownload qianZhanDownload = new QianZhanDownload();
                     qianZhanDownload.newsInfo(taskName);
-                }else if (taskName.contains("xuexi.huize.com")) {
-                    HuiZeDownload huiZeDownload = new HuiZeDownload();
-                    huiZeDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.qlmoney.com")) {
+                    QlmoneyDownload qlmoneyDownload = new QlmoneyDownload();
+                    qlmoneyDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.cena.com.cn")) {
+                    CenaDownload cenaDownload = new CenaDownload();
+                    cenaDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.kejixun.com")) {
+                    KeJiXunDownload zhiDingDownload = new KeJiXunDownload();
+                    zhiDingDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

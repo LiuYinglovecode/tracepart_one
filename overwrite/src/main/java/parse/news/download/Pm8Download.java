@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class Pm8Download {
                 info.put("title", parse.select("td.post > table:nth-child(1) > tbody > tr > td > h1").text().trim());
                 Elements select = parse.select("td.post > table:nth-child(2) > tbody > tr > td");
                 if (select.text().contains("更新时间：")) {
-                    info.put("time", select.text().split("更新时间：")[1]);
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("更新时间：")[1]));
                     info.put("source", select.text().split("更新时间：")[0].replace("来源：",""));
                 }
 

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -39,7 +40,7 @@ public class LeiphoneDownload {
                 Document document = Jsoup.parse(html);
                 info.put("title",document.select(" div.article-title > div > h1.headTit").first().text().trim());
                 info.put("author",document.select("td.aut").first().text().replace("本文作者：",""));
-                info.put("time",document.select("td.time").first().text());
+                info.put("time", ForMat.getDatetimeFormat(document.select("td.time").first().text()));
 
                 Element text = document.select(".lph-article-comView").first();
                 text.select("a").remove();

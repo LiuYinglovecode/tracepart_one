@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -35,7 +36,7 @@ public class HuajxDownload {
                 Document document = Jsoup.parse(html);
                 info.put("title",document.select("div.leftTop h2").text().trim());
                 Elements select = document.select("div.leftTop p span");
-                info.put("time",select.eq(0).text().trim());
+                info.put("time", ForMat.getDatetimeFormat(select.eq(0).text().trim()));
                 for (Element element : select) {
                     if (element.text().contains("来源：")) {
                         info.put("source", element.text().replace("来源：",""));

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -43,7 +44,7 @@ public class Jc001Download {
                         if (element.text().contains("来源：")){
                             info.put("source", element.text().replace("来源：", "").trim());
                         }else if (element.text().contains("发布日期：")){
-                            info.put("time", element.text().replace("发布日期：","").trim());
+                            info.put("time", ForMat.getDatetimeFormat(element.text().replace("发布日期：","").trim()));
                         }
                     }
                 }

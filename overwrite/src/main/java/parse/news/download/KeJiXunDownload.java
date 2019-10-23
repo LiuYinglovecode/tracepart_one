@@ -13,59 +13,68 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ESUtil;
 import util.HttpUtil;
-import util.MD5Util;
 import util.mysqlUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class CinnDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CinnDownload.class);
+public class KeJiXunDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(KeJiXunDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
-    public void detail(String url) {
+
+    public static void main(String[] args) {
+        KeJiXunDownload keJiXunDownload = new KeJiXunDownload();
+        keJiXunDownload.newsInfo("http://www.kejixun.com/article/181024/447370.shtml");
+    }
+
+    public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "中国工业报社");
-            if (null != html) {
+            String html = HttpUtil.httpGetwithJudgeWord(url, "kejixun");
+            if (!html.isEmpty()) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                Document document = Jsoup.parse(html);
-                String plate = document.select(".index a:last-child").text().trim();
                 info.put("url", url);
-                info.put("plate", plate);
-                String title = document.select(".detail_title").text().trim();
-                info.put("title", title);
-                Elements source_time_list = document.select(".detail_abs.bdsharebuttonbox span");
-                for (Element e : source_time_list) {
-                    if (e.text().contains("文章来源")) {
-                        String source = e.text().trim().split("文章来源 :", 2)[1];
-                        info.put("source", source);
-                    }
-                    if (e.text().contains("发布时间")) {
-                        String time = e.text().trim().split("发布时间 ：", 2)[1];
-                        info.put("time", ForMat.getDatetimeFormat(time));
-                    }
+                Document parse = Jsoup.parse(html);
+                info.put("title", parse.select("div.main.fl > h1").text().trim());
+                Elements elements = parse.select("div.writer");
+                if (!elements.isEmpty()){
+                    /**
+                     * 用正则获取来源
+                     */
+                    String re = "[^x00-xff]";
+                    Pattern compile = Pattern.compile(re);
+                    Matcher matcher = compile.matcher(elements.text());
+                    String time = matcher.replaceAll("").replaceAll(":","").trim();
+                    info.put("time",ForMat.getDatetimeFormat(time));
                 }
-                Elements imgList = document.select(".TRS_Editor img");
-                if (!"0".equals(String.valueOf(imgList.size()))) {
-                    for (Element e : imgList) {
-                        if (e.attr("src").contains("http")) {
-                            imgs.add(e.attr("src"));
-                        } else if (e.attr("src").contains("./")) {
-                            imgs.add(url.substring(0, url.lastIndexOf("/")) + e.attr("src").split("/", 2)[1]);
-                        }
-                    }
+
+                Elements author = parse.select("div.big-man > h3 > a");
+                if (!author.isEmpty()){
+                    info.put("author",author.text());
                 }
-                info.put("images", imgs.toString());
-                Elements text = document.select(".detail_content");
+
+                Elements text = parse.select("div.article-content");
                 info.put("text", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
-                info.put("crawlerId", "28");
+                Elements images = text.select("p > img");
+                if (!images.isEmpty()) {
+                    for (Element image : images) {
+                        imgs.add(image.attr("src"));
+                    }
+                    info.put("images", imgs.toString());
+                }
+
+
+
+                info.put("crawlerId", "132");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));

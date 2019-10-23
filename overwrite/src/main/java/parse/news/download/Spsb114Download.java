@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -39,10 +40,10 @@ public class Spsb114Download {
                 String select = document.select(".post > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)").text();
                 if (select.contains("来源：") && select.contains("更新时间：")){
                     info.put("source",select.split("更新时间：")[0].replace("来源：",""));
-                    info.put("time",select.split("更新时间：")[1]);
+                    info.put("time", ForMat.getDatetimeFormat(select.split("更新时间：")[1]));
                 }
                 if (select.contains("更新时间：")){
-                    info.put("time",select.replace("更新时间：",""));
+                    info.put("time",ForMat.getDatetimeFormat(select.replace("更新时间：","")));
                 }
 
                 Elements select2 = document.select("td.f14.news_link");

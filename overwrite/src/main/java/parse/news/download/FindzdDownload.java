@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class FindzdDownload {
                 info.put("title",document.select("h1.detail_title").text().trim());
                 String timeSource = document.select("span.gray_Low").text();
                 if (timeSource.contains(" ")){
-                    info.put("time",timeSource.split(" ")[0]);
+                    info.put("time", ForMat.getDatetimeFormat(timeSource.split(" ")[0]));
                     info.put("source",timeSource.split(" ")[1]);
                 }
                 info.put("author",document.select("div#editor").text().replace("责任编辑:",""));

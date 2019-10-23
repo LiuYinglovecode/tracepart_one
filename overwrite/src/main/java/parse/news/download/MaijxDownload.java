@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
 import com.alibaba.fastjson.JSONArray;
@@ -37,7 +38,7 @@ public class MaijxDownload {
             Thread.sleep(SleepUtils.sleepMax());
             Document document = Jsoup.parse(html);
             if (html != null) {
-                info.put("time",document.select("p.time").text().trim());
+                info.put("time", ForMat.getDatetimeFormat(document.select("p.time").text().trim()));
                 Elements select = document.select("div#hyzx-p-right div.title");
                 select.select("p").remove();
                 info.put("title",select.text().trim());

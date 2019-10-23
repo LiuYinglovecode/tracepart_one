@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -44,7 +45,7 @@ public class ThepaperDownload {
 
                     String time = document.select("div.news_about > p").eq(1).text().trim();
                     if (time.contains("来源：")){
-                        info.put("time", time.split("来源：")[0].trim());
+                        info.put("time", ForMat.getDatetimeFormat(time.split("来源：")[0].trim()));
                         info.put("source",time.split("来源：")[1].trim());
                     }
 

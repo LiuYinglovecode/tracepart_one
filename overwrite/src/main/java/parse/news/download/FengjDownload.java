@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -40,7 +41,7 @@ public class FengjDownload {
                     if (element.text().contains("来源：")){
                         info.put("source",element.text().replace("来源：",""));
                     }else if (element.text().contains("发布时间：")){
-                    info.put("time",element.text().replace("发布时间：",""));
+                    info.put("time", ForMat.getDatetimeFormat(element.text().replace("发布时间：","")));
                     }
                 }
 

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -41,9 +42,9 @@ public class Hometex114Download {
 //                    　作者：Milou Ket　文　倪海洋 译　2009-3-10
 //                    info.put("author",time.split("　")[0].replace("作者：",""));
                     info.put("author",time.split("　2")[0].replace("作者：",""));
-                    info.put("time",("2"+(time.split("　2")[1])));
+                    info.put("time", ForMat.getDatetimeFormat("2"+(time.split("　2")[1])));
                 }else {
-                    info.put("time",time.replace(" ",""));
+                    info.put("time",ForMat.getDatetimeFormat(time.replace(" ","")));
                 }
 
                 Elements textInfo = document.select(".Content");

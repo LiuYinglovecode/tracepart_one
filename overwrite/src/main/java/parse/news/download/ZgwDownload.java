@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -37,7 +38,7 @@ public class ZgwDownload {
                 if (select.size() != 0) {
                     for (Element element : select) {
                         if (element.select("span").text().contains("-")){
-                            info.put("time",select.select("span").text().trim().replace("关注",""));
+                            info.put("time", ForMat.getDatetimeFormat(select.select("span").text().trim().replace("关注","")));
                         }else {
                             select.select("span").remove();
                             info.put("source",select.text().replace("来源：",""));

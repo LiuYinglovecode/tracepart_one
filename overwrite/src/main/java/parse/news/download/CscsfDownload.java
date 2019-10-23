@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -35,7 +36,7 @@ public class CscsfDownload {
                 info.put("url", url);
                 Document parse = Jsoup.parse(html);
                 info.put("title", parse.select("div.xiangxi_title > h1").text().trim());
-                info.put("time",parse.select("span.pubTime").text().trim());
+                info.put("time", ForMat.getDatetimeFormat(parse.select("span.pubTime").text().trim()));
                 info.put("source",parse.select("span.where.red").text().split("来源：")[1].trim());
                 info.put("author",parse.select("span.auth").text().split("编辑：")[1].trim());
 

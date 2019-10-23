@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONObject;
@@ -51,9 +52,9 @@ public class MachineDownload {
 
                 Elements time = gbk.select("div.newliIn_Sti");
                 if (time.size() == 0) {
-                    newsInfo.put("time", gbk.select("div.box1 > h4").text().trim().split("：", 2)[1]);
+                    newsInfo.put("time", ForMat.getDatetimeFormat(gbk.select("div.box1 > h4").text().trim().split("：", 2)[1]));
                 } else {
-                    newsInfo.put("time", time.text().trim());
+                    newsInfo.put("time", ForMat.getDatetimeFormat(time.text().trim()));
                 }
                 Elements trim = gbk.select("#ArticleCnt");
                 trim.select("img").remove();

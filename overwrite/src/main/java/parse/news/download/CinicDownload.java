@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -38,7 +39,7 @@ public class CinicDownload {
                 info.put("title", parse.select("center > b").text().trim());
                 String select = parse.select("div.col-l > div > center").text();
                 if (!select.isEmpty()&&select.contains("来源：")&&select.contains("时间：")){
-                    info.put("time",select.split("时间：")[1].trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.split("时间：")[1].trim()));
                     info.put("source",select.split("时间：")[0].replace("来源：","").trim());
                 }else if (!select.isEmpty()&&select.contains("作者：")&&select.contains("时间：")){
                     info.put("time",select.split("时间：")[1].trim());

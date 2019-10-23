@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -46,7 +47,7 @@ public class MemDownload {
                 info.put("newId", newsId);
                 info.put("title", title);
                 info.put("author", author);
-                info.put("time", time);
+                info.put("time", ForMat.getDatetimeFormat(time));
                 info.put("text", text.html());
                 info.put("url", url);
                 info.put("images", imgs.toString());

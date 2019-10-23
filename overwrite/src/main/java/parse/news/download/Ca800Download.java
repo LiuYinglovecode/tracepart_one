@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -44,14 +45,14 @@ public class Ca800Download {
                 Elements select = document.select("div.title_bar.f12.h25");
                 if (select.size() != 0) {
                     if (select.text().contains("新闻类型")) {
-                        newsInfo.put("time", select.text().split("新闻类型")[0].split("：")[1]);
+                        newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("新闻类型")[0].split("：")[1]));
                         newsInfo.put("plate", document.select("div.title_bar.f12.h25 a").text().trim());
                     }
                 } else {
                     Elements select1 = document.select("div.title_bar");
 //                    发布时间：2019-08-20 来源：中国证券网 类型：行业新闻 2625人浏览
                     if (select1.text().contains("来源：")) {
-                        newsInfo.put("time", select1.text().split("来源：")[0].split("：")[1]);
+                        newsInfo.put("time", ForMat.getDatetimeFormat(select1.text().split("来源：")[0].split("：")[1]));
                         newsInfo.put("plate", document.select("div.title_bar a").text().trim());
                     }
                 }

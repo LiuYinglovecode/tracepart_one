@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -51,7 +52,7 @@ public class NewSeedDownload {
 
                 Elements date = document.select("div.news-show-title > div > span.date");
                 if (0!=date.size()){
-                    info.put("time",date.text().trim());
+                    info.put("time", ForMat.getDatetimeFormat(date.text().trim()));
                 }
 
                 Elements plate = document.select("div.news-show-title > div > span.dot");

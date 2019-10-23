@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class DzscDownload {
                 info.put("title", parse.select("div.info-details-title.txt-c > h1").text().trim());
                 String select = parse.select("div.info-details-title.txt-c > p").text();
                 if (select.contains("类别：")&&select.contains("发布于：")&&select.contains("|")&&select.contains("次阅读")) {
-                    info.put("time", select.split("发布于：")[1].split("\\|")[0].trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.split("发布于：")[1].split("\\|")[0].trim()));
                     info.put("amountOfReading", select.split("\\|")[1].replace("次阅读","").trim());
                     info.put("plate",select.split("类别：")[1].split("发布于：")[0].trim());
                 }

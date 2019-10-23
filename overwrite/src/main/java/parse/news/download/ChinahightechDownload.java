@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -36,7 +37,7 @@ public class ChinahightechDownload {
                 Document document = Jsoup.parse(html);
                 String title = document.select("div.title_nr h1").text().trim();
                 newsInfo.put("title", title);//标题
-                newsInfo.put("time", document.select("div.addtime").text().trim());//发布时间
+                newsInfo.put("time", ForMat.getDatetimeFormat(document.select("div.addtime").text().trim()));//发布时间
                 Elements source = document.select("div.source");
                 if (source.text().contains("作者：")) {
                     newsInfo.put("source", source.text().split("作者：")[0].split("：")[1]);//来源

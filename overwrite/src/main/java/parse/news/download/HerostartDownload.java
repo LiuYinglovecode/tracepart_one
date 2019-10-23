@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -37,18 +38,18 @@ public class HerostartDownload {
                 String select = document.select("div.info").text();
                 if (select.contains("发布日期：") && select.contains("来源：") && select.contains("作者：") && select.contains("浏览次数：")) {
 //                    发布日期：2019-06-26  来源：潍坊浩宇环保设备有限公司  作者：王世刚17861220657  浏览次数：1
-                    info.put("time", select.split("来源：")[0].replace("发布日期：", ""));
+                    info.put("time", ForMat.getDatetimeFormat(select.split("来源：")[0].replace("发布日期：", "")));
                     info.put("source", select.split("来源：")[1].split("作者：")[0]);
                     info.put("author", select.split("作者：")[1].split("浏览次数：")[0]);
                     info.put("amountOfReading", select.split("浏览次数：")[1]);
                 } else if (select.contains("发布日期：") && select.contains("作者：") && select.contains("浏览次数：")) {
 //                    发布日期：2008-10-04  作者：王世刚17861220657 浏览次数：22
-                    info.put("time", select.split("作者：")[0].replace("发布日期：", ""));
+                    info.put("time", ForMat.getDatetimeFormat(select.split("作者：")[0].replace("发布日期：", "")));
                     info.put("author", select.split("作者：")[1].split("浏览次数：")[0]);
                     info.put("amountOfReading", select.split("浏览次数：")[1]);
                 } else if (select.contains("发布日期：") && select.contains("浏览次数：")) {
 //                    发布日期：2008-10-04  浏览次数：22
-                    info.put("author", select.split("浏览次数：")[0].replace("发布日期：", ""));
+                    info.put("time", ForMat.getDatetimeFormat(select.split("浏览次数：")[0].replace("发布日期：", "")));
                     info.put("amountOfReading", select.split("浏览次数：")[1]);
                 }
                 Elements text = document.select("#article");

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -37,7 +38,7 @@ public class JdzjDownload {
                 info.put("title", title);
                 Elements select = parse.select("div.midbox1 > p");
                 if (select.text().contains("来源:")) {
-                    info.put("time", select.text().split("来源")[0].replace("发布日期", ""));
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("来源")[0].replace("发布日期", "")));
                     info.put("source", select.text().split("来源")[1].split(":")[1]);
                 }
                 Elements text = parse.select("div.midboxcont");

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -49,7 +50,7 @@ public class CpnnDownload {
 
                 newsInfo.put("title", document.select("div.cpnn-con-title h1").text().trim());//标题
                 String select = document.select("div.cpnn-zhengwen-time p").text();
-                newsInfo.put("time", select.split("日")[1].split("：")[1]);
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.split("日")[1].split("：")[1]));
                 newsInfo.put("source", select.split("日期")[0].split("：")[1]);
                 Elements font = document.select("font span font");
                 for (Element element : font) {

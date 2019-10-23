@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -41,7 +42,7 @@ public class JiancaiDownload {
 
                 Elements select = parse.select(".ArtFrom,div.midbox1 > p");
                 if (!select.isEmpty()){
-                    info.put("time", select.text().replace("时间：", "").split("来源：")[0]);
+                    info.put("time", ForMat.getDatetimeFormat(select.text().replace("时间：", "").split("来源：")[0]));
                     info.put("source", select.text().split("来源：")[1]);
                 }
                 Elements text = parse.select("div.midboxcont");

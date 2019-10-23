@@ -51,7 +51,7 @@ public class NewsSeedMainEntry {
         @Override
         public void run() {
             try {
-               if (taskName.contains("www.ccoalnews.com")) {
+                if (taskName.contains("www.ccoalnews.com")) {
                     CcoalnewsToRedis ccoalnewsParseToRedis = new CcoalnewsToRedis();
                     ccoalnewsParseToRedis.getUrlStart(taskName);
                 } else if (taskName.contains("www.ca800.com")) {
@@ -150,126 +150,129 @@ public class NewsSeedMainEntry {
                 } else if (taskName.contains("www.findzd.com/industry/")) {
                     FindzdToRedis findzdToRedis = new FindzdToRedis();
                     findzdToRedis.homepage(taskName);
-                }else if (taskName.contains("www.fzfzjx.com/news/")) {
+                } else if (taskName.contains("www.fzfzjx.com/news/")) {
                     FzfzjxToRedis fzfzjxToRedis = new FzfzjxToRedis();
                     fzfzjxToRedis.homepage(taskName);
-                }else if (taskName.contains("www.hometex114.com/News/")) {
+                } else if (taskName.contains("www.hometex114.com/News/")) {
                     Hometex114ToRedis hometex114ToRedis = new Hometex114ToRedis();
                     hometex114ToRedis.homepage(taskName);
-                }else if (taskName.contains("china.fengj.com/news/")) {
+                } else if (taskName.contains("china.fengj.com/news/")) {
                     FengjToRedis fengjToRedis = new FengjToRedis();
                     fengjToRedis.homepage(taskName);
-                }else if (taskName.contains("www.pm8.cn/news/")) {
+                } else if (taskName.contains("www.pm8.cn/news/")) {
                     Pm8ToRedis pm8ToRedis = new Pm8ToRedis();
                     pm8ToRedis.homepage(taskName);
-                }else if (taskName.contains("www.huajx.com/news/")) {
+                } else if (taskName.contains("www.huajx.com/news/")) {
                     HuajxToRedis huajxToRedis = new HuajxToRedis();
                     huajxToRedis.homepage(taskName);
-                }else if (taskName.contains("www.hooshong.com/news/")) {
+                } else if (taskName.contains("www.hooshong.com/news/")) {
                     HooshongToRedis hooshongToRedis = new HooshongToRedis();
                     hooshongToRedis.homepage(taskName);
-                }else if (taskName.contains("www.cndianji.cn/article")) {
+                } else if (taskName.contains("www.cndianji.cn/article")) {
                     CndianjiToRedis CndianjiToRedis = new CndianjiToRedis();
                     CndianjiToRedis.homepage(taskName);
-                }else if (taskName.contains("www.eapad.cn/")) {
+                } else if (taskName.contains("www.eapad.cn/")) {
                     EapadToRedis EapadToRedis = new EapadToRedis();
                     EapadToRedis.homepage(taskName);
-                }else if (taskName.contains("www.ic37.com")) {
+                } else if (taskName.contains("www.ic37.com")) {
                     Ic37ToRedis Ic37ToRedis = new Ic37ToRedis();
                     Ic37ToRedis.homepage(taskName);
-                }else if (taskName.contains("www.cnpv.com/News")) {
+                } else if (taskName.contains("www.cnpv.com/News")) {
                     CnpvToRedis cnpvToRedis = new CnpvToRedis();
                     cnpvToRedis.homepage(taskName);
-                }else if (taskName.contains("www.leiphone.com/category/iot")) {
+                } else if (taskName.contains("www.leiphone.com/category/iot")) {
                     LeiphoneToRedis leiphoneToRedis = new LeiphoneToRedis();
                     leiphoneToRedis.homepage(taskName);
-                }else if (taskName.contains("www.cntma.com/news/")) {
+                } else if (taskName.contains("www.cntma.com/news/")) {
                     CntmaToRedis CntmaToRedis = new CntmaToRedis();
                     CntmaToRedis.homepage(taskName);
-                }else if (taskName.contains("http://www.gongkong.com/news/")) {
+                } else if (taskName.contains("http://www.gongkong.com/news/")) {
                     GongkongToRedis GongkongToRedis = new GongkongToRedis();
                     GongkongToRedis.homepage(taskName);
-                }else if (taskName.contains("www.techweb.com.cn/")) {
+                } else if (taskName.contains("www.techweb.com.cn/")) {
                     TechwebToRedis techwebToRedis = new TechwebToRedis();
                     techwebToRedis.homepage(taskName);
-                }else if (taskName.contains("www.199it.com/")) {
+                } else if (taskName.contains("www.199it.com/")) {
                     ItToRedis itToRedis = new ItToRedis();
                     itToRedis.homepage(taskName);
-                }else if (taskName.contains("tech.163.com/telecom/")) {
+                } else if (taskName.contains("tech.163.com/telecom/")) {
                     Tech163ToRedis tech163ToRedis = new Tech163ToRedis();
                     tech163ToRedis.homePage(taskName);
-                }else if (taskName.contains("www.pedaily.cn/all")) {
+                } else if (taskName.contains("www.pedaily.cn/all")) {
                     PedailyToRedis pedailyToRedis = new PedailyToRedis();
                     pedailyToRedis.homePage(taskName);
-                }else if (taskName.contains("www.chinaz.com/news/")) {
+                } else if (taskName.contains("www.chinaz.com/news/")) {
                     ChinazToRedis chinazToRedis = new ChinazToRedis();
                     chinazToRedis.paging(taskName);
-                }else if (taskName.contains("news.newseed.cn/")) {
+                } else if (taskName.contains("news.newseed.cn/")) {
                     NewSeedToRedis newSeedToRedis = new NewSeedToRedis();
                     newSeedToRedis.homepage(taskName);
-                }else if (taskName.contains("cn.technode.com/")) {
+                } else if (taskName.contains("cn.technode.com/")) {
                     TechnodeToRedis technodeToRedis = new TechnodeToRedis();
                     technodeToRedis.homepage(taskName);
-                }else if (taskName.contains("news.mydrivers.com/")) {
+                } else if (taskName.contains("news.mydrivers.com/")) {
                     MydriversToRedis mydriversToRedis = new MydriversToRedis();
                     mydriversToRedis.homepage(taskName);
-                }else if (taskName.contains("www.cnmo.com/news/")) {
+                } else if (taskName.contains("www.cnmo.com/news/")) {
                     CnmoToRedis cnmoToRedis = new CnmoToRedis();
                     cnmoToRedis.homepage(taskName);
-                }else if (taskName.contains("www.ccidnet.com")) {
+                } else if (taskName.contains("www.ccidnet.com")) {
                     CcidnetToRedis ccidnetToRedis = new CcidnetToRedis();
                     ccidnetToRedis.homepage(taskName);
-                }else if (taskName.contains("www.tybaba.com/news/")) {
+                } else if (taskName.contains("www.tybaba.com/news/")) {
                     TybabaToRedis tybabaToRedis = new TybabaToRedis();
                     tybabaToRedis.homepage(taskName);
-                }else if (taskName.contains("www.ledinside.cn/news.html")) {
+                } else if (taskName.contains("www.ledinside.cn/news.html")) {
                     LedinsideToRedis ledinsideToRedis = new LedinsideToRedis();
                     ledinsideToRedis.homepage(taskName);
-                }else if (taskName.contains("www.pipew.com/news/index.asp")) {
+                } else if (taskName.contains("www.pipew.com/news/index.asp")) {
                     PipewToRedis pipewToRedis = new PipewToRedis();
                     pipewToRedis.homepage(taskName);
-                }else if (taskName.contains("www.ofweek.com")) {
+                } else if (taskName.contains("www.ofweek.com")) {
                     OfWeekToRedis ofWeekToRedis = new OfWeekToRedis();
                     ofWeekToRedis.homepage(taskName);
-                }else if (taskName.contains("product.dzsc.com/news")) {
+                } else if (taskName.contains("product.dzsc.com/news")) {
                     DzscToRedis dzscToRedis = new DzscToRedis();
                     dzscToRedis.homepage(taskName);
-                }else if (taskName.contains("www.cscsf.com/")) {
+                } else if (taskName.contains("www.cscsf.com/")) {
                     CscsfToRedis cscsfToRedis = new CscsfToRedis();
                     cscsfToRedis.homepage(taskName);
-                }else if (taskName.contains("cinic.org.cn")) {
+                } else if (taskName.contains("cinic.org.cn")) {
                     CinicToRedis cinicToRedis = new CinicToRedis();
                     cinicToRedis.homepage(taskName);
-                }else if (taskName.contains("news.chemnet.com")) {
+                } else if (taskName.contains("news.chemnet.com")) {
                     ChemNetToRedis chemNetToRedis = new ChemNetToRedis();
                     chemNetToRedis.homepage(taskName);
-                }else if (taskName.contains("news.jc001.cn")) {
+                } else if (taskName.contains("news.jc001.cn")) {
                     Jc001ToRedis jc001ToRedis = new Jc001ToRedis();
                     jc001ToRedis.homepage(taskName);
-                }else if (taskName.contains("www.alliii.com/news/")) {
+                } else if (taskName.contains("www.alliii.com/news/")) {
                     AlliiiToRedis alliiiToRedis = new AlliiiToRedis();
                     alliiiToRedis.homepage(taskName);
-                }else if (taskName.contains("www.iyiou.com")) {
+                } else if (taskName.contains("www.iyiou.com")) {
                     IyiouToRedis iyiouToRedis = new IyiouToRedis();
                     iyiouToRedis.homepage(taskName);
-                }else if (taskName.contains("www.thepaper.cn")) {
+                } else if (taskName.contains("www.thepaper.cn")) {
                     ThepaperToRedis thepaperToRedis = new ThepaperToRedis();
                     thepaperToRedis.homepage(taskName);
-                }/*else if (taskName.contains("36kr.com/")) {
-                    KrToRedis krToRedis = new KrToRedis();
-                    krToRedis.homepage(taskName);
-                }*/else if (taskName.contains("www.sootoo.com/")) {
+                } else if (taskName.contains("www.sootoo.com/")) {
                     SooTooToRedis SooTooToRedis = new SooTooToRedis();
                     SooTooToRedis.homepage(taskName);
-                }else if (taskName.contains("www.southmoney.com/")) {
+                } else if (taskName.contains("www.southmoney.com/")) {
                     SouthMoneyToRedis southMoneyToRedis = new SouthMoneyToRedis();
                     southMoneyToRedis.homepage(taskName);
-                }else if (taskName.contains("www.qianzhan.com/indynews/")) {
+                } else if (taskName.contains("www.qianzhan.com/indynews/")) {
                     QianZhanToRedis qianZhanToRedis = new QianZhanToRedis();
                     qianZhanToRedis.homepage(taskName);
-                }else if (taskName.contains("xuexi.huize.com/study/")) {
-                    HuiZeToRedis huiZeToRedis = new HuiZeToRedis();
-                    huiZeToRedis.homepage(taskName);
+                } else if (taskName.contains("http://www.qlmoney.com")) {
+                    QlmoneyToRedis qlmoneyToRedis = new QlmoneyToRedis();
+                    qlmoneyToRedis.homepage(taskName);
+                } else if (taskName.contains("www.cena.com.cn")) {
+                    CenaToRedis cenaToRedis = new CenaToRedis();
+                    cenaToRedis.homepage(taskName);
+                } else if (taskName.contains("www.kejixun.com")) {
+                    KeJiXunToRedis keJiXunToRedis = new KeJiXunToRedis();
+                    keJiXunToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

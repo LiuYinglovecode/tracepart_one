@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -41,7 +42,7 @@ public class PedailyDownload {
             }
             Elements time = document.select("div.info > div.box-l > span.date,div.news-show-title > div > span.date");
             if (0 != time.size()) {
-                newsInfo.put("time", time.text());
+                newsInfo.put("time", ForMat.getDatetimeFormat(time.text()));
             }
             Elements source = document.select("div.info > div.box-l > span.source,div.news-show-title > div > span.source");
             if (0 != source.size()) {

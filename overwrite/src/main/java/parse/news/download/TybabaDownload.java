@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -38,23 +39,23 @@ public class TybabaDownload {
                 info.put("title", document.select("div.hd > h1").text().trim());
                 Elements select = document.select("div.hd > div.titBar");
                 if (select.text().contains("发布日期：")&&select.text().contains("我来投稿")&&select.text().contains("浏览次数：")) {
-                    info.put("time", select.text().split("我来投稿")[0].replace("发布日期：","").trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("我来投稿")[0].replace("发布日期：","").trim()));
                     info.put("amountOfReading", select.text().split("我来投稿")[1].replace("浏览次数：", "").trim());
                     info.put("source", "金属制品网");
                 }
                 if (select.text().contains("发布日期：")&&select.text().contains("来源：")&&select.text().contains("作者：")&&select.text().contains("我来投稿")&&select.text().contains("浏览次数：")){
-                    info.put("time", select.text().split("来源：")[0].replace("发布日期：","").trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("来源：")[0].replace("发布日期：","").trim()));
                     info.put("amountOfReading", select.text().split("浏览次数：")[1].trim());
                     info.put("source", select.text().split("来源：")[1].split("作者：")[0].trim());
                     info.put("author", select.text().split("作者：")[1].split("我来投稿")[0].trim());
                 }
                 if (select.text().contains("发布日期：")&&select.text().contains("来源：")&&select.text().contains("我来投稿")&&select.text().contains("浏览次数：")){
-                    info.put("time", select.text().split("来源：")[0].replace("发布日期：","").trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("来源：")[0].replace("发布日期：","").trim()));
                     info.put("source", select.text().split("来源：")[1].split("我来投稿")[0].trim());
                     info.put("amountOfReading", select.text().split("浏览次数：")[1].trim());
                 }
                 if (select.text().contains("发布日期：")&&select.text().contains("作者：")&&select.text().contains("我来投稿")&&select.text().contains("浏览次数：")){
-                    info.put("time", select.text().split("作者：")[0].replace("发布日期：","").trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("作者：")[0].replace("发布日期：","").trim()));
                     info.put("author", select.text().split("作者：")[1].split("我来投稿")[0].trim());
                     info.put("amountOfReading", select.text().split("浏览次数：")[1].trim());
                 }

@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -33,7 +34,7 @@ public class ChinacraneDownload {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             if (html != null) {
                 Document document = Jsoup.parse(html);
-                newsInfo.put("title", document.select("#title").text().trim());//标题
+                newsInfo.put("title", ForMat.getDatetimeFormat(document.select("#title").text().trim()));//标题
                 newsInfo.put("time", document.select("time").text().replace("发布时间:",""));//发布时间
                 Elements select = document.select("div.from");
                 if (!select.text().contains("作者：")) {

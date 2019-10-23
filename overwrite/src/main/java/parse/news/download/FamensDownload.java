@@ -1,5 +1,6 @@
 package parse.news.download;
 
+import Utils.ForMat;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -40,7 +41,7 @@ public class FamensDownload {
                     if (element.text().contains("作者：")){
                         info.put("author",element.text().replace("作者：",""));
                     } else  if (element.text().contains("年")){
-                        info.put("time",element.text().trim());
+                        info.put("time", ForMat.getDatetimeFormat(element.text().trim()));
                     } else  if (element.text().contains("来源：")){
                         info.put("source",element.text().trim().replace("来源：",""));
                     }
