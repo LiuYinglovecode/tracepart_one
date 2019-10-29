@@ -179,7 +179,7 @@ public class cableabcNews {
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
                 newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
                 insert(newsInfo);
-                mysqlUtil.insertNews(newsInfo, "crawler_news", title);
+//                mysqlUtil.insertNews(newsInfo, "crawler_news", title);
                 esUtil.writeToES(newsInfo, "crawler-news-", "doc", null);
             } else {
                 LOGGER.info("页面不存在");

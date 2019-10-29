@@ -9,22 +9,37 @@ public class mysqlUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(mysqlUtil.class);
     private static java.util.Map<String, String> Map;
 
-    public static void insertNews(JSONObject info, String tablename, String newsId) {
+//    public static boolean insertNews(JSONObject info, String tablename, String newsId) {
+//        try {
+//            Map = (java.util.Map) info;
+//            if (updateToMySQL.exist2(Map, tablename, newsId, "newsId")) {
+//                if (updateToMySQL.newsUpdate(Map, newsId, "newsId")) {
+//                    LOGGER.info("更新中 : " + Map.toString());
+//                }
+//            } else {
+//                if (updateToMySQL.newsInsert(Map)) {
+//                    LOGGER.info("插入中 : " + Map.toString());
+//                }
+//            }
+//        } catch (Exception e) {
+//            LOGGER.error(e.getMessage());
+//        }
+//        return true;
+//    }
+
+    public static boolean insertNews(JSONObject info) {
         try {
             Map = (java.util.Map) info;
-            if (updateToMySQL.exist2(Map, tablename, newsId, "newsId")) {
-                if (updateToMySQL.newsUpdate(Map, newsId, "newsId")) {
-                    LOGGER.info("更新中 : " + Map.toString());
-                }
-            } else {
-                if (updateToMySQL.newsInsert(Map)) {
-                    LOGGER.info("插入中 : " + Map.toString());
-                }
+            if (updateToMySQL.newsInsert(Map)) {
+                LOGGER.info("插入中 : " + Map.toString());
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
+        return true;
     }
+
+
 
     public static void insertPatent(JSONObject info) {
         try {
@@ -35,10 +50,11 @@ public class mysqlUtil {
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
+
     }
 
 
-    public static void insertCompany(JSONObject info) {
+    public static boolean insertCompany(JSONObject info) {
         try {
             Map = (java.util.Map) info;
             if (updateToMySQL.companyInsert(Map)) {
@@ -47,9 +63,10 @@ public class mysqlUtil {
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
+        return true;
     }
 
-    public static void insertProduct(JSONObject productInfo) {
+    public static boolean insertProduct(JSONObject productInfo) {
         try {
             Map = (java.util.Map) productInfo;
             if (updateToMySQL.productUpdate(Map)) {
@@ -58,5 +75,6 @@ public class mysqlUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return true;
     }
 }

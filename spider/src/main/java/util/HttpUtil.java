@@ -1,5 +1,6 @@
 package util;
 
+import Utils.CharacterEncoding;
 import ipregion.ProxyDao;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -25,7 +26,6 @@ import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
-import sun.nio.cs.ext.GBK;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,7 +62,16 @@ public class HttpUtil {
      * @param url
      * @return
      */
-    public static String httpGet(String url, Map<String, String> headers) throws IOException, HttpException {
+    public static String httpGet(String url, Map<String, String> headers) throws IOException {
+        String charset = null;
+        if (CharacterEncoding.getEncodingByContentStream(url)!=null){
+            charset = CharacterEncoding.getEncodingByContentStream(url);
+        }else if (CharacterEncoding.getEncodingByHeader(url)!=null){
+            charset = CharacterEncoding.getEncodingByHeader(url);
+        }else if (CharacterEncoding.getEncodingByContentUrl(url)!=null){
+            charset = CharacterEncoding.getEncodingByContentUrl(url);
+        }
+
         RequestConfig requestConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).setSocketTimeout(TIME_OUT_MILLIS).setConnectTimeout(TIME_OUT_MILLIS).build();
         CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
         // 创建HttpGet.
@@ -80,9 +89,13 @@ public class HttpUtil {
             try {
                 response = httpClient.execute(httpGet);
                 if (response.getStatusLine().getStatusCode() == 200) {
-                    result = EntityUtils.toString(response.getEntity(), UTF8);
-//                    result = EntityUtils.toString(response.getEntity(), gb2312);
-                    break;
+                    if (charset.isEmpty()) {
+                        result = EntityUtils.toString(response.getEntity(), UTF8);
+                        break;
+                    }else {
+                        result = EntityUtils.toString(response.getEntity(), charset);
+                        break;
+                    }
                 }
             } catch (IOException e) {
                 LOGGER.error(e.getMessage());
