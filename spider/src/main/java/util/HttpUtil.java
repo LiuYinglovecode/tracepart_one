@@ -1,6 +1,5 @@
 package util;
 
-import Utils.CharacterEncoding;
 import ipregion.ProxyDao;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -63,14 +62,6 @@ public class HttpUtil {
      * @return
      */
     public static String httpGet(String url, Map<String, String> headers) throws IOException {
-        String charset = null;
-        if (CharacterEncoding.getEncodingByContentStream(url)!=null){
-            charset = CharacterEncoding.getEncodingByContentStream(url);
-        }else if (CharacterEncoding.getEncodingByHeader(url)!=null){
-            charset = CharacterEncoding.getEncodingByHeader(url);
-        }else if (CharacterEncoding.getEncodingByContentUrl(url)!=null){
-            charset = CharacterEncoding.getEncodingByContentUrl(url);
-        }
 
         RequestConfig requestConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).setSocketTimeout(TIME_OUT_MILLIS).setConnectTimeout(TIME_OUT_MILLIS).build();
         CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
@@ -89,13 +80,8 @@ public class HttpUtil {
             try {
                 response = httpClient.execute(httpGet);
                 if (response.getStatusLine().getStatusCode() == 200) {
-                    if (charset.isEmpty()) {
-                        result = EntityUtils.toString(response.getEntity(), UTF8);
-                        break;
-                    }else {
-                        result = EntityUtils.toString(response.getEntity(), charset);
-                        break;
-                    }
+                    result = EntityUtils.toString(response.getEntity(), UTF8);
+                    break;
                 }
             } catch (IOException e) {
                 LOGGER.error(e.getMessage());
