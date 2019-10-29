@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parse.company.toRedis.JdzjToRedis;
 import util.ESUtil;
-import util.HttpUtil;
+import Utils.HttpUtil;
 import util.MD5Util;
 import util.mysqlUtil;
 

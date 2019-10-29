@@ -1,14 +1,13 @@
 package parse.news.toRedis;
 
 import Utils.RedisUtil;
-import Utils.SleepUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.HttpUtil;
+import Utils.HttpUtil;
 
 public class DzscToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(DzscToRedis.class);

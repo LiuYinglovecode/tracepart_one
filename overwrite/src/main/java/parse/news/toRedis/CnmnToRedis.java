@@ -1,14 +1,13 @@
 package parse.news.toRedis;
 
 import Utils.RedisUtil;
-import news.parse.cnmnNews;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.HttpUtil;
+import Utils.HttpUtil;
 
 import java.util.ArrayList;
 

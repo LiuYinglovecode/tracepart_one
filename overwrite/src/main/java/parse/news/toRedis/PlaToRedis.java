@@ -1,14 +1,13 @@
 package parse.news.toRedis;
 
 import Utils.RedisUtil;
-import news.parse.lmjxNews;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.HttpUtil;
+import Utils.HttpUtil;
 
 public class PlaToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(PlaToRedis.class);

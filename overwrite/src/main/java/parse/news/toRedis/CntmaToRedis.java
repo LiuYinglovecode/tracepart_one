@@ -7,9 +7,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.HttpUtil;
+import Utils.HttpUtil;
 
-import java.net.URL;
 
 public class CntmaToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CntmaToRedis.class);

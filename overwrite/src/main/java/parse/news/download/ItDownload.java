@@ -12,7 +12,7 @@ package parse.news.download;
         import org.slf4j.Logger;
         import org.slf4j.LoggerFactory;
         import util.ESUtil;
-        import util.HttpUtil;
+        import Utils.HttpUtil;
         import util.mysqlUtil;
 
         import java.text.SimpleDateFormat;

@@ -8,7 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.HttpUtil;
+import Utils.HttpUtil;
 
 public class NewSeedToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(NewSeedToRedis.class);
