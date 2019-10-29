@@ -36,12 +36,13 @@ public class ChuangdongDownload {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("h1.ns-tit").text().trim());//标题
                 newsInfo.put("time", ForMat.getDatetimeFormat(document.select("span.time.mr30").text().trim()));//发布时间
-                newsInfo.put("source", document.select("span.label.mr30").text().trim().replace("来源：", ""));//发布时间
+                newsInfo.put("source", document.select("span.label.mr30").text().trim().replace("来源：", "").trim());//发布时间
                 Elements textInfo = document.select("div.ns-con-texts.mt30");
 //                if (textInfo.select("p").text().contains("声明：本文为转载类文章")){
 //                    textInfo.select("p").remove();
-                newsInfo.put("text", textInfo.html());//新闻内容
-                String newsId = NewsMd5.newsMd5(textInfo.text());
+                newsInfo.put("text", textInfo.text().trim());//新闻内容
+                newsInfo.put("html", textInfo.html());//新闻内容
+                String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                 newsInfo.put("newsId", newsId);
                 Elements img = textInfo.select("center p img");
                 if (img.size() != 0) {
@@ -65,7 +66,7 @@ public class ChuangdongDownload {
                 }
                 newsInfo.put("url", url);//链接地址
                 newsInfo.put("crawlerId", "80");
-                mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
+//                mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
                 newsInfo.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 newsInfo.put("@timestamp", timestamp2.format(new Date()));
@@ -74,7 +75,7 @@ public class ChuangdongDownload {
 //                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)) {
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(newsInfo)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

@@ -47,7 +47,8 @@ public class CenaDownload {
 
                 Elements text = document.select("#art_body");//新闻内容
                 if (!text.isEmpty()) {
-                    newsInfo.put("text", text.html());
+                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("html", text.html());
                     String newsId = NewsMd5.newsMd5(text.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("p img");
@@ -67,7 +68,10 @@ public class CenaDownload {
 //                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                        RedisUtil.insertUrlToSet("catchedUrl", url);
+//                    }
+                    if (mysqlUtil.insertCompany(newsInfo)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

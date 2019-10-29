@@ -28,27 +28,33 @@ public class FengjDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+    public static void main(String[] args) {
+        FengjDownload FengjDownload = new FengjDownload();
+        FengjDownload.newsInfo("http://china.fengj.com/html/news/1801/show_1801201.html");
+    }
+
     public void newsInfo(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "fengj");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(html);
                 info.put("title",document.select("div.main_le > span.title").text().trim());
                 Elements select = document.select("div.from > span");
                 for (Element element : select) {
                     if (element.text().contains("来源：")){
-                        info.put("source",element.text().replace("来源：",""));
+                        info.put("source",element.text().replace("来源：","").trim());
                     }else if (element.text().contains("发布时间：")){
-                    info.put("time", ForMat.getDatetimeFormat(element.text().replace("发布时间：","")));
+                    info.put("time", ForMat.getDatetimeFormat(element.text().replace("发布时间：","").trim()));
                     }
                 }
 
 
                 Elements text = document.select(".content");
                 text.select("div").remove();
-                info.put("text",text.html());
+                info.put("text",text.text().trim());
+                info.put("html",text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements imgList = document.select("p img");
@@ -69,7 +75,7 @@ public class FengjDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

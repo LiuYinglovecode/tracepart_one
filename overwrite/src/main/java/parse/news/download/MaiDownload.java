@@ -39,17 +39,18 @@ public class MaiDownload {
                 Elements select = parse.select("div.info");
                 if (select.size() != 0) {
                     if (!select.text().contains("来源：")) {
-                        info.put("time", ForMat.getDatetimeFormat(select.text().trim().split("浏览次数：")[0].split("：")[1]));
+                        info.put("time", ForMat.getDatetimeFormat(select.text().trim().split("浏览次数：")[0].split("：")[1].trim()));
                         info.put("amountOfReading", select.select("#hits").text().trim());
                     } else {
-                        info.put("time", ForMat.getDatetimeFormat(select.text().split("来源：")[0].split("：")[1]));
-                        info.put("source", select.text().split("来源：")[1].split("作者：")[0]);
-                        info.put("author", select.text().split("来源：")[1].split("作者：")[1].split(" 浏览次数")[0]);
+                        info.put("time", ForMat.getDatetimeFormat(select.text().split("来源：")[0].split("：")[1].trim()));
+                        info.put("source", select.text().split("来源：")[1].split("作者：")[0].trim());
+                        info.put("author", select.text().split("来源：")[1].split("作者：")[1].split(" 浏览次数")[0].trim());
                         info.put("amountOfReading", select.select("#hits").text().trim());
                     }
                 }
                 Elements text = parse.select("#article");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newId", newsId);
                 Elements images = parse.select("#article > div > p > img");
@@ -71,7 +72,7 @@ public class MaiDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

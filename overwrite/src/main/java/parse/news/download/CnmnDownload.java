@@ -36,19 +36,19 @@ public class CnmnDownload {
             if (html != null) {
                 Document document = Jsoup.parse(html);
                 String title = document.select("#content > div > h4").text().trim();
-                newsInfo.put("title", title);//标题
+                newsInfo.put("title", title.trim());//标题
                 newsInfo.put("time", ForMat.getDatetimeFormat(document.select("span > span.time").text().trim()));//发布时间
-                newsInfo.put("amountOfReading", document.select("span > span.view").text().trim().replace("次浏览", ""));//阅读量
-                newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1]);//来源
+                newsInfo.put("amountOfReading", document.select("span > span.view").text().replace("次浏览", "").trim());//阅读量
+                newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1].trim());//来源
                 Elements text = document.select("#txtcont");
                 newsInfo.put("text", text.html());//新闻内容
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 newsInfo.put("newsId", newsId);
                 Elements split = document.select("p.info.clearfix.text-center > span:nth-child(1)");
                 if (split.text().contains("作者：")) {
-                    newsInfo.put("author", split.text().split("作者：")[1]);//作者
+                    newsInfo.put("author", split.text().split("作者：")[1].trim());//作者
                 } else {
-                    newsInfo.put("author", document.select("#content > div > p.actor").text().split("：")[1]);//作者
+                    newsInfo.put("author", document.select("#content > div > p.actor").text().split("：")[1].trim());//作者
                 }
                 Elements img = document.select("#txtcont > p > img");
                 if (img.size() != 0) {
@@ -68,7 +68,7 @@ public class CnmnDownload {
 //                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(newsInfo)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

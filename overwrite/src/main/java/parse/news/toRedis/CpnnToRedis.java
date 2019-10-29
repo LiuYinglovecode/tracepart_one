@@ -22,7 +22,7 @@ public class CpnnToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
             if (null != html) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+                Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.more-gy a");
                 for (Element e : categoryList) {
                     if (!e.attr("href").equals("#")) {
@@ -47,7 +47,7 @@ public class CpnnToRedis {
             if (!url.contains("http://")) {
                 String link = "http://www.cpnn.com.cn" + url;
                 String html = HttpUtil.httpGetwithJudgeWord(link, "cpnn");
-                Document document = Jsoup.parse(new URL(link).openStream(), "GBK", html);
+                Document document = Jsoup.parse(html);
                 Elements select = document.select("div.fa_navlist ul li a");
                 if (select.size() != 0) {
                     for (Element element : select) {
@@ -65,7 +65,7 @@ public class CpnnToRedis {
                 }
             } else {
                 String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+                Document document = Jsoup.parse(html);
                 Elements select = document.select("div.tit h3 a");
                 for (Element element : select) {
                     String href = "http://yq.cpnn.com.cn" + element.attr("href");
@@ -104,7 +104,7 @@ public class CpnnToRedis {
             if (url.contains("default")) {
                 String aDefault = url.split("default")[0];
                 String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+                Document document = Jsoup.parse(html);
                 Elements select = document.select("div.cpnn-content-left-list ul li h1 a");
                 for (Element element : select) {
                     String href = aDefault + element.attr("href").replace("./", "");
@@ -113,7 +113,7 @@ public class CpnnToRedis {
                 }
             } else {
                 String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+                Document document = Jsoup.parse(html);
                 Elements select = document.select("div.cpnn-content-left-list ul li h1 a");
                 for (Element element : select) {
                     String href = url + element.attr("href").replace("./", "");

@@ -38,17 +38,17 @@ public class ChinacraneDownload {
                 newsInfo.put("time", document.select("time").text().replace("发布时间:",""));//发布时间
                 Elements select = document.select("div.from");
                 if (!select.text().contains("作者：")) {
-                    newsInfo.put("amountOfReading",select.text().split("人气：")[1]);
-                    newsInfo.put("source",select.text().split("人气：")[0].replace("来源：",""));
+                    newsInfo.put("amountOfReading",select.text().split("人气：")[1].trim());
+                    newsInfo.put("source",select.text().split("人气：")[0].replace("来源：","").trim());
                 }else {
-                    newsInfo.put("author",select.text().split("作者：")[1]);
-                    newsInfo.put("amountOfReading",select.text().split("作者：")[0].split("人气：")[1]);
-                    newsInfo.put("source",select.text().split("人气：")[0].replace("来源",""));
+                    newsInfo.put("author",select.text().split("作者：")[1].trim());
+                    newsInfo.put("amountOfReading",select.text().split("作者：")[0].split("人气：")[1].trim());
+                    newsInfo.put("source",select.text().split("人气：")[0].replace("来源","").trim());
                 }
                 Elements textInfo = document.select("#article");
                 if (textInfo.size() != 0) {
-                    String text = textInfo.html();
-                    newsInfo.put("text", text);
+                    newsInfo.put("text", textInfo.text().trim());
+                    newsInfo.put("html", textInfo.html());
                     String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                     newsInfo.put("newsId",newsId);
                     Elements img = textInfo.select("p > img");
@@ -69,7 +69,11 @@ public class ChinacraneDownload {
 //                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)) {
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                        RedisUtil.insertUrlToSet("catchedUrl", url);
+//                    }
+
+                    if (mysqlUtil.insertCompany(newsInfo)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

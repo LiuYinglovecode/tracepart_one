@@ -39,7 +39,7 @@ public class CpnnDownload {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cpnn");
             if (html != null) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+                Document document = Jsoup.parse(html);
                 Elements href = document.select("div.cpnn-minnav a");
                 if (href.attr("href").equals("../")) {
                     newsInfo.put("plate", href.text().trim());
@@ -50,12 +50,12 @@ public class CpnnDownload {
 
                 newsInfo.put("title", document.select("div.cpnn-con-title h1").text().trim());//标题
                 String select = document.select("div.cpnn-zhengwen-time p").text();
-                newsInfo.put("time", ForMat.getDatetimeFormat(select.split("日")[1].split("：")[1]));
-                newsInfo.put("source", select.split("日期")[0].split("：")[1]);
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.split("日")[1].split("：")[1].trim()));
+                newsInfo.put("source", select.split("日期")[0].split("：")[1].trim());
                 Elements font = document.select("font span font");
                 for (Element element : font) {
                     if (element.text().contains("责任编辑：")) {
-                        newsInfo.put("author", element.text().trim().split("：")[1]);
+                        newsInfo.put("author", element.text().trim().split("：")[1].trim());
                     }
                 }
                 Elements img = document.select("div.Custom_UnionStyle img");
@@ -68,7 +68,8 @@ public class CpnnDownload {
                 Elements text = document.select("div.cpnn-con-zhenwen");//新闻内容
                 if (text.size() != 0) {
                     text.select("div").remove();
-                    newsInfo.put("text", text.html());
+                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("html", text.html());
                     String newsId = NewsMd5.newsMd5(text.text().trim());
                     newsInfo.put("newsId", newsId);
                     newsInfo.put("crawlerId", "58");
@@ -81,7 +82,7 @@ public class CpnnDownload {
 //                        if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                            RedisUtil.insertUrlToSet("catchedUrl", url);
 //                        }
-                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)) {
+                    if (mysqlUtil.insertNews(newsInfo)) {
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

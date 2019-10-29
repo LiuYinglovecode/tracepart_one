@@ -38,14 +38,15 @@ public class WjwDownload {
                 info.put("title", document.select("div.informationArticle_03 > h3").text().trim());
                 Elements select = document.select("div.informationArticle_03 > div.informationArticle_05");
                 if (select.size() != 0) {
-                    info.put("time", ForMat.getDatetimeFormat(select.select("p.informationArticle_06").text().split(" ")[1]));
-                    info.put("source", select.select("p.informationArticle_06").text().split(" ")[0].replace("来源：", ""));
+                    info.put("time", ForMat.getDatetimeFormat(select.select("p.informationArticle_06").text().split(" ")[1].trim()));
+                    info.put("source", select.select("p.informationArticle_06").text().split(" ")[0].replace("来源：", "").trim());
                 }
                 Elements text = document.select("#informationArticle_04");
                 text.select("p > img").last().remove();
                 text.select("p > img").remove();
                 text.select("p.prvPage").remove();
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select("#informationArticle_04 > div > img");
@@ -67,7 +68,7 @@ public class WjwDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

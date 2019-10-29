@@ -55,7 +55,8 @@ public class ThepaperDownload {
                     Elements text = document.select("div.news_txt");
                     if (!text.isEmpty()) {
 
-                        info.put("text",text.html());
+                        info.put("text",text.text().trim());
+                        info.put("html",text.html());
                         newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
                         info.put("newsId", newsId);
 
@@ -86,7 +87,7 @@ public class ThepaperDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                        if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+                        if (mysqlUtil.insertNews(info)) {
                             RedisUtil.insertUrlToSet("catchedUrl", url);
                         }
                     } else {

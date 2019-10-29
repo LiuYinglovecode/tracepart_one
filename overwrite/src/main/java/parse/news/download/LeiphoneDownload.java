@@ -39,8 +39,8 @@ public class LeiphoneDownload {
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 info.put("title",document.select(" div.article-title > div > h1.headTit").first().text().trim());
-                info.put("author",document.select("td.aut").first().text().replace("本文作者：",""));
-                info.put("time", ForMat.getDatetimeFormat(document.select("td.time").first().text()));
+                info.put("author",document.select("td.aut").first().text().replace("本文作者：","").trim());
+                info.put("time", ForMat.getDatetimeFormat(document.select("td.time").first().text().trim()));
 
                 Element text = document.select(".lph-article-comView").first();
                 text.select("a").remove();
@@ -50,6 +50,12 @@ public class LeiphoneDownload {
                         .replace("(公众号：雷锋网)", "")
                         .replace("编辑", "");
                 info.put("text",s);
+                String text1 = text.html().replace("雷锋网特约稿件，未经授权禁止转载。详情见", "")
+                        .replace("转载须知", "")
+                        .replace("雷锋网", "")
+                        .replace("(公众号：雷锋网)", "")
+                        .replace("编辑", "").trim();
+                info.put("text",text1);
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements imgList = text.select("p img");
@@ -69,7 +75,7 @@ public class LeiphoneDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             }

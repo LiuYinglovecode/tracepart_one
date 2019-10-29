@@ -39,15 +39,16 @@ public class Spsb114Download {
                 info.put("title",document.select("td.post table tbody tr td h1").text().trim());
                 String select = document.select(".post > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)").text();
                 if (select.contains("来源：") && select.contains("更新时间：")){
-                    info.put("source",select.split("更新时间：")[0].replace("来源：",""));
-                    info.put("time", ForMat.getDatetimeFormat(select.split("更新时间：")[1]));
+                    info.put("source",select.split("更新时间：")[0].replace("来源：","").trim());
+                    info.put("time", ForMat.getDatetimeFormat(select.split("更新时间：")[1].trim()));
                 }
                 if (select.contains("更新时间：")){
-                    info.put("time",ForMat.getDatetimeFormat(select.replace("更新时间：","")));
+                    info.put("time",ForMat.getDatetimeFormat(select.replace("更新时间：","").trim()));
                 }
 
                 Elements select2 = document.select("td.f14.news_link");
-                info.put("text", select2.html());
+                info.put("text", select2.text().trim());
+                info.put("html", select2.html());
                 String newsId = NewsMd5.newsMd5(select2.text().trim());
                 info.put("newsId",newsId);
                 Elements img = select2.select("p img");
@@ -68,7 +69,7 @@ public class Spsb114Download {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

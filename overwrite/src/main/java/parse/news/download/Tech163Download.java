@@ -37,12 +37,13 @@ public class Tech163Download {
             newsInfo.put("title", title);
             Elements select = document.select("#epContentLeft > div.post_time_source");
             if (select.text().contains("来源:")) {
-                newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源:")[0]));
-                newsInfo.put("source", select.text().split("来源:")[1]);
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源:")[0].trim()));
+                newsInfo.put("source", select.text().split("来源:")[1].trim());
             }
             Elements text = document.select("#endText");
             text.select("div.gg200x300").remove();
-            newsInfo.put("text", text.html());
+            newsInfo.put("text", text.text().trim());
+            newsInfo.put("html", text.html());
             String newsId = MD5Util.getMD5String(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = text.select("p img");
@@ -64,7 +65,7 @@ public class Tech163Download {
 //            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", md5String)) {
 //                RedisUtil.insertUrlToSet("catchedUrl", url);
 //            }
-            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+            if (mysqlUtil.insertNews(newsInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

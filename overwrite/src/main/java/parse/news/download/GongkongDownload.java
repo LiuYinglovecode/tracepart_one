@@ -36,11 +36,11 @@ public class GongkongDownload {
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select("#Rtitle_D").text().trim());
-                info.put("source", document.select("#grey6 > span").eq(0).text().trim().replace("供稿：", ""));
-                info.put("time", ForMat.getDatetimeFormat(document.select("#grey6 > span").eq(2).text()));
+                info.put("source", document.select("#grey6 > span").eq(0).text().replace("供稿：", "").trim());
+                info.put("time", ForMat.getDatetimeFormat(document.select("#grey6 > span").eq(2).text().trim()));
                 Elements amountOfReading = document.select("#spanhit");
                 if (!amountOfReading.text().contains("--")) {
-                    info.put("amountOfReading", amountOfReading.text().replace("人气：", ""));
+                    info.put("amountOfReading", amountOfReading.text().replace("人气：", "").trim());
                 }
 
 
@@ -51,7 +51,8 @@ public class GongkongDownload {
                  */
                 String newsId = null;
                 Elements text = document.select("#article");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 newsId = NewsMd5.newsMd5(text.text().trim());
 
                 Elements imgList = text.select("p img");
@@ -78,7 +79,7 @@ public class GongkongDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

@@ -48,7 +48,8 @@ public class AlliiiDownload {
                 Elements text = document.select(".detailCon");
                 if (!text.isEmpty()) {
                     text.select("div").remove();
-                    info.put("text", text.html());
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
                     info.put("newsId", newsId);
 
@@ -79,10 +80,12 @@ public class AlliiiDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+//                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+//                        RedisUtil.insertUrlToSet("catchedUrl", url);
+//                    }
+                    if (mysqlUtil.insertCompany(info)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
-
 
                 } else {
                     LOGGER.info("detail null");

@@ -35,8 +35,8 @@ public class MemDownload {
             if (null != html) {
                 Document document = Jsoup.parse(html);
                 String title = document.select(".title").text().trim();
-                String author = document.select(".time").text().trim().split("/", 2)[0];
-                String time = document.select(".time").text().trim().split("/", 2)[1].split("：", 2)[1];
+                String author = document.select(".time").text().split("/", 2)[0].trim();
+                String time = document.select(".time").text().split("/", 2)[1].split("：", 2)[1].trim();
                 Elements text = document.select(".newstext");
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 String url = detailUrl;
@@ -48,7 +48,8 @@ public class MemDownload {
                 info.put("title", title);
                 info.put("author", author);
                 info.put("time", ForMat.getDatetimeFormat(time));
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 info.put("url", url);
                 info.put("images", imgs.toString());
                 info.put("crawlerId", "50");
@@ -61,7 +62,7 @@ public class MemDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             }

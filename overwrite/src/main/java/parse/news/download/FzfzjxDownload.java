@@ -39,12 +39,13 @@ public class FzfzjxDownload {
                 info.put("title",document.select("div.caption p").text().trim());
                 Elements element = document.select("div.newstime > dl > dt");
                 if (element.text().contains("纺织服装机械网")){
-                    info.put("time", ForMat.getDatetimeFormat(element.text().split("纺织服装机械网")[0]));
-                    info.put("amountOfReading", element.text().split("纺织服装机械网")[1].replace("点击",""));
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("纺织服装机械网")[0].trim()));
+                    info.put("amountOfReading", element.text().split("纺织服装机械网")[1].replace("点击","").trim());
                 }
                 Elements textInfo = document.select(".newshow_fontshow");
-                info.put("text", textInfo.html());
-                String newsId = NewsMd5.newsMd5(textInfo.text());
+                info.put("text", textInfo.text().trim());
+                info.put("html", textInfo.html());
+                String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                 info.put("newsId",newsId);
                 info.put("source",textInfo.select("p.ly").text().replace("来源：","").replace("(","").replace(")",""));
                 info.put("url", url);
@@ -58,7 +59,7 @@ public class FzfzjxDownload {
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
 
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

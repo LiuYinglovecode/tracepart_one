@@ -15,4 +15,13 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.0'
     compile group: 'org.apache.commons', name: 'commons-csv', version: '1.5'
     compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+
+    // https://mvnrepository.com/artifact/net.sourceforge.jchardet/jchardet
+    compile group: 'net.sourceforge.jchardet', name: 'jchardet', version: '1.0'
+    // https://mvnrepository.com/artifact/antlr/antlr
+    compile group: 'antlr', name: 'antlr', version: '2.7.7'
+    // https://mvnrepository.com/artifact/cpdetector/cpdetector
+    compile group: 'cpdetector', name: 'cpdetector', version: '1.0.7'
+
+
 }

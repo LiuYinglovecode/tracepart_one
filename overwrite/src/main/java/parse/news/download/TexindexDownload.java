@@ -41,14 +41,15 @@ public class TexindexDownload {
         newsInfo.put("url", url);
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "texindex");
-            Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+            Document document = Jsoup.parse(html);
             String title = document.select("td.RightItemBody div h1").text().trim();
             newsInfo.put("title", title);
             Elements select = document.select("td.RightItemBody div.000000A");
-            newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("/ ")[1].split(" ")[0]));
-            newsInfo.put("source", select.text().split("/ ")[1].split(" ")[2]);
+            newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("/ ")[1].split(" ")[0].trim()));
+            newsInfo.put("source", select.text().split("/ ")[1].split(" ")[2].trim());
             Elements text = document.select("div#zoom");
-            newsInfo.put("text", text.html());
+            newsInfo.put("text", text.text().trim());
+            newsInfo.put("html", text.html());
             String newsId = NewsMd5.newsMd5(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = document.select("div#zoom p img");
@@ -83,7 +84,7 @@ public class TexindexDownload {
 //            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                RedisUtil.insertUrlToSet("catchedUrl", url);
 //            }
-            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+            if (mysqlUtil.insertNews(newsInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

@@ -39,17 +39,18 @@ public class FamensDownload {
                 Elements select1 = document.select("div.info span");
                 for (Element element : select1) {
                     if (element.text().contains("作者：")){
-                        info.put("author",element.text().replace("作者：",""));
+                        info.put("author",element.text().replace("作者：","").trim());
                     } else  if (element.text().contains("年")){
                         info.put("time", ForMat.getDatetimeFormat(element.text().trim()));
                     } else  if (element.text().contains("来源：")){
-                        info.put("source",element.text().trim().replace("来源：",""));
+                        info.put("source",element.text().replace("来源：","").trim());
                     }
                 }
 
 
                 Elements text = document.select("div#FrameContent");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements img = text.select("div#FrameContent p font img");
@@ -75,7 +76,7 @@ public class FamensDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

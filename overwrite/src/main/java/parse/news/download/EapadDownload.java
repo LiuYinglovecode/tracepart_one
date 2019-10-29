@@ -39,16 +39,16 @@ public class EapadDownload {
                 Elements element = document.select("div.time");
                 element.select("a").remove();
                 if (element.text().contains("来源：")) {
-                    info.put("author", element.text().split("作者：")[1].replace("分享到：", "").replace("明星编辑：",""));
-                    info.put("source", element.text().split("作者：")[0].split("来源：")[1]);
-                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0]));
+                    info.put("author", element.text().split("作者：")[1].replace("分享到：", "").replace("明星编辑：","").trim());
+                    info.put("source", element.text().split("作者：")[0].split("来源：")[1].trim());
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0].trim()));
                 }else {
-                    info.put("time", ForMat.getDatetimeFormat(element.text().replace("分享到：", "")));
+                    info.put("time", ForMat.getDatetimeFormat(element.text().replace("分享到：", "").trim()));
 
                 }
                 Elements textInfo = document.select("#div1");
-                String text = textInfo.html();
-                info.put("text", text);
+                info.put("html", textInfo.html());
+                info.put("text", textInfo.text().trim());
                 String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
@@ -72,7 +72,7 @@ public class EapadDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

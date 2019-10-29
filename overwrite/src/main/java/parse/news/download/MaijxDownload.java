@@ -43,8 +43,9 @@ public class MaijxDownload {
                 select.select("p").remove();
                 info.put("title",select.text().trim());
                 Elements select2 = document.select("div#hyzx-p-right div.main");
-                info.put("text", select2.html());
-                String newsId = MD5Util.getMD5String(select2.text());
+                info.put("text", select2.text().trim());
+                info.put("html", select2.html());
+                String newsId = MD5Util.getMD5String(select2.text().trim());
                 info.put("newsId",newsId);
                 String regEx = "责任编辑：[\u4e00-\u9fa5]*";
                 Pattern pattern = Pattern.compile(regEx);
@@ -72,7 +73,7 @@ public class MaijxDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

@@ -38,12 +38,13 @@ public class JdzjDownload {
                 info.put("title", title);
                 Elements select = parse.select("div.midbox1 > p");
                 if (select.text().contains("来源:")) {
-                    info.put("time", ForMat.getDatetimeFormat(select.text().split("来源")[0].replace("发布日期", "")));
-                    info.put("source", select.text().split("来源")[1].split(":")[1]);
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("来源")[0].replace("发布日期", "").trim()));
+                    info.put("source", select.text().split("来源")[1].split(":")[1].trim());
                 }
                 Elements text = parse.select("div.midboxcont");
-                info.put("text", text.html());
-                String newsId = NewsMd5.newsMd5(text.text());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
+                String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newId", newsId);
                 Elements images = parse.select("div.midboxcont p img");
                 for (Element image : images) {
@@ -66,7 +67,7 @@ public class JdzjDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

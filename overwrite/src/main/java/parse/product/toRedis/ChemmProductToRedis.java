@@ -19,7 +19,7 @@ public class ChemmProductToRedis {
     public void productPage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "chemm");
-            Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+            Document parse = Jsoup.parse(html);
             Elements select = parse.select("a.dLinkFont");
             for (Element e : select) {
                 String href = baseUrl + e.attr("href");
@@ -34,7 +34,7 @@ public class ChemmProductToRedis {
     private void productList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "chemm");
-            Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+            Document parse = Jsoup.parse(html);
             Elements select = parse.select("li.ProListMainTitle span a.bBoldLinkFont");
             for (Element e : select) {
                 String href = baseUrl + e.attr("href");

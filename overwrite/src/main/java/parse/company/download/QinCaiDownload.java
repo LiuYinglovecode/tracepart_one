@@ -116,7 +116,7 @@ public class QinCaiDownload {
             companyInfo.put("id",id);
 
 
-            companyInfo.put("url", url);//链接地址
+            companyInfo.put("website", url);//链接地址
             companyInfo.put("crawlerId", "115");
             companyInfo.put("createTime", creatrTime.format(new Date()));
             companyInfo.put("timestamp", timestamp.format(new Date()));

@@ -37,7 +37,7 @@ public class ItDownload {
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select("header.entry-header > h1").text().trim());
-                info.put("time", ForMat.getDatetimeFormat(document.select("li.post-time > time").text()));
+                info.put("time", ForMat.getDatetimeFormat(document.select("li.post-time > time").text().trim()));
 
                 /**
                  * 新闻内容：
@@ -48,7 +48,8 @@ public class ItDownload {
                 text.select("div#wp_rp_first").remove();
                 text.select("script").remove();
                 text.select("p script").remove();
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 Elements imgList = text.select("p img");
                 if (imgList.size() != 0) {
@@ -68,7 +69,7 @@ public class ItDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

@@ -43,7 +43,7 @@ public class SouthMoneyToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(href, "southmoney");
             Thread.sleep(SleepUtils.sleepMin());
-            Document document = Jsoup.parse(new URL(href).openStream(), "GBK", html);
+            Document document = Jsoup.parse(html);
             String pageCount = document.select("span.pageinfo")
                     .text()
                     .split("页")[0]

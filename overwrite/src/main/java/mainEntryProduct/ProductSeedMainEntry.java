@@ -83,6 +83,9 @@ public class ProductSeedMainEntry {
                 }else if (taskName.contains("chanpin.gongchang.com")) {
                     GongChangToRedis gongChangToRedis = new GongChangToRedis();
                     gongChangToRedis.productPage(taskName);
+                }else if (taskName.contains("www.jdzj.com/chanpin.html")) {
+                    JdzjProductToRedis jdzjProductToRedis = new JdzjProductToRedis();
+                    jdzjProductToRedis.productPage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

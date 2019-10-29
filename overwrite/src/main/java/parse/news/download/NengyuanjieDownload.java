@@ -41,9 +41,9 @@ public class NengyuanjieDownload {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("h1.art-title").text().trim());//标题
                 String select = document.select("span.desc.mt15").text();
-                newsInfo.put("time", ForMat.getDatetimeFormat(select.split("来源：")[0]));
-                newsInfo.put("source", select.split("来源：")[1].split("浏览：")[0]);
-                newsInfo.put("amountOfReading", select.split("浏览：")[1]);
+                newsInfo.put("time", ForMat.getDatetimeFormat(select.split("来源：")[0].trim()));
+                newsInfo.put("source", select.split("来源：")[1].split("浏览：")[0].trim());
+                newsInfo.put("amountOfReading", select.split("浏览：")[1].trim());
 
                 Elements img = document.select("div.content p img");
                 if (img.size() != 0) {
@@ -54,7 +54,8 @@ public class NengyuanjieDownload {
                 }
                 Elements text = document.select("div.content");//新闻内容
                 if (text.size() != 0) {
-                    newsInfo.put("text", text.html());
+                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("html", text.html());
                     String newsId = NewsMd5.newsMd5(text.text().trim());
                     newsInfo.put("newsId", newsId);
 
@@ -68,7 +69,7 @@ public class NengyuanjieDownload {
 //                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+                    if (mysqlUtil.insertNews(newsInfo)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

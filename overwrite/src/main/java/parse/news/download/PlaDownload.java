@@ -43,7 +43,7 @@ public class PlaDownload {
                 Document parse = Jsoup.parse(html);
                 //标题
                 String title = parse.select("div.title h2").text();
-                info.put("title", title);
+                info.put("title", title.trim());
                 Elements time = parse.select("div.meta > span");
                 //发布时间及来源
                 for (Element element : time) {
@@ -65,8 +65,8 @@ public class PlaDownload {
                 //正文
                 Elements text = parse.select("div.content");
                 if (text.size() != 0) {
-                    String trim = text.html();
-                    info.put("text", trim);
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
                     String newsId = NewsMd5.newsMd5(text.text().trim());
                     info.put("newsId", newsId);
                     info.put("crawlerId", "68");
@@ -79,7 +79,7 @@ public class PlaDownload {
 //                    if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                    if (mysqlUtil.insertNews(info)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

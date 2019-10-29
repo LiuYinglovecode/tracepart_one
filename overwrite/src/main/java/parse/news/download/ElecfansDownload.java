@@ -40,7 +40,8 @@ public class ElecfansDownload {
                 info.put("amountOfReading",document.select("div.article-info.art-share-layout.m-share-layout.clearfix span.count span.art_click_count").text().trim());
                 Elements text = document.select("div.article-content.simditor.clearfix div.simditor-body.clearfix");
                 text.select("span.count span.art_click_count").remove();
-                info.put("text",text.html());
+                info.put("text",text.text().trim());
+                info.put("html",text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);;
                 Elements imgList = text.select("div.simditor-body.clearfix p img");
@@ -61,7 +62,7 @@ public class ElecfansDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

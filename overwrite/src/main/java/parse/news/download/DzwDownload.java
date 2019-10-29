@@ -36,16 +36,17 @@ public class DzwDownload {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 info.put("url", url);
-                Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+                Document parse = Jsoup.parse(html);
                 String title = parse.select("#TechDetail > h1").text().trim();
                 info.put("title", title);
                 Elements select = parse.select("#TechDetail > p");
                 if (select.text().contains("访问次数")) {
-                    info.put("time", ForMat.getDatetimeFormat(select.text().split("访问次数")[0].replace("发布时间:", "")));
-                    info.put("amountOfReading", select.text().split("访问")[1].split(":")[1]);
+                    info.put("time", ForMat.getDatetimeFormat(select.text().split("访问次数")[0].replace("发布时间:", "").trim()));
+                    info.put("amountOfReading", select.text().split("访问")[1].split(":")[1].trim());
                 }
                 Elements text = parse.select("#NewsCont");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = parse.select("#NewsCont > p > img");
@@ -70,7 +71,7 @@ public class DzwDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

@@ -83,7 +83,7 @@ public class Net114Download {
                     companyInfo.put("id", companyId);
 
 
-                    companyInfo.put("url", url);//链接地址
+                    companyInfo.put("website", url);//链接地址
                     companyInfo.put("crawlerId", "9");
                     companyInfo.put("createTime", creatrTime.format(new Date()));
                     companyInfo.put("timestamp", timestamp.format(new Date()));

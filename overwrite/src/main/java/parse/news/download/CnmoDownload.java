@@ -50,10 +50,12 @@ public class CnmoDownload {
             if (text!=null) {
                 text.select("p.copyright").remove();
                 if (text.text().contains("】")){
-                    newsInfo.put("text", text.html());
+                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("html", text.html());
                     newsId = MD5Util.getMD5String(text.text().trim());
                 }else {
-                    newsInfo.put("text", text.html());
+                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("html", text.html());
                     newsId = MD5Util.getMD5String(text.text().trim());
                 }
                 newsInfo.put("newsId", newsId);
@@ -75,7 +77,7 @@ public class CnmoDownload {
 //            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)) {
 //                RedisUtil.insertUrlToSet("catchedUrl", url);
 //            }
-            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+            if (mysqlUtil.insertNews(newsInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

@@ -53,7 +53,7 @@ public class QlmoneyDownload {
                         if (element.text().replace("作者：","").equals("")){
                             info.put("author",document.select("div.main_box.f_r.content_editor > span")
                                     .text()
-                                    .replace("责任编辑：",""));
+                                    .replace("责任编辑：","").trim());
                         }else {
                             info.put("author", element.text().replace("作者：","").trim());
                         }
@@ -67,7 +67,8 @@ public class QlmoneyDownload {
                  */
                 Elements text = document.select("div.main_box.descripition,div.main_box.content_show");
                 if (!text.isEmpty()) {
-                    info.put("text", text.html());
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
                     info.put("newsId", newsId);
                     /**
@@ -93,7 +94,7 @@ public class QlmoneyDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+                    if (mysqlUtil.insertNews(info)) {
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 } else {

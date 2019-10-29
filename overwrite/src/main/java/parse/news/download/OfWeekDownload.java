@@ -53,7 +53,8 @@ public class OfWeekDownload {
                 if (text.text().contains("＞＞＞点击投票＜＜＜")){
                     text.select("p").last().remove();
                 }
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 String regEx = "来源：[\u4e00-\u9fa5]*";
@@ -84,7 +85,7 @@ public class OfWeekDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-            if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+            if (mysqlUtil.insertNews(info)) {
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

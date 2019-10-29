@@ -16,7 +16,7 @@ public class NewsMd5 {
     public static String newsMd5(String text) {
         try {
             if (null != text) {
-                String str = text.replaceAll("[\\pP\\pZ\\pS\\pM\\pC]", "");
+                String str = text.replaceAll("[\\pP\\pZ\\pS\\pM\\pC]", "").replaceAll(" ","");
                 if (str.length() > 200) {
                     return MD5Util.getMD5String(str.substring(0, 100) + str.substring(str.length() - 100, str.length()));
                 } else {

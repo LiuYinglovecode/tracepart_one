@@ -40,19 +40,20 @@ public class ChinahightechDownload {
                 newsInfo.put("time", ForMat.getDatetimeFormat(document.select("div.addtime").text().trim()));//发布时间
                 Elements source = document.select("div.source");
                 if (source.text().contains("作者：")) {
-                    newsInfo.put("source", source.text().split("作者：")[0].split("：")[1]);//来源
+                    newsInfo.put("source", source.text().split("作者：")[0].split("：")[1].trim());//来源
                 } else {
-                    newsInfo.put("source", source.text().split("评论：")[0].split("：")[1]);//来源
+                    newsInfo.put("source", source.text().split("评论：")[0].split("：")[1].trim());//来源
                 }
                 Elements author = document.select("div.source");
                 if (author.text().contains("作者：")) {
-                    newsInfo.put("author", author.text().split("作者：")[1].split("评论：")[0]);//作者
+                    newsInfo.put("author", author.text().split("作者：")[1].split("评论：")[0].trim());//作者
                 } else {
-                    newsInfo.put("author", document.select("div.content p").last().text().split("：")[1].replace(")", ""));//作者
+                    newsInfo.put("author", document.select("div.content p").last().text().split("：")[1].replace(")", "").trim());//作者
                 }
                 Elements text = document.select("div.content");
                 String newsId = NewsMd5.newsMd5(text.text().trim());
-                newsInfo.put("text", text.html());//新闻内容
+                newsInfo.put("html", text.html());//新闻内容
+                newsInfo.put("text", text.text().trim());//新闻内容
                 newsInfo.put("newsId", newsId);
                 Elements img = document.select("div.content p img");
                 if (img.size() != 0) {
@@ -72,9 +73,13 @@ public class ChinahightechDownload {
 //                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertNews(newsInfo)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
+
             } else {
                 LOGGER.info("页面不存在");
             }

@@ -79,6 +79,9 @@ public class ProductDownloadMainEntry {
                 }else if (taskName.contains("https://chanpin.gongchang.com")) {
                     GongChangDownload GongChangDownload = new GongChangDownload();
                     GongChangDownload.productInfo(taskName);
+                }else if (taskName.contains("www.jdzj.com/chanpin")) {
+                    JdzjProductDownload jdzjProductToRedis = new JdzjProductDownload();
+                    jdzjProductToRedis.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

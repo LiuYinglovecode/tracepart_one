@@ -34,12 +34,12 @@ public class MachineDownload {
         try {
             String get = HttpUtil.httpGetwithJudgeWord(url, "news");
             if (get != null) {
-                Document gbk = Jsoup.parse(new URL(url).openStream(), "GBK", get);
+                Document gbk = Jsoup.parse(get);
                 Elements plate = gbk.select("span:nth-child(3)");
                 if (plate.size() == 0) {
                     newsInfo.put("plate", gbk.select("body > div.yrhere > a:nth-child(2)").text().trim());
                 } else {
-                    newsInfo.put("plate", plate.text());
+                    newsInfo.put("plate", plate.text().trim());
 
                 }
 
@@ -47,18 +47,19 @@ public class MachineDownload {
                 if (title.size() == 0) {
                     newsInfo.put("title", gbk.select("div.left > div > h1").text().trim());
                 } else {
-                    newsInfo.put("title", title.text());
+                    newsInfo.put("title", title.text().trim());
                 }
 
                 Elements time = gbk.select("div.newliIn_Sti");
                 if (time.size() == 0) {
-                    newsInfo.put("time", ForMat.getDatetimeFormat(gbk.select("div.box1 > h4").text().trim().split("：", 2)[1]));
+                    newsInfo.put("time", ForMat.getDatetimeFormat(gbk.select("div.box1 > h4").text().split("：", 2)[1].trim()));
                 } else {
                     newsInfo.put("time", ForMat.getDatetimeFormat(time.text().trim()));
                 }
                 Elements trim = gbk.select("#ArticleCnt");
                 trim.select("img").remove();
-                newsInfo.put("text", trim.html());
+                newsInfo.put("text", trim.text().trim());
+                newsInfo.put("html", trim.html());
                 String newsId = NewsMd5.newsMd5(trim.text().trim());
                 newsInfo.put("newsId", newsId);
                 String text = gbk.select("#ArticleCnt").text();
@@ -80,7 +81,7 @@ public class MachineDownload {
 //                if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(newsInfo)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

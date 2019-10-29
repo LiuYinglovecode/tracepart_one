@@ -49,19 +49,23 @@ public class LedinsideDownload {
                 /**
                  * 文本信息
                  */
-                Elements text = document.select("#squeeze > div > div.node_body.clear-block");
-                if (!text.isEmpty()) {
-                    String trim = text.html().replace("如需转载，需本网站E-Mail授权。并注明\"来源于LEDinside\"，未经授权转载、断章转载等行为，本网站将追究法律责任！E-Mail:service@ledinside.com", "")
+                Elements t = document.select("#squeeze > div > div.node_body.clear-block");
+                if (!t.isEmpty()) {
+                    String html1 = t.html().replace("如需转载，需本网站E-Mail授权。并注明\"来源于LEDinside\"，未经授权转载、断章转载等行为，本网站将追究法律责任！E-Mail:service@ledinside.com", "")
                             .replace("如需获取更多资讯，请关注LEDinside官网（www.ledinside.cn）或搜索微信公众账号（LEDinside）。", "")
                             .trim();
-                    info.put("text", trim);
-                    newsId = NewsMd5.newsMd5(text.html().replace(" ", "").trim());
+                    info.put("html", html1);
+                    String text = t.text().replace("如需转载，需本网站E-Mail授权。并注明\"来源于LEDinside\"，未经授权转载、断章转载等行为，本网站将追究法律责任！E-Mail:service@ledinside.com", "")
+                            .replace("如需获取更多资讯，请关注LEDinside官网（www.ledinside.cn）或搜索微信公众账号（LEDinside）。", "")
+                            .trim();
+                    info.put("text", text);
+                    newsId = NewsMd5.newsMd5(text.replace(" ", "").trim());
                     info.put("newsId", newsId);
 
                     /**
                      * 图片
                      */
-                    Elements imgList = text.select("p > img");
+                    Elements imgList = t.select("p > img");
                     if (!imgList.isEmpty()) {
                         for (Element e : imgList) {
                             if (!e.attr("src").contains("https")) {
@@ -85,7 +89,7 @@ public class LedinsideDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+                    if (mysqlUtil.insertNews(info)) {
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 } else {

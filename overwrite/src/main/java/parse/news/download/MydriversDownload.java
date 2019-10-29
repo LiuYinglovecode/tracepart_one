@@ -38,18 +38,19 @@ public class MydriversDownload {
             if (select.text().contains("出处：") && select.text().contains("作者：")
                     && select.text().contains("编辑：") && select.text().contains("人气：")) {
                 newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("出处：")[0].trim()));
-                newsInfo.put("source", select.text().split("出处：")[1].split("作者：")[0]);
-                newsInfo.put("author", select.text().split("作者：")[1].split("编辑：")[0]);
+                newsInfo.put("source", select.text().split("出处：")[1].split("作者：")[0].trim());
+                newsInfo.put("author", select.text().split("作者：")[1].split("编辑：")[0].trim());
             }
             Elements amountOfReading = document.select("#Hits > font");
             if (amountOfReading.size()!=0) {
-                newsInfo.put("amountOfReading",amountOfReading.text());
+                newsInfo.put("amountOfReading",amountOfReading.text().trim());
             }
 
             Elements text = document.select("div.news_info");
             text.select("div").remove();
             text.select("script").remove();
-            newsInfo.put("text", text.html());
+            newsInfo.put("text", text.text().trim());
+            newsInfo.put("html", text.html());
             String newsId = MD5Util.getMD5String(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = text.select("img");
@@ -69,7 +70,7 @@ public class MydriversDownload {
 //            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", md5String)) {
 //                RedisUtil.insertUrlToSet("catchedUrl", url);
 //            }
-            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+            if (mysqlUtil.insertNews(newsInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

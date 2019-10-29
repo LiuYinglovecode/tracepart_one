@@ -67,12 +67,13 @@ public class ChemNetDownload {
                     Pattern compile = Pattern.compile(re);
                     Matcher matcher = compile.matcher(s);
                     String source = matcher.replaceAll("").trim();
-                    info.put("source",source);
+                    info.put("source",source.trim());
                     info.put("time", ForMat.getDatetimeFormat(s.replace(source,"").trim()));
                 }
 
                 Elements text = parse.select("div.detail-text.line25.font14px > div");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = text.select("img,p > img");
@@ -95,7 +96,10 @@ public class ChemNetDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+//                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertCompany(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

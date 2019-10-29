@@ -36,17 +36,17 @@ public class CinnDownload {
                 Document document = Jsoup.parse(html);
                 String plate = document.select(".index a:last-child").text().trim();
                 info.put("url", url);
-                info.put("plate", plate);
+                info.put("plate", plate.trim());
                 String title = document.select(".detail_title").text().trim();
                 info.put("title", title);
                 Elements source_time_list = document.select(".detail_abs.bdsharebuttonbox span");
                 for (Element e : source_time_list) {
                     if (e.text().contains("文章来源")) {
-                        String source = e.text().trim().split("文章来源 :", 2)[1];
+                        String source = e.text().split("文章来源 :", 2)[1].trim();
                         info.put("source", source);
                     }
                     if (e.text().contains("发布时间")) {
-                        String time = e.text().trim().split("发布时间 ：", 2)[1];
+                        String time = e.text().split("发布时间 ：", 2)[1].trim();
                         info.put("time", ForMat.getDatetimeFormat(time));
                     }
                 }
@@ -75,7 +75,7 @@ public class CinnDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

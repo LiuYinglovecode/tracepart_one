@@ -72,6 +72,9 @@ public class CompanyDownloadMainEntry {
                 }else if (taskName.contains("qincai.net")) {
                     QinCaiDownload qinCaiDownload = new QinCaiDownload();
                     qinCaiDownload.companyInfo(taskName);
+                }else if (taskName.contains("jdzj.com")) {
+                    JdzjDownload jdzjDownload = new JdzjDownload();
+                    jdzjDownload.companyInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

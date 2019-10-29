@@ -39,15 +39,16 @@ public class GbsDownload {
                 Elements select = document.select("div.det_nr_time > p");
                 for (Element element : select) {
                     if (element.text().contains("发布：")) {
-                        info.put("time", ForMat.getDatetimeFormat(element.text().replace("发布：", "")));
+                        info.put("time", ForMat.getDatetimeFormat(element.text().replace("发布：", "").trim()));
                     } else if (element.text().contains("作者：")) {
-                        info.put("author", element.text().replace("作者：", ""));
+                        info.put("author", element.text().replace("作者：", "").trim());
                     } else if (element.text().contains("来源：")) {
-                        info.put("source", element.text().replace("来源：", ""));
+                        info.put("source", element.text().replace("来源：", "").trim());
                     }
                 }
                 Elements text = document.select("div.det_nr_p");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select("div.det_nr_p > p > img");
@@ -75,7 +76,7 @@ public class GbsDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

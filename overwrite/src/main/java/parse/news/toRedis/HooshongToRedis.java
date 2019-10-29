@@ -20,7 +20,7 @@ public class HooshongToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "hooshong");
             if (null != html) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.box_body > table > tbody > tr > td > a");
                 for (Element element : categoryList) {
                     if (element.text().contains("业界动态")||element.text().contains("分析预测")||element.text().contains("技术动态")||
@@ -67,7 +67,7 @@ public class HooshongToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "hooshong");
             if (html != null) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(html);
                 Elements newsListInfo = document.select("li.catlist_li > a");
                 for (Element e : newsListInfo) {
                     String href = e.attr("href");

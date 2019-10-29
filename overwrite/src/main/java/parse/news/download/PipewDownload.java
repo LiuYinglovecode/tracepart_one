@@ -51,7 +51,8 @@ public class PipewDownload {
 
 
             Elements text = document.select("#zoom");
-            info.put("text", text.html());
+            info.put("text", text.text().trim());
+            info.put("html", text.html());
             String newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
             info.put("newsId", newsId);
             Elements imgList = document.select("p > img");
@@ -72,7 +73,7 @@ public class PipewDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-            if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+            if (mysqlUtil.insertNews(info)) {
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

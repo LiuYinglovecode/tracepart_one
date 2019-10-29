@@ -57,7 +57,7 @@ public class IyiouDownload {
                     String trim = time.text().trim();
                     if (trim.contains(" · ")) {
                         String replace = trim.replace(" · ", "");
-                        info.put("time", ForMat.getDatetimeFormat(replace));
+                        info.put("time", ForMat.getDatetimeFormat(replace.trim()));
                     } else if (trim.contains("分钟前") && trim.contains("小时前")) {
                         info.put("time", ForMat.getDatetimeFormat(format.format(date)));
                     }
@@ -68,7 +68,8 @@ public class IyiouDownload {
                  */
                 Elements text = document.select("#post_brief,#post_thumbnail,#post_description");
                 if (!text.isEmpty()) {
-                    info.put("text", text.html());
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
                     info.put("newsId", newsId);
 
@@ -98,7 +99,7 @@ public class IyiouDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+                    if (mysqlUtil.insertNews(info)) {
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 } else {

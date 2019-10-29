@@ -34,17 +34,18 @@ public class HooshongDownload {
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                Document document = Jsoup.parse(new URL(url).openStream(), "UTF-8", html);
+                Document document = Jsoup.parse(html);
                 info.put("title", document.select("h1.title").text().trim());
                 String select = document.select("div.info").text();
                 if (select.contains("发布日期：") && select.contains("浏览次数：") && select.contains("来源：")) {
-                    info.put("time", ForMat.getDatetimeFormat(select.split("浏览次数：")[0].replace("发布日期：", "")));
-                    info.put("source", select.split("来源：")[1]);
-                    info.put("amountOfReading", select.split("浏览次数：")[1].split("来源：")[0]);
+                    info.put("time", ForMat.getDatetimeFormat(select.split("浏览次数：")[0].replace("发布日期：", "").trim()));
+                    info.put("source", select.split("来源：")[1].trim());
+                    info.put("amountOfReading", select.split("浏览次数：")[1].split("来源：")[0].trim());
                 }
                 Elements text = document.select("#article");
                 if (text.size() != 0) {
-                    info.put("text", text.html());
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
                     String newsId = NewsMd5.newsMd5(text.text().trim());
                     info.put("newsId", newsId);
                     Elements imgList = text.select("p > img");
@@ -71,7 +72,7 @@ public class HooshongDownload {
 //                    if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                    if (mysqlUtil.insertNews(info)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

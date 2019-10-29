@@ -41,14 +41,14 @@ public class CndianjiDownload {
                     info.put("title", document.select("div.nileft_tbox.mb15 > h1").text().trim());
                 }
                 Elements timeSource = document.select(".n_source");
-                info.put("amountOfReading",timeSource.select("#click").text().replace("浏览次数：",""));
+                info.put("amountOfReading",timeSource.select("#click").text().replace("浏览次数：","").trim());
                 timeSource.select("#click").remove();
-                info.put("time", ForMat.getDatetimeFormat(timeSource.text().replace("文章来源：","")));
+                info.put("time", ForMat.getDatetimeFormat(timeSource.text().replace("文章来源：","").trim()));
                 info.put("source",timeSource.text().replace("上传时间：",""));
 
                 Elements textInfo = document.select("div.news_info02");
-                String text = textInfo.html();
-                info.put("text", text);
+                info.put("text", textInfo.text().trim());
+                info.put("html", textInfo.html());
                 String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
@@ -68,7 +68,7 @@ public class CndianjiDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

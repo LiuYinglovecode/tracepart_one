@@ -41,18 +41,19 @@ public class Ic37Download {
                 Elements element = document.select(".newstitle > span");
                 if (element.text().contains("资讯类别")) {
                     //时间：2019-8-2， 来源：互联网， 资讯类别：行业统计
-                    info.put("plate", element.text().split("资讯类别：")[1]);
-                    info.put("source", element.text().split("资讯类别：")[0].split("来源：")[1].replace("，",""));
-                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0].replace("时间：","").replace("，","")));
+                    info.put("plate", element.text().split("资讯类别：")[1].trim());
+                    info.put("source", element.text().split("资讯类别：")[0].split("来源：")[1].replace("，","").trim());
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0].replace("时间：","").replace("，","").trim()));
                 }else if (element.text().contains("文章类别：")) {
                     //时间：2008-12-11， 来源：互联网， 文章类别：单片机/DSP
-                    info.put("plate", element.text().split("文章类别：")[1]);
-                    info.put("source", element.text().split("文章类别：")[0].split("来源：")[1].replace("，",""));
-                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0].replace("时间：","").replace("，","")));
+                    info.put("plate", element.text().split("文章类别：")[1].trim());
+                    info.put("source", element.text().split("文章类别：")[0].split("来源：")[1].replace("，","").trim());
+                    info.put("time", ForMat.getDatetimeFormat(element.text().split("来源：")[0].replace("时间：","").replace("，","").trim()));
                 }
                 Elements textInfo = document.select(".contentlist2,.contentlist");
-                info.put("text", textInfo.html());
-                String newsId = NewsMd5.newsMd5(textInfo.text());
+                info.put("text", textInfo.text().trim());
+                info.put("html", textInfo.html());
+                String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                 info.put("newsId",newsId);
                 Elements imgs = textInfo.select("p img");
                 if (imgs.size() != 0) {
@@ -75,7 +76,7 @@ public class Ic37Download {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

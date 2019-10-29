@@ -36,9 +36,9 @@ public class TechwebDownload {
                 JSONArray imgs = new JSONArray();
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select("div.main_c > h1").text().trim());
-                info.put("source", document.select("div.infos > span.from").text().trim().replace("来源: ", ""));
-                info.put("time", ForMat.getDatetimeFormat(document.select("div.infos > span.time").text()));
-                info.put("author ", document.select("div.infos > span.author").text().trim().replace("作者:", ""));
+                info.put("source", document.select("div.infos > span.from").text().trim().replace("来源: ", "").trim());
+                info.put("time", ForMat.getDatetimeFormat(document.select("div.infos > span.time").text().trim()));
+                info.put("author ", document.select("div.infos > span.author").text().trim().replace("作者:", "").trim());
 
                 /**
                  * 新闻内容：
@@ -48,7 +48,8 @@ public class TechwebDownload {
                 String newsId = null;
                 Elements text = document.select("#content");
                 text.select("div").remove();
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 newsId = NewsMd5.newsMd5(text.text().trim());
 
                 Elements imgList = text.select("p img");
@@ -70,7 +71,7 @@ public class TechwebDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)) {
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

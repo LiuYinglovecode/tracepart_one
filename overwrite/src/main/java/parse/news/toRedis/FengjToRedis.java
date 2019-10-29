@@ -18,7 +18,7 @@ public class FengjToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "fengj");
             if (null != html) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+                Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.ltit > a");
                 for (Element e : categoryList) {
                     String href = e.attr("href");
@@ -38,7 +38,7 @@ public class FengjToRedis {
         try {
             String replace = url.replace("1.html", "");
             String html = HttpUtil.httpGetwithJudgeWord(url, "fengj");
-            Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+            Document parse = Jsoup.parse(html);
             String pagesNumber = parse.select("span.xxts").text();//获取总条数
             int ceil = (int) Math.ceil(Double.parseDouble(pagesNumber) / 10);//获取总页数
             int number = 1;

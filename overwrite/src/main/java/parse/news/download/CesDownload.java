@@ -42,16 +42,17 @@ public class CesDownload {
                 if (select.size() != 0) {
                     for (Element element : select) {
                         if (element.text().contains("来源")) {
-                            newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源")[0]));
-                            newsInfo.put("plate", select.text().split("：")[1].replace("0 0", ""));
+                            newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源")[0].trim()));
+                            newsInfo.put("plate", select.text().split("：")[1].replace("0 0", "").trim());
                         }
                     }
                 }
 
                 Elements text = document.select("#article.content");//新闻内容
                 if (text.size() != 0) {
-                    newsInfo.put("text", text.html());
-                    String newsId = NewsMd5.newsMd5(text.text());
+                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("html", text.html());
+                    String newsId = NewsMd5.newsMd5(text.text().trim());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("div img");
                     if (img.size() != 0) {
@@ -71,7 +72,10 @@ public class CesDownload {
 //                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                        RedisUtil.insertUrlToSet("catchedUrl", url);
+//                    }
+                    if (mysqlUtil.insertCompany(newsInfo)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

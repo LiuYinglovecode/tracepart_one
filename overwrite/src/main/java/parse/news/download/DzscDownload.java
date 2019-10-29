@@ -42,7 +42,8 @@ public class DzscDownload {
                     info.put("plate",select.split("类别：")[1].split("发布于：")[0].trim());
                 }
                 Elements text = parse.select("div.info-details-content");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = parse.select("#NewsCont > p > img");
@@ -65,7 +66,7 @@ public class DzscDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

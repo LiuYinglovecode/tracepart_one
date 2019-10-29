@@ -42,11 +42,12 @@ public class JiancaiDownload {
 
                 Elements select = parse.select(".ArtFrom,div.midbox1 > p");
                 if (!select.isEmpty()){
-                    info.put("time", ForMat.getDatetimeFormat(select.text().replace("时间：", "").split("来源：")[0]));
-                    info.put("source", select.text().split("来源：")[1]);
+                    info.put("time", ForMat.getDatetimeFormat(select.text().replace("时间：", "").split("来源：")[0].trim()));
+                    info.put("source", select.text().split("来源：")[1].trim());
                 }
                 Elements text = parse.select("div.midboxcont");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements images = parse.select("div.newsContent p img");
@@ -66,7 +67,7 @@ public class JiancaiDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

@@ -33,8 +33,7 @@ public class ChemmProductDownload {
         ArrayList<String> list = new ArrayList<>();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "chemm");
-            Document parse = Jsoup.parse(new URL(url).openStream(), "GBK", html);
-            String product_desc = parse.select("#MaininfoContent").text().trim();
+            Document parse = Jsoup.parse(html);
             productInfo.put("product_desc", parse.select("#MaininfoContent").text().trim());
 //            productInfo.put("productId", NewsMd5.newsMd5(product_desc));
             Elements select = parse.select("#ProductInfoList ul li");

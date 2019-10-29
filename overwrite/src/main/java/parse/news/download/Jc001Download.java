@@ -56,7 +56,8 @@ public class Jc001Download {
                  */
                 Elements text = document.select("#mainCnt");
                 if (!text.isEmpty()) {
-                    info.put("text", text.html());
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
                     info.put("newsId", newsId);
 
@@ -87,7 +88,7 @@ public class Jc001Download {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+                    if (mysqlUtil.insertNews(info)) {
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 } else {

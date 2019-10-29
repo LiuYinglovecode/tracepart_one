@@ -59,7 +59,8 @@ public class Ca800Download {
 
                 Elements text = document.select("div.newsdetail_con");//新闻内容
                 if (text.size() != 0) {
-                    newsInfo.put("text", text.html());
+                    newsInfo.put("text", text.text().trim());
+                    newsInfo.put("html", text.html());
                     String newsId = NewsMd5.newsMd5(text.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text.select("div > img");
@@ -76,8 +77,11 @@ public class Ca800Download {
                     newsInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
 //                    mysqlUtil.insertNews(newsInfo, "crawler_news", newsId);
 //                    esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId);
-                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
-                        RedisUtil.insertUrlToSet("catchedUrl-Company", url);
+//                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                        RedisUtil.insertUrlToSet("catchedUrl-Company", url);
+//                    }
+                    if (mysqlUtil.insertCompany(newsInfo)){
+                        RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 } else {
                     Elements text1 = document.select("div.newsdetail.border.fl div.detail");//新闻内容
@@ -100,7 +104,10 @@ public class Ca800Download {
 //                    if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                    if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+//                        RedisUtil.insertUrlToSet("catchedUrl", url);
+//                    }
+                    if (mysqlUtil.insertCompany(newsInfo)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

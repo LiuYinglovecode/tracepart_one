@@ -38,18 +38,19 @@ public class PedailyDownload {
             newsInfo.put("title", title);
             Elements author = document.select("div.info > div.box-l > span.author,div.news-show-title > div > span.author");
             if (0 != author.size()) {
-                newsInfo.put("author", author.text());
+                newsInfo.put("author", author.text().trim());
             }
             Elements time = document.select("div.info > div.box-l > span.date,div.news-show-title > div > span.date");
             if (0 != time.size()) {
-                newsInfo.put("time", ForMat.getDatetimeFormat(time.text()));
+                newsInfo.put("time", ForMat.getDatetimeFormat(time.text().trim()));
             }
             Elements source = document.select("div.info > div.box-l > span.source,div.news-show-title > div > span.source");
             if (0 != source.size()) {
-                newsInfo.put("source", source.text());
+                newsInfo.put("source", source.text().trim());
             }
             Elements text = document.select("#news-content");
-            newsInfo.put("text", text.html());
+            newsInfo.put("text", text.text().trim());
+            newsInfo.put("html", text.html());
             String newsId = MD5Util.getMD5String(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements src = text.select("p img");
@@ -70,7 +71,7 @@ public class PedailyDownload {
 //            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", md5String)) {
 //                RedisUtil.insertUrlToSet("catchedUrl", url);
 //            }
-            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+            if (mysqlUtil.insertNews(newsInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
 

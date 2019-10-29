@@ -19,7 +19,7 @@ public class CntmaToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cntma");
             if (null != html) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("td.A1 > a");
                 for (Element e : categoryList) {
                     if (!e.text().contains("资讯首页")&&!e.text().contains("本网")) {
@@ -39,7 +39,7 @@ public class CntmaToRedis {
     private void ping(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cntma");
-            Document doc = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+            Document doc = Jsoup.parse(html);
             String select = doc.select("tr:nth-child(31) > td > table > tbody > tr:nth-child(1) > td")
                     .text().split("共计 ")[1].split(" 个页面")[0];
             if (null!=select) {

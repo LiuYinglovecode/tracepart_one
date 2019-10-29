@@ -36,18 +36,19 @@ public class DdcDownload {
                 info.put("title", document.select("#newsview_title > h1").text().trim());
                 Elements select = document.select("div.liulang.fl");
                 if (select.size() != 0) {
-                    info.put("time", ForMat.getDatetimeFormat(select.select("span").text()));
+                    info.put("time", ForMat.getDatetimeFormat(select.select("span").text().trim()));
                     select.select("span").remove();
                     if (select.text().contains("浏览")) {
-                        info.put("source", select.text().split("浏览")[0].replace("来源:", ""));
-                        info.put("amountOfReading", select.text().split("浏览")[1].replace("次", ""));
+                        info.put("source", select.text().split("浏览")[0].replace("来源:", "").trim());
+                        info.put("amountOfReading", select.text().split("浏览")[1].replace("次", "").trim());
                     }
 
                 }
 
                 Elements text = document.select("div.news_content_view");
                 text.select("div.news_content_view > div.zhaiyao").last().remove();
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select("div.news_content_view > p > span > img");
@@ -69,7 +70,7 @@ public class DdcDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

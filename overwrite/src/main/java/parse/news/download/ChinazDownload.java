@@ -48,7 +48,8 @@ public class ChinazDownload {
                 if (select.select("p").last().previousElementSibling().text().contains("免责声明")) {
                     select.select("p").last().previousElementSibling().remove();
                 }
-                info.put("text",select.html());
+                info.put("text",select.text().trim());
+                info.put("html",select.html());
                 Elements imgList = select.select("p img,p a img");
                 if (0!=imgList.size()) {
                     for (Element img : imgList) {
@@ -69,9 +70,10 @@ public class ChinazDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
+
             } else {
                 LOGGER.info("detail null");
             }

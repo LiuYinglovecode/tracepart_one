@@ -39,7 +39,7 @@ public class SouthMoneyDownload {
             Thread.sleep(SleepUtils.sleepMin());
             if (!html.isEmpty()) {
                 String newsId = null;
-                Document document = Jsoup.parse(new URL(url).openStream(), "gb2312", html);
+                Document document = Jsoup.parse(html);
                 info.put("title", document.select("h1.artTitle").text().trim());
                 String plate = document.select("p.artDate").text();
                 if (!plate.isEmpty()){
@@ -48,7 +48,7 @@ public class SouthMoneyDownload {
                     Matcher matcher = compile.matcher(plate);
                     String time = matcher.replaceAll("").trim();
                     info.put("time", ForMat.getDatetimeFormat(time.trim()));
-                    info.put("source",plate.replace(time,""));
+                    info.put("source",plate.replace(time,"").trim());
                 }
 
 
@@ -58,7 +58,8 @@ public class SouthMoneyDownload {
                 Elements text = document.select("div.articleCon");
                 if (!text.isEmpty()) {
                     text.select("div").remove();
-                    info.put("text", text.html());
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
                     newsId = NewsMd5.newsMd5(text.text().replace(" ", "").trim());
                     info.put("newsId", newsId);
 
@@ -75,7 +76,7 @@ public class SouthMoneyDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+                    if (mysqlUtil.insertNews(info)) {
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 } else {

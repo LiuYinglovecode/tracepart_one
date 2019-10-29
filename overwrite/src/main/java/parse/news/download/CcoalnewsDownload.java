@@ -38,7 +38,8 @@ public class CcoalnewsDownload {
                 info.put("author", document.select(".author").text().trim());
                 Elements text = document.select(".content");
                 text.select("div").remove();
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select(".content img");
@@ -56,7 +57,10 @@ public class CcoalnewsDownload {
 //                            if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                                RedisUtil.insertUrlToSet("catchedUrl", url);
 //                            }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+//                if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
+//                    RedisUtil.insertUrlToSet("catchedUrl", url);
+//                }
+                if (mysqlUtil.insertCompany(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             }

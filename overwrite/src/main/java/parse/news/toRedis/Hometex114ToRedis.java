@@ -20,7 +20,7 @@ public class Hometex114ToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "hometex114");
             if (null != html) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.item > h2 > a");
                 for (Element element : categoryList) {
                     String href =baseUrl + element.attr("href");
@@ -40,7 +40,7 @@ public class Hometex114ToRedis {
             ArrayList<String> list = new ArrayList<>();
             int number = 1;
             String html = HttpUtil.httpGetwithJudgeWord(url, "hometex114");
-            Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+            Document document = Jsoup.parse(html);
             String Total = document.select("div.item > ul > li").text().split(" 个")[0].split("计 ")[1];
             int total = Integer.parseInt(Total);
             for (number = 1; number <= total ; number++) {
@@ -61,7 +61,7 @@ public class Hometex114ToRedis {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "hometex114");
             if (html != null) {
-                Document document = Jsoup.parse(new URL(url).openStream(), "GBK",html);
+                Document document = Jsoup.parse(html);
                 Elements newsListInfo = document.select("div > h2 > a");
                 for (Element e : newsListInfo) {
                     String href = e.attr("href").contains("http") ? e.attr("href") : baseUrl + e.attr("href");

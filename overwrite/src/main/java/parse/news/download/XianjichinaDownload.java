@@ -51,11 +51,12 @@ public class XianjichinaDownload {
                     }
                     info.put("images", String.valueOf(imgs));
                     info.put("url", url);
-                    info.put("text", text.html());
-                    info.put("newsId", newsId);
-                    info.put("source", source);
-                    info.put("time", ForMat.getDatetimeFormat(time));
-                    info.put("title", title);
+                    info.put("text", text.text().trim());
+                    info.put("html", text.html());
+                    info.put("newsId", newsId.trim());
+                    info.put("source", source.trim());
+                    info.put("time", ForMat.getDatetimeFormat(time.trim()));
+                    info.put("title", title.trim());
                     info.put("crawlerId", "29");
                     info.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -66,7 +67,7 @@ public class XianjichinaDownload {
 //                    if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                    if (mysqlUtil.insertNews(info)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }
@@ -99,7 +100,7 @@ public class XianjichinaDownload {
 //                    if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                    if (mysqlUtil.insertNews(info)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

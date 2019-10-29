@@ -30,7 +30,7 @@ public class LmjxDownload {
 
     public static void main(String[] args) {
         LmjxDownload lmjxDownload = new LmjxDownload();
-        lmjxDownload.newsInfo("https://news.lmjx.net/2013/201304/2013042614464045.shtml");
+        lmjxDownload.newsInfo("https://news.lmjx.net/2010/201012/20101229084334.shtml");
     }
     /**
      * 新闻信息：解析获取信息，存入数据库及ES
@@ -59,7 +59,6 @@ public class LmjxDownload {
                     info.put("time", ForMat.getDatetimeFormat(time1.text().trim()));
                 }
                 String select = parse.select("div.contentbox div.info").text();
-                System.out.println(select);
                 if (select.contains("来源:")) {
                     info.put("time", ForMat.getDatetimeFormat(select.split("来源:")[0].trim()));
                     info.put("source", select.split("来源: ")[1].replace("，转载请标明出处", "").trim());
@@ -86,7 +85,8 @@ public class LmjxDownload {
                 }
                 Elements text = parse.select("#i_art_main,div.pageleft content,.content");
                 if (text.size() != 0) {
-                    info.put("text",text.html());
+                    info.put("text",text.text().trim());
+                    info.put("html",text.html());
                     String newId = MD5Util.getMD5String(text.text().trim());
                     info.put("newsId", newId);
                     info.put("crawlerId", "67");
@@ -94,7 +94,7 @@ public class LmjxDownload {
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     info.put("@timestamp", timestamp2.format(new Date()));
                     info.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                    mysqlUtil.insertNews(info, "crawler_news", newId);
+                    mysqlUtil.insertNews(info);
                     if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
@@ -114,7 +114,7 @@ public class LmjxDownload {
 //                    if (esUtil.writeToES(info, "crawler-news-", "doc", newId)){
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
-                    if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                    if (mysqlUtil.insertNews(info)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

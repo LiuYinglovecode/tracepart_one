@@ -38,17 +38,18 @@ public class ZgwDownload {
                 if (select.size() != 0) {
                     for (Element element : select) {
                         if (element.select("span").text().contains("-")){
-                            info.put("time", ForMat.getDatetimeFormat(select.select("span").text().trim().replace("关注","")));
+                            info.put("time", ForMat.getDatetimeFormat(select.select("span").text().trim().replace("关注","").trim()));
                         }else {
                             select.select("span").remove();
-                            info.put("source",select.text().replace("来源：",""));
+                            info.put("source",select.text().replace("来源：","").trim());
                         }
                     }
                 }
                 info.put("author",document.select("div.neirong span.edit").text()
-                        .replace("（责任编辑：","").replace("）",""));
+                        .replace("（责任编辑：","").replace("）","").trim());
                 Elements text = document.select("div.left_content div.neirong");
-                info.put("text",text.html());
+                info.put("text",text.text().trim());
+                info.put("html",text.html());
 //                String newsId = NewsMd5.newsMd5(text.text().trim());
                 String newsId = MD5Util.getMD5String(text.text().trim());
                 info.put("newsId",newsId);
@@ -70,7 +71,7 @@ public class ZgwDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
 

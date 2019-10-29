@@ -39,16 +39,17 @@ public class HuajxDownload {
                 info.put("time", ForMat.getDatetimeFormat(select.eq(0).text().trim()));
                 for (Element element : select) {
                     if (element.text().contains("来源：")) {
-                        info.put("source", element.text().replace("来源：",""));
+                        info.put("source", element.text().replace("来源：","").trim());
                     }else if (element.text().contains("阅读量：")){
-                        info.put("amountOfReading", element.text().replace("阅读量：",""));
+                        info.put("amountOfReading", element.text().replace("阅读量：","").trim());
                     }
                 }
 
                 Elements text = document.select("div#newsContent.newsContent");
-                info.put("text",text.html());
+                info.put("text",text.text().trim());
+                info.put("html",text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
-                info.put("newsId",newsId);;
+                info.put("newsId",newsId);
                 Elements imgList = document.select("div > img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {
@@ -68,7 +69,7 @@ public class HuajxDownload {
 //                if (esUtil.writeToES(info, "crawler-news-", "doc", newsId)){
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertNews(info, "crawler_news", newsId)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             } else {

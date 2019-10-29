@@ -51,8 +51,8 @@ public class SteelcnDownload {
             Elements doc = document.select("div.art_info");
             for (Element el : doc) {
                 el.select("span,i,em,label").remove();
-                newsInfo.put("amountOfReading", el.text().split("来源:")[0].split(":")[1]);//阅读量
-                newsInfo.put("source", el.text().split("来源:")[1].replace(" 字体:", ""));//来源
+                newsInfo.put("amountOfReading", el.text().split("来源:")[0].split(":")[1].trim());//阅读量
+                newsInfo.put("source", el.text().split("来源:")[1].replace(" 字体:", "").trim());//来源
             }
             Elements img = document.select("div.art_main div img");
             if (img.size() != 0) {
@@ -63,7 +63,8 @@ public class SteelcnDownload {
             }
 
             Elements text = document.select("div.art_main");
-            newsInfo.put("text", text.html());//新闻内容
+            newsInfo.put("text", text.text().trim());//新闻内容
+            newsInfo.put("html", text.html());//新闻内容
             String newsId = NewsMd5.newsMd5(text.text().trim());
             newsInfo.put("newsId", newsId);
             newsInfo.put("crawlerId", "48");
@@ -76,7 +77,7 @@ public class SteelcnDownload {
 //            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                RedisUtil.insertUrlToSet("catchedUrl", url);
 //            }
-            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+            if (mysqlUtil.insertNews(newsInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

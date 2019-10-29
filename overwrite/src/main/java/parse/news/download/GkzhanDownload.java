@@ -37,17 +37,18 @@ public class GkzhanDownload {
             newsInfo.put("title", title);
             newsInfo.put("time", ForMat.getDatetimeFormat(parse.select("div.leftTop.clearfix > p > span:nth-child(1)").text().trim()));
             Elements text = parse.select("#newsContent");
-            newsInfo.put("text", text.html());
+            newsInfo.put("text", text.text().trim());
+            newsInfo.put("html", text.html());
             String newsId = NewsMd5.newsMd5(text.text().trim());
             newsInfo.put("newsId", newsId);
             Elements list = parse.select("div.leftTop.clearfix > p > span");
             for (Element element : list) {
                 if (element.text().contains("来源：")) {
-                    newsInfo.put("source", element.text().trim().split("：", 2)[1]);
+                    newsInfo.put("source", element.text().split("：", 2)[1].trim());
                 } else if (element.text().contains("编辑：")) {
-                    newsInfo.put("author", element.text().trim().split("：", 2)[1]);
+                    newsInfo.put("author", element.text().split("：", 2)[1].trim());
                 } else if (element.text().contains("阅读量：")) {
-                    newsInfo.put("amountOfReading", element.text().trim().split("：", 2)[1]);
+                    newsInfo.put("amountOfReading", element.text().split("：", 2)[1].trim());
                 }
             }
             newsInfo.put("crawlerId", "33");
@@ -60,7 +61,7 @@ public class GkzhanDownload {
 //            if (esUtil.writeToES(newsInfo, "crawler-news-", "doc", newsId)){
 //                RedisUtil.insertUrlToSet("catchedUrl", url);
 //            }
-            if (mysqlUtil.insertNews(newsInfo, "crawler_news", newsId)){
+            if (mysqlUtil.insertNews(newsInfo)){
                 RedisUtil.insertUrlToSet("catchedUrl", url);
             }
         } catch (Exception e) {

@@ -20,7 +20,7 @@ public class TexindexToRedis {
 
         try {
             String get = HttpUtil.httpGetwithJudgeWord(url, "texindex");
-            Document html = Jsoup.parse(new URL(url).openStream(), "GBK", get);
+            Document html = Jsoup.parse(get);
             Elements select = html.select("table[cellpadding=5] > tbody > tr > td.RightItemBody > a");
             for (Element element : select) {
                 if (!element.attr("href").equals("/Articles/2018-5-21/430006.html") && !element.attr("href").equals("/Media/")) {
@@ -41,7 +41,7 @@ public class TexindexToRedis {
         int number = 1;
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "texindex");
-            Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+            Document document = Jsoup.parse(html);
             String Total = document.select("td[height=20]").text().split("共计 ")[1].split(" 个页面")[0];
             int total = Integer.valueOf(Total).intValue();
             for (number = 1; number < total + 1; number++) {
@@ -62,7 +62,7 @@ public class TexindexToRedis {
         ArrayList<String> list = new ArrayList<>();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "texindex");
-            Document document = Jsoup.parse(new URL(url).openStream(), "GBK", html);
+            Document document = Jsoup.parse(html);
             Elements titleList = document.select("td.RightItemBody table tbody tr td.InnerLink a");
             for (Element element : titleList) {
                 list.add(element.attr("href"));
