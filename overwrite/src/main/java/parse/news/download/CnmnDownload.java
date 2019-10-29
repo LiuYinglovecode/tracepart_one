@@ -41,7 +41,8 @@ public class CnmnDownload {
                 newsInfo.put("amountOfReading", document.select("span > span.view").text().replace("次浏览", "").trim());//阅读量
                 newsInfo.put("source", document.select("p.info.clearfix.text-center > span:nth-child(1)").text().split("分类：")[0].split("来源： ")[1].trim());//来源
                 Elements text = document.select("#txtcont");
-                newsInfo.put("text", text.html());//新闻内容
+                newsInfo.put("text", text.text().trim());//新闻内容
+                newsInfo.put("html", text.html());//新闻内容
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 newsInfo.put("newsId", newsId);
                 Elements split = document.select("p.info.clearfix.text-center > span:nth-child(1)");

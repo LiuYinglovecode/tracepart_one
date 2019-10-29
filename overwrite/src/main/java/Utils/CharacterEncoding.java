@@ -3,6 +3,9 @@ package Utils;
 
 import info.monitorenter.cpdetector.io.*;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import parse.news.download.AlliiiDownload;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -20,6 +23,7 @@ import java.util.Map;
  * 2019-10-29
  */
 public class CharacterEncoding {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CharacterEncoding.class);
 
     /**    测试用例
      * @param args
@@ -27,7 +31,8 @@ public class CharacterEncoding {
     public static void main(String[] args) {
 
 //        String charset = getEncodingByContentStream("https://news.lmjx.net/2007/200703/20070307102138.shtml");
-        String charset = getEncodingByContentUrl("http://china.fengj.com/html/news/1547/show_1547174.html");
+//        String charset = getEncodingByContentUrl("http://www.chinahightech.com/html/yuanqu/yqcy/2018/0123/449798.html");
+        String charset = getEncodingByHeader("http://www.chinahightech.com/html/yuanqu/yqcy/2018/0123/449798.html");
 
         System.out.println(charset);
     }
@@ -143,11 +148,15 @@ public class CharacterEncoding {
             cdp.add(UnicodeDetector.getInstance());
             cdp.add(new ParsingDetector(false));
             cdp.add(new ByteOrderMarkDetector());
-
+            if (urlConn.getInputStream()!=null) {
             InputStream in = urlConn.getInputStream();
-            ByteArrayInputStream bais = new ByteArrayInputStream(IOUtils.toByteArray(in));
-            // detectCodepage(InputStream in, int length) 只支持可以mark的InputStream
-            charset = cdp.detectCodepage(bais, 2147483647);
+
+                ByteArrayInputStream bais = new ByteArrayInputStream(IOUtils.toByteArray(in));
+                // detectCodepage(InputStream in, int length) 只支持可以mark的InputStream
+                charset = cdp.detectCodepage(bais, 2147483647);
+            }else {
+                LOGGER.info("页面解析失败！");
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

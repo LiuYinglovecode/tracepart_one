@@ -73,7 +73,7 @@ public class ChinacraneDownload {
 //                        RedisUtil.insertUrlToSet("catchedUrl", url);
 //                    }
 
-                    if (mysqlUtil.insertCompany(newsInfo)){
+                    if (mysqlUtil.insertNews(newsInfo)){
                         RedisUtil.insertUrlToSet("catchedUrl", url);
                     }
                 }

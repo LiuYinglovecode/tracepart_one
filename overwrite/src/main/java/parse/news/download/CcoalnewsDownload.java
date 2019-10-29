@@ -60,7 +60,7 @@ public class CcoalnewsDownload {
 //                if (mysqlUtil.insertNews(info, "crawler_news", newsId)) {
 //                    RedisUtil.insertUrlToSet("catchedUrl", url);
 //                }
-                if (mysqlUtil.insertCompany(info)){
+                if (mysqlUtil.insertNews(info)){
                     RedisUtil.insertUrlToSet("catchedUrl", url);
                 }
             }

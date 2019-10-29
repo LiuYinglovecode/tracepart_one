@@ -73,8 +73,8 @@ public class XianjichinaDownload {
                 }
                 if (1 == (document.select(".newconleft-top").size())) {
                     String title = document.select(".newconleft-top h1").text().trim();
-                    String source = document.select(".public-time").text().trim().split("来源：", 2)[1];
-                    String time = document.select(".public-time").text().trim().split("来源：", 2)[0];
+                    String source = document.select(".public-time").text().trim().split("来源：", 2)[1].trim();
+                    String time = document.select(".public-time").text().trim().split("来源：", 2)[0].trim();
                     String text = document.select(".newcon-list").text().trim();
                     String newsId = NewsMd5.newsMd5(text);
                     Elements imgList = document.select(".newcon-list img");
