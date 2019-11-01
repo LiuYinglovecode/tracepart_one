@@ -703,8 +703,8 @@ public class updateToMySQL {
 
     public static boolean newsInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "crawler_data.crawler_news";
-        String sql = "insert into " + TABLE_NAME + "(title, time, author, text, amountOfReading, source, plate, crawlerId,url,images,newsId) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert ignore into " + TABLE_NAME + "(title, time, author, text, html, amountOfReading, source, plate, crawlerId,url,images,newsId) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection connection = getConnection();
         PreparedStatement ps = null;
 
@@ -714,13 +714,14 @@ public class updateToMySQL {
             ps.setString(2, ipRegionMap.get("time"));
             ps.setString(3, ipRegionMap.get("author"));
             ps.setString(4, ipRegionMap.get("text"));
-            ps.setString(5, ipRegionMap.get("amountOfReading"));
-            ps.setString(6, ipRegionMap.get("source"));
-            ps.setString(7, ipRegionMap.get("plate"));
-            ps.setString(8, ipRegionMap.get("crawlerId"));
-            ps.setString(9, ipRegionMap.get("url"));
-            ps.setString(10, ipRegionMap.get("images"));
-            ps.setString(11, ipRegionMap.get("newsId"));
+            ps.setString(5, ipRegionMap.get("html"));
+            ps.setString(6, ipRegionMap.get("amountOfReading"));
+            ps.setString(7, ipRegionMap.get("source"));
+            ps.setString(8, ipRegionMap.get("plate"));
+            ps.setString(9, ipRegionMap.get("crawlerId"));
+            ps.setString(10, ipRegionMap.get("url"));
+            ps.setString(11, ipRegionMap.get("images"));
+            ps.setString(12, ipRegionMap.get("newsId"));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

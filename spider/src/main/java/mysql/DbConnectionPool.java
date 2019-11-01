@@ -48,7 +48,6 @@ public class DbConnectionPool {
                 result = _poolInstances.get(poolName);
             }
         }
-
         return result;
     }
 
@@ -81,8 +80,12 @@ public class DbConnectionPool {
         String dbPassword = "p8@a^@AE0IrNmONM";
         String maxPoolSize = "10";
         String idleTimeout = "1200000";
-        String connectionTimeout = "30000";
+        String connectionTimeout = "60000";
         String driverClassName = "com.mysql.jdbc.Driver";
+
+//        String dbUrl = "jdbc:mysql://127.0.0.1:3306/crawler_data?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
+//        String dbUser = "root";
+//        String dbPassword = "root";
 
 
         HikariConfig config = new HikariConfig();

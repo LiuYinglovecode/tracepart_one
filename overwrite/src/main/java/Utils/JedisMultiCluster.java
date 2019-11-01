@@ -88,19 +88,19 @@ public class JedisMultiCluster {
 //            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
 //            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
 
-            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7000));
+/*            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7000));
             hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7001));
             hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7002));
             hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7003));
             hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7004));
-            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7005));
+            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7005));*/
 //            String passwd = "7T8wZ5X3#B6fS4vJ";
-//            String passwd = "onlYKdm+gH9LrzYB";  //呼市
+            String passwd = "onlYKdm+gH9LrzYB";  //呼市
             String connectionTimeout = "5000";
             String soTimeout = "5000";
             String maxAttempts = "6";
 
-            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), /*passwd,*/ config);
+            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), passwd, config);
         } catch (Exception e) {
             e.printStackTrace();
         }
