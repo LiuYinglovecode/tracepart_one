@@ -13,7 +13,10 @@ public class Pm8ToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(Pm8ToRedis.class);
     private static final String baseUrl = "http://www.pm8.cn/news/";
 
-
+    public static void main(String[] args) {
+        Pm8ToRedis pm8ToRedis = new Pm8ToRedis();
+        pm8ToRedis.homepage("http://www.pm8.cn/news/");
+    }
 
     public void homepage(String url) {
         try {

@@ -13,6 +13,10 @@ public class DzscToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(DzscToRedis.class);
     private static String baseUrl = new String("http://product.dzsc.com");
 
+    public static void main(String[] args) {
+        DzscToRedis dzscToRedis = new DzscToRedis();
+        dzscToRedis.homepage("http://product.dzsc.com/news/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "dzsc");

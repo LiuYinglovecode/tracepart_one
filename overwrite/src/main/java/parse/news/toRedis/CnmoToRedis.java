@@ -12,6 +12,11 @@ import Utils.HttpUtil;
 public class CnmoToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CnmoToRedis.class);
 
+    public static void main(String[] args) {
+        CnmoToRedis cnmoToRedis = new CnmoToRedis();
+        cnmoToRedis.homepage("http://www.cnmo.com/news/");
+    }
+
     /**
      * 获取到分类列表，拿到需要的分类url。
      * 通过分类url获取每一页的url链接
@@ -66,7 +71,7 @@ public class CnmoToRedis {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cnmo");
             if (null!=html) {
                 Document parse = Jsoup.parse(html);
-                Elements select = parse.select("div.rbox > h4 > a");
+                Elements select = parse.select(".rbox.rbox-2 > a");
                 if (0!=select.size()) {
                     for (Element e : select) {
                         String link = e.attr("href");

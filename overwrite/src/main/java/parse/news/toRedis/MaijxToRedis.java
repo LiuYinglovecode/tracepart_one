@@ -15,6 +15,11 @@ public class MaijxToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(MaijxToRedis.class);
     private static final String baseUrl = "http://www.maijx.com/information/";
 
+    public static void main(String[] args) {
+        MaijxToRedis maijxToRedis = new MaijxToRedis();
+        maijxToRedis.homepage("http://www.maijx.com/information/record.html");
+
+    }
 
     //首页
     public void homepage(String url) {

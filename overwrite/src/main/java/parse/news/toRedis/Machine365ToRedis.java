@@ -12,6 +12,10 @@ import Utils.HttpUtil;
 public class Machine365ToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(Machine365ToRedis.class);
 
+    public static void main(String[] args) {
+        Machine365ToRedis machine365ToRedis = new Machine365ToRedis();
+        machine365ToRedis.homePage("http://news.machine365.com/");
+    }
     //    新闻网首页
     public void homePage(String url) {
         try {
@@ -54,9 +58,15 @@ public class Machine365ToRedis {
     //    下一页
     private void nextPage(String href) {
         try {
+            String news = HttpUtil.httpGetwithJudgeWord(href, "news");
+            Document parse = Jsoup.parse(news);
+            Elements a = parse.select("#DivPager");
+            a.select("a").remove();
+            String text = a.text().split("/")[1].replace("页","");
+
             String replace = href.replace(".shtml", "");
             int beginPag = 1;
-            for (beginPag = 1; beginPag < 5361; beginPag++) {
+            for (beginPag = 1; beginPag <= Integer.parseInt(text); beginPag++) {
                 String beginpag = replace + "-" + beginPag + ".shtml";
                 newsList(beginpag);
             }

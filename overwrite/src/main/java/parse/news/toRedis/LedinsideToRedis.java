@@ -17,6 +17,11 @@ public class LedinsideToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(LedinsideToRedis.class);
     private static String baseUrl = "https://www.ledinside.cn";
 
+    public static void main(String[] args) {
+        LedinsideToRedis ledinsideToRedis = new LedinsideToRedis();
+        ledinsideToRedis.homepage("https://www.ledinside.cn/news.html");
+    }
+
     //首页
     public void homepage(String url) {
         try {

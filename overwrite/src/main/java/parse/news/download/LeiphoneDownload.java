@@ -50,12 +50,13 @@ public class LeiphoneDownload {
                         .replace("(公众号：雷锋网)", "")
                         .replace("编辑", "");
                 info.put("text",s);
+
                 String text1 = text.html().replace("雷锋网特约稿件，未经授权禁止转载。详情见", "")
                         .replace("转载须知", "")
                         .replace("雷锋网", "")
                         .replace("(公众号：雷锋网)", "")
                         .replace("编辑", "").trim();
-                info.put("text",text1);
+                info.put("html",text1);
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
                 Elements imgList = text.select("p img");

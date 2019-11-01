@@ -14,6 +14,11 @@ public class GongkongToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(GongkongToRedis.class);
     private static String baseUrl = "http://www.gongkong.com";
 
+
+    public static void main(String[] args) {
+        GongkongToRedis gongkongToRedis = new GongkongToRedis();
+        gongkongToRedis.homepage("http://www.gongkong.com/news/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");

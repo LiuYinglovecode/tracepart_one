@@ -11,6 +11,9 @@ import Utils.HttpUtil;
 
 import java.net.URL;
 
+/**
+ * 该网站乱码处理不了
+ */
 public class DzwToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(DzwToRedis.class);
 

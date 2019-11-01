@@ -13,9 +13,12 @@ import java.util.ArrayList;
 
 public class Spsb114ToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(Spsb114ToRedis.class);
-    private static String baseUrl1 = "http://www.spsb114.com";
-    private static String baseUrl2 = "http://www.spsb114.com/news/";
+    private static String baseUrl = "http://www.spsb114.com";
 
+    public static void main(String[] args) {
+        Spsb114ToRedis spsb114ToRedis = new Spsb114ToRedis();
+        spsb114ToRedis.homepage("http://www.spsb114.com/tech/");
+    }
     //首页
     public void homepage(String url) {
         try {
@@ -24,9 +27,9 @@ public class Spsb114ToRedis {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("td table tbody tr td a.blue");
                 for (Element e : categoryList) {
-                    String link = baseUrl1 + e.attr("href");
+                    String link = baseUrl + e.attr("href");
                     newsList(link);
-                    paging(link);
+//                    paging(link);
 
                 }
             }
@@ -36,7 +39,7 @@ public class Spsb114ToRedis {
     }
 
 
-    //分页
+/*    //分页
     private void paging(String url) {
 
         String replace = url.replace("http://www.spsb114.com/news/news_list_",
@@ -53,14 +56,13 @@ public class Spsb114ToRedis {
                 list.add(nextPage);
             }
             for (String link : list) {
-                System.out.println("下一页：" + link);
                 newsList(link);
             }
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
-    }
+    }*/
 
     //新闻列表
     private void newsList(String url) {
@@ -71,10 +73,17 @@ public class Spsb114ToRedis {
             if (newsListInfo!=null) {
                 for (Element e : newsListInfo) {
                     String href = e.attr("href");
-                    RedisUtil.insertUrlToSet("toCatchUrl", href);
+                        String s = baseUrl+ "/tech/" + href;
+                        RedisUtil.insertUrlToSet("toCatchUrl", s);
                 }
-            }else {
-                LOGGER.info("最后一页！");
+            }
+
+            Elements elements = document.select("table.membertable_page > tbody > tr > td > a");
+            for (Element element : elements) {
+                if (element.text().contains("下一页")){
+                    String attr = element.attr("href");
+                    newsList(attr);
+                }
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

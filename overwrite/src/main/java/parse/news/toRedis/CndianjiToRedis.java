@@ -13,6 +13,12 @@ public class CndianjiToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CndianjiToRedis.class);
     private static String baseUrl = "http://www.cndianji.cn";
 
+    public static void main(String[] args) {
+
+        CndianjiToRedis cndianjiToRedis = new CndianjiToRedis();
+        cndianjiToRedis.homepage("http://www.cndianji.cn/article");
+    }
+
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "新闻资讯");

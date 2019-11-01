@@ -66,10 +66,12 @@ public class HerostartDownload {
                         info.put("images", imgs.toString());//图片
                     } else {
                         Elements img = text.select("div img");
-                        for (Element e : img) {
-                            imgs.add(e.attr("src"));
+                        if (!img.isEmpty()) {
+                            for (Element e : img) {
+                                imgs.add(e.attr("src"));
+                            }
+                            info.put("images", imgs.toString());//图片
                         }
-                        info.put("images", imgs.toString());//图片
                     }
                     info.put("url", url);
                     info.put("crawlerId", "75");

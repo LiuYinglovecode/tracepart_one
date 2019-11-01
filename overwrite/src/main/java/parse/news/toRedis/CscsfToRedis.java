@@ -13,6 +13,11 @@ public class CscsfToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CscsfToRedis.class);
     private static String baseUrl = new String("http://www.cscsf.com");
 
+    public static void main(String[] args) {
+        CscsfToRedis cscsfToRedis = new CscsfToRedis();
+        cscsfToRedis.homepage("http://www.cscsf.com/");
+    }
+
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");

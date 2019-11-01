@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class ChuandongToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ChuandongToRedis.class);
 
+    public static void main(String[] args) {
+        ChuandongToRedis chuandongToRedis = new ChuandongToRedis();
+        chuandongToRedis.homepage("http://www.chuandong.com/news/");
+    }
     //主页
     public void homepage(String url) {
         try {

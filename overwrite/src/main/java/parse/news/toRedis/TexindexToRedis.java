@@ -15,6 +15,10 @@ import java.util.ArrayList;
 public class TexindexToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(TexindexToRedis.class);
 
+    public static void main(String[] args) {
+        TexindexToRedis texindexToRedis = new TexindexToRedis();
+        texindexToRedis.homePage("http://www.texindex.com.cn/news/");
+    }
     //    新闻网首页
     public void homePage(String url) {
 

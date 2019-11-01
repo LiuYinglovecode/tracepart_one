@@ -12,6 +12,10 @@ import Utils.HttpUtil;
 public class LmjxToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(LmjxToRedis.class);
 
+    public static void main(String[] args) {
+        LmjxToRedis lmjxToRedis = new LmjxToRedis();
+        lmjxToRedis.homepage("https://news.lmjx.net/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");

@@ -15,6 +15,10 @@ import Utils.HttpUtil;
 public class CcoalnewsToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CcoalnewsToRedis.class);
 
+    public static void main(String[] args) {
+        CcoalnewsToRedis ccoalnewsToRedis = new CcoalnewsToRedis();
+        ccoalnewsToRedis.getUrlStart("http://www.ccoalnews.com/index.html");
+    }
     public void getUrlStart(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国煤炭网");

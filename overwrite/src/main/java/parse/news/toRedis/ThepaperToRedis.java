@@ -8,6 +8,10 @@ import java.util.Random;
 public class ThepaperToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ThepaperToRedis.class);
 
+    public static void main(String[] args) {
+        ThepaperToRedis thepaperToRedis = new ThepaperToRedis();
+        thepaperToRedis.homepage("https://www.thepaper.cn/channel_25951");
+    }
     public void homepage(String url) {
         //新闻列表
         try {

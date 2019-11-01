@@ -13,6 +13,11 @@ import Utils.HttpUtil;
 public class NewSeedToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(NewSeedToRedis.class);
 
+    public static void main(String[] args) {
+        NewSeedToRedis newSeedToRedis = new NewSeedToRedis();
+        newSeedToRedis.homepage("https://news.newseed.cn/");
+    }
+
     public void homepage(String url) {
         try {
             String s = null;

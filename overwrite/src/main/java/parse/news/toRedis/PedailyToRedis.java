@@ -12,9 +12,13 @@ import Utils.HttpUtil;
 public class PedailyToRedis {
     private final static Logger LOGGER = LoggerFactory.getLogger(PedailyToRedis.class);
 
+    public static void main(String[] args) {
+        PedailyToRedis pedailyToRedis = new PedailyToRedis();
+        pedailyToRedis.homePage("https://www.pedaily.cn/all");
+    }
     public void homePage(String url) {
         try {
-            for (int i = 1; i <= 5282; i++) {
+            for (int i = 1; i <= 5473; i++) {
                 String s = url + "/" + i + "/";
                 String get = HttpUtil.httpGetwithJudgeWord(s, "pedaily");
                 Thread.sleep(1000);

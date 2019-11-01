@@ -31,9 +31,9 @@ public class CharacterEncoding {
      */
     public static void main(String[] args) {
 
-//        String charset = getEncodingByContentStream("https://news.lmjx.net/2007/200703/20070307102138.shtml");
-//        String charset = getEncodingByContentUrl("http://www.chinahightech.com/html/yuanqu/yqcy/2018/0123/449798.html");
-        String charset = getEncodingByHeader("http://www.chinahightech.com/html/yuanqu/yqcy/2018/0123/449798.html");
+//        String charset = getEncodingByContentStream("https://www.51dzw.com/business/");
+//        String charset = getEncodingByContentUrl("https://www.51dzw.com/business/");
+        String charset = getEncodingByHeader("https://www.51dzw.com/business/");
 
         System.out.println(charset);
     }
@@ -153,15 +153,10 @@ public class CharacterEncoding {
             cdp.add(UnicodeDetector.getInstance());
             cdp.add(new ParsingDetector(false));
             cdp.add(new ByteOrderMarkDetector());
-            if (urlConn.getInputStream() != null) {
-                InputStream in = urlConn.getInputStream();
+            ByteArrayInputStream bais = new ByteArrayInputStream(IOUtils.toByteArray(urlConn.getInputStream()));
+            // detectCodepage(InputStream in, int length) 只支持可以mark的InputStream
+            charset = cdp.detectCodepage(bais, 2147483647);
 
-                ByteArrayInputStream bais = new ByteArrayInputStream(IOUtils.toByteArray(in));
-                // detectCodepage(InputStream in, int length) 只支持可以mark的InputStream
-                charset = cdp.detectCodepage(bais, 2147483647);
-            } else {
-                LOGGER.info("页面解析失败！");
-            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

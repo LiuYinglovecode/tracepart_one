@@ -12,18 +12,19 @@ import Utils.HttpUtil;
 public class MydriversToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(MydriversToRedis.class);
 
+    public static void main(String[] args) {
+        MydriversToRedis mydriversToRedis = new MydriversToRedis();
+        mydriversToRedis.homepage("http://news.mydrivers.com/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "mydrivers");
             if (null != html) {
                 Document document = Jsoup.parse(html);
-                Elements categoryList = document.select("#cid_menu a,div.product_box > a");
+                Elements categoryList = document.select("#cid_menu a");
                 for (Element e : categoryList) {
-                    if (e.attr("href").contains("mydrivers")) {
-                        String href = "http:"+e.attr("href");
-                        paging(href);
-                    }else {
-                        String href = "http://news.mydrivers.com" + e.attr("href");
+                    if (!e.text().contains("资讯中心")) {
+                        String href = "http:" + e.attr("href");
                         paging(href);
                     }
                 }

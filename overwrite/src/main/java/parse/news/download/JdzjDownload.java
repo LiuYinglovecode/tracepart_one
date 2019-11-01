@@ -26,9 +26,13 @@ public class JdzjDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+    public static void main(String[] args) {
+        JdzjDownload jdzjDownload = new JdzjDownload();
+        jdzjDownload.newsInfo("http://www.jdzj.com/news/9635.html");
+    }
     public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "jiancai");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();

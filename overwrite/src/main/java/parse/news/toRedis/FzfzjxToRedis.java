@@ -13,6 +13,10 @@ public class FzfzjxToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(FzfzjxToRedis.class);
     private static final String beasUrl = "http://www.fzfzjx.com";
 
+    public static void main(String[] args) {
+        FzfzjxToRedis fzfzjxToRedis = new FzfzjxToRedis();
+        fzfzjxToRedis.homepage("http://www.fzfzjx.com/news/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
@@ -38,17 +42,16 @@ public class FzfzjxToRedis {
     //分页
     private void paging(String href) {
         try {
-            String replace = href.replace(".html", "");
+            String replace = href.split("news/t")[1].replace("/","");
             String html = HttpUtil.httpGetwithJudgeWord(href, "关于我们");
             if (html != null) {
                 Document parse = Jsoup.parse(html);
                 int number = 1;
                 String attr = parse.select("#pagenum > a").last().attr("href");
-                String p = attr.split("p")[1].replace(".html", "");
+                String p = attr.split("p")[1].replace(".html", "").replace("/","");
                 int total = Integer.valueOf(p).intValue();//类型转换
                 for (number = 1; number <= total; number++) {
-                    String url = replace + "_p" + number + ".html";
-                    System.out.println(url);
+                    String url = beasUrl.concat("/news/t").concat(replace)+ "_p" + number+"/";
                     newsList(url);
               }
             } else {
@@ -61,7 +64,7 @@ public class FzfzjxToRedis {
 
     private void newsList(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "fzfzjx");
             if (html!=null) {
                 Document parse = Jsoup.parse(html);
                 Elements select = parse.select("dl.newslist > dt > p > a");

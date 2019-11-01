@@ -35,7 +35,7 @@ public class CcoalnewsDownload {
                 Document document = Jsoup.parse(html);
                 info.put("title", document.select(".text-article h1").text().trim());
                 info.put("time", ForMat.getDatetimeFormat(document.select(".date").text().trim()));
-                info.put("author", document.select(".author").text().trim());
+                info.put("author", document.select(".author").text().replace("作者：","").trim());
                 Elements text = document.select(".content");
                 text.select("div").remove();
                 info.put("text", text.text().trim());
@@ -43,10 +43,14 @@ public class CcoalnewsDownload {
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 Elements imgList = document.select(".content img");
-                for (Element e : imgList) {
-                    img.add(e.attr("src"));
+                if (!imgList.isEmpty()){
+                    for (Element e : imgList) {
+                        img.add(e.attr("src"));
+                    }
+                    info.put("images", img.toString());
                 }
-                info.put("images", img.toString());
+
+                info.put("url",url);
                 info.put("crawlerId", "61");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

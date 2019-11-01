@@ -18,7 +18,10 @@ public class SteelcnToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(SteelcnToRedis.class);
     private static final String homepage = "http://news.steelcn.cn/";
 
-
+    public static void main(String[] args) {
+        SteelcnToRedis steelcnToRedis = new SteelcnToRedis();
+        steelcnToRedis.homepage("http://news.steelcn.cn/");
+    }
     //首页
     public void homepage(String url) {
         //因为使用了Jsoup组合选择器查找元素会存在重复元素，这里使用HashSet去重
@@ -31,14 +34,13 @@ public class SteelcnToRedis {
                 for (Element e : categoryList) {
                     if (!e.select("a").text().equals("首页")) {
                         String attr = e.select("a").attr("href");
-                        String plate = e.select("a").text();
                         hs.add(homepage + attr.replace("/", ""));
                         Iterator<String> it = hs.iterator();
-                        while (it.hasNext()) {
-                            String link = it.next();
-                            paging(link, plate);
-                        }
+
                     }
+                }
+                for (String h : hs) {
+                    paging(h);
                 }
             }
             LOGGER.info("news.steelcn.cn DONE");
@@ -50,7 +52,7 @@ public class SteelcnToRedis {
     /*
     分页：获取下一页总数，进行url的链接拼接
      */
-    private void paging(String url, String plate) {
+    private void paging(String url) {
         ArrayList<String> list = new ArrayList<>();
         int number = 1;
         String replace = url.replace(".html", "");
@@ -59,12 +61,12 @@ public class SteelcnToRedis {
             Document document = Jsoup.parse(html);
             String Total = document.select("div#Fenye strong").text().replace("1/", "").replace(" 页", "");
             int total = Integer.valueOf(Total).intValue();//转行类型
-            for (number = 1; number < total + 1; number++) {
+            for (number = 1; number <= total; number++) {
                 String nextPage = replace + "_p" + number + ".html";
                 list.add(nextPage);
             }
             for (String link : list) {
-                newsList(link, plate);
+                newsList(link);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -72,7 +74,7 @@ public class SteelcnToRedis {
     }
 
     //新闻列表
-    private void newsList(String url, String plate) {
+    private void newsList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "新闻");
             Document document = Jsoup.parse(html);

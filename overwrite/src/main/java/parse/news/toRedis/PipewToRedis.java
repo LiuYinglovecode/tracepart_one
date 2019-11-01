@@ -14,6 +14,10 @@ public class PipewToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(PipewToRedis.class);
     private static final String link = new String("http://www.pipew.com");
 
+    public static void main(String[] args) {
+        PipewToRedis pipewToRedis = new PipewToRedis();
+        pipewToRedis.homepage("http://www.pipew.com/news/index.asp");
+    }
     /**
      * 新闻首页：解析页面，拿到新闻分类的url
      *
@@ -21,21 +25,19 @@ public class PipewToRedis {
      */
     public void homepage(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "公司简介");
-            if (!html.isEmpty()) {
-                Document document = Jsoup.parse(html);
-                Elements categoryList = document.select("div.newslist > table > tbody > tr > td > a.link-dhz");
+            HtmlUnitUnits httpUtils = HtmlUnitUnits.getInstance();
+            httpUtils.setTimeout(30000);
+            httpUtils.setWaitForBackgroundJavaScript(30000);
+            Document document = httpUtils.getHtmlPageResponseAsDocument(url);
+                Elements categoryList = document.select("div.newslist > table > tbody > tr > td > a");
                 for (Element e : categoryList) {
                     String href =link.concat(e.attr("href").replace("..", ""));
                     more(href);
                 }
-            } else {
-                LOGGER.info("homepage null");
-            }
-            LOGGER.info("www.51pla.com DONE");
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
+            } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
 

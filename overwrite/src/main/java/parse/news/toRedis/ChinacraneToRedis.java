@@ -1,6 +1,7 @@
 package parse.news.toRedis;
 
 import Utils.RedisUtil;
+import org.elasticsearch.common.recycler.Recycler;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,15 +15,20 @@ import java.util.ArrayList;
 public class ChinacraneToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ChinacraneToRedis.class);
 
+
+    public static void main(String[] args) {
+        ChinacraneToRedis chinacraneToRedis = new ChinacraneToRedis();
+        chinacraneToRedis.homepage("http://www.chinacrane.net/news/");
+    }
     //主页
     public void homepage(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "chinacrane");
             if (null != html) {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.nav_news > ul > li > a");
                 for (Element element : categoryList) {
-                    if (!element.text().contains("首 页")) {
+                    if (!element.text().contains("首页")) {
                         String href = element.attr("href");
                         paging(href);
                     }
@@ -42,11 +48,12 @@ public class ChinacraneToRedis {
             int number = 1;
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
             Document document = Jsoup.parse(html);
-            String Total = document.select("cite").text().split("/")[1].replace("页", "");
-            int total = Integer.parseInt(Total);
-            System.out.println(total);
+            Element tailPage = document.select("div.ms_content > div > a").last().previousElementSibling();
+            String pages = tailPage.text();
+            String links = tailPage.attr("href");
+            int total = Integer.parseInt(pages);
             for (number = 1; number <= total ; number++) {
-                String link = url + number + ".html";
+                String link = links.replace(String.valueOf(total),String.valueOf(number));
                 list.add(link);
             }
             for (String link : list) {

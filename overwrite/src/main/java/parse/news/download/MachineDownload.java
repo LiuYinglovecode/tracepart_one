@@ -52,7 +52,10 @@ public class MachineDownload {
 
                 Elements time = gbk.select("div.newliIn_Sti");
                 if (time.size() == 0) {
-                    newsInfo.put("time", ForMat.getDatetimeFormat(gbk.select("div.box1 > h4").text().split("：", 2)[1].trim()));
+                    String times = gbk.select("div.box1 > h4").text().replace("时间：", "").trim();
+                    if (!times.isEmpty()) {
+                        newsInfo.put("time", ForMat.getDatetimeFormat(times));
+                    }
                 } else {
                     newsInfo.put("time", ForMat.getDatetimeFormat(time.text().trim()));
                 }
@@ -71,6 +74,8 @@ public class MachineDownload {
                     String surce = matcher.group(0).split("：", 2)[1];
                     newsInfo.put("source", surce);
                 }
+
+                newsInfo.put("url", url);
                 newsInfo.put("crawlerId", "32");
                 newsInfo.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

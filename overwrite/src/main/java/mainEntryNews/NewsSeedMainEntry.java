@@ -75,19 +75,19 @@ public class NewsSeedMainEntry {
                 } else if (taskName.contains("www.cpnn.com.cn")) {
                     CpnnToRedis cpnnToRedis = new CpnnToRedis();
                     cpnnToRedis.homepage(taskName);
-                } else if (taskName.contains("www.51dzw.com")) {
+                } /*else if (taskName.contains("www.51dzw.com")) {
                     DzwToRedis dzwToRedis = new DzwToRedis();
                     dzwToRedis.homepage(taskName);
-                } else if (taskName.contains("www.gkzhan.com")) {
+                } */else if (taskName.contains("www.gkzhan.com")) {
                     GkzhanToRedis gkzhanToRedis = new GkzhanToRedis();
                     gkzhanToRedis.homePage(taskName);
                 } else if (taskName.contains("www.jdzj.com")) {
                     JdzjToRedis jdzjToRedis = new JdzjToRedis();
                     jdzjToRedis.homepage(taskName);
-                } else if (taskName.contains("www.jiancai.com")) {
+                } /*else if (taskName.contains("www.jiancai.com")) {
                     JiancaiToRedis jiancaiToRedis = new JiancaiToRedis();
                     jiancaiToRedis.homepage(taskName);
-                } else if (taskName.contains("news.lmjx.net")) {
+                }*/ else if (taskName.contains("news.lmjx.net")) {
                     LmjxToRedis lmjxToRedis = new LmjxToRedis();
                     lmjxToRedis.homepage(taskName);
                 } else if (taskName.contains("news.machine365.com")) {
@@ -141,10 +141,10 @@ public class NewsSeedMainEntry {
                 } else if (taskName.contains("www.spsb114.com")) {
                     Spsb114ToRedis spsb114ToRedis = new Spsb114ToRedis();
                     spsb114ToRedis.homepage(taskName);
-                } else if (taskName.contains("www.chuandong.com/news/")) {
+                } /*else if (taskName.contains("www.chuandong.com/news/")) {
                     ChuandongToRedis chuandongToRedis = new ChuandongToRedis();
                     chuandongToRedis.homepage(taskName);
-                } else if (taskName.contains("www.chinacrane.net/")) {
+                }*/ else if (taskName.contains("www.chinacrane.net/")) {
                     ChinacraneToRedis chinacraneToRedis = new ChinacraneToRedis();
                     chinacraneToRedis.homepage(taskName);
                 } else if (taskName.contains("www.findzd.com/industry/")) {

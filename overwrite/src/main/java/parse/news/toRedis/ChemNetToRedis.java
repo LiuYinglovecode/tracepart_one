@@ -14,6 +14,11 @@ public class ChemNetToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ChemNetToRedis.class);
     private static final String baseUrl = new String("http://news.chemnet.com");
 
+
+    public static void main(String[] args) {
+        ChemNetToRedis chemNetToRedis = new ChemNetToRedis();
+        chemNetToRedis.homepage("http://news.chemnet.com");
+    }
     //主页
     public void homepage(String url) {
         try {

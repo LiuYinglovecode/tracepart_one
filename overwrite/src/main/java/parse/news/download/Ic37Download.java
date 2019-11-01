@@ -29,6 +29,11 @@ public class Ic37Download {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+
+    public static void main(String[] args) {
+        Ic37Download ic37Download = new Ic37Download();
+        ic37Download.newsInfo("https://www.ic37.com/htm_tech/2007-12/58283_473856.htm");
+    }
     public void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject info = new JSONObject();

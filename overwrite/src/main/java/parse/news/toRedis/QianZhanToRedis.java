@@ -12,8 +12,11 @@ import Utils.HttpUtil;
 
 public class QianZhanToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(QianZhanToRedis.class);
-    private static final String website = new String("http://www.southmoney.com");
 
+    public static void main(String[] args) {
+        QianZhanToRedis qianZhanToRedis = new QianZhanToRedis();
+        qianZhanToRedis.homepage("https://www.qianzhan.com/indynews/");
+    }
     //首页
     public void homepage(String url) {
         try {

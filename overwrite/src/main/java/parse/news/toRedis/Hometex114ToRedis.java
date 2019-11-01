@@ -14,6 +14,12 @@ import java.util.ArrayList;
 public class Hometex114ToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(Hometex114ToRedis.class);
     private static String baseUrl = "http://www.hometex114.com";
+
+    public static void main(String[] args) {
+        Hometex114ToRedis hometex114ToRedis = new Hometex114ToRedis();
+        hometex114ToRedis.homepage("http://www.hometex114.com/News/");
+
+    }
     //主页
     public void homepage(String url) {
         try {

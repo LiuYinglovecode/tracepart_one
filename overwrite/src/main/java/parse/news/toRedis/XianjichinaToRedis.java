@@ -13,6 +13,10 @@ public class XianjichinaToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(XianjichinaToRedis.class);
     private static String baseUrl = "https://www.xianjichina.com";
 
+    public static void main(String[] args) {
+        XianjichinaToRedis xianjichinaToRedis = new XianjichinaToRedis();
+        xianjichinaToRedis.homepage("https://www.xianjichina.com/news");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "媒体报道");

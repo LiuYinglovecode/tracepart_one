@@ -33,7 +33,10 @@ public class TexindexDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
-
+    public static void main(String[] args) {
+        TexindexDownload texindexDownload = new TexindexDownload();
+        texindexDownload.newsInfo("http://www.texindex.com.cn/Articles/2019-9-17/445770.html");
+    }
     //  新闻信息
     public void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
@@ -44,8 +47,16 @@ public class TexindexDownload {
             Document document = Jsoup.parse(html);
             String title = document.select("td.RightItemBody div h1").text().trim();
             newsInfo.put("title", title);
-            Elements select = document.select("td.RightItemBody div.000000A");
-            newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("/ ")[1].split(" ")[0].trim()));
+            Elements select = document.select("td.RightItemBody div.000000A,tbody > tr > td > table.RightItemBG > tbody > tr > td.RightItemBody");
+            select.select("div").remove();
+            String[] s = select.text().split(" ");
+            for (String s1 : s) {
+                if (s1.contains("年")){
+                    newsInfo.put("time", ForMat.getDatetimeFormat(s1));
+                }
+            }
+
+
             newsInfo.put("source", select.text().split("/ ")[1].split(" ")[2].trim());
             Elements text = document.select("div#zoom");
             newsInfo.put("text", text.text().trim());
@@ -63,6 +74,7 @@ public class TexindexDownload {
                     }
 
                 }
+                newsInfo.put("images", imgsList.toString());
             }
             Elements select1 = document.select("td.RightItemBody div");
             for (Element element : select1) {
@@ -73,7 +85,7 @@ public class TexindexDownload {
                     newsInfo.put("amountOfReading", element.text().split("点击数 ")[1].replace("( ", "").replace(" )", ""));
                 }
             }
-            newsInfo.put("images", imgsList.toString());
+
             newsInfo.put("crawlerId", "49");
             newsInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

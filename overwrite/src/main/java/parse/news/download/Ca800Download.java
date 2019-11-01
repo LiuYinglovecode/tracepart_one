@@ -40,7 +40,7 @@ public class Ca800Download {
             if (html != null) {
                 Document document = Jsoup.parse(html);
                 //标题
-                String title = document.select("div.newsdetail.border.fl h1").text().trim();
+                String title = document.select("div.newsdetail.border.fl h1,div.title-text").text().trim();
                 newsInfo.put("title", title);
                 Elements select = document.select("div.title_bar.f12.h25");
                 if (select.size() != 0) {
@@ -86,6 +86,7 @@ public class Ca800Download {
                 } else {
                     Elements text1 = document.select("div.newsdetail.border.fl div.detail");//新闻内容
                     newsInfo.put("text", text1.text());
+                    newsInfo.put("html", text1.html());
                     String newsId = NewsMd5.newsMd5(text1.text());
                     newsInfo.put("newsId", newsId);
                     Elements img = text1.select("p.MsoNormal img");

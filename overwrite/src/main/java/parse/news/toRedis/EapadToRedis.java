@@ -14,6 +14,10 @@ public class EapadToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(EapadToRedis.class);
     private static final String beasUrl = "http://news.eapad.cn";
 
+    public static void main(String[] args) {
+        EapadToRedis eapadToRedis = new EapadToRedis();
+        eapadToRedis.homepage("http://www.eapad.cn/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");

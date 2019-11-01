@@ -51,6 +51,7 @@ public class GkzhanDownload {
                     newsInfo.put("amountOfReading", element.text().split("：", 2)[1].trim());
                 }
             }
+            newsInfo.put("url", url);
             newsInfo.put("crawlerId", "33");
             newsInfo.put("timestamp", timestamp.format(new Date()));
             timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));

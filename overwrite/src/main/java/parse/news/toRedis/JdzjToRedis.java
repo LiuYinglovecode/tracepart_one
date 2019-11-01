@@ -1,6 +1,7 @@
 package parse.news.toRedis;
 
 import Utils.RedisUtil;
+import Utils.SleepUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,17 +13,21 @@ import Utils.HttpUtil;
 public class JdzjToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(JdzjToRedis.class);
 
+    public static void main(String[] args) {
+        JdzjToRedis jdzjToRedis = new JdzjToRedis();
+        jdzjToRedis.homepage("http://www.jdzj.com/news/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
+            Thread.sleep(SleepUtils.sleepMin());
             if (null != html) {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.eif-header-nav ul li");
                 for (Element e : categoryList) {
                     if (!e.text().contains("首　页")) {
                         String href = "http://www.jdzj.com/news/zx" + e.attr("zx") + ".html";
-                        String plate = e.text();
-                        paging(href, plate);
+                        paging(href);
                     }
                 }
             } else {
@@ -35,23 +40,24 @@ public class JdzjToRedis {
     }
 
     //分页
-    private void paging(String url, String plate) {
+    private void paging(String url) {
         try {
             String replace = url.replace(".html", "").replace("zx", "");
             int number = 1;
             int total = 3000;
             for (number = 1; number < total; number++) {
                 String link = replace + "_0__" + number + ".html";//拼接链接地址
-                newsList(link, plate);
+                newsList(link);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void newsList(String url, String plate) {
+    private void newsList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "站内导航");
+            Thread.sleep(SleepUtils.sleepMin());
             if (html != null) {
                 Document parse = Jsoup.parse(html);
                 String text = parse.select("div.pageNav a").last().text().trim();

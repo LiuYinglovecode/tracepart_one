@@ -13,6 +13,11 @@ public class PlaToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(PlaToRedis.class);
     private static final String urllink = "https://www.51pla.com";
 
+
+    public static void main(String[] args) {
+        PlaToRedis plaToRedis = new PlaToRedis();
+        plaToRedis.homepage("https://www.51pla.com/info/");
+    }
     /**
      * 新闻首页：解析页面，拿到新闻分类的url
      *
@@ -26,8 +31,7 @@ public class PlaToRedis {
                 Elements categoryList = document.select("ul.type-list li a,div.tech-right div a,div.market-content a,a.page-label");
                 for (Element e : categoryList) {
                     String href = urllink + e.attr("href");
-                    String plate = e.text();
-                    more(href, plate);
+                    more(href);
                 }
             } else {
                 LOGGER.info("homepage null");
@@ -44,7 +48,7 @@ public class PlaToRedis {
      *
      * @param url
      */
-    private void more(String url, String plate) {
+    private void more(String url) {
         try {
             String replace = url.replace("1.htm", "");
             String html = HttpUtil.httpGetwithJudgeWord(url, "帮助中心");
@@ -55,7 +59,7 @@ public class PlaToRedis {
                 int number = 1;
                 for (number = 1; number <= total; number++) {
                     String nextPage = replace + number + ".htm";
-                    newsList(nextPage, plate);
+                    newsList(nextPage);
                 }
             } else {
                 LOGGER.info("homepage null");
@@ -70,7 +74,7 @@ public class PlaToRedis {
      *
      * @param url
      */
-    private void newsList(String url, String plate) {
+    private void newsList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");
             if (html != null) {

@@ -15,6 +15,11 @@ public class FindzdToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(FindzdToRedis.class);
     private static String baseUrl = "http://www.findzd.com";
 
+
+    public static void main(String[] args) {
+        FindzdToRedis findzdToRedis = new FindzdToRedis();
+        findzdToRedis.homepage("http://www.findzd.com/industry/");
+    }
     //首页
     public void homepage(String url) {
         try {
@@ -44,7 +49,7 @@ public class FindzdToRedis {
             if (pages!=null && pages.text().contains("页次：")){
                 String Total = pages.text().split("/")[1];
                 int total = Integer.valueOf(Total).intValue();
-                for (number = 1; number < total + 1; number++) {
+                for (number = 1; number <= total; number++) {
                     if (url.contains("?")) {
                         String nextPage = url + "&page="+ number;
                         list.add(nextPage);

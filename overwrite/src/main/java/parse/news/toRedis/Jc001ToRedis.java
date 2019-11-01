@@ -16,6 +16,10 @@ public class Jc001ToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(Jc001ToRedis.class);
     private static String baseUrl = "https://www.ledinside.cn";
 
+    public static void main(String[] args) {
+        Jc001ToRedis jc001ToRedis = new Jc001ToRedis();
+        jc001ToRedis.homepage("http://news.jc001.cn");
+    }
     //首页
     public void homepage(String url) {
         try {

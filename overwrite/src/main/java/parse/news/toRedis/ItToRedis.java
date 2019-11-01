@@ -12,6 +12,11 @@ import Utils.HttpUtil;
 public class ItToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ItToRedis.class);
 
+
+    public static void main(String[] args) {
+        ItToRedis itToRedis = new ItToRedis();
+        itToRedis.homepage("http://www.199it.com/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "199it.com/");
@@ -23,6 +28,7 @@ public class ItToRedis {
                         String href =e.attr("href");
 //                        System.out.println(href);
                         Thread.sleep(2000);
+                        category(href);
                         ping(href);
                     }
                 }
@@ -39,7 +45,12 @@ public class ItToRedis {
             String html = HttpUtil.httpGetwithJudgeWord(url, "下一页");
             if (null != html) {
                 Document doc = Jsoup.parse(html);
-                String select = doc.select("a.page-numbers").last().previousElementSibling().attr("href").split("page/")[1];
+                String select = doc.select("a.page-numbers")
+                        .last()
+                        .previousElementSibling()
+                        .attr("href")
+                        .split("page/")[1]
+                        .replace("?from=42","");
                 if (null != select) {
                     int count = Integer.parseInt(select);
                     int number;
@@ -61,7 +72,7 @@ public class ItToRedis {
 
     private void category(String link) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(link, "感谢您支持199IT的发展");
+            String html = HttpUtil.httpGetwithJudgeWord(link, "199it");
             Thread.sleep(2000);
             if (html != null) {
                 Document document = Jsoup.parse(html);

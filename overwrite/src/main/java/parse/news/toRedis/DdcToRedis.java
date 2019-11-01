@@ -13,6 +13,10 @@ public class DdcToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(DdcToRedis.class);
     private static String baseUrl = "http://news.ddc.net.cn";
 
+    public static void main(String[] args) {
+        DdcToRedis ddcToRedis = new DdcToRedis();
+        ddcToRedis.homepage("http://news.ddc.net.cn");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "ddc");
@@ -20,7 +24,7 @@ public class DdcToRedis {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("div.xiaonav > ul > li > a");
                 for (Element e : categoryList) {
-                    if (!e.attr("href").contains("http:")) {
+                    if (!e.text().contains("资讯首页")) {
                         String href = baseUrl + e.attr("href");
                         ping(href);
                     }
@@ -41,9 +45,9 @@ public class DdcToRedis {
             String html = HttpUtil.httpGetwithJudgeWord(url, "ddc");
             if (null != html) {
                 Document document = Jsoup.parse(html);
-                Elements doc = document.select("body > div.listCon.wrap > div.listL > ul");
+                Elements doc = document.select("div.listL > ul");
                 doc.select("a").remove();
-                String Total = doc.text().split("条/页")[1].split("/")[1].replace("页", "");
+                String Total = doc.text().split("1/")[1].replace("页", "");
                 int total = Integer.valueOf(Total).intValue();//转行类型
                 int number = 1;
                 for (number = 1; number <= total; number++) {
@@ -67,7 +71,7 @@ public class DdcToRedis {
                 Document document = Jsoup.parse(html);
                 Elements detailList = document.select("div.listdiv > ul > li > div > a");
                 for (Element e : detailList) {
-                    String href = e.attr("href");
+                    String href = baseUrl+e.attr("href");
                     RedisUtil.insertUrlToSet("toCatchUrl", href);
                 }
             } else {

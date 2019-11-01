@@ -1,6 +1,7 @@
 package parse.news.toRedis;
 
 import Utils.RedisUtil;
+import org.elasticsearch.common.recycler.Recycler;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,6 +16,10 @@ public class ChinahightechToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ChinahightechToRedis.class);
     private static final String homepage = "http://www.chinahightech.com";
 
+    public static void main(String[] args) {
+        ChinahightechToRedis chinahightechToRedis =new ChinahightechToRedis();
+        chinahightechToRedis.homepage("http://www.chinahightech.com");
+    }
     //主页
     public void homepage(String url) {
         try {
@@ -45,7 +50,7 @@ public class ChinahightechToRedis {
                 Document document = Jsoup.parse(html);
                 String Total = document.select("#pages.text-c a.a1").last().previousElementSibling().text();
                 int total = Integer.valueOf(Total).intValue();
-                for (number = 2; number < total + 1; number++) {
+                for (number = 2; number <= total; number++) {
                     String nextPage = url + number + ".html";
                     list.add(nextPage);
                 }

@@ -13,6 +13,10 @@ public class ZgwToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ZgwToRedis.class);
     private static String baseUrl = "http://news.zgw.com";
 
+    public static void main(String[] args) {
+        ZgwToRedis zgwToRedis = new ZgwToRedis();
+        zgwToRedis.homepage("http://news.zgw.com/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "zgw");
@@ -21,7 +25,6 @@ public class ZgwToRedis {
                 Elements categoryList = document.select("li > font > a");
                 for (Element e : categoryList) {
                     String href = baseUrl+e.attr("href");
-                    System.out.println(href);
                     ping(href);
                 }
             } else {

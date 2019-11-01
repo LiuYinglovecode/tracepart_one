@@ -27,6 +27,10 @@ public class WjwDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+    public static void main(String[] args) {
+        WjwDownload wjwDownload = new WjwDownload();
+        wjwDownload.detail("http://news.wjw.cn/NewsList-48/409983.xhtml");
+    }
 
     public void detail(String url) {
         try {

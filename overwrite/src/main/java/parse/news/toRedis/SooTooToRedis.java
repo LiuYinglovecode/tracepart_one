@@ -12,8 +12,11 @@ import Utils.HttpUtil;
 
 public class SooTooToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(SooTooToRedis.class);
-    private static String baseUrl = "http://www.iyiou.com";
 
+    public static void main(String[] args) {
+        SooTooToRedis sooTooToRedis = new SooTooToRedis();
+        sooTooToRedis.homepage("http://www.sootoo.com/");
+    }
     //首页
     public void homepage(String url) {
         try {

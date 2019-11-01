@@ -14,6 +14,10 @@ public class WjwToRedis {
     private static String baseUrl = "http://news.wjw.cn";
 
 
+    public static void main(String[] args) {
+        WjwToRedis wjwToRedis = new WjwToRedis();
+        wjwToRedis.homepage("http://news.wjw.cn/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "wjw");

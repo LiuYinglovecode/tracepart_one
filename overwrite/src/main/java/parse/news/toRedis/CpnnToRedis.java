@@ -16,6 +16,11 @@ public class CpnnToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CpnnToRedis.class);
     private static final String homepage = "http://www.cpnn.com.cn";
 
+
+    public static void main(String[] args) {
+        CpnnToRedis cpnnToRedis = new CpnnToRedis();
+        cpnnToRedis.homepage("http://www.cpnn.com.cn");
+    }
     //首页
     public void homepage(String url) {
         try {

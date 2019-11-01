@@ -13,6 +13,10 @@ public class TechwebToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(GongkongToRedis.class);
     private static String baseUrl = "http://www.techweb.com.cn";
 
+    public static void main(String[] args) {
+        TechwebToRedis techwebToRedis = new TechwebToRedis();
+        techwebToRedis.homepage("http://www.techweb.com.cn/");
+    }
 
     public void homepage(String url) {
         try {

@@ -63,7 +63,6 @@ public class CcidnetToRedis {
                 if (0!=select.size()) {
                     for (Element e : select) {
                         String link = e.attr("href");
-                        System.out.println(link);
                         RedisUtil.insertUrlToSet("toCatchUrl", link);
                     }
                 }

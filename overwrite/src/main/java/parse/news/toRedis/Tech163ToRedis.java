@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class Tech163ToRedis {
     private final static Logger LOGGER = LoggerFactory.getLogger(Tech163ToRedis.class);
 
+    public static void main(String[] args) {
+        Tech163ToRedis tech163ToRedis = new Tech163ToRedis();
+        tech163ToRedis.homePage("http://tech.163.com/telecom/");
+    }
     public void homePage(String url) {
         try {
             String get = HttpUtil.httpGetwithJudgeWord(url, "163");

@@ -13,6 +13,11 @@ public class CinicToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CinicToRedis.class);
     private static String baseUrl = new String("http://cinic.org.cn");
 
+    public static void main(String[] args) {
+        CinicToRedis cinicToRedis = new CinicToRedis();
+        cinicToRedis.homepage("http://cinic.org.cn");
+    }
+
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
@@ -27,6 +32,7 @@ public class CinicToRedis {
                                 &&!e.text().contains("文化艺术")
                                 &&!e.text().contains("党媒视点")) {
                             String href = baseUrl.concat(e.attr("href"));
+                            newsList(href);
                             paging(href);
                         }
                     }
@@ -46,9 +52,8 @@ public class CinicToRedis {
                 if (!lastPage.isEmpty()) {
                     String pageCount = lastPage.split("index_", 2)[1].replace(".html", "");
                     int number;
-                    for (number = 1; number <= Integer.parseInt(pageCount); number++) {
+                    for (number = 2; number <= Integer.parseInt(pageCount); number++) {
                         String links = baseUrl.concat(lastPage.replace(pageCount, String.valueOf(number)));
-                    System.out.println("下一页："+links);
                         newsList(links);
                     }
                 }else {

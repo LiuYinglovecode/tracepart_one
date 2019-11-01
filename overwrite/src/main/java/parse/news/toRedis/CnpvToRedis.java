@@ -13,6 +13,11 @@ public class CnpvToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CnpvToRedis.class);
     private static String baseUrl = "http://www.cnpv.com";
 
+
+    public static void main(String[] args) {
+        CnpvToRedis cnpvToRedis = new CnpvToRedis();
+        cnpvToRedis.homepage("http://www.cnpv.com");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cnpv");

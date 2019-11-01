@@ -15,6 +15,11 @@ public class CnmnToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CnmnToRedis.class);
     private static final String homepage = "http://www.cnmn.com.cn";
 
+    public static void main(String[] args) {
+        CnmnToRedis cnmnToRedis = new CnmnToRedis();
+        cnmnToRedis.homepage("https://www.cnmn.com.cn/");
+    }
+
     //主页
     public void homepage(String url) {
         try {
@@ -23,7 +28,9 @@ public class CnmnToRedis {
                 Document document = Jsoup.parse(html);
                 Elements categoryList = document.select("#nav > li > ul > li > a");
                 for (Element e : categoryList) {
-                    if (!e.attr("href").contains("/")) {
+                    if (!e.attr("href").contains("/")
+                            &&!e.attr("href").contains("专题")
+                            &&!e.attr("href").contains("公告")) {
                         paging(homepage + "/" + e.attr("href"), e.text().trim());
                     } else {
                         paging(homepage + e.attr("href"), e.text().trim());

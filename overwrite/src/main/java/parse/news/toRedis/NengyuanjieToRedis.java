@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class NengyuanjieToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(NengyuanjieToRedis.class);
 
+    public static void main(String[] args) {
+        NengyuanjieToRedis nengyuanjieToRedis = new NengyuanjieToRedis();
+        nengyuanjieToRedis.homepage("http://www.nengyuanjie.net/");
+    }
     //首页
     public void homepage(String url) {
         try {
@@ -26,7 +30,7 @@ public class NengyuanjieToRedis {
                         String link = e.attr("href");
                         String plate = e.text();
 //                        Thread.sleep(7000);
-                        paging(link, plate);
+                        paging(link);
                     }
                 }
             }
@@ -38,7 +42,7 @@ public class NengyuanjieToRedis {
 
 
     //分页
-    private void paging(String url, String plate) {
+    private void paging(String url) {
         try {
             ArrayList<String> list = new ArrayList<>();
             int number = 1;
@@ -52,7 +56,7 @@ public class NengyuanjieToRedis {
             }
             for (String link : list) {
                 Thread.sleep(7000);
-                newsList(link, plate);
+                newsList(link);
             }
 
         } catch (Exception e) {
@@ -61,7 +65,7 @@ public class NengyuanjieToRedis {
     }
 
     //新闻列表
-    private void newsList(String url, String plate) {
+    private void newsList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "能源界");
             Document document = Jsoup.parse(html);

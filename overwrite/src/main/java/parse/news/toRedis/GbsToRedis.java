@@ -13,6 +13,10 @@ public class GbsToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(GbsToRedis.class);
     private static String baseUrl = "http://www.gbs.cn";
 
+    public static void main(String[] args) {
+        GbsToRedis gbsToRedis = new GbsToRedis();
+        gbsToRedis.homepage("http://www.gbs.cn/info/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "gbs");

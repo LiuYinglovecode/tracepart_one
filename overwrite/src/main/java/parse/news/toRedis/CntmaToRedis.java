@@ -14,6 +14,10 @@ public class CntmaToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CntmaToRedis.class);
     private static String baseUrl = "http://www.cntma.com";
 
+    public static void main(String[] args) {
+        CntmaToRedis cntmaToRedis = new CntmaToRedis();
+        cntmaToRedis.homepage("http://www.cntma.com/news/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "cntma");

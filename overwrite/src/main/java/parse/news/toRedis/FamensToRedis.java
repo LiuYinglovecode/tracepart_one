@@ -1,6 +1,7 @@
 package parse.news.toRedis;
 
 import Utils.RedisUtil;
+import Utils.SleepUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,6 +16,10 @@ public class FamensToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(FamensToRedis.class);
     private static String baseUrl = "http://www.famens.com";
 
+    public static void main(String[] args) {
+        FamensToRedis famensToRedis = new FamensToRedis();
+        famensToRedis.homepage("http://www.famens.com/News/");
+    }
     //首页
     public void homepage(String url) {
         try {
@@ -24,7 +29,7 @@ public class FamensToRedis {
                 Elements categoryList = document.select("div.c-menu.clearfix p a");
                 for (Element e : categoryList) {
                     String link =baseUrl + e.attr("href");
-                    Thread.sleep(7000);
+                    Thread.sleep(SleepUtils.sleepMin());
                     paging(link);
                 }
             }
@@ -51,7 +56,7 @@ public class FamensToRedis {
             }
             for (String link : list) {
 //                System.out.println("下一页：" + link);
-                Thread.sleep(7000);
+                Thread.sleep(SleepUtils.sleepMin());
                 newsList(link);
             }
 
@@ -68,12 +73,12 @@ public class FamensToRedis {
             Elements newsListInfo = document.select("li p.tit a");
             for (Element e : newsListInfo) {
                 String href = e.attr("href");
-                if (e.attr("href").contains("http")){
-                    Thread.sleep(7000);
-                    RedisUtil.insertUrlToSet("toCatchUrl", e.attr("href"));
+                if (href.contains("http")){
+                    Thread.sleep(SleepUtils.sleepMin());
+                    RedisUtil.insertUrlToSet("toCatchUrl", href);
                 }else {
-                    Thread.sleep(7000);
-                    RedisUtil.insertUrlToSet("toCatchUrl", baseUrl+e.attr("href"));
+                    Thread.sleep(SleepUtils.sleepMin());
+                    RedisUtil.insertUrlToSet("toCatchUrl", baseUrl+href);
                 }
 
             }

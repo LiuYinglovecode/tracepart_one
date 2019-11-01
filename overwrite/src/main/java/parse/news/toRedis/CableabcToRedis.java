@@ -26,7 +26,7 @@ public class CableabcToRedis {
                     if (!element.text().equals("资讯首页") && !element.text().equals("招标") && !element.text().equals("展会")) {
                         String href = element.attr("href");
                         String plate = element.text();
-                        paging(href, plate);
+                        paging(href);
                     }
                 }
             }
@@ -37,7 +37,7 @@ public class CableabcToRedis {
     }
 
     //分页
-    private void paging(String url, String plate) {
+    private void paging(String url) {
         try {
             ArrayList<String> list = new ArrayList<>();
             int number = 0;
@@ -62,7 +62,7 @@ public class CableabcToRedis {
                     }
                 }
                 for (String link : list) {
-                    newsList(link, plate);
+                    newsList(link);
                 }
             }
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class CableabcToRedis {
     }
 
     //新闻列表
-    private void newsList(String url, String plate) {
+    private void newsList(String url) {
         ArrayList<String> list = new ArrayList<>();
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "电缆网");

@@ -16,6 +16,10 @@ import java.util.regex.Pattern;
 public class TechnodeToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(TechnodeToRedis.class);
 
+    public static void main(String[] args) {
+        TechnodeToRedis technodeToRedis = new TechnodeToRedis();
+        technodeToRedis.homepage("https://cn.technode.com/");
+    }
 
     public void homepage(String url) {
         try {

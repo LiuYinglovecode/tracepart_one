@@ -11,9 +11,13 @@ import org.slf4j.LoggerFactory;
 import Utils.HttpUtil;
 
 public class IyiouToRedis {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Jc001ToRedis.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(IyiouToRedis.class);
     private static String baseUrl = "http://www.iyiou.com";
 
+    public static void main(String[] args) {
+        IyiouToRedis iyiouToRedis = new IyiouToRedis();
+        iyiouToRedis.homepage("https://www.iyiou.com/");
+    }
     //首页
     public void homepage(String url) {
         try {

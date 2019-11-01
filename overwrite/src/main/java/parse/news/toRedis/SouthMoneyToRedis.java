@@ -17,6 +17,10 @@ public class SouthMoneyToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(Jc001ToRedis.class);
     private static final String website = new String("http://www.southmoney.com");
 
+    public static void main(String[] args) {
+        SouthMoneyToRedis southMoneyToRedis = new SouthMoneyToRedis();
+        southMoneyToRedis.homepage("http://www.southmoney.com/");
+    }
     //首页
     public void homepage(String url) {
         try {

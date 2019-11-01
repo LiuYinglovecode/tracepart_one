@@ -14,6 +14,12 @@ import java.util.ArrayList;
 public class HuajxToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(HuajxToRedis.class);
 
+
+    public static void main(String[] args) {
+        HuajxToRedis huajxToRedis = new HuajxToRedis();
+        huajxToRedis.homepage("http://www.huajx.com/news/");
+
+    }
     //主页
     public void homepage(String url) {
         try {

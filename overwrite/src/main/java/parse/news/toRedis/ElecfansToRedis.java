@@ -13,6 +13,10 @@ public class ElecfansToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElecfansToRedis.class);
     private static String baseUrl = "http://www.elecfans.com/news/hangye";
 
+    public static void main(String[] args) {
+        ElecfansToRedis elecfansToRedis = new ElecfansToRedis();
+        elecfansToRedis.homepage("http://www.elecfans.com/news/hangye/");
+    }
     public void homepage(String url) {
 
         try {

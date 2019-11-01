@@ -12,6 +12,10 @@ import Utils.HttpUtil;
 public class LeiphoneToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(LeiphoneToRedis.class);
 
+    public static void main(String[] args) {
+        LeiphoneToRedis leiphoneToRedis = new LeiphoneToRedis();
+        leiphoneToRedis.homepage("https://www.leiphone.com/category/iot");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");

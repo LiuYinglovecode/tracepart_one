@@ -13,6 +13,11 @@ public class Ic37ToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(EapadToRedis.class);
     private static final String beasUrl = "https://www.ic37.com";
 
+
+    public static void main(String[] args) {
+        Ic37ToRedis ic37ToRedis = new Ic37ToRedis();
+        ic37ToRedis.homepage("https://www.ic37.com/htm_news/default.htm");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");

@@ -48,8 +48,9 @@ public class XianjichinaDownload {
                         for (Element e : imgList) {
                             imgs.add(baseUrl + e.attr("src"));
                         }
+                        info.put("images", String.valueOf(imgs));
                     }
-                    info.put("images", String.valueOf(imgs));
+
                     info.put("url", url);
                     info.put("text", text.text().trim());
                     info.put("html", text.html());

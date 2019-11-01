@@ -14,6 +14,11 @@ import java.util.ArrayList;
 public class CesToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(CesToRedis.class);
 
+
+    public static void main(String[] args) {
+        CesToRedis cesToRedis = new CesToRedis();
+        cesToRedis.homepage("http://www.ces.cn/news/");
+    }
     //首页
     public void homepage(String url) {
         try {
@@ -24,8 +29,7 @@ public class CesToRedis {
                 for (Element element : categoryList) {
                     if (!element.text().contains("新闻首页")) {
                         String href = element.attr("href");
-                        String plate = element.text().trim();
-                        paging(href, plate);
+                        paging(href);
                     }
                 }
             }
@@ -36,7 +40,7 @@ public class CesToRedis {
     }
 
     //分页
-    private void paging(String url, String plate) {
+    private void paging(String url) {
         String replace = url.replace(".html", "");
         try {
             ArrayList<String> list = new ArrayList<>();
@@ -50,7 +54,7 @@ public class CesToRedis {
                 list.add(nextPage);
             }
             for (String link : list) {
-                newsList(link, plate);
+                newsList(link);
 
             }
 
@@ -60,7 +64,7 @@ public class CesToRedis {
     }
 
     //新闻列表
-    private void newsList(String url, String plate) {
+    private void newsList(String url) {
 
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国节能网");

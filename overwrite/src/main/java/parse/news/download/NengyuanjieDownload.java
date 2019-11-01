@@ -27,6 +27,10 @@ public class NengyuanjieDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+    public static void main(String[] args) {
+        NengyuanjieDownload nengyuanjieDownload = new NengyuanjieDownload();
+        nengyuanjieDownload.newsInfo("http://www.nengyuanjie.net/article/12226.html");
+    }
     /**
      * @param url 新闻内容：有些新闻有很多图片，要拿到所有的图片链接，
      *            把链接放到集合中，在进行存储。
@@ -40,10 +44,16 @@ public class NengyuanjieDownload {
             if (html != null) {
                 Document document = Jsoup.parse(html);
                 newsInfo.put("title", document.select("h1.art-title").text().trim());//标题
-                String select = document.select("span.desc.mt15").text();
-                newsInfo.put("time", ForMat.getDatetimeFormat(select.split("来源：")[0].trim()));
-                newsInfo.put("source", select.split("来源：")[1].split("浏览：")[0].trim());
-                newsInfo.put("amountOfReading", select.split("浏览：")[1].trim());
+                Elements select = document.select("span.desc.mt15");
+                newsInfo.put("amountOfReading", select.select("#hits").text().trim());
+                select.select("#hits").remove();
+                if (select.text().contains("来源：") && select.text().contains("浏览：")) {
+                    newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源：")[0].trim()));
+                    newsInfo.put("source", select.text().split("来源：")[1].replace("浏览：","").trim());
+                }else if (select.text().contains("浏览：")){
+                    newsInfo.put("time", ForMat.getDatetimeFormat(select.text().replace(" 浏览：","").trim()));
+
+                }
 
                 Elements img = document.select("div.content p img");
                 if (img.size() != 0) {

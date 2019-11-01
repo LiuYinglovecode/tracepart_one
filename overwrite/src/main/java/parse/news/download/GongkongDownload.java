@@ -27,6 +27,12 @@ public class GongkongDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+
+    public static void main(String[] args) {
+        GongkongDownload gongkongDownload = new GongkongDownload();
+        gongkongDownload.detail("http://www.gongkong.com/news/201909/397373.html");
+    }
+
     public void detail(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "本站介绍");

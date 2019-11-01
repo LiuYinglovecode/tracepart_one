@@ -12,8 +12,12 @@ import Utils.HttpUtil;
 
 public class TybabaToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(TybabaToRedis.class);
-    private static String baseUrl = "https://www.ledinside.cn";
 
+
+    public static void main(String[] args) {
+        TybabaToRedis tybabaToRedis = new TybabaToRedis();
+        tybabaToRedis.homepage("http://www.tybaba.com/news/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "tybaba");

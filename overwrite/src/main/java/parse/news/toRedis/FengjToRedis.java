@@ -13,12 +13,18 @@ import Utils.HttpUtil;
 public class FengjToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(FengjToRedis.class);
 
+
+    public static void main(String[] args) {
+        FengjToRedis fengjToRedis = new FengjToRedis();
+        fengjToRedis.homepage("http://news.fengj.com/");
+    }
+
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "fengj");
             if (null != html) {
                 Document document = Jsoup.parse(html);
-                Elements categoryList = document.select("div.ltit > a");
+                Elements categoryList = document.select("div.column_title > strong > a,div.bottom_con > div > div > a");
                 for (Element e : categoryList) {
                     String href = e.attr("href");
                     paging(href);
@@ -39,11 +45,15 @@ public class FengjToRedis {
             String html = HttpUtil.httpGetwithJudgeWord(url, "fengj");
             Document parse = Jsoup.parse(html);
             String pagesNumber = parse.select("span.xxts").text();//获取总条数
-            int ceil = (int) Math.ceil(Double.parseDouble(pagesNumber) / 10);//获取总页数
-            int number = 1;
-            for (number = 1; number < ceil; number++) {
-                String link = replace + number + ".html";//拼接链接地址
-                newsList(link);
+            if (Integer.parseInt(pagesNumber)>10) {
+                int ceil = (int) Math.ceil(Double.parseDouble(pagesNumber) / 10);//获取总页数
+                int number = 1;
+                for (number = 1; number < ceil; number++) {
+                    String link = replace +"page"+ number+"/";//拼接链接地址
+                    newsList(link);
+                }
+            }else {
+                newsList(url);
             }
         } catch (Exception e) {
             e.printStackTrace();

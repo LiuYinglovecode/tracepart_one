@@ -27,9 +27,14 @@ public class CinnDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+    public static void main(String[] args) {
+        CinnDownload cinnDownload = new CinnDownload();
+        cinnDownload.detail("http://www.cinn.cn/headline/201910/t20191020_219835.html");
+    }
+
     public void detail(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "中国工业报社");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "cinn");
             if (null != html) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
@@ -59,10 +64,12 @@ public class CinnDownload {
                             imgs.add(url.substring(0, url.lastIndexOf("/")) + e.attr("src").split("/", 2)[1]);
                         }
                     }
+                    info.put("images", imgs.toString());
                 }
-                info.put("images", imgs.toString());
+
                 Elements text = document.select(".detail_content");
-                info.put("text", text.html());
+                info.put("text", text.text().trim());
+                info.put("html", text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
                 info.put("crawlerId", "28");

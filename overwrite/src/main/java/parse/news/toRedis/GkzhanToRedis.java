@@ -12,6 +12,10 @@ import Utils.HttpUtil;
 public class GkzhanToRedis {
     private final static Logger LOGGER = LoggerFactory.getLogger(GkzhanToRedis.class);
 
+    public static void main(String[] args) {
+        GkzhanToRedis gkzhanToRedis = new GkzhanToRedis();
+        gkzhanToRedis.homePage("https://www.gkzhan.com/news/");
+    }
     //  新闻网首页
     public void homePage(String url) {
         try {

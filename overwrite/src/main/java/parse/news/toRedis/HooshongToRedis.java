@@ -15,6 +15,10 @@ import java.util.ArrayList;
 public class HooshongToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(HooshongToRedis.class);
 
+    public static void main(String[] args) {
+        HooshongToRedis hooshongToRedis = new HooshongToRedis();
+        hooshongToRedis.homepage("https://www.hooshong.com/news/");
+    }
     //主页
     public void homepage(String url) {
         try {

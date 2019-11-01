@@ -12,6 +12,10 @@ import Utils.HttpUtil;
 public class HerostartToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(HerostartToRedis.class);
 
+    public static void main(String[] args) {
+        HerostartToRedis herostartToRedis = new HerostartToRedis();
+        herostartToRedis.homepage("http://info.china.herostart.com/");
+    }
     public void homepage(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "herostart");
