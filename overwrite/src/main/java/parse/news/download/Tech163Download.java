@@ -38,7 +38,7 @@ public class Tech163Download {
             Elements select = document.select("#epContentLeft > div.post_time_source");
             if (select.text().contains("来源:")) {
                 newsInfo.put("time", ForMat.getDatetimeFormat(select.text().split("来源:")[0].trim()));
-                newsInfo.put("source", select.text().split("来源:")[1].trim());
+                newsInfo.put("source", select.text().split("来源:")[1].replace("举报","").trim());
             }
             Elements text = document.select("#endText");
             text.select("div.gg200x300").remove();
