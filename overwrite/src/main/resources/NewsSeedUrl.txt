@@ -29,7 +29,7 @@ http://news.zgw.com/
 http://www.spsb114.com/news/
 http://www.famens.com/News/
 http://www.maijx.com/information/record.html
-http://www.chuandong.com/news/
+https://www.chuandong.com/update/newnews.html
 http://www.findzd.com/industry/
 http://www.huajx.com/news/
 https://www.hooshong.com/news/
