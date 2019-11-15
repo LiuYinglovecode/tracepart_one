@@ -58,7 +58,11 @@ public class CharacterEncoding {
                 for (String att : as) {
                     if (att.contains("charset")) {
 //                        System.out.println(att.split("=")[1]);
-                        charset = att.split("=")[1];
+                        try {
+                            charset = att.split("=")[1];
+                        } catch (Exception e) {
+                            LOGGER.error(e.getMessage());
+                        }
                     }
                 }
             }
@@ -153,9 +157,21 @@ public class CharacterEncoding {
             cdp.add(UnicodeDetector.getInstance());
             cdp.add(new ParsingDetector(false));
             cdp.add(new ByteOrderMarkDetector());
-            ByteArrayInputStream bais = new ByteArrayInputStream(IOUtils.toByteArray(urlConn.getInputStream()));
+            ByteArrayInputStream bais = null;
+            try {
+
+                bais = new ByteArrayInputStream(IOUtils.toByteArray(urlConn.getInputStream()));
+            } catch (IOException e) {
+                LOGGER.error(e.getMessage());
+            }
             // detectCodepage(InputStream in, int length) 只支持可以mark的InputStream
-            charset = cdp.detectCodepage(bais, 2147483647);
+            try {
+                charset = cdp.detectCodepage(bais, 2147483647);
+            } catch (IOException e) {
+               LOGGER.error(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

@@ -15,6 +15,11 @@ import java.util.ArrayList;
 public class HerostartToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(QiyiToRedis.class);
 
+    public static void main(String[] args) {
+        HerostartToRedis herostartToRedis = new HerostartToRedis();
+
+        herostartToRedis.category("http://www.herostart.com/");
+    }
     public void category(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "herostart");
@@ -54,7 +59,7 @@ public class HerostartToRedis {
             int number = 1;
             String html = HttpUtil.httpGetwithJudgeWord(href, "herostart");
             Thread.sleep(SleepUtils.sleepMin());
-            if (html == null) {
+            if (html != null) {
                 Document document = Jsoup.parse(html);
                 Elements pageCount = document.select("div.pages > cite");
                 if (0 != pageCount.size()) {
@@ -78,7 +83,7 @@ public class HerostartToRedis {
     private void companyList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "herostart");
-            Thread.sleep(SleepUtils.sleepMin());
+//            Thread.sleep(SleepUtils.sleepMin());
             if (null!=html) {
                 Document document = Jsoup.parse(html);
                 Elements select = document.select("td[align=left] > ul > li > a");

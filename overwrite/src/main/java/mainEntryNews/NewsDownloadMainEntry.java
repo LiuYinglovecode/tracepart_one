@@ -272,6 +272,33 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("www.kejixun.com")) {
                     KeJiXunDownload zhiDingDownload = new KeJiXunDownload();
                     zhiDingDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.jc35.com/news")) {
+                    Jc35Download jc35Download = new Jc35Download();
+                    jc35Download.newsInfo(taskName);
+                }else if (taskName.contains("www.roboticschina.com/news")) {
+                    RoboticschinaDownload roboticschinaDownload = new RoboticschinaDownload();
+                    roboticschinaDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.ilinki.net/news")) {
+                    IlinkiDownload ilinkiDownload = new IlinkiDownload();
+                    ilinkiDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.ceeia.com")) {
+                    CeeiaDownload ceeiaDownload = new CeeiaDownload();
+                    ceeiaDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.todayim.cn")) {
+                    TodayimDownload todayimDownload = new TodayimDownload();
+                    todayimDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.jdw001.com")) {
+                    Jdw001Download jdw001Download = new Jdw001Download();
+                    jdw001Download.newsInfo(taskName);
+                }else if (taskName.contains("www.dingkeji.com")) {
+                    DingKeJiDownload dingKeJiDownload = new DingKeJiDownload();
+                    dingKeJiDownload.newsInfo(taskName);
+                }else if (taskName.contains("news.rfidworld.com.cn")) {
+                    RfidworldDownload rfidworldDownload = new RfidworldDownload();
+                    rfidworldDownload.newsInfo(taskName);
+                }else if (taskName.contains("ailab.cn")) {
+                    AilabDownload AilabDownload = new AilabDownload();
+                    AilabDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -53,7 +53,7 @@ public class Tech163Download {
                 }
                 newsInfo.put("images", imgsList.toString());
             }
-            newsInfo.put("author", document.select("span.ep-editor").text().replace("责任编辑：", ""));
+            newsInfo.put("author", document.select("span.ep-editor").text().replace("责任编辑：", "").trim());
 
 
             newsInfo.put("crawlerId", "104");

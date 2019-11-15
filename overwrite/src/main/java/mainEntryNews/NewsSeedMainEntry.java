@@ -2,6 +2,7 @@ package mainEntryNews;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import parse.news.download.AilabDownload;
 import parse.news.toRedis.*;
 
 import java.io.BufferedReader;
@@ -141,10 +142,10 @@ public class NewsSeedMainEntry {
                 } else if (taskName.contains("www.spsb114.com")) {
                     Spsb114ToRedis spsb114ToRedis = new Spsb114ToRedis();
                     spsb114ToRedis.homepage(taskName);
-                } /*else if (taskName.contains("www.chuandong.com/news/")) {
+                } else if (taskName.contains("www.chuandong.com/news/")) {
                     ChuandongToRedis chuandongToRedis = new ChuandongToRedis();
-                    chuandongToRedis.homepage(taskName);
-                }*/ else if (taskName.contains("www.chinacrane.net/")) {
+                    chuandongToRedis.paging(taskName);
+                } else if (taskName.contains("www.chinacrane.net/")) {
                     ChinacraneToRedis chinacraneToRedis = new ChinacraneToRedis();
                     chinacraneToRedis.homepage(taskName);
                 } else if (taskName.contains("www.findzd.com/industry/")) {
@@ -273,6 +274,33 @@ public class NewsSeedMainEntry {
                 } else if (taskName.contains("www.kejixun.com")) {
                     KeJiXunToRedis keJiXunToRedis = new KeJiXunToRedis();
                     keJiXunToRedis.homepage(taskName);
+                }else if (taskName.contains("www.jc35.com/news")) {
+                    Jc35ToRedis jc35ToRedis = new Jc35ToRedis();
+                    jc35ToRedis.homepage(taskName);
+                }else if (taskName.contains("www.roboticschina.com/news/")) {
+                    RoboticschinaToRedis roboticschinaToRedis = new RoboticschinaToRedis();
+                    roboticschinaToRedis.homepage(taskName);
+                }else if (taskName.contains("www.ilinki.net/")) {
+                    IlinkiToRedis ilinkiToRedis = new IlinkiToRedis();
+                    ilinkiToRedis.homepage(taskName);
+                }else if (taskName.contains("www.ceeia.com/Index.aspx")) {
+                    CeeiaToRedis ceeiaToRedis = new CeeiaToRedis();
+                    ceeiaToRedis.homepage(taskName);
+                }else if (taskName.contains("www.todayim.cn/news/3.html")) {
+                    TodayimToRedis todayimToRedis = new TodayimToRedis();
+                    todayimToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.jdw001.com/portal.php")) {
+                    Jdw001ToRedis jdw001ToRedis = new Jdw001ToRedis();
+                    jdw001ToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.dingkeji.com/")) {
+                    DingKeJiToRedis dingKeJiToRedis = new DingKeJiToRedis();
+                    dingKeJiToRedis.homepage(taskName);
+                }else if (taskName.contains("http://news.rfidworld.com.cn/")) {
+                    RfidworldToRedis rfidworldToRedis = new RfidworldToRedis();
+                    rfidworldToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.ailab.cn/")) {
+                    AilabToRedis ailabToRedis = new AilabToRedis();
+                    ailabToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

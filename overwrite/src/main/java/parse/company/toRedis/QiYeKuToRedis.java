@@ -14,6 +14,10 @@ import Utils.HttpUtil;
 public class QiYeKuToRedis {
     private static final Logger LOGGER = LoggerFactory.getLogger(QiYeKuToRedis.class);
 
+    public static void main(String[] args) {
+        QiYeKuToRedis qiYeKuToRedis = new QiYeKuToRedis();
+        qiYeKuToRedis.companyList("http://www.qiyeku.com/huangye/");
+    }
     public void category(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "企业库");

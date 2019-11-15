@@ -26,6 +26,11 @@ public class ChuangdongDownload {
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+    public static void main(String[] args) {
+        ChuangdongDownload chuangdongDownload = new ChuangdongDownload();
+        chuangdongDownload.newsInfo("https://www.chuandong.com/news/news236437.html");
+    }
+
     //新闻信息
     public void newsInfo(String url) {
         JSONArray imgsList = new JSONArray();
@@ -34,30 +39,37 @@ public class ChuangdongDownload {
             String html = HttpUtil.httpGetwithJudgeWord(url, "联系我们");
             if (html != null) {
                 Document document = Jsoup.parse(html);
-                newsInfo.put("title", document.select("h1.ns-tit").text().trim());//标题
-                newsInfo.put("time", ForMat.getDatetimeFormat(document.select("span.time.mr30").text().trim()));//发布时间
-                newsInfo.put("source", document.select("span.label.mr30").text().trim().replace("来源：", "").trim());//发布时间
-                Elements textInfo = document.select("div.ns-con-texts.mt30");
+                newsInfo.put("title", document.select("div.newsDetail-title > h1").text().trim());//标题
+                Elements select = document.select("div.newsDetail-title > p > span");
+                for (Element element : select) {
+                    if (element.text().contains("时间：")){
+                        newsInfo.put("time", ForMat.getDatetimeFormat(element.text().replace("时间：","").trim()));//发布时间
+                    }else if (element.text().contains("来源：")){
+                        newsInfo.put("source", element.text().replace("来源：","").trim());//发布时间
+                    }
+                }
+
+                Elements textInfo = document.select("div.newsDetail-title > div,#article-con");
 //                if (textInfo.select("p").text().contains("声明：本文为转载类文章")){
 //                    textInfo.select("p").remove();
                 newsInfo.put("text", textInfo.text().trim());//新闻内容
                 newsInfo.put("html", textInfo.html());//新闻内容
                 String newsId = NewsMd5.newsMd5(textInfo.text().trim());
                 newsInfo.put("newsId", newsId);
-                Elements img = textInfo.select("center p img");
+                Elements img = textInfo.select("center p img,p img");
                 if (img.size() != 0) {
                     for (Element element : img) {
                         imgsList.add(element.attr("src"));
                         newsInfo.put("images", imgsList.toString());//图片链接
                     }
-                } else if (textInfo.select("#cke_48").size() != 0) {
-                    Elements img1 = textInfo.select("#cke_48");
+                } else if (textInfo.select("p > span > o:p > img").size() != 0) {
+                    Elements img1 = textInfo.select("p > span > o:p > img");
                     for (Element element : img1) {
                         imgsList.add(element.attr("src"));
                         newsInfo.put("images", imgsList.toString());//图片链接
                     }
-                } else if (textInfo.select("p.MsoNormal span span img").size() != 0) {
-                    Elements img2 = textInfo.select("p.MsoNormal span span img");
+                } else if (textInfo.select("p > span > span > img").size() != 0) {
+                    Elements img2 = textInfo.select("p > span > span > img");
                     for (Element element : img2) {
                         imgsList.add(element.attr("src"));
                         newsInfo.put("images", imgsList.toString());//图片链接
