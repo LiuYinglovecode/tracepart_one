@@ -61,7 +61,7 @@ public class CharacterEncoding {
                         try {
                             charset = att.split("=")[1];
                         } catch (Exception e) {
-                            LOGGER.error(e.getMessage());
+                            LOGGER.info("链接超时");
                         }
                     }
                 }
@@ -162,7 +162,7 @@ public class CharacterEncoding {
 
                 bais = new ByteArrayInputStream(IOUtils.toByteArray(urlConn.getInputStream()));
             } catch (IOException e) {
-                LOGGER.error(e.getMessage());
+                LOGGER.info("链接超时");
             }
             // detectCodepage(InputStream in, int length) 只支持可以mark的InputStream
             try {

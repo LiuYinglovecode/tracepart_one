@@ -2,7 +2,6 @@ package mainEntryNews;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parse.news.download.AilabDownload;
 import parse.news.toRedis.*;
 
 import java.io.BufferedReader;
@@ -76,19 +75,19 @@ public class NewsSeedMainEntry {
                 } else if (taskName.contains("www.cpnn.com.cn")) {
                     CpnnToRedis cpnnToRedis = new CpnnToRedis();
                     cpnnToRedis.homepage(taskName);
-                } /*else if (taskName.contains("www.51dzw.com")) {
+                } else if (taskName.contains("www.51dzw.com")) {
                     DzwToRedis dzwToRedis = new DzwToRedis();
                     dzwToRedis.homepage(taskName);
-                } */else if (taskName.contains("www.gkzhan.com")) {
+                } else if (taskName.contains("www.gkzhan.com")) {
                     GkzhanToRedis gkzhanToRedis = new GkzhanToRedis();
                     gkzhanToRedis.homePage(taskName);
                 } else if (taskName.contains("www.jdzj.com")) {
                     JdzjToRedis jdzjToRedis = new JdzjToRedis();
                     jdzjToRedis.homepage(taskName);
-                } /*else if (taskName.contains("www.jiancai.com")) {
+                } else if (taskName.contains("www.jiancai.com")) {
                     JiancaiToRedis jiancaiToRedis = new JiancaiToRedis();
                     jiancaiToRedis.homepage(taskName);
-                }*/ else if (taskName.contains("news.lmjx.net")) {
+                } else if (taskName.contains("news.lmjx.net")) {
                     LmjxToRedis lmjxToRedis = new LmjxToRedis();
                     lmjxToRedis.homepage(taskName);
                 } else if (taskName.contains("news.machine365.com")) {
@@ -301,6 +300,18 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("http://www.ailab.cn/")) {
                     AilabToRedis ailabToRedis = new AilabToRedis();
                     ailabToRedis.homepage(taskName);
+                }else if (taskName.contains("www.2025china.cn/sec/hotnews")) {
+                    ZhiNengWangToRedis zhiNengWangToRedis = new ZhiNengWangToRedis();
+                    zhiNengWangToRedis.listNews(taskName);
+                }else if (taskName.contains("news.ca168.com")) {
+                    Ca168ToRedis ca168ToRedis = new Ca168ToRedis();
+                    ca168ToRedis.category(taskName);
+                }else if (taskName.contains("www.zhiding.cn")) {
+                    ZhiDingToRedis zhiDingToRedis = new ZhiDingToRedis();
+                    zhiDingToRedis.homepage(taskName);
+                }else if (taskName.contains("mma.vogel.com.cn")) {
+                    MmaVogelToRedis mmaVogelToRedis = new MmaVogelToRedis();
+                    mmaVogelToRedis.listNews(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

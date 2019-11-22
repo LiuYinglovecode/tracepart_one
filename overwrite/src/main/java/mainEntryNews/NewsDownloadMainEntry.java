@@ -9,7 +9,6 @@ import parse.news.download.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
 
 
 public class NewsDownloadMainEntry {
@@ -299,6 +298,18 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("ailab.cn")) {
                     AilabDownload AilabDownload = new AilabDownload();
                     AilabDownload.newsInfo(taskName);
+                }else if (taskName.contains("news.ca168.com")) {
+                    Ca168Download ca168Download = new Ca168Download();
+                    ca168Download.detail(taskName);
+                }else if (taskName.contains("www.2025china.cn")) {
+                    ZhiNengWangDownload zhiNengWangDownload = new ZhiNengWangDownload();
+                    zhiNengWangDownload.detail(taskName);
+                }else if (taskName.contains("zhiding.cn")) {
+                    ZhiDingDownload zhiDingDownload = new ZhiDingDownload();
+                    zhiDingDownload.detail(taskName);
+                }else if (taskName.contains("vogel.com.cn")) {
+                    MmaVogelDownload mmaVogelDownload = new MmaVogelDownload();
+                    mmaVogelDownload.detail(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

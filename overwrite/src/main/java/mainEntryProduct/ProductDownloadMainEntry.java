@@ -25,8 +25,8 @@ public class ProductDownloadMainEntry {
                     new ArrayBlockingQueue<Runnable>(15), new ThreadPoolExecutor.CallerRunsPolicy());
             String url = "";
             while (true) {
-                while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl-Product"))) {
-                    if (!RedisUtil.isExist("catchedUrl-Product", url)) {
+                while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl-shhProduct"))) {
+                    if (!RedisUtil.isExist("catchedUrl-shhProduct", url)) {
                         SeedTask seed = new SeedTask(url);
                         executor.execute(seed);
                     }
@@ -76,12 +76,15 @@ public class ProductDownloadMainEntry {
                 }else if (taskName.contains("www.wmb2b.com")) {
                     Wmb2bDownload wmb2bDownload = new Wmb2bDownload();
                     wmb2bDownload.productInfo(taskName);
-                }else if (taskName.contains("https://chanpin.gongchang.com")) {
-                    GongChangDownload GongChangDownload = new GongChangDownload();
-                    GongChangDownload.productInfo(taskName);
                 }else if (taskName.contains("www.jdzj.com/chanpin")) {
                     JdzjProductDownload jdzjProductToRedis = new JdzjProductDownload();
                     jdzjProductToRedis.productInfo(taskName);
+                }else if (taskName.contains("https://chanpin.gongchang.com")) {
+                    GongChangDownload GongChangDownload = new GongChangDownload();
+                    GongChangDownload.productInfo(taskName);
+                }else if (taskName.contains("www.912688.com")) {
+                    SouHaoHuoProductDownload souHaoHuoProductDownload = new SouHaoHuoProductDownload();
+                    souHaoHuoProductDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

@@ -80,12 +80,15 @@ public class ProductSeedMainEntry {
                 }else if (taskName.contains("www.wmb2b.com/info/")) {
                     Wmb2bToRedis wmb2bToRedis = new Wmb2bToRedis();
                     wmb2bToRedis.productPage(taskName);
-                }else if (taskName.contains("chanpin.gongchang.com")) {
-                    GongChangToRedis gongChangToRedis = new GongChangToRedis();
-                    gongChangToRedis.productPage(taskName);
                 }else if (taskName.contains("www.jdzj.com/chanpin.html")) {
                     JdzjProductToRedis jdzjProductToRedis = new JdzjProductToRedis();
                     jdzjProductToRedis.productPage(taskName);
+                }else if (taskName.contains("chanpin.gongchang.com")) {
+                    GongChangToRedis gongChangToRedis = new GongChangToRedis();
+                    gongChangToRedis.productPage(taskName);
+                }else if (taskName.contains("https://www.912688.com/chanpin/")) {
+                    SouHaoHuoProductToRedis souHaoHuoProductToRedis = new SouHaoHuoProductToRedis();
+                    souHaoHuoProductToRedis.productPage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

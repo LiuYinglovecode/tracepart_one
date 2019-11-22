@@ -80,27 +80,30 @@ public class JedisMultiCluster {
 //            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7004));
 //            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
 
-//            // 呼市 测试
-//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
-//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
-//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));
-//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6382));
-//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
-//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
+            // 呼市 测试
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6382));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
+            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
 
-/*            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7000));
-            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7001));
-            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7002));
-            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7003));
-            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7004));
-            hostAndPortsSet.add(new HostAndPort("127.0.0.1", 7005));*/
-//            String passwd = "7T8wZ5X3#B6fS4vJ";
+//            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7001));
+//            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7002));
+//            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7003));
+//            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7004));
+//            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7005));
+//            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7006));
+////            String passwd = "7T8wZ5X3#B6fS4vJ";
             String passwd = "onlYKdm+gH9LrzYB";  //呼市
             String connectionTimeout = "5000";
             String soTimeout = "5000";
             String maxAttempts = "6";
 
+            //线上
             jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), passwd, config);
+            //本地
+//            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), config);
         } catch (Exception e) {
             e.printStackTrace();
         }
