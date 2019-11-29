@@ -80,6 +80,15 @@ public class CompanySeedMainEntry {
                 }else if (taskName.contains("www.jdzj.com")) {
                     JdzjToRedis jdzjToRedis = new JdzjToRedis();
                     jdzjToRedis.category(taskName);
+                }else if (taskName.contains("http://company.d17.cc/")) {
+                    D17ToRedis d17ToRedis = new D17ToRedis();
+                    d17ToRedis.guangdong(taskName);
+                }else if (taskName.contains("www.atobo.com.cn")) {
+                    AtoboToRedis atoboToRedis = new AtoboToRedis();
+                    atoboToRedis.productNavigationBar(taskName);
+                }else if (taskName.contains("www.sooshong.com/company/")) {
+                    SoosHongToRedis soosHongToRedis = new SoosHongToRedis();
+                    soosHongToRedis.industryList(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

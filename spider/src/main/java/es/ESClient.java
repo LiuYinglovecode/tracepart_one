@@ -88,6 +88,7 @@ public class ESClient extends Configured {
 //            String transportAddresses = config.getProperty("transport.addresses");
             //集群s
             String transportAddresses="10.153.40.216:9300,10.153.40.217:9300,10.153.40.218:9300,10.153.51.218:9300,10.153.51.219:9300,10.153.51.63:9300";
+//            String transportAddresses="127.0.0.1:9300";
 
 
             // 集群地址配置

@@ -43,18 +43,10 @@ public class makepoloCompany {
         try {
             String html = httpGet(url, "马可波罗-精准采购搜索引擎");
             Document document = Jsoup.parse(html);
-            Elements categoryList = document.select(".com_productn .com_productn_type");
-            Elements categoryList2 = document.select(".com_productn .side_popup a");
-//            for (Element e : categoryList) {
-//                String companyList = e.attr("href");
-//                if (!"#".equals(companyList)) {
-//                    write(companyList);
-//                    companyList(companyList);
-//                }
-//            }
-            for (Element e : categoryList2) {
+            Elements categoryList = document.select(".com_productn .com_productn_type,.side_popup a");
+            for (Element e : categoryList) {
                 String companyList = e.attr("href");
-                write(companyList, savePage);
+//                System.out.println(companyList);
                 companyList(companyList);
             }
         } catch (Exception e) {
@@ -66,7 +58,6 @@ public class makepoloCompany {
         try {
             String html = httpGet(url, "马可波罗");
             Document document = Jsoup.parse(html);
-//            Elements companyUrlList = document.select(".h_com.clearfix .corp_info .h_com_info h3 a");
             Elements companyUrlList = document.select(".qi_ye_list.clearfix .qi_box .qi_list_l .qi_title a");
             for (Element e : companyUrlList) {
                 String companyUrl = "http:" + e.attr("href") + "/contact_us.html";
@@ -85,44 +76,37 @@ public class makepoloCompany {
         try {
             String html = httpGet(url, "马可波罗网郑重提醒");
             Document document = Jsoup.parse(html);
-            Elements infoList = document.select(".y_contact_list ul li");
+            Elements infoList = document.select("div.f_l > ul > li > span");
             for (Element e : infoList) {
                 if (e.text().contains("联系人")) {
                     companyInfo.put("contact", e.text().split("：", 2)[1].trim());
-                } else if (e.text().contains("公司网址")) {
-                    companyInfo.put("website", e.text().split("：", 2)[1].trim());
-                } else if (e.text().contains("联系电话")) {
+                } else if (e.text().contains("官网")) {
+                    if ("暂无".equals(e.text().split("：", 2)[1].trim())) {
+                        companyInfo.put("website", url);
+                    }else {
+                        companyInfo.put("website", e.text().split("：", 2)[1].trim());
+                    }
+                } else if (e.text().contains("手机")) {
                     companyInfo.put("phone", e.text().split("：", 2)[1].split("无", 2)[0].trim());
+                }else if (e.text().contains("电话")) {
+                    companyInfo.put("landline", e.text().split("：", 2)[1].split("无", 2)[0].trim());
                 } else if (e.text().contains("传真")) {
                     companyInfo.put("fax", e.text().split("：", 2)[1].trim());
-                } else if (e.text().contains("公司地址")) {
+                } else if (e.text().contains("地址")) {
                     companyInfo.put("address", e.text().split("：", 2)[1].trim());
                 } else if (e.text().contains("Email")) {
                     companyInfo.put("email", e.text().split("：", 2)[1].trim());
                 }
             }
-            String companyName = document.select(".company_names").text().trim();
+            String companyName = document.select("div.company_hd> a > h3").text().trim();
             String id = MD5Util.getMD5String(companyName);
             companyInfo.put("name", companyName);
             companyInfo.put("id", id);
-//            insertToMySQL(companyInfo, tableName, id);
-            toES(companyInfo);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
 
-    private void toES(JSONObject info) {
-        try {
-            TransportClient transportClient = new ESClient.ESClientBuilder().createESClient().getClient();
-            transportClient.prepareIndex("1", "2")
-                    .setSource(info, XContentType.JSON)
-                    .execute()
-                    .actionGet();
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage());
-        }
-    }
 
     private void insertToMySQL(JSONObject companyInfo, String tableName, String id) {
         try {

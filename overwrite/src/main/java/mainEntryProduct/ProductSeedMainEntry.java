@@ -86,9 +86,15 @@ public class ProductSeedMainEntry {
                 }else if (taskName.contains("chanpin.gongchang.com")) {
                     GongChangToRedis gongChangToRedis = new GongChangToRedis();
                     gongChangToRedis.productPage(taskName);
-                }else if (taskName.contains("https://www.912688.com/chanpin/")) {
+                }else if (taskName.contains("www.912688.com/chanpin/")) {
                     SouHaoHuoProductToRedis souHaoHuoProductToRedis = new SouHaoHuoProductToRedis();
                     souHaoHuoProductToRedis.productPage(taskName);
+                }else if (taskName.contains("www.86mai.com/sell/")) {
+                    MaiProductToRedis maiProductToRedis = new MaiProductToRedis();
+                    maiProductToRedis.productPage(taskName);
+                }else if (taskName.contains("www.qth58.cn/product/")) {
+                    Qth58ProductToRedis qth58ProductToRedis = new Qth58ProductToRedis();
+                    qth58ProductToRedis.homePage("taskName");
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

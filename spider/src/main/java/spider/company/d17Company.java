@@ -47,26 +47,37 @@ public class d17Company {
             Document document = Jsoup.parse(html);
             Elements address = document.select("#cmy_dq .cmy_content ul li a");
             for (Element e : address) {
-//                if ("广东省".equals(e.attr("title"))) {
-                String addressList = e.attr("href").split("1.htm", 2)[0] + "%d.htm";
-                company(addressList);
-//                }
+                String addressList = e.attr("href");
+                paging(addressList);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
 
+    private void paging(String url){
+        String html = HttpUtil.httpGetwithJudgeWord(url, "付款方式");
+        Document document = Jsoup.parse(html);
+        Elements select = document.select("div.productlist_page");
+        select.select("a").remove();
+        String s = select.text().split("/")[1].replace("页", "");
+
+        for (int i = 1; i <= Integer.parseInt(s); i++) {
+            String concat = String.valueOf(i).concat(".html");
+            String links = url.replace("1.html", concat);
+            company(links);
+        }
+    }
+
     private void company(String url) {
         try {
-            for (int i = 1; i <= 50; i++) {
-                String html = httpGet(String.format(url, i), "付款方式");
-                Document document = Jsoup.parse(html);
-                Elements companyList = document.select(".companylist_style ul .clr .name.clr a:first-child");
-                for (Element e : companyList) {
-                    String companyUrl = e.attr("href") + "/introduce.html";
-                    detail(companyUrl);
-                }
+
+            String html = httpGet(url, "付款方式");
+            Document document = Jsoup.parse(html);
+            Elements companyList = document.select(".companylist_style ul .clr .name.clr a:first-child");
+            for (Element e : companyList) {
+                String companyUrl = e.attr("href") + "/introduce.html";
+                detail(companyUrl);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

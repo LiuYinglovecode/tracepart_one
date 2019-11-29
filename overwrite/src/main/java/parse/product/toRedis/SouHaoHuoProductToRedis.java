@@ -76,7 +76,7 @@ public class SouHaoHuoProductToRedis {
                 Elements elements = parse.select("div.product-left-new.clearfix > ul > li > div.detailed > p.clear.h40 > a");
                 for (Element element : elements) {
                     String href = element.attr("href");
-                    RedisUtil.insertUrlToSet("toCatchUrl-shhProduct", href);
+                    RedisUtil.insertUrlToSet("toCatchUrl-Product", href);
                 }
             }
         } catch (Exception e) {

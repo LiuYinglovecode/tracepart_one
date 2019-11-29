@@ -1,6 +1,5 @@
 package mysql;
 
-import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +25,7 @@ public class updateToMySQL {
 
     public static boolean companyInsert(Map<String, String> ipRegionMap) {
         TABLE_NAME = "crawler_data.crawler_company";
-        String sql = "insert into " + TABLE_NAME + "(id,name,company_info,main_product,industry,management_model," +
+        String sql = "insert ignore into " + TABLE_NAME + "(id,name,company_info,main_product,industry,management_model," +
                 "customized_service,register_capital,company_register_time,register_address,company_model,incorporator," +
                 "from_where_table_id,processing_method,technics,qhse,product_quality,employees,research_staff," +
                 "company_area,sell_area,company_clients,monthly_production,company_turnover,export_fore,company_brand," +

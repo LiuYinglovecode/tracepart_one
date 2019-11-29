@@ -63,15 +63,17 @@ public class GongChangDownload {
                      */
                     Elements select = parse.select("ul.product_message > li");
                     if (!select.isEmpty()){
-                        if (select.text().contains("发货地址")){
-                            productInfo.put("delivery_place",select.text().replace("发货地址","").trim());
-                        }else if (select.text().contains("发货期限")){
-                            productInfo.put("delivery_period",select.text().replace("发货期限","").trim());
-                        }else if (select.text().contains("供货总量")){
-                            productInfo.put("total_supply",select.text().replace("供货总量","").trim());
-                        }else if (select.text().contains("联系方式")){
-                            productInfo.put("contactInformation",select.select("div.link-item.link-phone > p.kind").text().trim());
-                            productInfo.put("contacts",select.select("div.link-item.link-phone > p.kind").text().trim());
+                        for (Element element : select) {
+                            if (element.text().contains("发货地址")){
+                                productInfo.put("delivery_place",element.text().replace("发货地址","").trim());
+                            }else if (element.text().contains("发货期限")){
+                                productInfo.put("delivery_period",element.text().replace("发货期限","").trim());
+                            }else if (element.text().contains("供货总量")){
+                                productInfo.put("total_supply",element.text().replace("供货总量","").trim());
+                            }else if (element.text().contains("联系方式")){
+                                productInfo.put("contactInformation",element.select("div.link-item.link-phone > p.kind").text().trim());
+                                productInfo.put("contacts",element.select("div.link-item.link-phone > p.kind").text().trim());
+                            }
                         }
                     }
 
@@ -112,7 +114,6 @@ public class GongChangDownload {
                     productInfo.put("company_id", nameId);
 
                     productInfo.put("crawlerId", "116");
-                    mysqlUtil.insertProduct(productInfo);
                     productInfo.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     productInfo.put("@timestamp", timestamp2.format(new Date()));
@@ -122,7 +123,7 @@ public class GongChangDownload {
 //                        RedisUtil.insertUrlToSet("catchedUrl-Product", url);
 //                    }
                     if (mysqlUtil.insertProduct(productInfo)){
-                        RedisUtil.insertUrlToSet("catchedUrl-Product",url);
+                        RedisUtil.insertUrlToSet("catchedUrl-GongChangProduct",url);
                     }
                 }
             }

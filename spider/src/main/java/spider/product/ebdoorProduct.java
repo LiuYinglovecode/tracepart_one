@@ -31,8 +31,7 @@ public class ebdoorProduct {
             for (Element e : select){
                 e.select("b").remove();
                 String href = e.select("a").attr("href");
-                String trade_category = e.text().trim();
-                paging(href,trade_category);
+                paging(href);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,20 +39,19 @@ public class ebdoorProduct {
     }
 
     //分页
-    private void paging(String url,String trade_category) {
+    private void paging(String url) {
 
         try {
             String link = url.replace("1.aspx", "");
             String html = httpGet(url, "ebdoor");
             Document parse = Jsoup.parse(html);
             String pagesNumber  = parse.select("#PageBreak_2").text();
-            String Total = pagesNumber.replace("共", "").replace("页", "") + 1;
-            int total = Integer.valueOf(Total).intValue();
-            int number = 1;
-            for (number = 1; number < total; number++) {
+            String totals = pagesNumber.replace("共", "").replace("页", "");
+            int total = Integer.parseInt(totals);
+            int number ;
+            for (number = 1; number <= total; number++) {
                 String nextPage = link + number + ".aspx";
-                System.out.println("nextPage:"+nextPage);
-                productLink(nextPage,trade_category);
+                productLink(nextPage);
             }
 
         } catch (Exception e) {
@@ -62,14 +60,14 @@ public class ebdoorProduct {
     }
 
     //产品列表
-    private void productLink(String url, String trade_category) {
+    private void productLink(String url) {
         try {
             String html = httpGet(url, "ebdoor");
             Document parse = Jsoup.parse(html);
             Elements select = parse.select("li.Rk_Cont1 dl dd a");
             for (Element e : select){
                 String href = e.attr("href");
-                productInfo(href,trade_category);
+                productInfo(href);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +76,7 @@ public class ebdoorProduct {
 
 
     //产品信息
-    private void productInfo(String url,String trade_category) {
+    private void productInfo(String url) {
         JSONObject productInfo = new JSONObject();
         try {
             String html = httpGet(url, "ebdoor");
@@ -87,48 +85,44 @@ public class ebdoorProduct {
             productInfo.put("company_name",parse.select("label#LinkmanInfo1_comp_Name a").text().trim());
             productInfo.put("company_id", MD5Util.getMD5String(parse.select("label#LinkmanInfo1_comp_Name a").text().trim()));
             productInfo.put("product_name",parse.select("h2.tipproname").text().trim());
-            Elements select = parse.select("div.proInfoBox ul li");
+            Elements select = parse.select("div.proInfoBox ul li dl");
             for (Element info : select){
-                switch (info.text().split("：")[0]){
+                switch (info.text().trim()){
                     case "当前售价:":
-                        productInfo.put("prices", info.text().split("：",2)[1]);
+                        productInfo.put("prices", info.nextElementSibling().text().trim());
                         break;
                     case "供应数量:":
-                        productInfo.put("total_supply", info.text().split("：",2)[1]);
+                        productInfo.put("total_supply", info.nextElementSibling().text().trim());
                         break;
-//                    case "商品产地:":
-//                        productInfo.put("production_place", info.text().split("：",2)[1]);
-//                        break;
+                    case "商品产地:":
+                        productInfo.put("production_place", info.nextElementSibling().text().trim());
+                        break;
                     default:
                 }
             }
-            Elements contact = parse.select("div.ws");
+            Elements contact = parse.select("#descHeader > div.ws > span");
             for (Element brand : contact) {
                 switch (brand.text().trim()){
                     case "品牌：":
-                        productInfo.put("product_brand",brand.text().trim().split("：",2)[1]);
-                        break;
-                    case "产品型号：":
-                        productInfo.put("product_specifications",brand.text().trim().split("：",2)[1]);
+                        productInfo.put("product_brand",brand.nextElementSibling().text().trim());
                         break;
                     default:
                 }
             }
-            Elements contactinfo = parse.select("div#cardcontent.contentdetail table tbody tr");
+            Elements contactinfo = parse.select("div#cardcontent.contentdetail table tbody tr td");
             for (Element brand : contactinfo) {
                 switch (brand.text().trim()) {
                     case "联 系 人：":
-                        productInfo.put("contacts", brand.text().trim().split("：",2)[1]);
+                        productInfo.put("contacts", brand.nextElementSibling().text().trim());
                         break;
-                    case "手    机：":
-                        productInfo.put("contactInformation", brand.text().trim().split("：",2)[1]);
+                    case "手 机：":
+                        productInfo.put("contactInformation", brand.nextElementSibling().text().trim());
                         break;
                     default:
                 }
             }
             productInfo.put("detailUrl",url);
             productInfo.put("crawlerId","46");
-            productInfo.put("trade_category",trade_category);
             insert(productInfo);
         } catch (Exception e) {
             e.printStackTrace();

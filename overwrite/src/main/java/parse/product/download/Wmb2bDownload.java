@@ -95,7 +95,6 @@ public class Wmb2bDownload {
                     productInfo.put("company_id", nameId);
 
                     productInfo.put("crawlerId", "113");
-                    mysqlUtil.insertProduct(productInfo);
                     productInfo.put("timestamp", timestamp.format(new Date()));
                     timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                     productInfo.put("@timestamp", timestamp2.format(new Date()));

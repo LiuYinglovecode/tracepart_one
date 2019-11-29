@@ -1,6 +1,7 @@
 package Utils;
 
 import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -81,12 +82,12 @@ public class JedisMultiCluster {
 //            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
 
             // 呼市 测试
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6382));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6382));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
 
 //            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7001));
 //            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7002));
@@ -102,7 +103,7 @@ public class JedisMultiCluster {
 
             //线上
             jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), passwd, config);
-            //本地
+//            本地
 //            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), config);
         } catch (Exception e) {
             e.printStackTrace();

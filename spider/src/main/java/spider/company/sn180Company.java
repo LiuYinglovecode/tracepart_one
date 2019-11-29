@@ -49,7 +49,7 @@ public class sn180Company {
     public static void main(String[] args) {
 //        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "192.168.125.141:2181");
         sn180Company sn180Company = new sn180Company();
-//        trustexporterCompany.productNavigationBar("http://www.trustexporter.com/");
+
         sn180Company.classify("http://www.sn180.com/Company/");
         LOGGER.info("---完成了---");
     }
@@ -63,13 +63,31 @@ public class sn180Company {
             Document doc = Jsoup.parse(html);
             Elements elements = doc.select("tr > td > p > a");
             for (Element element : elements) {
-                if (element.text().trim().contains("机械及行业设备")) {
+                if (element.text().trim().contains("电子元器件")) {
                     String attr = element.attr("href");
                     //System.out.println(attr);
                     Thread.sleep(5000);
-                    companyList(attr);
+                    paging(attr);
                 }
             }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    private void paging(String attr) {
+        try {
+
+            String html = HttpUtil.httpGetwithJudgeWord(attr, "商牛");
+            Document doc = Jsoup.parse(html);
+            String elements = doc.select("#PageNumericNavigator1_lblTotalPage").text().trim();
+            int i = Integer.parseInt(elements);
+            String replace = attr.replace(".html", "");
+            for (int j = 0; j <=i; j++) {
+                String links = replace.concat("-p").concat(String.valueOf(j)).concat(".html");
+                companyList(links);
+            }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
@@ -86,19 +104,7 @@ public class sn180Company {
             for (Element element : elements) {
                 if (element.text().contains("+ 联系方式")) {
                     String attr = element.attr("href");
-                    Thread.sleep(5000);
                     companyDetails(attr);
-                }
-            }
-
-            //下一页
-            Elements nextPage = doc.select("#PageNumericNavigator1_btnNext");
-            for (Element element : nextPage) {
-                if (element.text().contains("下一页")) {
-                    String href = "http://www.sn180.com"+element.attr("href");
-                        System.out.println("下一页：" + href);
-                        Thread.sleep(8000);
-                        companyList(href);
                 }
             }
         } catch (Exception e) {
@@ -168,7 +174,8 @@ public class sn180Company {
 
             companyInfo.put("crawlerId", "31");
             companyInfo.put("createTime", creatrTime.format(new Date()));
-            insertToMySQL(companyInfo);
+//            insertToMySQL(companyInfo);
+            System.out.println(companyInfo);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

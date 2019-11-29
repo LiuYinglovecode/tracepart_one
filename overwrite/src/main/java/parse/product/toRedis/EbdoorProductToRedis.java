@@ -23,7 +23,7 @@ public class EbdoorProductToRedis {
                 paging(href);
             }
         } catch (Exception e) {
-            LOGGER.error(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -35,17 +35,16 @@ public class EbdoorProductToRedis {
             String html = HttpUtil.httpGetwithJudgeWord(url, "ebdoor");
             Document parse = Jsoup.parse(html);
             String pagesNumber  = parse.select("#PageBreak_2").text();
-            String Total = pagesNumber.replace("共", "").replace("页", "") + 1;
-            int total = Integer.valueOf(Total).intValue();
-            int number = 1;
-            for (number = 1; number < total; number++) {
+            String totals = pagesNumber.replace("共", "").replace("页", "");
+            int total = Integer.parseInt(totals);
+            int number ;
+            for (number = 1; number <= total; number++) {
                 String nextPage = link + number + ".aspx";
-//                System.out.println("nextPage:"+nextPage);
                 productLink(nextPage);
             }
 
         } catch (Exception e) {
-            LOGGER.error(e.getMessage());
+            e.printStackTrace();
         }
     }
 

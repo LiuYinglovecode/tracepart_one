@@ -75,7 +75,6 @@ public class YellowurlProductDownload {
                 }
 
                 productInfo.put("crawlerId", "17");
-                mysqlUtil.insertProduct(productInfo);
                 productInfo.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 productInfo.put("@timestamp", timestamp2.format(new Date()));

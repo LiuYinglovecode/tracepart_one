@@ -42,7 +42,6 @@ public class QinCaiToRedis {
                     int total = Integer.parseInt(page);
                     for (int number = 1; number <= total; number++) {
                         String s = href + "index-p" + number + ".html";
-                        System.out.println(text+"===>>下一页："+ s);
                         companyList(s);
                     }
                 }

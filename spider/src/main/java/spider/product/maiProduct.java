@@ -15,10 +15,7 @@ import util.HttpUtil;
 import util.MD5Util;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 
 
 public class maiProduct {
@@ -39,12 +36,39 @@ public class maiProduct {
         try {
             String html = HttpUtil.httpGetwithJudgeWord (url, "网站首页");
             Document parse = Jsoup.parse(html);
-            Elements select = parse.select("div.category div table tbody tr td a");
+            Elements select = parse.select("a.px16");
             for (Element e : select){
                 String href = e.attr("href");
-                String trade_category = e.text();
+                more(href);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-                paging(href,trade_category);
+    private void more(String url) {
+        try {
+            String html = HttpUtil.httpGetwithJudgeWord (url, "网站首页");
+            Document parse = Jsoup.parse(html);
+            Elements elements = parse.select("div.m2l > div:nth-child(1) > div.sort-v > ul > li > a");
+            for (Element element : elements) {
+                String href = element.attr("href");
+                mores(href);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void mores(String url) {
+        try {
+            String html = HttpUtil.httpGetwithJudgeWord (url, "网站首页");
+            Document parse = Jsoup.parse(html);
+            Elements elements = parse.select("div.m2l > div:nth-child(1) > div.sort-v > ul > li > a");
+            for (Element element : elements) {
+                String href = element.attr("href");
+                paging(href);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +76,7 @@ public class maiProduct {
     }
 
     //分页。获取到总页数，拼接出下一页的链接地址。
-    private void paging(String url, String trade_category) {
+    private void paging(String url) {
         try {
             String replace = url.replace(".html", "");
             String html = HttpUtil.httpGetwithJudgeWord (url, "网站首页");
@@ -61,8 +85,8 @@ public class maiProduct {
             int total = Integer.valueOf(pagesNumber).intValue()+1;//类型转换
             int number = 1;
             for (number = 1; number < total; number++) {
-                String link = replace + "-" + number + ".html";//拼接链接地址
-                productList(link,trade_category);
+                String link = replace + "_" + number + ".html";//拼接链接地址
+                productList(link);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,29 +94,28 @@ public class maiProduct {
     }
 
     //产品列表
-    private void productList(String url, String trade_category) {
+    private void productList(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord (url, "网站首页");
             Document parse = Jsoup.parse(html);
             Elements elements = parse.select("div.list table tbody tr td div a");
             for (Element element : elements) {
                 String href = element.attr("href");
-                productInfo(href,trade_category);
+                productInfo(href);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void productInfo(String url, String trade_category) {
+    private void productInfo(String url) {
         JSONArray imgsList = new JSONArray();
         JSONObject productInfo = new JSONObject();
         try {
             productInfo.put("detailUrl",url);
-            productInfo.put("trade_category",trade_category);
             String html = HttpUtil.httpGetwithJudgeWord (url, "网站首页");
             Document parse = Jsoup.parse(html);
-            productInfo.put("product_name",parse.select("h1#title.title_trade").text().trim());
+            productInfo.put("product_name",parse.select("div.main_head > div > strong").first().text().trim());
             Elements elements = parse.select("td.f_dblue");
             for (Element element : elements) {
                 if (element.text().contains("品牌：")){
@@ -125,7 +148,7 @@ public class maiProduct {
                     productInfo.put("delivery_place",element.nextElementSibling().text().trim());
                 }
             }
-            productInfo.put("product_desc",parse.select("div#content.content.c_b").text().trim());
+            productInfo.put("product_desc",parse.select("#content").text().trim());
             Elements img = parse.select("div#content.content.c_b p img");
             if (img.size() != 0) {
                 for (Element element : img) {
@@ -133,16 +156,29 @@ public class maiProduct {
                     productInfo.put("images", imgsList.toString());//图片
                 }
             }
-            productInfo.put("company_name",parse.select("ul li.f_b.t_c a").text().trim());
-            productInfo.put("company_id",MD5Util.getMD5String(parse.select("ul li.f_b.t_c a").text().trim()));
-            Elements select = parse.select("ul li.f_b.t_c a");
+
+
+            Elements name = parse.select("div.head > div > a > h1");
+            if (!name.isEmpty()){
+                productInfo.put("company_name",name.text().trim());
+                productInfo.put("company_id",MD5Util.getMD5String(name.text().trim()));
+            }else {
+                productInfo.put("company_name","未知企业");
+                productInfo.put("company_id",MD5Util.getMD5String("未知企业"));
+            }
+
+            ArrayList<String> list = new ArrayList<>();
+            Elements select = parse.select("#side > div > ul > li");
             for (Element element : select) {
-                if (element.text().contains("联系人")){
-                    productInfo.put("contacts",element.text().trim().replace("联系人",""));
+                if (element.text().contains("联系人：")){
+                    productInfo.put("contacts",element.text().replace("联系人：","").trim());
                 }
-                if (element.text().contains("手机")){
-                    productInfo.put("contactInformation",element.text().trim().replace("联系人",""));
+                if (element.text().contains("手机：")){
+                    list.add(element.text().replace("手机：","").trim());
+                }else if (element.text().contains("电话：")){
+                    list.add(element.text().replace("电话：","").trim());
                 }
+                productInfo.put("contactInformation",list.toString());
             }
 
             productInfo.put("crawlerId", "61");
@@ -159,7 +195,7 @@ public class maiProduct {
 
 
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
+//        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
         maiProduct maiProduct = new maiProduct();
         maiProduct.maiProduct(homepage);
 //        LOGGER.info("dzwNews DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));

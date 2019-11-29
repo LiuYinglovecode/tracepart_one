@@ -50,26 +50,25 @@ public class qth58Product {
             Elements select = gbk.select("li.cate_sec_term a");
             for (Element element : select) {
                 String link = element.attr("href");
-                String trade_category = element.text();
-                nextPage(link,trade_category);
+                nextPage(link);
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
 
-    private void nextPage(String url, String trade_category) {
+    private void nextPage(String url) {
         String replace = url.replace("http://www.qth58.cn/", "").replace("/","");
         int page = 1;
-        for (page = 1; page < 12000; page++) {
+        for (page = 1; page < 2500; page++) {
             String link = baseUrl + replace + "-p" + page;
 //            System.out.println(link);
-            productlist(link,trade_category);
+            productlist(link);
         }
 
     }
 
-    private void productlist(String url, String trade_category) {
+    private void productlist(String url) {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "产品库");
             if (html!=null) {
@@ -77,7 +76,7 @@ public class qth58Product {
                 Elements doc = document.select("a.comtitle");
                 for (Element element : doc) {
                     String productInfoLink = element.attr("href");
-                    productInfo(productInfoLink, trade_category);
+                    productInfo(productInfoLink);
                 }
             }else {
                 LOGGER.info("网页不存在");
@@ -88,7 +87,7 @@ public class qth58Product {
         }
     }
 
-    private void productInfo(String url, String trade_category) {
+    private void productInfo(String url) {
         JSONObject productInfo = new JSONObject();
         productInfo.put("detailUrl", url);
         try {
@@ -119,7 +118,6 @@ public class qth58Product {
             }else {
                 LOGGER.info("网页不存在");
             }
-            productInfo.put("trade_category",trade_category);
             productInfo.put("crawlerId","37");
             insert(productInfo);
         } catch (Exception e){

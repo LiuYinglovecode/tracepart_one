@@ -312,6 +312,18 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("mma.vogel.com.cn")) {
                     MmaVogelToRedis mmaVogelToRedis = new MmaVogelToRedis();
                     mmaVogelToRedis.listNews(taskName);
+                }/*else if (taskName.contains("www.cet.com.cn/")) {
+                    CetToRedis cetToRedis = new CetToRedis();
+                    cetToRedis.homepage(taskName);
+                }*/else if (taskName.contains("www.lanjingtmt.com/index.php?act=category")) {
+                    LanJingtmtToRedis lanJingtmtToRedis = new LanJingtmtToRedis();
+                    lanJingtmtToRedis.homepage(taskName);
+                }else if (taskName.contains("https://www.nkj.cn/zixun")) {
+                    NkjToRedis nkjToRedis = new NkjToRedis();
+                    nkjToRedis.homepage(taskName);
+                }else if (taskName.contains("https://news.znds.com/")) {
+                    ZNDSToRedis zNDSToRedis = new ZNDSToRedis();
+                    zNDSToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

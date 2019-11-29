@@ -1,95 +1,41 @@
-package spider.company;
+package parse.company.download;
 
+import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONObject;
-import config.IConfigManager;
-import mysql.updateToMySQL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.*;
+import parse.company.toRedis.SoosHongToRedis;
+import util.ESUtil;
+import util.HttpUtil;
+import util.MD5Util;
+import util.mysqlUtil;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
-public class sooshongCompany {
-    private final static Logger LOGGER = LoggerFactory.getLogger(sooshongCompany.class);
-    private static java.util.Map<String, String> Map = null;
-    private static java.util.Map<String, String> header = null;
+public class SoosHongDownload {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(SoosHongToRedis.class);
     private static SimpleDateFormat creatrTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
-    static {
-        header = new HashMap();
-        header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
-    }
-
-    private void insert(JSONObject companyInfo) {
-        Map = (java.util.Map) companyInfo;
-        if (updateToMySQL.companyInsert(Map)) {
-            LOGGER.info("插入中 : " + Map.toString());
-        }
-    }
-
-
     public static void main(String[] args) {
-        System.setProperty(IConfigManager.DEFUALT_CONFIG_PROPERTY, "10.153.40.117:2181");
-        sooshongCompany sooshongCompany = new sooshongCompany();
-        sooshongCompany.industryList("http://www.sooshong.com/company/");
-        LOGGER.info("sooshongCompany DONE :" + String.format("%tF", new Date()) + String.format("%tT", new Date()));
-
+        SoosHongDownload soosHongDownload = new SoosHongDownload();
+        soosHongDownload.companyinfo("");
     }
 
-    private void industryList(String url) {
-        try {
-            String html = httpGet(url, "关于我们");
-            Document parse = Jsoup.parse(html);
-            Elements select = parse.select("div.classbox dl dt a");
-            for (Element e : select) {
-                String link = "http://www.sooshong.com" + e.attr("href");
-                nextPage(link);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void nextPage(String url) {
-
-        String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
-        Document document = Jsoup.parse(html);
-        String select = document.select("div.list_classh").text().split("\\(")[1].replace(")","").trim();
-        double v = Double.parseDouble(select) / 20;
-        int i = new Double(Math.ceil(v)).intValue();
-        int nextPage ;
-        for (nextPage = 1; nextPage <=i; nextPage++) {
-            String link = url + "p" + nextPage;
-            companyList(link);
-        }
-    }
-
-    private void companyList(String url) {
-        try {
-            String html = httpGet(url, "关于我们");
-            Document parse = Jsoup.parse(html);
-            Elements select = parse.select("div.lianxi a");
-            for (Element e : select) {
-                String link = "http://www.sooshong.com" + e.attr("href");
-                companyinfo(link);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void companyinfo(String url) {
+    public void companyinfo(String url) {
         JSONObject companyInfo = new JSONObject();
         try {
-            String html = httpGet(url, "sooshong");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "sooshong");
             if (html != null) {
                 Document parse = Jsoup.parse(html);
                 String href = "http://www.sooshong.com" + parse.select("li.cur a").attr("href");
@@ -124,7 +70,7 @@ public class sooshongCompany {
                 } else {
                     LOGGER.info("网页异常");
                 }
-                String htmlTwo = httpGet(href, "sooshong");
+                String htmlTwo = HttpUtil.httpGetwithJudgeWord(href, "sooshong");
                 Document parseTwo = Jsoup.parse(htmlTwo);
                 Elements select1 = parseTwo.select("p.MsoNormal");
                 if (select1.size() != 0) {
@@ -187,14 +133,19 @@ public class sooshongCompany {
                     }
                 }
 
-                companyInfo.put("createTime", creatrTime.format(new Date()));
                 companyInfo.put("crawlerId", "62");
+                companyInfo.put("createTime", creatrTime.format(new Date()));
                 companyInfo.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 companyInfo.put("@timestamp", timestamp2.format(new Date()));
                 companyInfo.put("time_stamp", String.valueOf(System.currentTimeMillis()));
-                insert(companyInfo);
-                esUtil.writeToES(companyInfo, "crawler-company-", "doc", null);
+//            mysqlUtil.insertCompany(companyInfo);
+//            if (esUtil.writeToES(companyInfo, "crawler-company-", "doc", companyId)) {
+//                RedisUtil.insertUrlToSet("catchedUrl-Company", url);
+//            }
+                if (mysqlUtil.insertCompany(companyInfo)) {
+                    RedisUtil.insertUrlToSet("catchedUrl-Company", url);
+                }
             } else {
                 LOGGER.info("网页异常");
             }
@@ -202,23 +153,4 @@ public class sooshongCompany {
             e.printStackTrace();
         }
     }
-
-
-    private String httpGet(String url, String judgeWord) {
-        try {
-            String html = null;
-            for (int i = 0; i < 5; i++) {
-                if (null != url) {
-                    html = HttpUtil.httpGet(url, header);
-                }
-                if (html != null && html.contains(judgeWord)) {
-                    return html;
-                }
-            }
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
-        }
-        return null;
-    }
-
 }

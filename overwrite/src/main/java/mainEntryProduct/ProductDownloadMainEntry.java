@@ -25,8 +25,8 @@ public class ProductDownloadMainEntry {
                     new ArrayBlockingQueue<Runnable>(15), new ThreadPoolExecutor.CallerRunsPolicy());
             String url = "";
             while (true) {
-                while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl-shhProduct"))) {
-                    if (!RedisUtil.isExist("catchedUrl-shhProduct", url)) {
+                while (null != (url = RedisUtil.getUrlFromeSet("toCatchUrl-Product"))) {
+                    if (!RedisUtil.isExist("catchedUrl-Product", url)) {
                         SeedTask seed = new SeedTask(url);
                         executor.execute(seed);
                     }
@@ -85,6 +85,12 @@ public class ProductDownloadMainEntry {
                 }else if (taskName.contains("www.912688.com")) {
                     SouHaoHuoProductDownload souHaoHuoProductDownload = new SouHaoHuoProductDownload();
                     souHaoHuoProductDownload.productInfo(taskName);
+                }else if (taskName.contains("86mai.com/sell")) {
+                    MaiProductDownload maiProductDownload = new MaiProductDownload();
+                    maiProductDownload.productInfo(taskName);
+                }else if (taskName.contains("www.qth58.cn")) {
+                    Qth58ProductDownload qth58ProductDownload = new Qth58ProductDownload();
+                    qth58ProductDownload.productInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

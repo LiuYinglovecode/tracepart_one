@@ -30,52 +30,47 @@ public class EbdoorProductDownload {
         try {
             String html = HttpUtil.httpGetwithJudgeWord(url, "ebdoor");
             Document parse = Jsoup.parse(html);
-            productInfo.put("product_desc", parse.select("div#descDiv.BmConn2").text().trim());
-            String name = parse.select("label#LinkmanInfo1_comp_Name a").text().trim();
-            productInfo.put("company_name", name);
-            String md5String = MD5Util.getMD5String(name);
-            productInfo.put("company_id", md5String);
-            productInfo.put("product_name", parse.select("h2.tipproname").text().trim());
-            Elements select = parse.select("div.proInfoBox ul li");
-            for (Element info : select) {
-                switch (info.text().split("：")[0]) {
+            productInfo.put("product_desc",parse.select("div#descDiv.BmConn2").text().trim());
+            productInfo.put("company_name",parse.select("label#LinkmanInfo1_comp_Name a").text().trim());
+            productInfo.put("company_id", MD5Util.getMD5String(parse.select("label#LinkmanInfo1_comp_Name a").text().trim()));
+            productInfo.put("product_name",parse.select("h2.tipproname").text().trim());
+            Elements select = parse.select("div.proInfoBox ul li dl");
+            for (Element info : select){
+                switch (info.text().trim()){
                     case "当前售价:":
-                        productInfo.put("prices", info.text().split("：", 2)[1]);
+                        productInfo.put("prices", info.nextElementSibling().text().trim());
                         break;
                     case "供应数量:":
-                        productInfo.put("total_supply", info.text().split("：", 2)[1]);
+                        productInfo.put("total_supply", info.nextElementSibling().text().trim());
                         break;
-//                    case "商品产地:":
-//                        productInfo.put("production_place", info.text().split("：",2)[1]);
-//                        break;
+                    case "商品产地:":
+                        productInfo.put("production_place", info.nextElementSibling().text().trim());
+                        break;
                     default:
                 }
             }
-            Elements contact = parse.select("div.ws");
+            Elements contact = parse.select("#descHeader > div.ws > span");
             for (Element brand : contact) {
-                switch (brand.text().trim()) {
+                switch (brand.text().trim()){
                     case "品牌：":
-                        productInfo.put("product_brand", brand.text().trim().split("：", 2)[1]);
-                        break;
-                    case "产品型号：":
-                        productInfo.put("product_specifications", brand.text().trim().split("：", 2)[1]);
+                        productInfo.put("product_brand",brand.nextElementSibling().text().trim());
                         break;
                     default:
                 }
             }
-            Elements contactinfo = parse.select("div#cardcontent.contentdetail table tbody tr");
+            Elements contactinfo = parse.select("div#cardcontent.contentdetail table tbody tr td");
             for (Element brand : contactinfo) {
                 switch (brand.text().trim()) {
                     case "联 系 人：":
-                        productInfo.put("contacts", brand.text().trim().split("：", 2)[1]);
+                        productInfo.put("contacts", brand.nextElementSibling().text().trim());
                         break;
-                    case "手    机：":
-                        productInfo.put("contactInformation", brand.text().trim().split("：", 2)[1]);
+                    case "手 机：":
+                        productInfo.put("contactInformation", brand.nextElementSibling().text().trim());
                         break;
                     default:
                 }
             }
-            productInfo.put("detailUrl", url);
+            productInfo.put("detailUrl",url);
             productInfo.put("crawlerId", "47");
             productInfo.put("createTime", creatrTime.format(new Date()));
             productInfo.put("timestamp", timestamp.format(new Date()));

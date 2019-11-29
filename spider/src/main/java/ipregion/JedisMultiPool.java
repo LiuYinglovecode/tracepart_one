@@ -72,11 +72,14 @@ public class JedisMultiPool {
             //逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
             config.setTimeBetweenEvictionRunsMillis(-1);
 
-            String redisAddress = ConfigClient.instance().get(poolName, "address");
-            String port = ConfigClient.instance().get(poolName, "port", "6379");
-            String timeout = ConfigClient.instance().get(poolName, "timeout", "5000");
-            String auth = ConfigClient.instance().get(poolName, "auth", null);
-
+//            String redisAddress = ConfigClient.instance().get(poolName, "address");
+//            String port = ConfigClient.instance().get(poolName, "port", "6379");
+//            String timeout = ConfigClient.instance().get(poolName, "timeout", "5000");
+//            String auth = ConfigClient.instance().get(poolName, "auth", null);
+            String redisAddress = "192.168.56.10";
+            String port = "6379";
+            String timeout = "5000";
+            String auth = null;
 
             jedisPool = new redis.clients.jedis.JedisPool(config, redisAddress, Integer.parseInt(port), Integer.parseInt(timeout), auth);
         } catch (Exception e) {

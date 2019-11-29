@@ -75,6 +75,15 @@ public class CompanyDownloadMainEntry {
                 }else if (taskName.contains("jdzj.com")) {
                     JdzjDownload jdzjDownload = new JdzjDownload();
                     jdzjDownload.companyInfo(taskName);
+                }else if (taskName.contains("atobo.com")) {
+                    AtoboToDownload atoboToDownload = new AtoboToDownload();
+                    atoboToDownload.productDetails(taskName);
+                }else if (taskName.contains("www.atobo.com")) {
+                    SoosHongDownload soosHongDownload = new SoosHongDownload();
+                    soosHongDownload.companyinfo(taskName);
+                }else if (taskName.contains("d17.cc")) {
+                    D17Download d17Download = new D17Download();
+                    d17Download.detail(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

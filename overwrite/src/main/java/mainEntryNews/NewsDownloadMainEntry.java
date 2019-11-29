@@ -310,10 +310,22 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("vogel.com.cn")) {
                     MmaVogelDownload mmaVogelDownload = new MmaVogelDownload();
                     mmaVogelDownload.detail(taskName);
+                }/*else if (taskName.contains("www.cet.com.cn")) {
+                    CetDownload cetDownload = new CetDownload();
+                    cetDownload.newsInfo(taskName);
+                }*/else  if (taskName.contains("www.lanjingtmt.com")) {
+                    LanJingtmtDownload lanJingtmtDownload = new LanJingtmtDownload();
+                    lanJingtmtDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.nkj.cn/zixun")) {
+                    NkjDownload nkjDownload = new NkjDownload();
+                    nkjDownload.newsInfo(taskName);
+                }else if (taskName.contains("news.znds.com")) {
+                    ZNDSDownload zNDSDownload = new ZNDSDownload();
+                    zNDSDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
-            }
+        }
             LOGGER.info(taskName + " : 执行完毕");
         }
     }

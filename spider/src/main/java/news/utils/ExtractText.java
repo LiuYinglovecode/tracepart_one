@@ -129,8 +129,6 @@ public class ExtractText {
 
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (HttpException e) {
-            e.printStackTrace();
         }
         html = deleteLabel(html);
 
