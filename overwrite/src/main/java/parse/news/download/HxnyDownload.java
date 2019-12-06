@@ -10,7 +10,6 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ESUtil;
-import util.MD5Util;
 import util.mysqlUtil;
 
 import java.text.SimpleDateFormat;
@@ -18,38 +17,37 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class HuajxDownload {
+public class HxnyDownload {
     private static final Logger LOGGER = LoggerFactory.getLogger(HuajxDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
+    public static void main(String[] args) {
+        HxnyDownload hxnyDownload = new HxnyDownload();
+        hxnyDownload.newsInfo("http://www.hxny.com/nd-43262-0-46.html");
+    }
     public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "关于我们");
-            Thread.sleep(SleepUtils.sleepMin());
-
-            if (null != html) {
+            HtmlUnitUnits httpUtils = HtmlUnitUnits.getInstance();
+            httpUtils.setTimeout(30000);
+            httpUtils.setWaitForBackgroundJavaScript(30000);
+            Document document = httpUtils.getHtmlPageResponseAsDocument(url);
+            if (null != document) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
-                Document document = Jsoup.parse(html);
-                info.put("title",document.select("div.leftTop h2").text().trim());
-                Elements select = document.select("div.leftTop p span");
-                info.put("time", ForMat.getDatetimeFormat(select.eq(0).text().trim()));
-                for (Element element : select) {
-                    if (element.text().contains("来源：")) {
-                        info.put("source", element.text().replace("来源：","").trim());
-                    }else if (element.text().contains("阅读量：")){
-                        info.put("amountOfReading", element.text().replace("阅读量：","").trim());
-                    }
-                }
+                info.put("title",document.select("div.hxmainl.dleft.mw100p > h2").text().trim());
+                Elements select = document.select("div.newsdtl01");
+                select.select("span").remove();
+                String s = select.text().split("·")[1].trim();
+                info.put("time", ForMat.getDatetimeFormat(s));
 
-                Elements text = document.select("div#newsContent.newsContent");
+                Elements text = document.select("div.newsdtl02,div.newsdtl03");
                 info.put("text",text.text().trim());
                 info.put("html",text.html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId",newsId);
-                Elements imgList = document.select("div > img");
+                Elements imgList = document.select("figure > img");
                 if (imgList.size() != 0) {
                     for (Element e : imgList) {
                         imgs.add(e.attr("src"));
@@ -58,7 +56,7 @@ public class HuajxDownload {
                 }
 
                 info.put("url", url);
-                info.put("crawlerId", "79");
+                info.put("crawlerId", "155");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));

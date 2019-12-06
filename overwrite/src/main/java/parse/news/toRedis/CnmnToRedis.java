@@ -29,8 +29,8 @@ public class CnmnToRedis {
                 Elements categoryList = document.select("#nav > li > ul > li > a");
                 for (Element e : categoryList) {
                     if (!e.attr("href").contains("/")
-                            &&!e.attr("href").contains("专题")
-                            &&!e.attr("href").contains("公告")) {
+                            &&!e.text().contains("专题")
+                            &&!e.text().contains("公告")) {
                         paging(homepage + "/" + e.attr("href"), e.text().trim());
                     } else {
                         paging(homepage + e.attr("href"), e.text().trim());

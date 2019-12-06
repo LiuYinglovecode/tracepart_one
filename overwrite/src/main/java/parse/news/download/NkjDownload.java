@@ -26,7 +26,6 @@ public class NkjDownload {
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static SimpleDateFormat currentTime = new SimpleDateFormat("yyyy-MM-dd ", Locale.ENGLISH);
-    private static SimpleDateFormat currentTime1 = new SimpleDateFormat("yyyy年", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
     public static void main(String[] args) {

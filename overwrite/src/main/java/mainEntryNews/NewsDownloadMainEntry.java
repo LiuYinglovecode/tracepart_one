@@ -322,6 +322,21 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("news.znds.com")) {
                     ZNDSDownload zNDSDownload = new ZNDSDownload();
                     zNDSDownload.newsInfo(taskName);
+                }else if (taskName.contains("cngold.com")) {
+                    CngoldDownload cngoldDownload = new CngoldDownload();
+                    cngoldDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.dongchanet.com")) {
+                    DongChanetDownload dongChanetDownload = new DongChanetDownload();
+                    dongChanetDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.hxny.com")) {
+                    HxnyDownload hxnyDownload = new HxnyDownload();
+                    hxnyDownload.newsInfo(taskName);
+                }else if (taskName.contains("ijuejiang.cn")) {
+                    JueJiangDownload jueJiangDownload = new JueJiangDownload();
+                    jueJiangDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.looktmt.com")) {
+                    LooktmtDownload looktmtDownload = new LooktmtDownload();
+                    looktmtDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
