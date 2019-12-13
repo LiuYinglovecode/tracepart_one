@@ -337,6 +337,18 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("www.looktmt.com")) {
                     LooktmtDownload looktmtDownload = new LooktmtDownload();
                     looktmtDownload.newsInfo(taskName);
+                }else if (taskName.contains("finance.eastmoney.com/news")) {
+                    EastmoneyDownload eastmoneyDownload = new EastmoneyDownload();
+                    eastmoneyDownload.detail(taskName);
+                }else if (taskName.contains("chinaipo.com")) {
+                    ChinaipoDownload chinaipoDownload = new ChinaipoDownload();
+                    chinaipoDownload.newsInfo(taskName);
+                }else if (taskName.contains("jsjxmhw")) {
+                    JsjxmhwDownload jsjxmhwDownload = new JsjxmhwDownload();
+                    jsjxmhwDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.mccet.com")) {
+                    MccetDownload mccetDownload = new MccetDownload();
+                    mccetDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

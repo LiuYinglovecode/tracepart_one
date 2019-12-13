@@ -330,9 +330,6 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("www.ijuejiang.cn/kuaixun")) {
                     JueJiangToRedis JueJiangToRedis = new JueJiangToRedis();
                     JueJiangToRedis.homepage(taskName);
-                }else if (taskName.contains("www.cngold.com.cn/")) {
-                    CngoldToRedis cngoldToRedis = new CngoldToRedis();
-                    cngoldToRedis.homepage(taskName);
                 }else if (taskName.contains("www.dongchanet.com/")) {
                     DongChanetToRedis dongChanetToRedis = new DongChanetToRedis();
                     dongChanetToRedis.homepage(taskName);
@@ -342,6 +339,18 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("www.looktmt.com/")) {
                     LooktmtToRedis looktmtToRedis = new LooktmtToRedis();
                     looktmtToRedis.homepage(taskName);
+                }else if (taskName.contains("http://finance.eastmoney.com/")) {
+                    EastmoneyToRedis eastmoneyToRedis = new EastmoneyToRedis();
+                    eastmoneyToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.chinaipo.com/")) {
+                    ChinaipoToRedis chinaipoToRedis =new ChinaipoToRedis();
+                    chinaipoToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.jsjxmhw.com/Html/News.asp?SortID=10&SortPath=0,10,")) {
+                    JsjxmhwToRedis jsjxmhwToRedis = new JsjxmhwToRedis();
+                    jsjxmhwToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.mccet.com/")) {
+                    MccetToRedis mccetToRedis = new MccetToRedis();
+                    mccetToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
