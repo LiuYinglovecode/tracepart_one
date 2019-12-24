@@ -1,6 +1,7 @@
 package parse.news.download;
 
 import Utils.ForMat;
+import Utils.HttpUtil;
 import Utils.NewsMd5;
 import Utils.RedisUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -12,7 +13,6 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ESUtil;
-import Utils.HttpUtil;
 import util.mysqlUtil;
 
 import java.text.SimpleDateFormat;
@@ -22,50 +22,46 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class KeJiXunDownload {
-    private static final Logger LOGGER = LoggerFactory.getLogger(KeJiXunDownload.class);
+public class IotworldDownload {
+    private static final Logger LOGGER = LoggerFactory.getLogger(IotworldDownload.class);
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
     private static ESUtil esUtil = new ESUtil();
 
 
     public static void main(String[] args) {
-        KeJiXunDownload keJiXunDownload = new KeJiXunDownload();
-        keJiXunDownload.newsInfo("http://www.kejixun.com/article/181024/447370.shtml");
+        IotworldDownload IotworldDownload = new IotworldDownload();
+        IotworldDownload.newsInfo("http://www.iotworld.com.cn/html/News/201912/b4ff67165f0434bc.shtml");
     }
 
     public void newsInfo(String url) {
         try {
-            String html = HttpUtil.httpGetwithJudgeWord(url, "kejixun");
+            String html = HttpUtil.httpGetwithJudgeWord(url, "iotworld");
             if (!html.isEmpty()) {
                 JSONObject info = new JSONObject();
                 JSONArray imgs = new JSONArray();
                 info.put("url", url);
                 Document parse = Jsoup.parse(html);
-                info.put("title", parse.select("div.main.fl > h1").text().trim());
-                Elements elements = parse.select("div.writer");
-                if (!elements.isEmpty()){
-                    /**
-                     * 用正则获取发布时间
-                     */
-                    String re = "[^x00-xff]";
-                    Pattern compile = Pattern.compile(re);
-                    Matcher matcher = compile.matcher(elements.text());
-                    String time = matcher.replaceAll("").replaceAll(":","").trim();
-                    info.put("time",ForMat.getDatetimeFormat(time));
-                }
+                info.put("title", parse.select("div.detailstBox > h3").text().trim());
 
-                Elements author = parse.select("div.big-man > h3 > a");
-                if (!author.isEmpty()){
-                    info.put("author",author.text().trim());
-                }
+                Elements elements = parse.select("div.detailstBox > div > b");
+                //正则获取时间
+                String re = "[^x00-xff]";
+                Pattern compile = Pattern.compile(re);
+                Matcher matcher = compile.matcher(elements.text());
+                String time = matcher.replaceAll("").replaceAll(":","").trim();
+                info.put("time",ForMat.getDatetimeFormat(time));
 
-                Elements text = parse.select("div.article-content");
-                info.put("text", text.text().trim());
-                info.put("html", text.html());
+
+                Elements text = parse.select("div.etailstrux.clearfix,div.detailstBox > div.Introdu,#IOTContentContainer");
+                info.put("text", text
+                        .text()
+                        .trim());
+                info.put("html", text
+                        .html());
                 String newsId = NewsMd5.newsMd5(text.text().trim());
                 info.put("newsId", newsId);
-                Elements images = text.select("p > img");
+                Elements images = text.select("center > p > img");
                 if (!images.isEmpty()) {
                     for (Element image : images) {
                         imgs.add(image.attr("src"));
@@ -75,7 +71,7 @@ public class KeJiXunDownload {
 
 
 
-                info.put("crawlerId", "132");
+                info.put("crawlerId", "167");
                 info.put("timestamp", timestamp.format(new Date()));
                 timestamp2.setTimeZone(TimeZone.getTimeZone("UTC"));
                 info.put("@timestamp", timestamp2.format(new Date()));

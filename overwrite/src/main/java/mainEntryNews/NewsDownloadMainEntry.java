@@ -349,6 +349,24 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("www.mccet.com")) {
                     MccetDownload mccetDownload = new MccetDownload();
                     mccetDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.yejinzg.com")) {
+                    YejinzgDownload yejinzgDownload = new YejinzgDownload();
+                    yejinzgDownload.detail(taskName);
+                }else if (taskName.contains("qiegeji")) {
+                    QiegejiDownload qiegejiDownload = new QiegejiDownload();
+                    qiegejiDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.kq81.com")) {
+                    Kq81Download kq81Download = new Kq81Download();
+                    kq81Download.newsInfo(taskName);
+                }else if (taskName.contains("www.iotworld.com.cn")) {
+                    IotworldDownload IotworldDownload = new IotworldDownload();
+                    IotworldDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.cctime.com")) {
+                    CctimeDownload cctimeDownload = new CctimeDownload();
+                    cctimeDownload.detailDownload(taskName);
+                }else if (taskName.contains("www.icloudnews.net")) {
+                    IcloudNewsDownload icloudNewsDownload = new IcloudNewsDownload();
+                    icloudNewsDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

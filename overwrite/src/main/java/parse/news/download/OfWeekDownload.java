@@ -29,6 +29,10 @@ public class OfWeekDownload {
     private static ESUtil esUtil = new ESUtil();
 
 
+    public static void main(String[] args) {
+        OfWeekDownload ofWeekDownload = new OfWeekDownload();
+        ofWeekDownload.newsInfo("https://solar.ofweek.com/2019-12/ART-260001-8120-30422079.html");
+    }
     public void newsInfo(String url) {
         try {
             JSONObject info = new JSONObject();

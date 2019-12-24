@@ -351,6 +351,24 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("http://www.mccet.com/")) {
                     MccetToRedis mccetToRedis = new MccetToRedis();
                     mccetToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.yejinzg.com/list/28.html")) {
+                    YejinzgToRedis yejinzgToRedis = new YejinzgToRedis();
+                    yejinzgToRedis.homepage(taskName);
+                }else if (taskName.contains("https://www.kq81.com/")) {
+                    Kq81ToRedis kq81ToRedis = new Kq81ToRedis();
+                    kq81ToRedis.home(taskName);
+                }else if (taskName.contains("http://www.qiegeji.org/new_list.asp?id=2")) {
+                    QiegejiToRedis qiegejiToRedis = new QiegejiToRedis();
+                    qiegejiToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.iotworld.com.cn/")) {
+                    IotworldToRedis IotworldToRedis = new IotworldToRedis();
+                    IotworldToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.cctime.com/")) {
+                    CctimeToRedis cctimeToRedis = new CctimeToRedis();
+                    cctimeToRedis.homePage(taskName);
+                }else if (taskName.contains("https://www.icloudnews.net/")) {
+                    IcloudNewsToRedis icloudNewsToRedis = new IcloudNewsToRedis();
+                    icloudNewsToRedis.homepage(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
