@@ -367,6 +367,15 @@ public class NewsDownloadMainEntry {
                 }else if (taskName.contains("www.icloudnews.net")) {
                     IcloudNewsDownload icloudNewsDownload = new IcloudNewsDownload();
                     icloudNewsDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.jingmeiti.com")) {
+                    JingMeiTiDownload jingMeiTiDownload = new JingMeiTiDownload();
+                    jingMeiTiDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.laserfair.com")) {
+                    LaserfairDownload laserfairDownload = new LaserfairDownload();
+                    laserfairDownload.newsInfo(taskName);
+                }else if (taskName.contains("www.idacn.org")) {
+                    IdacnDownload IdacnDownload = new IdacnDownload();
+                    IdacnDownload.newsInfo(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());

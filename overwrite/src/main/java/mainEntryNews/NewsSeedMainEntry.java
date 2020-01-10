@@ -369,6 +369,15 @@ public class NewsSeedMainEntry {
                 }else if (taskName.contains("https://www.icloudnews.net/")) {
                     IcloudNewsToRedis icloudNewsToRedis = new IcloudNewsToRedis();
                     icloudNewsToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.jingmeiti.com/")) {
+                    JingMeiTiToRedis jingMeiTiToRedis = new JingMeiTiToRedis();
+                    jingMeiTiToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.laserfair.com/")) {
+                    LaserfairToRedis laserfairToRedis = new LaserfairToRedis();
+                    laserfairToRedis.homepage(taskName);
+                }else if (taskName.contains("http://www.idacn.org/news")) {
+                    IdacnToRedis idacnToRedis = new IdacnToRedis();
+                    idacnToRedis.paging(taskName);
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
