@@ -2,4 +2,5 @@ rootProject.name = 'crawler'
 include 'spider'
 include 'overwrite'
 include 'coreDNS'
+include 'YiQing'
 
