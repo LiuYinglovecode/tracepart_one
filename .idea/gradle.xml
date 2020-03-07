@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/YiQing" />
             <option value="$PROJECT_DIR$/coreDNS" />
             <option value="$PROJECT_DIR$/overwrite" />
             <option value="$PROJECT_DIR$/spider" />
