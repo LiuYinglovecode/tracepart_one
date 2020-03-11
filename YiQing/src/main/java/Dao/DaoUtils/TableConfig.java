@@ -35,6 +35,10 @@ public class TableConfig {
     public static String RECORD_DELETE_FAILURE = "delete_failure";
     // 删除成功
     public static String RECORD_DELETE_SUCCESS = "delete_success";
+    // 插入成功
+    public static String RECORD_ADD_SUCCESS = "add_success";
+    // 插入失败
+    public static String RECORD_ADD_FAILURE = "add_failure";
 
 
     private static Map<String,String[]> project2fields;
@@ -47,22 +51,23 @@ public class TableConfig {
         project = "company";
         project2fields.put(project,new String[]{"id","source_id","category_id","company_id","name","scale","employess","adress","post_code","info","contacts","tel","fax","country","province","city",
                 "type","model","industry","product","brand","status","create_time","update_time","deleted"});
-        project2tableName.put(project,"kg_covid_company");
+        project2tableName.put(project,"kg_covid_company_test");
 
         // 抗疫数据源管理表
         project="kg_covid_datasource";
         project2fields.put(project,new String[]{"id","name","url","source","status","publish_time","create_time","update_time","deleted"});
         project2tableName.put(project,"kg_covid_datasource");
 
-        // 抗疫企业表
-        project="kg_covid_company";
-        project2fields.put(project,new String[]{"id","source_id","category_id","company_id","name","scale","employees","adress","post_code","info","contacts","tel","fax","country","province","city","type","model","industry","product","brand","status","create_time","update_time","deleted"});
-        project2tableName.put(project,"kg_covid_company");
+//        // 抗疫企业表
+//        project="kg_covid_company";
+//        project2fields.put(project,new String[]{"id","source_id","category_id","company_id","name","scale","employees","adress","post_code","info","contacts","tel","fax","country","province","city","type","model","industry","product","brand","status","create_time","update_time","deleted"});
+//        project2tableName.put(project,"kg_covid_company");
 
         // 抗疫产品表
-        project="kg_covid_product";
+//        project="kg_covid_product";
+        project="product";
         project2fields.put(project,new String[]{"id","source_id","category_id","company_id","contacts","tel","product_name","brand","specs","material","classify_name","level","charge_unit","price","inventory","moq","image","description","status","create_time","update_time","deleted"});
-        project2tableName.put(project,"kg_covid_product");
+        project2tableName.put(project,"kg_covid_product_test");
 
         // 产品类别表
         project="kg_covid_product_category";

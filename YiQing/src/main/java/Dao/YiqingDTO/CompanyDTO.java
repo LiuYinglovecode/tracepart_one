@@ -22,8 +22,8 @@ public class CompanyDTO {
 	private String scale;
 	@SqlColumn(name = "employees")
 	private String employees;
-	@SqlColumn(name = "adress")
-	private String adress;
+	@SqlColumn(name = "address")
+	private String address;
 	@SqlColumn(name = "post_code")
 	private String postCode;
 	@SqlColumn(name = "info")
@@ -109,11 +109,11 @@ public String getEmployees() {
         this.employees = employees;
     }
 
-public String getAdress() {
-        return adress;
+public String getAddress() {
+        return address;
     }
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 public String getPostCode() {
