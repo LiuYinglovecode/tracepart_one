@@ -95,12 +95,12 @@ public class Ok365 {
                 for (Element e : infobox2) {
                     detailInfo.put(e.select("dt").text().trim(), e.select("dl").text().trim());
                 }
-
                 Elements infobox = document.select(".page-bd .container .ml15.mr15 tbody tr td");
                 for (Element e : infobox) {
                     detailInfo.put(e.select("p:first").text().trim(), e.select("p:first").text().trim());
                 }
-
+                detailInfo.put("source_id", 35);
+                detailInfo.put("category_id", 1);
             }
         } catch (IOException e) {
             LOGGER.error(e.getMessage());

@@ -1,10 +1,8 @@
 package Product_Company;
 
 import Utils.HttpUtil;
-import Utils.MD5Util;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.sun.scenario.effect.impl.sw.java.JSWBlend_SRC_OUTPeer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -66,8 +64,8 @@ public class MadeInChina {
             String html = HttpUtil.httpGet(url, null);
             if (!"".equals(html)) {
                 Document document = Jsoup.parse(html);
-                //company_id	企业ID
-                productInfo.put("company_id", MD5Util.getMD5String(companyName));
+                //companyName  关联查询企业ID
+                productInfo.put("company_id", companyName);
                 //product_name	产品名称
                 productInfo.put("product_name", document.select(".rightCon > h1").text().trim());
                 Elements contactList = document.select(".contactInfo > li");
@@ -139,8 +137,8 @@ public class MadeInChina {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国制造网");
             if (null != html) {
                 Document document = Jsoup.parse(html);
-                //company_id	企业唯一标识
-                companyInfo.put("company_id", MD5Util.getMD5String(companyName));
+                //companyName  关联查询企业ID
+                companyInfo.put("company_id", companyName);
                 //name	公司名称
                 companyInfo.put("name", companyName);
                 Elements contactList = document.select(".contactInfo > li");

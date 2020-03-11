@@ -32,7 +32,7 @@ public class Souhaohuo912688 {
 
     public static void main(String[] args) {
         Souhaohuo912688 souhaohuo912688 = new Souhaohuo912688();
-        souhaohuo912688.company("https://13728117858.912688.com/company.html?spm=p201905.vshopindex.topmenu.24c4f761-e322-4528-8d82-e6a35a768616");
+        souhaohuo912688.productList(kouzhao);
     }
 
     /**

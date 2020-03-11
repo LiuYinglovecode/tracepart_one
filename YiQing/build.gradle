@@ -6,4 +6,12 @@ plugins {
 
 dependencies {
     compile project(":overwrite")
+
+    compile group: 'org.slf4j', name: 'slf4j-api', version: "1.7.21"
+    testCompile group: 'junit', name: 'junit', version: "4.11"
+    compile group: "com.yunlu", name: "yunlu-core-data-sql", version: "2.0.7-SNAPSHOT", changing: true
+    compile group: "com.yunlu", name: "yunlu-core-data-redis", version: "2.0.7-SNAPSHOT", changing: true
+    compile group: "com.yunlu", name: "yunlu-core-data-cache", version: "2.0.7-SNAPSHOT", changing: true
+    compile group: "com.yunlu", name: "yunlu-core-config", version: "2.0.7-SNAPSHOT", changing: true
+    compile group: "com.yunlu", name: "yunlu-core-util", version: "2.0.7-SNAPSHOT", changing: true
 }
