@@ -1,8 +1,10 @@
 package Product_Company;
 
+import Dao.MainDBDao;
 import Utils.HttpUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.mysql.cj.fabric.xmlrpc.base.Data;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,7 +12,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -20,10 +22,9 @@ import java.io.IOException;
  */
 public class MadeInChina {
     private final static Logger LOGGER = LoggerFactory.getLogger(MadeInChina.class);
-    /**
-     * 口罩
-     */
+    //口罩
     private static String KOUZHAO = "https://cn.made-in-china.com/market/kouzhao-1.html";
+    private static MainDBDao dbDao = new MainDBDao();
 
     public static void main(String[] args) {
         MadeInChina madeInChina = new MadeInChina();
@@ -42,8 +43,8 @@ public class MadeInChina {
                     String companyUrl = "https://cn.made-in-china.com/showroom/" +
                             e.select(".co-info.clear > a").attr("href").split("//", 2)[1].split(".cn", 2)[0] +
                             "-companyinfo.html";
-//                    product(productUrl, companyName);
-                    company(companyUrl, companyName);
+                    product(productUrl, companyName);
+//                    company(companyUrl, companyName);
                 }
             }
         } catch (Exception e) {
@@ -61,13 +62,18 @@ public class MadeInChina {
         JSONObject priseInfo = new JSONObject();
         JSONArray images = new JSONArray();
         try {
-            String html = HttpUtil.httpGet(url, null);
-            if (!"".equals(html)) {
+            String html = HttpUtil.httpGetwithJudgeWord(url, "中国制造网");
+            if (null != html) {
                 Document document = Jsoup.parse(html);
+                //category_id	产品类别，值为 kg_covid_product_category 表中的 id
+                productInfo.put("category_id", 1);
+                //source_id	数据来源，值为“kg_covid_datasource”表的 id
+                productInfo.put("source_id", 23);
                 //companyName  关联查询企业ID
-                productInfo.put("company_id", companyName);
+                productInfo.put("company_name", companyName);
                 //product_name	产品名称
-                productInfo.put("product_name", document.select(".rightCon > h1").text().trim());
+                //product_name 改成 name
+                productInfo.put("name", document.select(".rightCon > h1").text().trim());
                 Elements contactList = document.select(".contactInfo > li");
                 for (Element e : contactList) {
                     if (e.text().contains("先生") || e.text().contains("女士")) {
@@ -80,14 +86,15 @@ public class MadeInChina {
                 }
                 Elements priceList = document.select(".prices.js-price-type > tbody > tr");
                 //charge_unit	单位
-                productInfo.put("charge_unit", priceList.first().text().trim());
+                productInfo.put("charge_unit", priceList.first().select("th").first().text().trim().split("（", 2)[1].split("）", 2)[0]);
                 //price	单位价格
                 for (Element e : priceList) {
                     if (!e.text().contains("订货量")) {
                         priseInfo.put(e.select("td").first().text().trim(), e.select("td").last().text().trim());
                     }
                 }
-                productInfo.put("price", priseInfo);
+//                productInfo.put("price", priseInfo);
+                productInfo.put("price", priceList.select("td").first().nextElementSibling().text().trim());
                 //inventory	库存
                 Elements prodetails = document.select("#prodetails_data > tbody > tr");
                 for (Element e : prodetails) {
@@ -120,8 +127,11 @@ public class MadeInChina {
                 }
                 productInfo.put("image", images);
                 LOGGER.info(String.valueOf(productInfo));
+                LOGGER.info(String.valueOf(new Date()));
+                dbDao.addProductRecord(productInfo);
+                LOGGER.info(String.valueOf(new Date()));
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
     }
@@ -170,6 +180,7 @@ public class MadeInChina {
                         companyInfo.put("employees", e.select("td").text().trim());
                     }
                 }
+
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

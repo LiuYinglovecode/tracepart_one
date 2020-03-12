@@ -10,10 +10,12 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URL;
+
 
 public class Zhique {
     private final static Logger LOGGER = LoggerFactory.getLogger(Zhique.class);
-    private static String KOUZHAO = "https://www.zhiqueip.com/result?keyword=%E5%8F%A3%E7%BD%A9&type=1";
+    private static String KOUZHAO = "https://www.zhiqueip.com/result?keyword=%E5%8F%A3%E7%BD%A9";
     private static String BASEURL = "https://www.zhiqueip.com/";
 
     public static void main(String[] args) {
@@ -23,6 +25,7 @@ public class Zhique {
 
     public void patentList(String url) {
         try {
+            Document document2 = Jsoup.parse(new URL(url).openStream(), "UTF-8", url);
             String html = HttpUtil.get(url);
             if (null != html) {
                 Document document = Jsoup.parse(html);

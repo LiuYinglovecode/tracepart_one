@@ -1,5 +1,6 @@
 package Product_Company;
 
+import Dao.MainDBDao;
 import Utils.HttpUtil;
 import Utils.RedisUtil;
 import Utils.SleepUtils;
@@ -29,6 +30,7 @@ public class Souhaohuo912688 {
     private static String kouzhao = "https://s.912688.com/prod/dy/search?kw=%E5%8F%A3%E7%BD%A9&view=img";
     private static SimpleDateFormat timestamp = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss ZZZ", Locale.US);
     private static SimpleDateFormat timestamp2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+    private static MainDBDao dbDao = new MainDBDao();
 
     public static void main(String[] args) {
         Souhaohuo912688 souhaohuo912688 = new Souhaohuo912688();
