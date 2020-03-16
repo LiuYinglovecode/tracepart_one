@@ -3,7 +3,7 @@ import com.yunlu.core.data.sql.annotation.SqlColumn;
 import com.yunlu.core.data.sql.annotation.SqlTable;
 
 /**
- * Created by Hastings  on 2020/3/9.
+ * Created by Hastings  on 2020/3/13.
  */
 
 @SqlTable(name="kg_covid_standard")
@@ -14,8 +14,12 @@ public class StandardDTO {
 	private String sourceId;
 	@SqlColumn(name = "category_id")
 	private String categoryId;
+	@SqlColumn(name = "standard_id")
+	private String standardId;
 	@SqlColumn(name = "name")
 	private String name;
+	@SqlColumn(name = "code")
+	private String code;
 	@SqlColumn(name = "scope")
 	private String scope;
 	@SqlColumn(name = "language")
@@ -59,11 +63,25 @@ public String getCategoryId() {
         this.categoryId = categoryId;
     }
 
+public String getStandardId() {
+        return standardId;
+    }
+    public void setStandardId(String standardId) {
+        this.standardId = standardId;
+    }
+
 public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+public String getCode() {
+        return code;
+    }
+    public void setCode(String code) {
+        this.code = code;
     }
 
 public String getScope() {

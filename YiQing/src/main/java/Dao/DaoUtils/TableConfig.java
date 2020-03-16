@@ -43,21 +43,27 @@ public class TableConfig {
 
     private static Map<String,String[]> project2fields;
     private static Map<String,String> project2tableName;
+    private static Map<String,String> project2uniquefield;
 
     static {
         project2fields = new HashMap<>();
         project2tableName = new HashMap<>();
+        project2uniquefield = new HashMap<>();
         String project;
         project = "company";
         project2fields.put(project,new String[]{"id","source_id","category_id","company_id","name","scale","employess","adress","post_code","info","contacts","tel","fax","country","province","city",
                 "type","model","industry","product","brand","status","create_time","update_time","deleted"});
 //        project2tableName.put(project,"kg_covid_company_test");
         project2tableName.put(project,"kg_covid_company");
+        project2uniquefield.put(project,"name");
+
 
         // 抗疫数据源管理表
-        project="kg_covid_datasource";
+//        project="kg_covid_datasource";
+        project="datasource";
         project2fields.put(project,new String[]{"id","name","url","source","status","publish_time","create_time","update_time","deleted"});
         project2tableName.put(project,"kg_covid_datasource");
+        project2uniquefield.put(project,"name");
 
 //        // 抗疫企业表
 //        project="kg_covid_company";
@@ -67,9 +73,10 @@ public class TableConfig {
         // 抗疫产品表
 //        project="kg_covid_product";
         project="product";
-        project2fields.put(project,new String[]{"id","source_id","category_id","company_id","contacts","tel","product_name","brand","specs","material","classify_name","level","charge_unit","price","inventory","moq","image","description","status","create_time","update_time","deleted"});
+        project2fields.put(project,new String[]{"id","source_id","category_id","company_id","contacts","tel","name","brand","specs","material","classify_name","level","charge_unit","price","inventory","moq","image","description","status","create_time","update_time","deleted"});
 //        project2tableName.put(project,"kg_covid_product_test");
         project2tableName.put(project,"kg_covid_product");
+        project2uniquefield.put(project,"name");
 
         // 产品类别表
         project="kg_covid_product_category";
@@ -82,7 +89,8 @@ public class TableConfig {
         project2tableName.put(project,"kg_covid_tenant");
 
         // 原材料表
-        project="kg_covid_material";
+//        project="kg_covid_material";
+        project="material";
         project2fields.put(project,new String[]{"id","source_id","category_id","company_name","company_id","contacts","tel","product_name","brand","specs","material","classify_name","level","charge_unit","price","inventory","moq","image","description","status","create_time","update_time","deleted"});
         project2tableName.put(project,"kg_covid_material");
 
@@ -98,13 +106,17 @@ public class TableConfig {
 
         // 医疗器械标准表
         project="kg_covid_standard";
+        project="standard";
         project2fields.put(project,new String[]{"id","source_id","category_id","name","scope","language","description","file_url","file_size","file_format","status","create_time","update_time","deleted"});
         project2tableName.put(project,"kg_covid_standard");
+        project2uniquefield.put(project,"code");
 
         // 医疗器械专利表
         project="kg_covid_patent";
+        project="patent";
         project2fields.put(project,new String[]{"id","source_id","category_id","patent_num","name","url","summary","type","case_status","technical_field","trading_status","price","application_number","application_date","publication_number","publication_date","applicant","inventor","main_classification_number","classification_number","adress","country_code","agency","agent","preemption","assertion","instructions","file_url","file_size","file_format","law_info","law_status","summary_picture_url","instructions_picture_url","tfc_picture_url","status","create_time","update_time","deleted"});
         project2tableName.put(project,"kg_covid_patent");
+        project2uniquefield.put(project,"patent_num");
 
     }
 
@@ -122,6 +134,15 @@ public class TableConfig {
         String table_name = null;
         if (project2tableName.containsKey(project)){
             table_name = project2tableName.get(project);
+        }
+        return table_name;
+    }
+
+    // 获取表唯一标志
+    public static String getProjectUniqueFiedl(String project){
+        String table_name = null;
+        if (project2uniquefield.containsKey(project)){
+            table_name = project2uniquefield.get(project);
         }
         return table_name;
     }

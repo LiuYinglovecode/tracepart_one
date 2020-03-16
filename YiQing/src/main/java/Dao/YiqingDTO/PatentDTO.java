@@ -3,7 +3,7 @@ import com.yunlu.core.data.sql.annotation.SqlColumn;
 import com.yunlu.core.data.sql.annotation.SqlTable;
 
 /**
- * Created by Hastings  on 2020/3/9.
+ * Created by Hastings  on 2020/3/12.
  */
 
 @SqlTable(name="kg_covid_patent")
@@ -14,6 +14,8 @@ public class PatentDTO {
 	private String sourceId;
 	@SqlColumn(name = "category_id")
 	private String categoryId;
+	@SqlColumn(name = "patent_id")
+	private String patentId;
 	@SqlColumn(name = "patent_num")
 	private String patentNum;
 	@SqlColumn(name = "name")
@@ -48,8 +50,8 @@ public class PatentDTO {
 	private String mainClassificationNumber;
 	@SqlColumn(name = "classification_number")
 	private String classificationNumber;
-	@SqlColumn(name = "adress")
-	private String adress;
+	@SqlColumn(name = "address")
+	private String address;
 	@SqlColumn(name = "country_code")
 	private String countryCode;
 	@SqlColumn(name = "agency")
@@ -107,6 +109,13 @@ public String getCategoryId() {
     }
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+public String getPatentId() {
+        return patentId;
+    }
+    public void setPatentId(String patentId) {
+        this.patentId = patentId;
     }
 
 public String getPatentNum() {
@@ -228,11 +237,11 @@ public String getClassificationNumber() {
         this.classificationNumber = classificationNumber;
     }
 
-public String getAdress() {
-        return adress;
+public String getAddress() {
+        return address;
     }
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 public String getCountryCode() {

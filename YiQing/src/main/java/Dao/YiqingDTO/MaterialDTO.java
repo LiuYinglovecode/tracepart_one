@@ -14,8 +14,8 @@ public class MaterialDTO {
 	private String sourceId;
 	@SqlColumn(name = "category_id")
 	private String categoryId;
-	@SqlColumn(name = "company_name")
-	private String companyName;
+	@SqlColumn(name = "material_id")
+	private String materialId;
 	@SqlColumn(name = "company_id")
 	private String companyId;
 	@SqlColumn(name = "contacts")
@@ -77,11 +77,11 @@ public String getCategoryId() {
         this.categoryId = categoryId;
     }
 
-public String getCompanyName() {
-        return companyName;
+public String getMaterialId() {
+        return materialId;
     }
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setMaterialId(String materialId) {
+        this.materialId = materialId;
     }
 
 public String getCompanyId() {
