@@ -7,6 +7,7 @@ import com.yunlu.core.data.sql.annotation.SqlTable;
  */
 
 @SqlTable(name="kg_covid_company_test")
+//@SqlTable(name="kg_covid_company")
 public class CompanyDTO {
 	@SqlColumn(name = "id")
 	private String id;
