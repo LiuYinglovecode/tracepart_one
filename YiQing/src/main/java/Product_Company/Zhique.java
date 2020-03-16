@@ -26,7 +26,7 @@ public class Zhique {
     public void patentList(String url) {
         try {
             Document document2 = Jsoup.parse(new URL(url).openStream(), "UTF-8", url);
-            String html = HttpUtil.get(url);
+            String html = HttpUtil.httpGet(url, null);
             if (null != html) {
                 Document document = Jsoup.parse(html);
                 Elements patentUrlList = document.select(".deal-ul.content .deal-item .deal-item-right");
