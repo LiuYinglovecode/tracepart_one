@@ -147,6 +147,10 @@ public class MadeInChina {
             String html = HttpUtil.httpGetwithJudgeWord(url, "中国制造网");
             if (null != html) {
                 Document document = Jsoup.parse(html);
+                //category_id	产品类别，值为 kg_covid_product_category 表中的 id
+                companyInfo.put("category_id", 1);
+                //source_id	数据来源，值为“kg_covid_datasource”表的 id
+                companyInfo.put("source_id", 23);
                 //companyName  关联查询企业ID
                 companyInfo.put("company_id", companyName);
                 //name	公司名称
