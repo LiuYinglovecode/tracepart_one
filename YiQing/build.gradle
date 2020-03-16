@@ -13,5 +13,5 @@ dependencies {
     compile group: "com.yunlu", name: "yunlu-core-data-redis", version: "2.0.7-SNAPSHOT", changing: true
     compile group: "com.yunlu", name: "yunlu-core-data-cache", version: "2.0.7-SNAPSHOT", changing: true
     compile group: "com.yunlu", name: "yunlu-core-config", version: "2.0.7-SNAPSHOT", changing: true
-    compile group: "com.yunlu", name: "yunlu-core-util", version: "2.0.7-SNAPSHOT", changing: true
+    compile group: "com.yunlu", name: "yunlu-core-Utils", version: "2.0.7-SNAPSHOT", changing: true
 }
