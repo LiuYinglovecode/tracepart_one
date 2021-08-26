@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tracepart.util.DownTracepartFile;
-import util.ESUtil;
+import Utils.ESUtil;
 import util.HttpUtil;
 
 import java.text.SimpleDateFormat;
@@ -249,7 +249,7 @@ public class TracePartsDownloadFromRedis {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             try {
-                // 核心改造点，由blockingqueue的offer改成put阻塞方法
+                // core modify point, change 'offer' of blockingqueue to put blocking method
                 executor.getQueue().put(r);
             } catch (InterruptedException e) {
                 e.printStackTrace();

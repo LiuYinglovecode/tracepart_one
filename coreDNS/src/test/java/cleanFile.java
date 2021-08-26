@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class cleanFile {
     @Test
-    public static void main(String[] args) {
+    public void main() {
         WriteUtil.cleanFile("D:/coredns.txt");
     }
 }

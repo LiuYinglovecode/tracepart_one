@@ -1,106 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fb426d35-2f81-4cee-a68d-8027985e4b09" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileContent/annotation-processors.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java" beforeDir="false" afterPath="$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YiQing/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/YiQing/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/overwrite/build/classes/java/main/Utils/JedisMultiCluster.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/build/classes/java/main/Utils/JedisMultiCluster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/JedisMultiCluster.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/JedisMultiCluster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/NewsMd5.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/Utils/NewsMd5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/Ca800Download.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/Ca800Download.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/CcoalnewsDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/download/CcoalnewsDownload.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Ca800ToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Ca800ToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CableabcToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CableabcToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CcoalnewsToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CcoalnewsToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CesToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CesToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/ChinahightechToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/ChinahightechToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CinnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CinnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CnmnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CnmnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CpnnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/CpnnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/DzwToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/DzwToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/GkzhanToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/GkzhanToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JdzjToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JdzjToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JiancaiToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/JiancaiToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/LmjxToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/LmjxToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Machine365ToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/Machine365ToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MaiToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MaiToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MembranesToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/MembranesToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/NengyuanjieToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/NengyuanjieToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/PlaToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/PlaToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/SteelcnToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/SteelcnToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/TexindexToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/TexindexToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/XianjichinaToRedis.class" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/classes/parse/news/toRedis/XianjichinaToRedis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/out/production/resources/NewsSeedUrl.txt" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/out/production/resources/NewsSeedUrl.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/mainEntryProduct/ProductDownloadMainEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/mainEntryProduct/ProductDownloadMainEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/ChemmProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/ChemmProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/EbdoorProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/EbdoorProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/EhsyProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/EhsyProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/GongChangDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/GongChangDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/GraingerProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/GraingerProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/JdzjProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/JdzjProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/MaiProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/MaiProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Net114ProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Net114ProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Pe168ProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Pe168ProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Qth58ProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Qth58ProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/SouHaoHuoProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/SouHaoHuoProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Wmb2bDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/Wmb2bDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/WuageProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/WuageProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/YellowurlProductDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/YellowurlProductDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/ChemmProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/ChemmProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/EbdoorProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/EbdoorProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/EhsyProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/EhsyProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/GongChangToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/GongChangToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/GraingerProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/GraingerProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/JdzjProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/JdzjProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/MaiProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/MaiProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Net114ProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Net114ProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Pe168ProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Pe168ProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Qth58ProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Qth58ProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/SouHaoHuoProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/SouHaoHuoProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Wmb2bToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/Wmb2bToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/WuageProductToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/WuageProductToRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/YellowurlToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/YellowurlToRedis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/Utils/JedisMultiCluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/Utils/JedisMultiCluster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/maima/Maima.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/maima/Maima.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/maima/MaimaExist.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/maima/MaimaExist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/maima/SeedUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/maima/SeedUrl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsDownloadFromRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsDownloadFromRedis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/spider/product/cnlinfoProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/spider/product/cnlinfoProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/spider/product/ebdoorProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/spider/product/ebdoorProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider/src/main/java/spider/product/qth58Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/spider/product/qth58Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsUrlToRedis.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsUrlToRedis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/util/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/main/java/tracepart/util/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/test/java/PACKAGE_NAME/RedisUtilTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/overwrite/src/test/java/mysqlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/overwrite/src/test/java/mysqlTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spider/src/main/java/news/parse/cesNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/main/java/news/parse/cesNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spider/src/test/java/mysqlReadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/test/java/mysqlReadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spider/src/test/java/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/spider/src/test/java/test.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/overwrite/.gradle/" />
-    <ignored path="$PROJECT_DIR$/spider/.gradle/" />
-    <ignored path="$PROJECT_DIR$/spider/build/" />
-    <ignored path="$PROJECT_DIR$/spider/out/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/.gradle/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/build/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/out/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/resful/.gradle/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/resful/build/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/resful/out/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/servo/.gradle/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/servo/build/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/servo/out/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/service/.gradle/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/service/build/" />
-    <ignored path="$PROJECT_DIR$/coreDNS/service/out/" />
-    <ignored path="$PROJECT_DIR$/YiQing/.gradle/" />
-    <ignored path="$PROJECT_DIR$/YiQing/build/" />
-    <ignored path="$PROJECT_DIR$/YiQing/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,118 +62,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="crawler" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="crawler" type="f1a62948:ProjectNode" />
-                <item name=":YiQing" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="crawler" type="f1a62948:ProjectNode" />
-                <item name=":YiQing" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="crawler" type="f1a62948:ProjectNode" />
-                <item name=":YiQing" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="crawler" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="75">
-      <file leaf-file-name="Souhaohuo912688.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="debug.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/debug.log">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/YiQing/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChemmProductToRedis.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/ChemmProductToRedis.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="41" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="MD5Util.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/MD5Util.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HttpUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/Utils/HttpUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-184">
-              <caret line="452" column="25" selection-start-line="452" selection-start-column="25" selection-end-line="452" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ok365.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Ok365.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -254,33 +76,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>下一页</find>
-      <find>System.out.println</find>
-      <find>package</find>
-      <find>partde</find>
-      <find>downModel.setId</find>
-      <find>sim</find>
-      <find>crawler</find>
-      <find>crawler_data</find>
-      <find>standa</find>
-      <find>reader</find>
-      <find>302</find>
-      <find>bdebuild</find>
-      <find>bde</find>
-      <find>coredns</find>
-      <find>PROFILE_CONF</find>
-      <find>$PUBLISH_DIR</find>
-      <find>BUILD_VERSION</find>
-      <find>PROJECT_NAME</find>
-      <find>RUN_PREFIX</find>
-      <find>APP_NAME</find>
-      <find>f1d1ae72</find>
-      <find>LocationAwareLogger</find>
-      <find>china</find>
-      <find>146</find>
-    </findStrings>
+  <component name="FindBugs-IDEA-Workspace">
+    <toolWindowEditorPreview>false</toolWindowEditorPreview>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -290,1456 +87,18 @@
       </map>
     </option>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="myGradleHomes">
-      <map>
-        <entry key="$PROJECT_DIR$" value="E:\gradle-4.8" />
-      </map>
-    </option>
-    <option name="myGradleVersions">
-      <map>
-        <entry key="$PROJECT_DIR$" value="4.8" />
-      </map>
-    </option>
-    <option name="availableProjects">
-      <map>
-        <entry>
-          <key>
-            <ExternalProjectPojo>
-              <option name="name" value="crawler" />
-              <option name="path" value="$PROJECT_DIR$" />
-            </ExternalProjectPojo>
-          </key>
-          <value>
-            <list>
-              <ExternalProjectPojo>
-                <option name="name" value="crawler" />
-                <option name="path" value="$PROJECT_DIR$" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":coreDNS" />
-                <option name="path" value="$PROJECT_DIR$/coreDNS" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":overwrite" />
-                <option name="path" value="$PROJECT_DIR$/overwrite" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":spider" />
-                <option name="path" value="$PROJECT_DIR$/spider" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":YiQing" />
-                <option name="path" value="$PROJECT_DIR$/YiQing" />
-              </ExternalProjectPojo>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="availableTasks">
-      <map>
-        <entry key="$PROJECT_DIR$">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'crawler'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Gradle wrapper files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="wrapper" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs this project as a JVM application" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="run" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Verifies code coverage metrics based on specified rules for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="jacocoTestCoverageVerification" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Creates OS specific scripts to run the project as a JVM application." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="startScripts" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse classpath file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="eclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'crawler'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'crawler' (some of the displayed tasks may belong to subprojects)." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the main distributions" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assembleDist" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Initializes a new Gradle build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="init" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="dependencyManagement" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Repackage existing JAR and WAR archives so that they can be executed from the command line using 'java -jar'" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bootRepackage" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'crawler'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="eclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse JDT settings file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="eclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the 'archives' artifacts into the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="install" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse project file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="eclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Bundles the project as a distribution." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="distTar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Bundles the project as a distribution." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="distZip" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'crawler'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="cleanEclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Cleans all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="cleanEclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in root project 'crawler'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'crawler'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="cleanEclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the project as a distribution as-is." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="installDist" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="cleanEclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run the project with support for auto-detecting main class and reloading static resources" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bootRun" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'crawler'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates code coverage report for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="jacocoTestReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="findMainClass" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'crawler'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/YiQing">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':YiQing'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="cleanEclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':YiQing'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Cleans all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="cleanEclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in project ':YiQing'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':YiQing'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="cleanEclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Verifies code coverage metrics based on specified rules for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="jacocoTestCoverageVerification" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse classpath file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="eclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':YiQing'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':YiQing'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="cleanEclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':YiQing'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates code coverage report for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="jacocoTestReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':YiQing'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="eclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse JDT settings file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="eclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the 'archives' artifacts into the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="install" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse project file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="eclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':YiQing'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/YiQing" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/coreDNS">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':coreDNS'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs this project as a JVM application" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="run" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Verifies code coverage metrics based on specified rules for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="jacocoTestCoverageVerification" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Creates OS specific scripts to run the project as a JVM application." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="startScripts" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse classpath file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="eclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':coreDNS'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':coreDNS'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the main distributions" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="assembleDist" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="dependencyManagement" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Repackage existing JAR and WAR archives so that they can be executed from the command line using 'java -jar'" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="bootRepackage" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':coreDNS'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="eclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse JDT settings file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="eclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the 'archives' artifacts into the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="install" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse project file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="eclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Bundles the project as a distribution." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="distTar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Bundles the project as a distribution." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="distZip" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':coreDNS'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="cleanEclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Cleans all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="cleanEclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in project ':coreDNS'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':coreDNS'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="cleanEclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the project as a distribution as-is." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="installDist" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="cleanEclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run the project with support for auto-detecting main class and reloading static resources" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="bootRun" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':coreDNS'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates code coverage report for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="jacocoTestReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="findMainClass" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':coreDNS'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/coreDNS" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/overwrite">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':overwrite'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="cleanEclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':overwrite'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Cleans all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="cleanEclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in project ':overwrite'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':overwrite'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="cleanEclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Verifies code coverage metrics based on specified rules for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="jacocoTestCoverageVerification" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse classpath file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="eclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':overwrite'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':overwrite'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="cleanEclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':overwrite'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates code coverage report for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="jacocoTestReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':overwrite'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="eclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse JDT settings file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="eclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the 'archives' artifacts into the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="install" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse project file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="eclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':overwrite'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/overwrite" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/spider">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':spider'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="cleanEclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':spider'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Cleans all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="cleanEclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in project ':spider'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="dependentComponents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':spider'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="cleanEclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Verifies code coverage metrics based on specified rules for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="jacocoTestCoverageVerification" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse classpath file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="eclipseClasspath" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':spider'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':spider'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="cleanEclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':spider'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates code coverage report for the test task." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="jacocoTestReport" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':spider'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates all Eclipse files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="eclipse" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse JDT settings file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="eclipseJdt" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the 'archives' artifacts into the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="install" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Eclipse project file." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="eclipseProject" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':spider'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/spider" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="modificationStamps">
-      <map>
-        <entry key="$PROJECT_DIR$" value="14148676889092" />
-        <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/YiQing/build.gradle" value="2838957461" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="1189516398" />
-        <entry key="$PROJECT_DIR$/coreDNS/build.gradle" value="2101292834" />
-        <entry key="$PROJECT_DIR$/coreDNS/resful/build.gradle" value="3919623551" />
-        <entry key="$PROJECT_DIR$/coreDNS/service/build.gradle" value="3919623551" />
-        <entry key="$PROJECT_DIR$/overwrite/build.gradle" value="2914220205" />
-        <entry key="$PROJECT_DIR$/settings.gradle" value="4059692018" />
-        <entry key="$PROJECT_DIR$/spider/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/spider/build.gradle" value="299065262" />
-        <entry key="$PROJECT_DIR$/spider/settings.gradle" value="1782164381" />
-      </map>
-    </option>
-    <option name="projectBuildClasspath">
-      <map>
-        <entry key="$PROJECT_DIR$">
-          <value>
-            <ExternalProjectBuildClasspathPojo>
-              <option name="modulesBuildClasspath">
-                <map>
-                  <entry key="$PROJECT_DIR$">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/YiQing">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$/YiQing" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/coreDNS">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="entries">
-                          <list>
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.4.2.RELEASE/7516953b9d2cc1588c686660b488285795de240b/spring-boot-gradle-plugin-1.4.2.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.4.2.RELEASE/196fd2cc6079cdffbebaa813bfb8816beb602da3/spring-boot-loader-tools-1.4.2.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.spring.gradle/dependency-management-plugin/0.6.1.RELEASE/46cb985239502be3dcb94e0df45f797804e95fb8/dependency-management-plugin-0.6.1.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.4.RELEASE/da373e491d3863477568896089ee9457bc316783/spring-core-4.3.4.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
-                          </list>
-                        </option>
-                        <option name="path" value="$PROJECT_DIR$/coreDNS" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/coreDNS/resful">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="entries">
-                          <list>
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.4.2.RELEASE/7516953b9d2cc1588c686660b488285795de240b/spring-boot-gradle-plugin-1.4.2.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.4.2.RELEASE/196fd2cc6079cdffbebaa813bfb8816beb602da3/spring-boot-loader-tools-1.4.2.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.spring.gradle/dependency-management-plugin/0.6.1.RELEASE/46cb985239502be3dcb94e0df45f797804e95fb8/dependency-management-plugin-0.6.1.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.4.RELEASE/da373e491d3863477568896089ee9457bc316783/spring-core-4.3.4.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
-                          </list>
-                        </option>
-                        <option name="path" value="$PROJECT_DIR$/coreDNS/resful" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/coreDNS/service">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="entries">
-                          <list>
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.4.2.RELEASE/7516953b9d2cc1588c686660b488285795de240b/spring-boot-gradle-plugin-1.4.2.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.4.2.RELEASE/196fd2cc6079cdffbebaa813bfb8816beb602da3/spring-boot-loader-tools-1.4.2.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.spring.gradle/dependency-management-plugin/0.6.1.RELEASE/46cb985239502be3dcb94e0df45f797804e95fb8/dependency-management-plugin-0.6.1.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.4.RELEASE/da373e491d3863477568896089ee9457bc316783/spring-core-4.3.4.RELEASE.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" />
-                          </list>
-                        </option>
-                        <option name="path" value="$PROJECT_DIR$/coreDNS/service" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/coreDNS/servo">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$/coreDNS/servo" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/overwrite">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$/overwrite" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/spider">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$/spider" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-              <option name="name" value="crawler" />
-              <option name="projectBuildClasspath">
-                <list>
-                  <option value="E:/gradle-4.8/src/announce" />
-                  <option value="E:/gradle-4.8/src/antlr" />
-                  <option value="E:/gradle-4.8/src/base-services" />
-                  <option value="E:/gradle-4.8/src/base-services-groovy" />
-                  <option value="E:/gradle-4.8/src/build-cache" />
-                  <option value="E:/gradle-4.8/src/build-cache-http" />
-                  <option value="E:/gradle-4.8/src/build-comparison" />
-                  <option value="E:/gradle-4.8/src/build-init" />
-                  <option value="E:/gradle-4.8/src/build-option" />
-                  <option value="E:/gradle-4.8/src/cli" />
-                  <option value="E:/gradle-4.8/src/code-quality" />
-                  <option value="E:/gradle-4.8/src/composite-builds" />
-                  <option value="E:/gradle-4.8/src/core" />
-                  <option value="E:/gradle-4.8/src/core-api" />
-                  <option value="E:/gradle-4.8/src/dependency-management" />
-                  <option value="E:/gradle-4.8/src/diagnostics" />
-                  <option value="E:/gradle-4.8/src/ear" />
-                  <option value="E:/gradle-4.8/src/ide" />
-                  <option value="E:/gradle-4.8/src/ide-native" />
-                  <option value="E:/gradle-4.8/src/ide-play" />
-                  <option value="E:/gradle-4.8/src/installation-beacon" />
-                  <option value="E:/gradle-4.8/src/internal-android-performance-testing" />
-                  <option value="E:/gradle-4.8/src/internal-integ-testing" />
-                  <option value="E:/gradle-4.8/src/internal-performance-testing" />
-                  <option value="E:/gradle-4.8/src/internal-testing" />
-                  <option value="E:/gradle-4.8/src/ivy" />
-                  <option value="E:/gradle-4.8/src/jacoco" />
-                  <option value="E:/gradle-4.8/src/javascript" />
-                  <option value="E:/gradle-4.8/src/jvm-services" />
-                  <option value="E:/gradle-4.8/src/language-groovy" />
-                  <option value="E:/gradle-4.8/src/language-java" />
-                  <option value="E:/gradle-4.8/src/language-jvm" />
-                  <option value="E:/gradle-4.8/src/language-native" />
-                  <option value="E:/gradle-4.8/src/language-scala" />
-                  <option value="E:/gradle-4.8/src/launcher" />
-                  <option value="E:/gradle-4.8/src/logging" />
-                  <option value="E:/gradle-4.8/src/maven" />
-                  <option value="E:/gradle-4.8/src/messaging" />
-                  <option value="E:/gradle-4.8/src/model-core" />
-                  <option value="E:/gradle-4.8/src/model-groovy" />
-                  <option value="E:/gradle-4.8/src/native" />
-                  <option value="E:/gradle-4.8/src/osgi" />
-                  <option value="E:/gradle-4.8/src/persistent-cache" />
-                  <option value="E:/gradle-4.8/src/platform-base" />
-                  <option value="E:/gradle-4.8/src/platform-jvm" />
-                  <option value="E:/gradle-4.8/src/platform-native" />
-                  <option value="E:/gradle-4.8/src/platform-play" />
-                  <option value="E:/gradle-4.8/src/plugin-development" />
-                  <option value="E:/gradle-4.8/src/plugin-use" />
-                  <option value="E:/gradle-4.8/src/plugins" />
-                  <option value="E:/gradle-4.8/src/process-services" />
-                  <option value="E:/gradle-4.8/src/publish" />
-                  <option value="E:/gradle-4.8/src/reporting" />
-                  <option value="E:/gradle-4.8/src/resources" />
-                  <option value="E:/gradle-4.8/src/resources-gcs" />
-                  <option value="E:/gradle-4.8/src/resources-http" />
-                  <option value="E:/gradle-4.8/src/resources-s3" />
-                  <option value="E:/gradle-4.8/src/resources-sftp" />
-                  <option value="E:/gradle-4.8/src/scala" />
-                  <option value="E:/gradle-4.8/src/signing" />
-                  <option value="E:/gradle-4.8/src/test-kit" />
-                  <option value="E:/gradle-4.8/src/testing-base" />
-                  <option value="E:/gradle-4.8/src/testing-junit-platform" />
-                  <option value="E:/gradle-4.8/src/testing-jvm" />
-                  <option value="E:/gradle-4.8/src/testing-native" />
-                  <option value="E:/gradle-4.8/src/tooling-api" />
-                  <option value="E:/gradle-4.8/src/tooling-api-builders" />
-                  <option value="E:/gradle-4.8/src/version-control" />
-                  <option value="E:/gradle-4.8/src/workers" />
-                  <option value="E:/gradle-4.8/src/wrapper" />
-                  <option value="E:/gradle-4.8/lib/ant-1.9.11.jar" />
-                  <option value="E:/gradle-4.8/lib/ant-launcher-1.9.11.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-base-services-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-base-services-groovy-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-build-cache-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-build-option-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-cli-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-core-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-core-api-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-docs-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-installation-beacon-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-jvm-services-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-kotlin-dsl-0.17.5.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-kotlin-dsl-provider-plugins-0.17.5.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-kotlin-dsl-provider-spi-0.17.5.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-kotlin-dsl-tooling-builders-0.17.5.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-kotlin-dsl-tooling-models-0.17.5.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-launcher-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-logging-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-messaging-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-model-core-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-model-groovy-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-native-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-persistent-cache-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-process-services-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-resources-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-runtime-api-info-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-tooling-api-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/gradle-wrapper-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/groovy-all-2.4.12.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-announce-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-antlr-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-build-cache-http-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-build-comparison-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-build-init-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-code-quality-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-composite-builds-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-dependency-management-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-diagnostics-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-ear-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-ide-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-ide-native-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-ide-play-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-ivy-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-jacoco-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-javascript-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-language-groovy-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-language-java-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-language-jvm-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-language-native-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-language-scala-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-maven-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-osgi-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-platform-base-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-platform-jvm-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-platform-native-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-platform-play-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-plugin-development-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-plugin-use-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-plugins-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-publish-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-reporting-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-resources-gcs-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-resources-http-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-resources-s3-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-resources-sftp-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-scala-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-signing-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-test-kit-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-testing-base-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-testing-junit-platform-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-testing-jvm-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-testing-native-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-tooling-api-builders-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-version-control-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/gradle-workers-4.8.jar" />
-                  <option value="E:/gradle-4.8/lib/plugins/ivy-2.2.0.jar" />
-                  <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
-                  <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
-                </list>
-              </option>
-            </ExternalProjectBuildClasspathPojo>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$/../Reptile" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../Reptile/spider" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-      </map>
-    </option>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/sercice/CoreDNSService.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/resful/controller/coreDNSController.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/utils/BuildResult.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/resful/controller/CoreDNSController.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/dao/CoreDNSDAO.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/resful/CoreDNSServerApplication.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/sercice/impl/CoreDNSServiceImpl.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/controller/CoreDNSController.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/CoreDNSServerApplication.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/BuildResult.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/coreDNS/src/test/java/split.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/updateToMySQL.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/DbConnectionPool.java" />
-        <option value="$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java" />
-        <option value="$PROJECT_DIR$/spider/src/test/java/test.java" />
-        <option value="$PROJECT_DIR$/spider/src/test/java/mysqlReadTest.java" />
-        <option value="$PROJECT_DIR$/coreDNS/build.gradle" />
-        <option value="$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java" />
-        <option value="$PROJECT_DIR$/coreDNS/publish.oo" />
-        <option value="$PROJECT_DIR$/coreDNS/build.oo" />
-        <option value="$PROJECT_DIR$/spider/Dockerfile" />
-        <option value="$PROJECT_DIR$/build_crawler.sh" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/writeUtil.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/TimeUtil.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/ToMySQL.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDNSController.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/CoreDNSService.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/dao/CoreDNSDAO.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDNSServiceImpl.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/CoreDnsService.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/dao/CoreDnsDAO.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/WriteUtil.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDnsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/mysql/MySqlUtil.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/resources/test/app.properties" />
-        <option value="$PROJECT_DIR$/coreDNS/Dockerfile" />
-        <option value="$PROJECT_DIR$/coreDNS/src/main/resources/release/app.properties" />
-        <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/YiQing/build.gradle" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product/YiQing_ok365.java" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product/Ok365.java" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product/SouHaoHuoProductToRedis.java" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product/SouHaoHuoProductDownload.java" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Ok365.java" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product_Company/SouHaoHuoProductDownload.java" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product_Company/SouHaoHuoProductToRedis.java" />
-        <option value="$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java" />
-      </list>
-    </option>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="k8s" />
+    <option name="namespace" value="default" />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1932" />
-    <option name="height" value="1056" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="YiQing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="crawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crawler" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="YiQing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-    </panes>
+  <component name="ProjectId" id="1jECwQB30I3NxI4YczZTAH6itWi" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
@@ -1749,149 +108,153 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SearchEverywhereHistoryKey" value="mysql&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;ESUti&#9;PSI&#9;JAVA://util.ESUtil&#10;up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;write&#9;PSI&#9;JAVA://util.writeUtil&#10;Wri&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;redis&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;Write&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/tracepart/util/Writer.java&#10;mysq&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java&#10;redisU&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/RedisUtil.java&#10;http&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/util/HttpUtil.java&#10;newsM&#9;PSI&#9;JAVA://Utils.NewsMd5&#10;FileItem&#9;PSI&#9;JAVA://org.springframework.web.multipart.commons.CommonsMultipartFile#fileItem&#10;news&#9;FILE&#9;file://E:/code/crawler/overwrite/src/main/java/Utils/NewsMd5.java&#10;configu&#9;PSI&#9;JAVA://config.Configured&#10;Up&#9;FILE&#9;file://E:/code/crawler/spider/src/main/java/mysql/updateToMySQL.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../time" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/overwrite/src/main/java" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="E:/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.35135135" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\code\crawler\YiQing" />
-      <recent name="E:\code\crawler" />
-      <recent name="E:\code\crawler\coreDNS\src\main\resources\test" />
-      <recent name="E:\code\crawler\coreDNS\src\main\resources\release" />
-      <recent name="E:\code\crawler\coreDNS\src\main\resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Product" />
-      <recent name="com.yunlu.utils" />
-      <recent name="tracepart.util" />
-      <recent name="tracepart.bde" />
-      <recent name="Utils" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\code\crawler\coreDNS\resful" />
       <recent name="E:\code\crawler\coreDNS" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tracepart.util" />
+      <recent name="Utils" />
+      <recent name="Product" />
+      <recent name="com.yunlu.utils" />
+      <recent name="tracepart.bde" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\crawler\overwrite\src\main\java" />
+      <recent name="E:\code\crawler\YiQing" />
+      <recent name="E:\code\crawler" />
+      <recent name="E:\code\crawler\coreDNS\src\main\resources\test" />
+      <recent name="E:\code\crawler\coreDNS\src\main\resources\release" />
+    </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Gradle.crawler:YiQing [build]">
+  <component name="RunManager" selected="Application.TracePartsDownloadFromRedis">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
-    <configuration name="Ok365" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Product_Company.Ok365" />
-      <module name="YiQing_main" />
+    <configuration name="Maima" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="maima.Maima" />
+      <module name="crawler.overwrite.main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Product_Company.*" />
+          <option name="PATTERN" value="maima.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="Souhaohuo912688" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Product_Company.Souhaohuo912688" />
-      <module name="YiQing_main" />
+    <configuration name="MaimaExist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="maima.MaimaExist" />
+      <module name="crawler.overwrite.main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Product_Company.*" />
+          <option name="PATTERN" value="maima.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductDownloadMainEntry" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mainEntryProduct.ProductDownloadMainEntry" />
+      <module name="crawler.overwrite.main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mainEntryProduct.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TracePartsDownloadFromRedis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tracepart.parse.TracePartsDownloadFromRedis" />
+      <module name="crawler.overwrite.main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tracepart.parse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="ca168Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="newsTest.ca168Test" />
-      <module name="overwrite_test" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="newsTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="coreDns" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.yunlu.CoreDNSServerApplication" />
       <module name="coreDNS_main" />
       <option name="PROGRAM_PARAMETERS" value="-d dev -port 7021" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="crawler:YiQing [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'crawler.overwrite'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/YiQing" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="--tests *" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value=":overwrite:test" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-    </configuration>
-    <configuration name="crawler:overwrite [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/overwrite" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assemble" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+    <configuration default="true" type="JetRunConfigurationType">
       <module name="crawler_test" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -1900,54 +263,48 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" />
       <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="coreDNSServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="coreDNS_main" />
+      <module name="crawler.coreDNS.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.yunlu.CoreDNSServerApplication" />
       <option name="PROGRAM_PARAMETERS" value="-port 8083 -d dev" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
+    <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.coreDns" />
+      <item itemvalue="Application.TracePartsDownloadFromRedis" />
+      <item itemvalue="Application.ProductDownloadMainEntry" />
+      <item itemvalue="Application.Maima" />
+      <item itemvalue="Application.MaimaExist" />
+      <item itemvalue="Gradle.Tests in 'crawler.overwrite'" />
       <item itemvalue="Spring Boot.coreDNSServerApplication" />
-      <item itemvalue="Gradle.crawler:overwrite [assemble]" />
-      <item itemvalue="Application.ca168Test" />
-      <item itemvalue="Application.Ok365" />
-      <item itemvalue="Application.Souhaohuo912688" />
-      <item itemvalue="Gradle.crawler:YiQing [build]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.crawler:YiQing [build]" />
-        <item itemvalue="Application.Souhaohuo912688" />
-        <item itemvalue="Application.Ok365" />
-        <item itemvalue="Gradle.crawler:overwrite [assemble]" />
-        <item itemvalue="Application.ca168Test" />
+        <item itemvalue="Gradle.Tests in 'crawler.overwrite'" />
+        <item itemvalue="Application.MaimaExist" />
+        <item itemvalue="Application.Maima" />
+        <item itemvalue="Application.ProductDownloadMainEntry" />
+        <item itemvalue="Application.TracePartsDownloadFromRedis" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -1967,98 +324,24 @@
       <workItem from="1566781335365" duration="32952000" />
       <workItem from="1567387477180" duration="60583000" />
       <workItem from="1583479304323" duration="28738000" />
+      <workItem from="1603360103258" duration="2017000" />
+      <workItem from="1603849406488" duration="6536000" />
+      <workItem from="1603869203201" duration="4014000" />
+      <workItem from="1603932118301" duration="906000" />
+      <workItem from="1603948560202" duration="10238000" />
+      <workItem from="1604018499546" duration="4830000" />
+      <workItem from="1604297708091" duration="11621000" />
+      <workItem from="1604382530562" duration="543000" />
+      <workItem from="1604384454648" duration="535000" />
+      <workItem from="1606110692476" duration="507000" />
+      <workItem from="1611046192543" duration="406000" />
+      <workItem from="1611046772811" duration="30000" />
+      <workItem from="1629877534411" duration="374000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="537105000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info anchor="right" id="Palette" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" weight="0.15376227" />
-      <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Designer" order="1" />
-      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Build" order="1" sideWeight="0.49946696" weight="0.16248637" />
-      <window_info anchor="bottom" id="Tail" order="7" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="11" weight="0.25" />
-      <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Debug" order="12" sideWeight="0.4989339" weight="0.11886587" />
-      <window_info anchor="bottom" id="TODO" order="15" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.10796074" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Java Enterprise" order="0" weight="0.3293348" />
-      <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="bottom" id="Run" order="10" visible="true" weight="0.8876772" />
-      <window_info anchor="bottom" id="Version Control" order="6" weight="0.23773174" />
-      <window_info anchor="bottom" id="Spring" order="2" weight="0.18647765" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.3293348" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.49772727" visible="true" weight="0.16204691" />
-      <window_info anchor="right" id="Bean Validation" order="0" />
-      <window_info id="Web" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.35332605" />
-      <window_info anchor="right" id="Gradle" order="4" sideWeight="0.49875313" weight="0.060234543" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info id="Favorites" order="5" sideWeight="0.5022727" side_tool="true" weight="0.1641791" />
-      <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50124687" side_tool="true" weight="0.10714286" />
-      <window_info id="Build Variants" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="8" />
-    </layout>
-    <layout-to-restore>
-      <window_info anchor="bottom" id="Build" order="1" sideWeight="0.49946696" weight="0.16248637" />
-      <window_info id="Designer" order="1" />
-      <window_info anchor="right" id="Palette" order="8" />
-      <window_info id="Build Variants" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Spring" order="2" weight="0.18647765" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Run" order="10" weight="0.5910578" />
-      <window_info anchor="bottom" id="Cvs" order="14" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="11" weight="0.25" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="5" sideWeight="0.5022727" side_tool="true" weight="0.1641791" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.3293348" />
-      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
-      <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="right" id="Commander" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" weight="0.15376227" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.10796074" />
-      <window_info anchor="bottom" id="TODO" order="16" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.35332605" />
-      <window_info anchor="bottom" id="Java Enterprise" order="0" weight="0.3293348" />
-      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="6" weight="0.23773174" />
-      <window_info anchor="right" id="Maven Projects" order="1" />
-      <window_info anchor="right" id="Gradle" order="4" sideWeight="0.49875313" weight="0.1924307" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.49772727" visible="true" weight="0.14658849" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Message" order="8" />
-      <window_info id="Web" order="0" side_tool="true" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="15" weight="0.4" />
-      <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50124687" side_tool="true" weight="0.10714286" />
-      <window_info anchor="bottom" id="Tail" order="7" />
-      <window_info anchor="right" id="Bean Validation" order="0" />
-      <window_info anchor="bottom" id="Debug" order="13" sideWeight="0.4989339" visible="true" weight="0.20174482" />
-    </layout-to-restore>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_WIDTH">
@@ -2075,9 +358,6 @@
       </list>
     </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -2091,847 +371,296 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/Utils/NewsMd5.java</url>
           <line>32</line>
-          <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/spider/standard/ZiliaoHopebook.java</url>
           <line>76</line>
-          <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/util/DownloadUtils.java</url>
           <line>82</line>
-          <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/news/parse/cinn.java</url>
           <line>126</line>
-          <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/news/parse/ca800News.java</url>
           <line>127</line>
-          <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/news/parse/cesNews.java</url>
           <line>153</line>
-          <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java</url>
           <line>40</line>
-          <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/util/ESUtil.java</url>
           <line>28</line>
-          <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/test/java/RedisUtilTest.java</url>
           <line>6</line>
-          <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/bde/DownAndUpTracePartsInfo.java</url>
           <line>185</line>
-          <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/bde/DownAndUpTracePartsInfo.java</url>
           <line>475</line>
-          <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/bde/DownAndUpTracePartsInfo.java</url>
           <line>527</line>
-          <properties />
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/bde/DownAndUpTracePartsInfo.java</url>
           <line>508</line>
-          <properties />
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/bde/DownAndUpTracePartsInfo.java</url>
           <line>103</line>
-          <properties />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/bde/DownAndUpTracePartsInfo.java</url>
           <line>69</line>
-          <properties />
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/test/java/postDataTest.java</url>
           <line>79</line>
-          <properties />
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/test/java/postDataTest.java</url>
           <line>72</line>
-          <properties />
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/test/java/RedisUtilTest.java</url>
           <line>10</line>
-          <properties />
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/test/java/RedisUtilTest.java</url>
           <line>12</line>
-          <properties />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsDownloadFromRedis.java</url>
-          <line>40</line>
-          <properties />
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsDownloadFromRedis.java</url>
           <line>104</line>
-          <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/test/java/RedisUtilTest.java</url>
           <line>13</line>
-          <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsDownloadFromRedis.java</url>
           <line>220</line>
-          <properties />
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/util/DownTracepartFile.java</url>
           <line>37</line>
-          <properties />
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsDownloadFromRedis.java</url>
           <line>131</line>
-          <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/Utils/RedisUtil.java</url>
           <line>77</line>
-          <properties />
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsUrlToRedis.java</url>
           <line>37</line>
-          <properties />
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/maima/Maima.java</url>
           <line>26</line>
-          <properties />
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/maima/Maima.java</url>
           <line>43</line>
-          <properties />
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/maima/Maima.java</url>
           <line>40</line>
-          <properties />
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/maima/SeedUrl.java</url>
           <line>28</line>
-          <properties />
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/maima/MaimaExist.java</url>
           <line>24</line>
-          <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/Utils/CSVUtils.java</url>
           <line>99</line>
-          <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/main/java/Utils/csvTest.java</url>
           <line>11</line>
-          <properties />
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/overwrite/src/test/java/mysqlTest.java</url>
           <line>11</line>
-          <properties />
           <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/spider/src/test/java/mysqlReadTest.java</url>
-          <line>7</line>
-          <properties />
-          <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/test/java/test.java</url>
           <line>10</line>
-          <properties />
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/spider/src/main/java/util/HttpUtil.java</url>
           <line>101</line>
-          <properties />
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/test/java/cleanFile.java</url>
           <line>6</line>
-          <properties />
           <option name="timeStamp" value="115" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/CoreDNSServerApplication.java</url>
           <line>24</line>
-          <properties />
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
           <line>41</line>
-          <properties />
           <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
           <line>55</line>
-          <properties />
           <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
           <line>69</line>
-          <properties />
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
           <line>43</line>
-          <properties />
           <option name="timeStamp" value="134" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
           <line>50</line>
-          <properties />
           <option name="timeStamp" value="135" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/WriteUtil.java</url>
           <line>23</line>
-          <properties />
           <option name="timeStamp" value="136" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/sercice/impl/CoreDnsServiceImpl.java</url>
           <line>31</line>
-          <properties />
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/utils/WriteUtil.java</url>
           <line>21</line>
-          <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
           <line>116</line>
-          <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/coreDNS/src/main/java/com/yunlu/controller/CoreDnsController.java</url>
           <line>140</line>
-          <properties />
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Ok365.java</url>
           <line>40</line>
-          <properties />
           <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Ok365.java</url>
           <line>70</line>
-          <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Ok365.java</url>
           <line>68</line>
-          <properties />
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java</url>
           <line>50</line>
-          <properties />
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java</url>
           <line>182</line>
-          <properties />
           <option name="timeStamp" value="152" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java</url>
           <line>79</line>
-          <properties />
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java</url>
           <line>249</line>
-          <properties />
           <option name="timeStamp" value="156" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsDownloadFromRedis.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/overwrite/src/main/java/tracepart/parse/TracePartsUrlToRedis.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
+          <option name="timeStamp" value="158" />
+        </breakpoint>
       </breakpoints>
       <breakpoints-defaults>
         <breakpoint suspend="THREAD" type="java-line" />
       </breakpoints-defaults>
-      <option name="time" value="157" />
     </breakpoint-manager>
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>document.select(&quot;.shop-comp-ins.textarea-content&quot;).text().trim()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>companyInfo</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>e.nextElementSibling().text().trim()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>document.select(&quot;li:contains('联系姓名')&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>productInfo</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>parse.select(&quot;div.main-data-param.R &gt; table &gt; tbody &gt; tr&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>element.select(&quot;p.mt5 &gt; a&quot;).attr(&quot;href&quot;).split(&quot;.com&quot;, 2)[0].concat(&quot;.com/company.html&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>element.select(&quot;p.mt5 &gt; a&quot;).attr(&quot;href&quot;).split(&quot;.com&quot;, 2)[1].concat(&quot;.com/company.html&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>productURL</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/test/app.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/dev/app.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/src/main/resources/release/app.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coreDNS/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/HxnyDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1150">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/RfidworldToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/HxnyToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/Utils/HtmlUnitUnits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2622">
-          <caret line="128" column="20" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/IotworldToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/OfWeekDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/RfidworldDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/mysqlUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/updateToMySQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16284">
-          <caret line="717" column="55" selection-start-line="717" selection-start-column="55" selection-end-line="717" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/mysql/DbConnectionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/3.1.0/4669cb096661dd7aa57335a2b8a8e9dbc72a8e1/HikariCP-3.1.0-sources.jar!/com/zaxxer/hikari/HikariDataSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1472">
-          <caret line="92" column="21" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/resources/NewsSeedUrl.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2277">
-          <caret line="99" column="16" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/MaiProductToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/Ca800ToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/spider/company/atoboCompany.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4997">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/spider/company/d17Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/OfWeekToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/CctimeToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/IotworldDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/IcloudNewsDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="38" column="50" lean-forward="true" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/IdacnDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-322">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/JsjxmhwDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryNews/NewsDownloadMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="343" column="26" lean-forward="true" selection-start-line="343" selection-start-column="26" selection-end-line="343" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/download/ChinaipoDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-529">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/IcloudNewsToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryNews/NewsSeedMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="378" column="25" selection-start-line="378" selection-start-column="25" selection-end-line="378" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/news/toRedis/IdacnToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="44" column="46" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.2/f0f1f0d1ceb2cd515c98649d9ad6b8b9814899b2/jsoup-1.11.2-sources.jar!/org/jsoup/nodes/Element.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="362" selection-start-line="362" selection-end-line="362" />
-          <folding>
-            <element signature="e#12264#12265#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.2/f0f1f0d1ceb2cd515c98649d9ad6b8b9814899b2/jsoup-1.11.2-sources.jar!/org/jsoup/select/Selector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/product/download/SouHaoHuoProductDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/mainEntryProduct/ProductSeedMainEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1713">
-          <caret line="89" column="74" selection-start-line="89" selection-start-column="74" selection-end-line="89" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/resources/ProductSeedUrl.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/SouHaoHuoProductToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="11" column="38" lean-forward="true" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/SouHaoHuoProductDownload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="25" selection-start-line="25" selection-end-line="26" selection-end-column="118" />
-          <folding>
-            <element signature="method#productInfo#0;class#SouHaoHuoProductDownload#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/Utils/HttpUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-184">
-          <caret line="452" column="25" selection-start-line="452" selection-start-column="25" selection-end-line="452" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/src/main/java/util/MD5Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Ok365.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YiQing/src/main/java/Product_Company/Souhaohuo912688.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/debug.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YiQing/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overwrite/src/main/java/parse/product/toRedis/ChemmProductToRedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Spring</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>coreDNS|coreDNS</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.35135135" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Gradle: com.alibaba:fastjson:1.2.28</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

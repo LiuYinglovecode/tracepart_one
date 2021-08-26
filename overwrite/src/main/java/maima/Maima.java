@@ -13,14 +13,14 @@ import java.util.Map;
 
 public class Maima {
     private static final Logger LOGGER = LoggerFactory.getLogger(Maima.class);
-    private static String filePath = "C:\\Users\\liyujie\\Desktop\\3.txt";
+    private static String filePath = "G:\\testcrawler\\3.txt";
     private static String base = "http://";
-    private static String outPath = "C:\\Users\\liyujie\\Desktop\\3_out.csv";
+    private static String outPath = "G:\\testcrawler\\3_out.csv";
     private static Map<String, String> header = null;
 
     static {
         header = new HashMap();
-        header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36");
+        header.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36");
     }
 
     public static void main(String[] args) {

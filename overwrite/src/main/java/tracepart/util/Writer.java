@@ -40,6 +40,6 @@ public class Writer {
     }
 
     public static void main(String[] args) {
-        Writer.writer("234","F:/T.csv");
+        Writer.writer("234","G:/T.csv");
     }
 }

@@ -1,7 +1,6 @@
 package Utils;
 
 import redis.clients.jedis.HostAndPort;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -9,8 +8,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author liyujie
+ */
 public class JedisMultiCluster {
-    private static HashMap<String, JedisCluster> _jedisCluster = new HashMap<>();
+
+    private static final HashMap<String, JedisCluster> jedisCluster = new HashMap<>();
 
     private static JedisCluster getCluster() {
         return getCluster(null);
@@ -26,15 +29,15 @@ public class JedisMultiCluster {
             newPoolName = "redis";
         }
 
-        if (!_jedisCluster.containsKey(newPoolName)) {
-            synchronized (_jedisCluster) {
-                if (!_jedisCluster.containsKey(newPoolName)) {
+        if (!jedisCluster.containsKey(newPoolName)) {
+            synchronized (jedisCluster) {
+                if (!jedisCluster.containsKey(newPoolName)) {
                     cluster = createCluster(newPoolName);
-                    _jedisCluster.put(newPoolName, cluster);
+                    jedisCluster.put(newPoolName, cluster);
                 }
             }
         } else {
-            cluster = _jedisCluster.get(newPoolName);
+            cluster = jedisCluster.get(newPoolName);
         }
 
         return cluster;
@@ -82,12 +85,21 @@ public class JedisMultiCluster {
 //            hostAndPortsSet.add(new HostAndPort("172.20.4.164", 7005));
 
             // 呼市 测试
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6382));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
-            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
+            // liuying commented it temporary
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6385));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6380));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6381));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6382));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6383));
+//            hostAndPortsSet.add(new HostAndPort("10.153.40.228", 6384));
+
+//            hostAndPortsSet.add(new HostAndPort("172.20.4.71", 12000));
+            hostAndPortsSet.add(new HostAndPort("106.74.152.35",10618));
+//              hostAndPortsSet.add(new HostAndPort("127.0.0.1", 6379));
+//              hostAndPortsSet.add(new HostAndPort("127.0.0.1", 6379));
+//              hostAndPortsSet.add(new HostAndPort("127.0.0.1", 6379));
+//              hostAndPortsSet.add(new HostAndPort("127.0.0.1", 6379));
+//              hostAndPortsSet.add(new HostAndPort("127.0.0.1", 6379));
 
 //            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7001));
 //            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7002));
@@ -96,15 +108,16 @@ public class JedisMultiCluster {
 //            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7005));
 //            hostAndPortsSet.add(new HostAndPort("192.168.56.10", 7006));
 ////            String passwd = "7T8wZ5X3#B6fS4vJ";
-            String passwd = "onlYKdm+gH9LrzYB";  //呼市
+            //本地docker
+            //String passwd = "bitnami";
             String connectionTimeout = "5000";
             String soTimeout = "5000";
             String maxAttempts = "6";
 
             //线上
-            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), passwd, config);
+            //jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), passwd, config);
 //            本地
-//            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts), config);
+            jedisCluster = new redis.clients.jedis.JedisCluster(hostAndPortsSet, Integer.parseInt(connectionTimeout), Integer.parseInt(soTimeout), Integer.parseInt(maxAttempts),config);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,11 +143,7 @@ public class JedisMultiCluster {
     public synchronized static JedisCluster getJedis(final String poolName) {
         try {
             redis.clients.jedis.JedisCluster cluster = getCluster(poolName);
-            if (cluster != null) {
-                return cluster;
-            } else {
-                return null;
-            }
+            return cluster;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

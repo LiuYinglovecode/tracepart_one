@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.security.provider.MD5;
+//import sun.security.provider.MD5;
 import util.ESUtil;
 import util.HttpUtil;
 import util.MD5Util;
